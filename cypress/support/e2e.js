@@ -22,4 +22,3 @@ require("cypress-wait-until");
 require("cypress-plugin-tab");
 require("cypress-iframe");
 require("cypress-xpath");
-require("@cypress/snapshot").register();
