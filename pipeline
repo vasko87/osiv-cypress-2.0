@@ -34,5 +34,14 @@ pipeline {
 }
 
 def composeArgs() {
-    TEST_ENV = "--env url=" + ENV + ",dataSet=" + DATA_SET + " --spec " + SPEC + " --browser chrome --record --key " + RECORD_KEY
+    if (ENV = "FR") {
+        ENV_URL = "https://osiv-frtest.ivnet.ch"
+    }
+    if (ENV = "NR") {
+        ENV_URL = "https://osiv-frtest.ivnet.ch"
+    }
+    if (ENV = "FW") {
+        ENV_URL = "https://osiv-devcwe.ivnet.ch"
+    }
+    TEST_ENV = "--env url=" + ENV_URL + ",dataSet=" + DATA_SET + " --spec " + SPEC + " --browser chrome --record --key " + RECORD_KEY
 }
