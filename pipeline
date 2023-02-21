@@ -59,6 +59,6 @@ def composeArgs() {
         PASSWORD_ENV = ",password=" + PASSWORD
     }
     TEST_ENV = "--env url=" + ENV_URL + ",dataSet=" + DATA_SET
-                + USERNAME_ENV + PASSWORD_ENV + ",uncaughtExceptionFailure=" + EXCEPTION "
-                --spec " + SPEC + " --browser chrome --record --key " + RECORD_KEY
+                + USERNAME_ENV + PASSWORD_ENV + ",uncaughtExceptionFailure=" + EXCEPTION
+                + " --spec " + SPEC + " --browser chrome --record --key " + RECORD_KEY
 }
