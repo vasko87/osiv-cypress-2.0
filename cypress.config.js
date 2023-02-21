@@ -3,7 +3,7 @@ const path = require("path");
 
 module.exports = defineConfig(
   {
-    projectId       : "vkywii",
+    projectId       : "nnmsrw",
     viewportWidth   : 1920,
     viewportHeight  : 1080,
     reporter        : "cypress-multi-reporters",

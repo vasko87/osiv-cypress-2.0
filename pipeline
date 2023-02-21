@@ -1,13 +1,18 @@
+RECORD_KEY = "489ee484-b2a2-4452-b403-0677eb092c33"
+USERNAME_ENV = ""
+PASSWORD_ENV = ""
 pipeline {
 
     agent any
 
      parameters{
         string(name: 'SPEC', defaultValue: "cypress/e2e/**/**", description: "Enter the script path you want to execute")
-        choice(name: 'ENV', choices: ['FR','NR','FW', 'CUSTOM'], description: "Select the test environment")
+        choice(name: 'ENV', choices: ['FR','NR','FW'], description: "Select the test environment")
         string(name: 'CUSTOM_ENV', defaultValue: "", description: "Enter the custom url")
         choice(name: 'DATA_SET', choices: ['dataSet1','dataSet2','dataSet3'], description: "Data set")
-        string(name: 'RECORD_KEY', defaultValue: "419a7ab6-1abe-46ec-949c-2d09259a76f2", description: "Enter the record key of Cypress dashboard")
+        string(name: 'USERNAME', defaultValue: "default", description: "Set username")
+        string(name: 'PASSWORD', defaultValue: "default", description: "Set password")
+        boolean(name: 'EXCEPTION', description: "Should tests fail due to uncaught:exeptopn or not")
      }
 
 
@@ -44,8 +49,16 @@ def composeArgs() {
     if (ENV == "FW") {
         ENV_URL = "https://osiv-devcwe.ivnet.ch"
     }
-    if (ENV == "CUSTOM") {
+    if (CUSTOM_ENV != "") {
         ENV_URL = CUSTOM_ENV
     }
-    TEST_ENV = "--env url=" + ENV_URL + ",dataSet=" + DATA_SET + " --spec " + SPEC + " --browser chrome --record --key " + RECORD_KEY
+    if (USERNAME != "default") {
+        USERNAME_ENV = ",username=" + USERNAME
+    }
+    if (PASSWORD != "default") {
+        PASSWORD_ENV = ",password=" + PASSWORD
+    }
+    TEST_ENV = "--env url=" + ENV_URL + ",dataSet=" + DATA_SET
+                + USERNAME_ENV + PASSWORD_ENV + ",uncaughtExceptionFailure=" + EXCEPTION "
+                --spec " + SPEC + " --browser chrome --record --key " + RECORD_KEY
 }
