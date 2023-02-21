@@ -1,0 +1,34 @@
+{
+  "data1": {
+    "entId": "22738",
+    "warningMsg": "(OSCIENT:440)",
+    "infoMsg": "(OSCIENT:446)",
+    "sendungen": {
+      "formilarNotVisible": [
+        "VM",
+        "VB",
+        "MB"
+      ],
+      "formilarVisible": [
+        "MIB",
+        "Korrigiert"
+      ]
+    }
+  },
+  "data2": {
+    "entId": "22739",
+    "warningMsg": "(OSCIENT:441)",
+    "infoMsg": "(OSCIENT:446)",
+    "sendungen": {
+      "formilarNotVisible": [
+        "VM",
+        "VB",
+        "MB"
+      ],
+      "formilarVisible": [
+        "100a",
+        "101V"
+      ]
+    }
+  }
+}

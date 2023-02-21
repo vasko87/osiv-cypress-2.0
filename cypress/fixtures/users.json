@@ -1,0 +1,14 @@
+{
+  "hulkUser": {
+    "username": "Hulk1",
+    "password" : "hulk1"
+  },
+  "bnaUser": {
+    "username": "bna",
+    "password": "bna"
+  },
+  "user1": {
+    "username": "User1",
+    "password": "user1"
+  }
+}

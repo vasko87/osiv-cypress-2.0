@@ -1,0 +1,12 @@
+{
+  "entId": "23364",
+  "artderInvaliditätDropDown": "Langdauernde Erwerbsunfähigkeit",
+  "ausgleichskasseDropdown": "10 - Ausgleichskasse des Kantons Freiburg",
+  "warningMessage": "(OSCIENT:465)",
+  "wFGradTxt": "20 %",
+  "tageTxt": "countOfdaysInYear",
+  "grenzgradTxt": "20 %",
+  "hEGradinPersentTxt": "20",
+  "hEGradDropdown": "Leicht",
+  "hEGradTxt": "Leicht"
+}
