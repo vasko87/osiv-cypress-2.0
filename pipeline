@@ -5,8 +5,8 @@ pipeline {
      parameters{
         string(name: 'SPEC', defaultValue: "cypress/e2e/**/**", description: "Enter the script path you want to execute")
         string(name: 'RECORD_KEY', defaultValue: "419a7ab6-1abe-46ec-949c-2d09259a76f2", description: "Enter the record key of Cypress dashboard")
-        choice(name: 'ENV', choices: 'FR\NR\FW', description: "Select the test environment")
-        choice(name: 'DATA_SET', choices: "dataSet1\dataSet2\dataSet3", description: "The Value for test enviroment")
+        choice(name: 'ENV', choices: ['FR','NR','FW'], description: "Select the test environment")
+        choice(name: 'DATA_SET', choices: ['dataSet1','dataSet2','dataSet3'], description: "Data set")
      }
 
 
