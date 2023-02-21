@@ -63,5 +63,5 @@ def composeArgs() {
     } else {
         UNCAUGHT_EXCEPTION_FAIL = ",uncaughtExceptionFailure=true"
     }
-    TEST_ENV = "--env url=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + ",uncaughtExceptionFailure=" + EXCEPTION + " --spec " + SPEC + " --browser chrome --record --key " + RECORD_KEY
+    TEST_ENV = "--env url=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec " + SPEC + " --browser chrome --record --key " + RECORD_KEY
 }
