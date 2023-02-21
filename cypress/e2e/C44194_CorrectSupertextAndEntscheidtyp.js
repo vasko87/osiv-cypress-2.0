@@ -14,17 +14,17 @@ function testBody(data) {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
   });
 
-  it(`Steps: Open ENT, Click Korrekturenfunction button
-        select "Supertext, Entscheidtyp ändern" option from dynselect >>>warning message is presented
-        : For ENT1 - warning (OSCIENT:440)
-        : For ENT2 - warning  (OSCIENT:441)
-        confirm warning>>> info message  (OSCIENT:446) is presented
-        click ok;
-       
-        Expected: 
-        - 'Supertext' and 'Entscheidtyp' are enabled;
-        - 'Supertext, Entscheidtyp ändern' button is disabled;
-        - Sendungs (VM, VB or MB) in status Neu are deleted;
+  it(`Steps: Open ENT, Click Korrekturenfunction button\n
+        select "Supertext, Entscheidtyp ändern" option from dynselect >>>warning message is presented\n
+        : For ENT1 - warning (OSCIENT:440)\n
+        : For ENT2 - warning  (OSCIENT:441)\n
+        confirm warning>>> info message  (OSCIENT:446) is presented\n
+        click ok;\n
+       \n
+        Expected:\n
+        - 'Supertext' and 'Entscheidtyp' are enabled;\n
+        - 'Supertext, Entscheidtyp ändern' button is disabled;\n
+        - Sendungs (VM, VB or MB) in status Neu are deleted;\n
         - Sendung (MIB) in status Korrigiert is not deleted`, () => {
     pages.loginPage.openUrl();
     pages.desktopMenu.navigateToEntscheidTab();
