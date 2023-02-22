@@ -13,7 +13,6 @@ pipeline {
         string(name: 'USERNAME', defaultValue: "default", description: "Set username if not default")
         string(name: 'PASSWORD', defaultValue: "default", description: "Set password if not default")
         choice(name: 'UNCAUGHT_EXCEPTION_FAIL', choices: ['NO', "YES"], description: "Fail tests due to uncaught:exception or not")
-        string(name: 'BRANCH', defaultValue: "main", description: "Set the branch name")
      }
 
     stages {
@@ -22,14 +21,13 @@ pipeline {
                echo "Setup the application"
                bat "npm install cypress"
                bat "npm audit fix"
-               composeArgs();
-               setJobName();
             }
-
-                }
+        }
         stage('Testing'){
             steps{
-               bat "npx cypress run " + TEST_ENV
+                composeArgs();
+                setJobName();
+                bat "npx cypress run " + TEST_ENV
             }
         }
     }
