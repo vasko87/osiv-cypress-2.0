@@ -15,9 +15,13 @@ $ git clone https://github.com/vasko87/osiv-cypress-tests
 
 ### Run tests:
 
-- browser based run: ```npx cypress open --env ENV=Fr```
-- headless run default suite: ```npx cypress run --env ENV=Fr```
-- headless run single test: ```cypress run --env ENV=Fr --spec cypress/e2e/[testName.js]```
+- browser based run: ```npx cypress open```
+- headless run default suite: ```npx cypress run```
+- headless run single test: ```cypress run --spec cypress/e2e/[testName.js]```
+
+Note: Parameters from [cypress.env.json](cypress.env.json) are used by default, if you would like to change them - update this file OR past them as env parameters directly in command line:
+
+Example: ```cypress run --env url=https://osiv3g-m01.ivnet.ch/,username=User1,password=user1 --spec cypress/e2e/0_newAdressTest.js```
 
 ### Jenkins CI execution
 
