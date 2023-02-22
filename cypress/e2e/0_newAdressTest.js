@@ -1,4 +1,4 @@
-import osiv from "../support/base/OsivPageObject";
+import pages from "../support/base/OsivPageObject";
 
 const testData = {
   adressTypeDropdown : "024",
@@ -16,29 +16,29 @@ describe(`#: Test to add a new adress with Frau solutation`, () => {
   });
 
   it("Step: Navigate to Adressen and click 'Adressen new' btn", () => {
-    osiv.loginPage.openUrl();
-    osiv.desktopMenu.navigateToAdressenTab();
-    osiv.adressen.grid.clickAdressenNewBtn();
-    osiv.adressen.addDialog.waitForLoaded();
+    pages.loginPage.openUrl();
+    pages.desktopMenu.navigateToAdressenTab();
+    pages.adressen.grid.clickAdressenNewBtn();
+    pages.adressen.addDialog.waitForLoaded();
   });
 
   it("Step: Fill in Adressen form;", () => {
-    osiv.adressen
+    pages.adressen
         .addDialog
         .selectAdressTypeDropdown(testData.adressTypeDropdown)
         .selectSpracheDropdown(testData.spracheDropdown)
         .selectAnredeartDropdown(testData.anredeartDropdown)
         .selectTitelDropdown(testData.titelDropdown)
         .selectPlzDropdownDropdown(testData.plzDropdown);
-    osiv.adressen.addDialog.elements.nameTxt().type(testData.nameTxt);
-    osiv.adressen.addDialog.elements.vornameTxt().type(testData.vornameTxt);
+    pages.adressen.addDialog.elements.nameTxt().type(testData.nameTxt);
+    pages.adressen.addDialog.elements.vornameTxt().type(testData.vornameTxt);
   });
 
   it("Step: Click Generate btn => Ok confirmation; OK warning popup", () => {
-    osiv.adressen.addDialog.elements.generierenBtn().click();
-    osiv.modalWindow.clickOkBtn();
-    osiv.warningPopup.clickOkBtn();
-    osiv.notification.checkSuccessMessageVisible();
+    pages.adressen.addDialog.elements.generierenBtn().click();
+    pages.modalWindow.clickOkBtn();
+    pages.warningPopup.clickOkBtn();
+    pages.notification.checkSuccessMessageVisible();
   });
 
   // Add test steps dependency of each other. If any step fail - test stops

@@ -17,6 +17,7 @@
 import "./commands";
 import "cypress-file-upload";
 import "cypress-wait-until";
+import "cypress-mochawesome-reporter/register";
 
 require("cypress-wait-until");
 require("cypress-plugin-tab");

@@ -6,11 +6,13 @@ logs
 *.vscode
 *.Entscheid_Copy_2
 *.node_modules
+cypress/reports
 *.videos
 *.results
 *.test
 *.vs
 .idea
+xunit.xml
 
 # Runtime data
 pids
