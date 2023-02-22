@@ -21,12 +21,12 @@ pipeline {
                echo "Setup the application"
                bat "npm install cypress"
                bat "npm audit fix"
+               composeArgs();
+               setJobName();
             }
         }
         stage('Testing'){
             steps{
-                composeArgs();
-                setJobName();
                 bat "npx cypress run " + TEST_ENV
             }
         }
@@ -62,6 +62,6 @@ def composeArgs() {
 }
 
 def setJobName(){
-    echo "ENV = [" + ENV_URL + "], dataSet = [" + DATA_SET + "], branch = [" + BRANCH + "]"
-    currentBuild.displayName = ENV + "_" + DATA_SET + "_" + BRANCH
+    echo "ENV = [" + ENV_URL + "], dataSet = [" + DATA_SET + "]"
+    currentBuild.displayName = ENV + "_" + DATA_SET
 }
