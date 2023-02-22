@@ -13,7 +13,7 @@ $ git clone https://github.com/vasko87/osiv-cypress-tests
 
 3. Install project depandencys: ```npm i```
 
-### Run tests:
+### Local run tests:
 
 - browser based run: ```npx cypress open```
 - headless run default suite: ```npx cypress run```
@@ -25,4 +25,6 @@ Example: ```cypress run --env url=https://osiv3g-m01.ivnet.ch/,username=User1,pa
 
 ### Jenkins CI execution
 
-1. Navigate to  [Jenkins](http://w1064-de-test1:8080/view/Automated%20UI%20Tests) and open the job that need to be executed:
+1. Navigate to  [Jenkins](http://w1064-de-test1:8080/view/Automated%20UI%20Tests/job/OSIV_CYPRESS/) job
+2. Click ```Build with Parameters``` and select parameters you would like to use
+3. Click ```Build``` button
