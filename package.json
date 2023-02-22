@@ -12,14 +12,7 @@
     "mochawesome:merge": "npx mochawesome-merge \"cypress/results/mochawesome/*.json\" > mochawesome.json && npx marge mochawesome.json",
     "junit:merge": "npx junit-merge -d cypress/results/junit -o cypress/results/junit/result.xml",
     "cy:run": "npm run prereport && npm run cy:run:fr",
-    "cy:run:fr:report": "npm run cy:run && npm run junit:merge && npm run mochawesome:merge",
-    "download-extension": "ced gleekbfjekiniecknbkamfmkohkpodhe extensions/ignore-x-frame-headers",
-    "clean:reports": "rm -R -f results && mkdir results && mkdir results/mochareports",
-    "pretest": "npm run clean:reports",
-    "combine-reports": "mochawesome-merge results/mocha/*.json > results/mochareports/report.json",
-    "generate-report": "marge results/mochareports/report.json -f report -o results/mochareports -- inline",
-    "posttest": "npm run combine-reports && npm run generate-report",
-    "test:e2e": "npm run pretest && npm run cypress:run || npm run posttest"
+    "cy:run:fr:report": "npm run cy:run && npm run junit:merge && npm run mochawesome:merge"
   },
   "devDependencies": {
     "@babel/code-frame": "^7.18.6",
