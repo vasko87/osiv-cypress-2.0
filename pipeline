@@ -13,27 +13,23 @@ pipeline {
         string(name: 'USERNAME', defaultValue: "default", description: "Set username if not default")
         string(name: 'PASSWORD', defaultValue: "default", description: "Set password if not default")
         choice(name: 'UNCAUGHT_EXCEPTION_FAIL', choices: ['NO', "YES"], description: "Fail tests due to uncaught:exception or not")
+        string(name: 'BRANCH', defaultValue: "main", description: "Set the branch name")
      }
 
-
     stages {
-        stage('Building'){
+        stage('Setup'){
             steps{
-               echo "Building the application"
+               echo "Setup the application"
                bat "npm install cypress"
                bat "npm audit fix"
+               composeArgs();
+               setJobName();
             }
 
                 }
         stage('Testing'){
             steps{
-               composeArgs()
                bat "npx cypress run " + TEST_ENV
-            }
-        }
-        stage('Deploying'){
-            steps{
-                echo "Deploy the application"
             }
         }
     }
@@ -51,6 +47,7 @@ def composeArgs() {
     }
     if (CUSTOM_ENV != "") {
         ENV_URL = CUSTOM_ENV
+        ENV = "CUSTOM"
     }
     if (USERNAME != "default") {
         USERNAME_ENV = ",username=" + USERNAME
@@ -64,4 +61,9 @@ def composeArgs() {
         UNCAUGHT_EXCEPTION_FAIL = ",uncaughtExceptionFailure=true"
     }
     TEST_ENV = "--env url=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec " + SPEC + " --browser chrome --record --key " + RECORD_KEY
+}
+
+def setJobName(){
+    echo "ENV = [" + ENV_URL + "], dataSet = [" + DATA_SET + "], branch = [" + BRANCH + "]"
+    currentBuild.displayName = ENV + "_" + DATA_SET + "_" + BRANCH
 }
