@@ -1,16 +1,13 @@
-# osiv-cypress-tests
+# osiv-cypress-2.0
 
-## Features
 
-### Local installation
+## Local installation
 
-1. Download project from bitbucket repository
+1. Install [Node.js](https://nodejs.org/en)
+2. Download project from bitbucket repository
 ```
-$ git clone https://github.com/vasko87/osiv-cypress-tests
+$ git clone https://github.com/vasko87/osiv-cypress-2.0
 ```
-
-2. Install [Node.js](https://nodejs.org/en)
-
 3. Install project depandencys: ```npm i```
 
 ### Local run tests:
@@ -23,7 +20,7 @@ Note: Parameters from [cypress.env.json](cypress.env.json) are used by default, 
 
 Example: ```cypress run --env url=https://osiv3g-m01.ivnet.ch/,username=User1,password=user1 --spec cypress/e2e/0_newAdressTest.js```
 
-### Jenkins CI execution
+## Jenkins CI execution
 
 1. Navigate to  [Jenkins](http://w1064-de-test1:8080/view/Automated%20UI%20Tests/job/OSIV_CYPRESS/) job
 2. Click ```Build with Parameters``` and select parameters you would like to use
