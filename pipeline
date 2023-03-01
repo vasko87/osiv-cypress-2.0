@@ -30,12 +30,11 @@ pipeline {
                 bat "npx cypress run " + TEST_ENV
             }
         }
-        post {
+        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, includes: '**/*.html', keepAll: true, reportDir: 'cypress/reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: 'Report'])
               //always {
               //  junit '**/reports/junit/*.xml'
               //}
-              publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, includes: '**/*.html', keepAll: true, reportDir: 'cypress/reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: 'Report'])
-        }
+
     }
 }
 
