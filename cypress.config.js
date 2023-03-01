@@ -48,13 +48,7 @@ module.exports = defineConfig(
           }
           return launchOptions;
         });
-
-      // on('test:after:run', (test, runnable) => {
-      //       if (test.state === 'failed') {
-      //         const screenshotFileName = `${runnable.parent.title} -- ${test.title} (failed).png`
-      //         addContext({ test }, `assets/${Cypress.spec.name}/${screenshotFileName}`)
-      //       }
-      // },
+      },
 
       specPattern: "cypress/e2e/**/*.{js,jsx,ts,tsx}",
       excludeSpecPattern: [
