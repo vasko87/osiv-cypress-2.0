@@ -1,5 +1,6 @@
 const {defineConfig} = require("cypress");
 const path = require("path");
+const addContext = require("mochawesome/addContext");
 
 module.exports = defineConfig(
   {
@@ -10,7 +11,7 @@ module.exports = defineConfig(
     reporterOptions: {
       reporterEnabled: "mochawesome",
       mochawesomeReporterOptions: {
-        reportDir: "cypress/reports/mocha",
+        reportDir: "cypress/reports/mochawesome-report",
         screenshotOnRunFailure: true,
         overwrite: false,
         html: false,
@@ -56,8 +57,8 @@ module.exports = defineConfig(
         "**/2-advanced-examples/*"
       ],
       screenshotOnRunFailure: true,
-      screenshotsFolder: "cypress/reports/mochareports/screenshots",
-      videosFolder: "cypress/reports/mochareports/videos",
+      screenshotsFolder: "cypress/reports/mochawesome-report/assets",
+      videosFolder: "cypress/reports/mochawesome-report/videos",
       requestTimeout: 100000,
       numTestsKeptInMemory: 0,
       responseTimeout: 100000,

@@ -38,14 +38,11 @@ pipeline {
     post {
         always{
             script{
-                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, includes: '**/*.html', keepAll: true, reportDir: 'cypress/reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: 'Report'])
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, includes: '**/*.html', keepAll: true, reportDir: 'cypress/report/html', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: 'Report'])
                 archiveArtifacts 'cypress/reports'
             }
         }
     }
-    //always {
-    //  junit '**/reports/junit/*.xml'
-    //}
 }
 
 def composeArgs() {
