@@ -29,6 +29,11 @@ class GridBase extends PageBase {
     return this;
   }
 
+  dblClickRowWithText(text) {
+    this.elements.gridWrapper().find( "tbody" ).contains( "td", text ).dblclick();
+    return this;
+  }
+
   /**
    * Verifies that @value exists in the Grid table
    * @param {string|number|RegExp} value

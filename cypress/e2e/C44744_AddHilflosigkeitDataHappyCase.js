@@ -4,6 +4,7 @@
 import pages from "../support/base/OsivPageObject";
 import helpers from "../support/helpers/HelperObject";
 import {c44744 as testData} from "../support/helpers/DataManager";
+import addContext from "mochawesome/addContext";
 
 describe(`C44744: (ENT ${testData.entId}) Add Hilflosigkeit data Happy case`, () => {
   before("Login", () => {

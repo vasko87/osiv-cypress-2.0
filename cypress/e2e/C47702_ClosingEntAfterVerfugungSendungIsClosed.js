@@ -15,12 +15,11 @@ function testBody(data) {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
   });
 
-  it(`Steps: Open ENT, goto tab ENT-SEN
+  it(`Steps: Open ENT '${data.entId}', goto tab ENT-SEN
     Open SEN VRG (the only one SEN in state=EINGEGANGEN)
     click ribbon "Abschliessen", set Verfugungsdatum and click OK =>
     Verify:
-    - For the ENT1 >> AL = Revision
-    - For ENT2>> AL - Abgeschlossen`, () => {
+    - AL = ${data.arbeitsliste}`, () => {
     pages.loginPage.openUrl();
     pages.desktopMenu.navigateToEntscheidTab();
     pages.entscheid.grid.searchAndOpenEntscheidID(data.entId);

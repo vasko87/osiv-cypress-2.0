@@ -8,6 +8,8 @@ import AdressenPageObject from "../page_objects/addresen/AdressenPageObject";
 import InformationPopup from "../standalone/popup/InformationPopup";
 import SendungenPageObject from "../page_objects/sendungen/SendungenPageObject";
 import Navigation from "../standalone/navigation/Navigation";
+import VersichertePageBase from "../page_objects/versicherte/VersichertePageBase";
+import VersichertePageObject from "../page_objects/versicherte/VersichertePageObject";
 
 class OsivPageObject {
   constructor() {
@@ -18,6 +20,7 @@ class OsivPageObject {
     this.warningPopup = new WarningPopup();
     this.infoPopup = new InformationPopup();
     this.notification = new Notifications();
+    this.versicherte = new VersichertePageObject();
     this.entscheid = new EntscheidPageObject();
     this.adressen = new AdressenPageObject();
     this.sendungen = new SendungenPageObject();

@@ -14,11 +14,10 @@ function testBody(data) {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
   });
 
-  it(`Steps: Open ENT, Click Korrekturenfunction button
-        select "Supertext, Entscheidtyp ändern" option from dynselect >>>warning message is presented
-        : For ENT1 - warning (OSCIENT:440)
-        : For ENT2 - warning  (OSCIENT:441)
-        confirm warning>>> info message  (OSCIENT:446) is presented
+  it(`Steps: Open ENT '${data.entId}', Click Korrekturenfunction button
+        select "Supertext, Entscheidtyp ändern" option from dynselect 
+        >>> warning message '${data.warningMsg}' is presented
+        confirm warning>>> info message '${data.infoMsg}' is presented
         click ok;
        
         Expected:

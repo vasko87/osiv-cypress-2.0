@@ -4,6 +4,7 @@ import HilflosigkeitTab from "./tabs/HilflosigkeitTab";
 import EntscheidRibbon from "./EntscheidRibbon";
 import EntscheidTabBar from "./EntscheidTabBar";
 import SendungenGrid from "../../sendungen/grid/SendungenGrid";
+import FreitexteTab from "./tabs/FreitexteTab";
 
 class EntscheidDetail extends EntscheidPageBase {
   constructor() {
@@ -13,6 +14,7 @@ class EntscheidDetail extends EntscheidPageBase {
     this.tabBar = new EntscheidTabBar();
     this.ribbonMenu = new EntscheidRibbon();
     this.hilflosigkeitTab = new HilflosigkeitTab();
+    this.freitexteTab = new FreitexteTab();
     this.sendungenGrid = new SendungenGrid("[akid='EntscheidDetailWindow']");
     super.elements = {
       ...this.elements,

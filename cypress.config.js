@@ -10,17 +10,18 @@ module.exports = defineConfig(
     reporterOptions: {
       reporterEnabled: "mochawesome",
       mochawesomeReporterOptions: {
-        reportDir: "cypress/reports/mpcha",
+        reportDir: "cypress/reports/mocha",
         screenshotOnRunFailure: true,
         overwrite: false,
-        html: true,
+        html: false,
         json: true,
         timestamp: "mmddyyyy_HHMMss",
         showSkipped: true,
         charts: true,
         quite: true,
         embeddedScreenshots: true,
-        inlineAssets: true
+        inlineAssets: true,
+        capture: "runner" // capture: "fullPage",
       }
     },
     e2e: {
@@ -70,7 +71,9 @@ module.exports = defineConfig(
       retries: {
         runMode: 0,
         openMode: 0
-      }
+      },
+      scrollBehavior: "top"
+      // slowTestThreshold:"250"//Time, in milliseconds, to consider a test "slow" during cypress run
     }
   }
 );
