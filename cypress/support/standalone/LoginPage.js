@@ -17,8 +17,7 @@ class LoginPage {
     });
 
     Cypress.on("uncaught:exception", (err) => {
-      console.log("!!!" + err.message);
-      cy.screenshot();
+      console.log(err.message);
       if (Cypress.env("uncaughtExceptionFailure") === true) {
         return err;
       } else {
