@@ -1,8 +1,10 @@
 import pages from "../support/base/OsivPageObject";
 import {c44194 as testData} from "../support/helpers/DataManager";
 
-describe(`C44194: (ENT ${testData.data1.entId}) Correct Supertext and Entscheidtyp`, () => {
+describe(`C44194: (ENT ${testData.data1.entId}) Correct Supertext and Entscheidtyp; 
+TestRail:https://osiv.testrail.net/index.php?/cases/view/44194`, () => {
   [testData.data1, testData.data2].forEach((data) => {
+
     before("Login", () => {
       cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
     });
@@ -22,25 +24,25 @@ describe(`C44194: (ENT ${testData.data1.entId}) Correct Supertext and Entscheidt
       pages.desktopMenu.navigateToEntscheidTab();
       pages.entscheid.grid.searchAndOpenEntscheidID(data.entId);
       pages.entscheid.detail
-        .checkSupertextDropdownReadOnly(true)
-        .checkEntscheidTypDropdownReadOnly(true);
+           .checkSupertextDropdownReadOnly(true)
+           .checkEntscheidTypDropdownReadOnly(true);
       pages.entscheid.detail.ribbonMenu.clickKorrekturfunktionenBtn()
-        .clickSubMenuMenuItem(pages.entscheid.detail.ribbonMenu.korrekturfunktionenSubMenu.supertextEntscheidtypandern);
+           .clickSubMenuMenuItem(pages.entscheid.detail.ribbonMenu.korrekturfunktionenSubMenu.supertextEntscheidtypandern);
       pages.warningPopup.ckeckWarningContainsText(data.warningMsg)
-        .clickOkBtn();
+           .clickOkBtn();
       pages.infoPopup.ckeckInformationContainsText(data.infoMsg)
-        .clickOkBtn();
+           .clickOkBtn();
       pages.notification.checkSuccessMessageVisible();
 
       pages.entscheid.detail.checkSupertextDropdownReadOnly(false);
       pages.entscheid.detail.checkEntscheidTypDropdownReadOnly(false);
       pages.entscheid.detail.ribbonMenu.clickKorrekturfunktionenBtn()
-        .checkSupertextEntscheidtypandernMenuItemEnable(false);
+           .checkSupertextEntscheidtypandernMenuItemEnable(false);
 
       pages.entscheid.detail.tabBar.navigateToSendungenTab();
       pages.entscheid.detail.sendungenGrid
-        .checkAllValuesInGridExist(data.sendungen.formilarNotVisible, false)
-        .checkAllValuesInGridExist(data.sendungen.formilarVisible, true);
+           .checkAllValuesInGridExist(data.sendungen.formilarNotVisible, false)
+           .checkAllValuesInGridExist(data.sendungen.formilarVisible, true);
     });
   });
 });

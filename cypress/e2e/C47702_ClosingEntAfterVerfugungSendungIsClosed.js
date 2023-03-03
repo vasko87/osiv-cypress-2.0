@@ -2,8 +2,10 @@ import pages from "../support/base/OsivPageObject";
 import {c47702 as testData} from "../support/helpers/DataManager";
 import helpers from "../support/helpers/HelperObject";
 
-describe(`C47702: (ENT ${testData.data1.entId}) Closing ENT after Verfugung sendung is closed`, () => {
+describe(`C47702: (ENT ${testData.data1.entId}) Closing ENT after Verfugung sendung is closed; 
+  TestRail:https://osiv.testrail.net/index.php?/cases/view/47702`, () => {
   [testData.data1, testData.data2].forEach((data) => {
+
     before("Login", () => {
       cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
     });

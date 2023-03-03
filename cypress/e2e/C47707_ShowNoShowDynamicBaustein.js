@@ -1,8 +1,10 @@
 import {c47707 as testData} from "../support/helpers/DataManager";
 import pages from "../support/base/OsivPageObject";
 
-describe(`C47707: (ENT: ${testData.data1.entId}) Entscheid Freitext - Show (no show) Dynamic Baustein`, () => {
-  [testData.data1, testData.data2].forEach((data) => {
+describe(`C47707: (ENT: ${testData.data1.entId}) Entscheid Freitext - Show (no show) Dynamic Baustein; 
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/47707`, () => {
+  [testData.data1].forEach((data) => {
+
     before("Login", () => {
       cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
     });

@@ -2,21 +2,15 @@ export default {
 
   getCurrentDate() {
     const date = new Date();
-    return date.toLocaleDateString("de-CH", {year : "numeric", month : "2-digit", day : "2-digit"});
+    return date.toLocaleDateString("de-CH", {year: "numeric", month: "2-digit", day: "2-digit"});
   },
 
-  getCountOfdaysInYear() {
-    const date = new Date();
-    const year = date.getFullYear();
-    function days_of_a_year(year) {
-      return isLeapYear(year) ? 366 : 365;
-    }
-    function isLeapYear(year) {
-      return year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0);
-    }
+  daysInCurrentYear() {
+    return this.getCountOfdaysInYear(new Date().getFullYear());
+  },
 
-    const countOfdaysInYear = days_of_a_year(year);
-    return countOfdaysInYear;
+  daysInYear(year) {
+    return ((year % 4 === 0 && year % 100 > 0) || year % 400 === 0) ? 366 : 365;
   },
 
   // get date in one year from now
@@ -24,22 +18,30 @@ export default {
     const date = new Date();
     const end = new Date(date.getTime());
     end.setFullYear(date.getFullYear() + 1);
-    return end.toLocaleDateString("de-CH", {year : "numeric", month : "2-digit", day : "2-digit"});
+    return end.toLocaleDateString("de-CH", {year: "numeric", month: "2-digit", day: "2-digit"});
+  },
+
+  getDaysDiffFromTodayTillSameDayNextYear() {
+    const date = new Date();
+    const end = new Date(date.getTime());
+    end.setFullYear(date.getFullYear() + 1);
+    const diff = end.getTime() - date.getTime();
+    return Math.round(diff / (1000 * 60 * 60 * 24));
   },
 
   // get date for first day of current month
   getTheFirstDayOfMonth() {
     const date = new Date();
     const firstDay = new Date(date.getFullYear() + 1, date.getMonth(), 1);
-    return firstDay.toLocaleDateString("de-CH", {year : "numeric", month : "2-digit", day : "2-digit"});
+    return firstDay.toLocaleDateString("de-CH", {year: "numeric", month: "2-digit", day: "2-digit"});
   },
 
   // get date prior to current date in one year
-  getOneDayLess() {
+  getOneDayLessNextYear() {
     const date = new Date();
     const end = new Date(date.getTime());
     end.setDate(date.getDate() - 1);
     end.setFullYear(date.getFullYear() + 1);
-    return end.toLocaleDateString("de-CH", {year : "numeric", month : "2-digit", day : "2-digit"});
+    return end.toLocaleDateString("de-CH", {year: "numeric", month: "2-digit", day: "2-digit"});
   }
 };

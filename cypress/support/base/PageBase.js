@@ -1,4 +1,7 @@
 class PageBase {
+  constructor() {
+    const activeFormCss = "[class='dhxwin_active']";
+  }
   /**
    * Clicks on @element dropdown;
    * Selects value which contains @value parameter

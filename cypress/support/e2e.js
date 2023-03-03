@@ -18,8 +18,10 @@ import "./commands";
 import "cypress-file-upload";
 import "cypress-wait-until";
 import "cypress-mochawesome-reporter/register";
+import "cypress-testrail";
 
 require("cypress-wait-until");
 require("cypress-plugin-tab");
 require("cypress-iframe");
 require("cypress-xpath");
+require("cypress-testrail");

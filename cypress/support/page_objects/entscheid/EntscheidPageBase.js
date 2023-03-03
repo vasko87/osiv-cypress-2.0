@@ -4,9 +4,10 @@ class EntscheidPageBase extends PageBase {
   constructor(baseCSS) {
     super();
     this.elements = {
-      supertextbezDropdown    : () => cy.get(baseCSS).find("[akid='EntscheidDetailBasisDatenForm-supertextbez']"),
-      entscheidtypbezDropdown : () => cy.get(baseCSS).find("[akid='EntscheidDetailBasisDatenForm-entscheidtypbez']"),
-      arbeitslistevalueTxt    : () => cy.get(baseCSS).find("[akid='EntscheidDetailBasisDatenForm-arbeitslistevalue'] input")
+      supertextbezDropdown    : () => cy.get(baseCSS).find("[akid$='-supertextbez']"),
+      entscheidtypbezDropdown : () => cy.get(baseCSS).find("[akid$='-entscheidtypbez']"),
+      arbeitslistevalueTxt    : () => cy.get(baseCSS).find("[akid$='-arbeitslistevalue'] input"),
+      leistungsgruppeDropdown    : () => cy.get(baseCSS).find("[akid$='-leistungsgruppe']")
     };
   }
 

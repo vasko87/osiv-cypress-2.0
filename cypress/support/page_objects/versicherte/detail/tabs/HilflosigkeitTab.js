@@ -101,42 +101,42 @@ class HilflosigkeitTab extends PageBase {
   }
 
   selectArtderInvaliditatDropdown(value) {
-    this.selectInDropdownContains(this.elements.artderInvaliditatDropdown(), value);
+    this.selectInDropdownContains(this.alltaglicheLebensverrichtungBlock.artderInvaliditatDropdown(), value);
     return this;
   }
 
   selectAusgleichskasseDropdown(value) {
-    this.selectInDropdownContains(this.elements.ausgleichskasseDropdown(), value);
+    this.selectInDropdownContains(this.alltaglicheLebensverrichtungBlock.ausgleichskasseDropdown(), value);
     return this;
   }
 
   setAnAuskleidenDate(date) {
-    this.elements.anAuskleidenDate().type(date);
+    this.alltaglicheLebensverrichtungBlock.anAuskleidenDate().type(date);
     return this;
   }
 
   setAufstehenAbsitzenDate(date) {
-    this.elements.aufstehenAbsitzenDate().type(date);
+    this.alltaglicheLebensverrichtungBlock.aufstehenAbsitzenDate().type(date);
     return this;
   }
 
   setEssenDate(date) {
-    this.elements.essenDate().type(date);
+    this.alltaglicheLebensverrichtungBlock.essenDate().type(date);
     return this;
   }
 
   setPersUebvondatDate(date) {
-    this.elements.persUebvondatDate().type(date);
+    this.alltaglicheLebensverrichtungBlock.persUebvondatDate().type(date);
     return this;
   }
 
   setWhnvondatDate(date) {
-    this.elements.whnvondatDate().type(date);
+    this.alltaglicheLebensverrichtungBlock.whnvondatDate().type(date);
     return this;
   }
 
   checkAblaufWartefristDate(value) {
-    this.elements.ablaufWartefristDate().should("have.value", value);
+    this.ablaufWartefristDate().should("have.value", value);
     return this;
   }
 

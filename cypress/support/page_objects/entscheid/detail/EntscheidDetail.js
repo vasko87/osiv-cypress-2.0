@@ -8,17 +8,17 @@ import FreitexteTab from "./tabs/FreitexteTab";
 
 class EntscheidDetail extends EntscheidPageBase {
   constructor() {
-    const detailFormCSS = "[akid='EntscheidDetailBasisDatenForm']";
+    const detailFormCSS = `[class='dhxwin_active'] [akid='EntscheidDetailBasisDatenForm']`;
     super(detailFormCSS);
     this.sideMenu = new EntscheidSideMenu();
     this.tabBar = new EntscheidTabBar();
     this.ribbonMenu = new EntscheidRibbon();
     this.hilflosigkeitTab = new HilflosigkeitTab();
     this.freitexteTab = new FreitexteTab();
-    this.sendungenGrid = new SendungenGrid("[akid='EntscheidDetailWindow']");
+    this.sendungenGrid = new SendungenGrid(`[class='dhxwin_active'] [akid='EntscheidDetailWindow']`);
     super.elements = {
       ...this.elements,
-      detailForm : () => cy.get("[akid='EntscheidDetailBasisDatenForm']")
+      detailForm : () => cy.get(`[class='dhxwin_active'] [akid='EntscheidDetailBasisDatenForm']`)
     };
   }
 

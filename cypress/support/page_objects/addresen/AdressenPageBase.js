@@ -5,17 +5,17 @@ class AdressenPageBase extends PageBase {
   constructor(baseCSS) {
     super();
     super.elements = {
-      adressTypeDropdown : () => cy.get(baseCSS).find("[akid='sAdresseDetailOverviewForm-adresstyp']"),
-      spracheDropdown    : () => cy.get(baseCSS).find("[akid='sAdresseDetailOverviewForm-sprache_bez']"),
-      anredeartDropdown  : () => cy.get(baseCSS).find("[akid='sAdresseDetailOverviewForm-anredeartbez']"),
-      titelDropdown      : () => cy.get(baseCSS).find("[akid='sAdresseDetailOverviewForm-titel_adresstitel']"),
-      nameTxt            : () => cy.get(baseCSS).find("[akid='sAdresseDetailOverviewForm-nachname'] input"),
-      vornameTxt         : () => cy.get(baseCSS).find("[akid='sAdresseDetailOverviewForm-vorname'] input"),
-      plzDropdown        : () => cy.get(baseCSS).find("[akid='sAdresseDetailOverviewForm-postleitzahl']"),
-      anschriftTxt       : () => cy.get(baseCSS).find("[akid='sAdresseDetailOverviewForm-anschrift']"),
-      floskelTxt         : () => cy.get(baseCSS).find("[akid='sAdresseDetailOverviewForm-floskel']"),
-      kurzadresseTxt     : () => cy.get(baseCSS).find("[akid='sAdresseDetailOverviewForm-kurzadresse']"),
-      generierenBtn      : () => cy.get(baseCSS).find("[akid='sAdresseDetailOverviewForm-but_kurzadresse_anpassen']")
+      adressTypeDropdown : () => cy.get(baseCSS).find("[akid$='-adresstyp']"),
+      spracheDropdown    : () => cy.get(baseCSS).find("[akid$='-sprache_bez']"),
+      anredeartDropdown  : () => cy.get(baseCSS).find("[akid$='-anredeartbez']"),
+      titelDropdown      : () => cy.get(baseCSS).find("[akid$='-titel_adresstitel']"),
+      nameTxt            : () => cy.get(baseCSS).find("[akid$='-nachname'] input"),
+      vornameTxt         : () => cy.get(baseCSS).find("[akid$='-vorname'] input"),
+      plzDropdown        : () => cy.get(baseCSS).find("[akid$='-postleitzahl']"),
+      anschriftTxt       : () => cy.get(baseCSS).find("[akid$='-anschrift']"),
+      floskelTxt         : () => cy.get(baseCSS).find("[akid$='-floskel']"),
+      kurzadresseTxt     : () => cy.get(baseCSS).find("[akid$='-kurzadresse']"),
+      generierenBtn      : () => cy.get(baseCSS).find("[akid$='-but_kurzadresse_anpassen']")
     };
   }
 

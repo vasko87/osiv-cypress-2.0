@@ -3,7 +3,6 @@ import PageBase from "../../../../base/PageBase";
 class FreitexteTab extends PageBase {
   constructor() {
     super();
-    const pageBase = this;
     this.elements = {
       bausteinGrid: () => cy.get('[akid="BausteinlisteIndiVerfuegungBeiblattGrid"]')
     }

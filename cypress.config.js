@@ -1,6 +1,7 @@
 const {defineConfig} = require("cypress");
 const path = require("path");
 const addContext = require("mochawesome/addContext");
+const TestRailReporter = require("cypress-testrail");
 
 module.exports = defineConfig(
   {
@@ -49,6 +50,7 @@ module.exports = defineConfig(
           }
           return launchOptions;
         });
+        new TestRailReporter(on, config).register();
       },
 
       specPattern: "cypress/e2e/**/*.{js,jsx,ts,tsx}",
@@ -73,8 +75,8 @@ module.exports = defineConfig(
         runMode: 0,
         openMode: 0
       },
-      scrollBehavior: "top"
-      // slowTestThreshold:"250"//Time, in milliseconds, to consider a test "slow" during cypress run
+      scrollBehavior: "top",
+      slowTestThreshold: 250//Time, in milliseconds, to consider a test "slow" during cypress run
     }
   }
 );

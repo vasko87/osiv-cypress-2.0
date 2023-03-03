@@ -24,6 +24,7 @@ const countOfdaysInYear = dateHelper.daysInYear();
 const nextyear          = dateHelper.getSameDayNextYear();
 const firstday          = dateHelper.getTheFirstDayOfMonth();
 const end               = dateHelper.getOneDayLessNextYear();
+import pages from "../support/base/OsivPageObject";
 
 console.log( `today ${ today}` );
 console.log( `count ${ countOfdaysInYear}` );
@@ -31,22 +32,22 @@ console.log( `nextyear ${  nextyear}` );
 console.log( `firstday ${  firstday}` );
 console.log( `dayless ${  end}` );
 
-describe( `E2E test of createting and sending Entscheide for HE code ${  url}`, () => {
-  beforeEach( "Login", () => {
+describe(`C50984: E2E (HE Entscheid); 
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/50984`, () => {
+
+  before( "Login", () => {
     cy.UILoginWithSession( Cypress.env( "username" ), Cypress.env( "password" ) );
     loginPage.open( url );
   } );
 
-  it( "Verify Environment", () => {
-    desktop.Versicherte().click();
-    vpGrid.typevpName( "Wait Will" ).type( "{enter}" );
-    vpGrid.vpSelectedRow().dblclick();
-    cy.wait( 3000 );
-    dashboard.HomeBtn().click();
-    cy.wait( 4000 );
-    //cy.wait I used here cause the element Entscheide tab exists on page but it is not clickable
-    vpDetails.Entscheide().click();
-    vpEntscheidGrid.NewBtn().click();
+  it("Step 1: Open VP -> Form for new ENT creation opens", () => {
+    pages.desktopMenu.navigateToVersicherteTab();
+    pages.versicherte.grid.searchAndOpenVersicherteName("Wait Will");
+    pages.versicherte.detail.waitForLoaded();
+    pages.versicherte.detail.tabBar.navigateToEntscheideTab();
+    pages.entscheid.detail.ribbonMenu.clickNeuBtn();
+    pages.entscheid.nueDialog.
+
     entscheidNew.SelectLeistungsgruppeValue( "Hilflosenentschädigung" ).click();
     entscheidNew.SelectLeistungscodeValue( "Hilflosenentschädigung" ).click();
     entscheidNew.ValidateGesuchValue( "vom 01.02.2022" );
