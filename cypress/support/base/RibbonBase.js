@@ -6,12 +6,18 @@ class RibbonBase extends PageBase {
     this.elements = {
       ribbonBlock : () => cy.get("[class='dhxwin_active'] [akid='SimpleSwatRibbon'] [class='dhxrb_block_base ribbonBlock']"),
       speichernBtn : () => this.elements.ribbonBlock().find("[title='Speichern']"),
+      neuBtn : () => this.elements.ribbonBlock().find("[title='Neu']"),
       subMenu : () => cy.get("[class='dhtmlxMebu_SubLevelArea_Tbl']")
     };
   }
 
   clickSpeichernBtn() {
     this.elements.speichernBtn().should("be.visible").click();
+    return this;
+  }
+
+  clickNeuBtn() {
+    this.elements.neuBtn().should("be.visible").click();
     return this;
   }
 

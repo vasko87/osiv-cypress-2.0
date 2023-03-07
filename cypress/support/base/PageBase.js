@@ -23,6 +23,29 @@ class PageBase {
     return this;
   }
 
+  checkDropdownContainsValue(element, selectedValue) {
+    element.find("option").should("contain.text", selectedValue);
+    return this;
+  }
+
+  checkReadonlyDropdownSelectedValue(element, selectedValue) {
+    element.find("input[readonly='true']").should("have.value", selectedValue);
+    return this;
+  }
+
+  checkReadonlyDropdownContainsValue(element, selectedValue) {
+    element.find("input[readonly='true']").should("contains.value", selectedValue);
+    return this;
+  }
+
+  checkElementVisible(element, isVisible) {
+    if (isVisible === true) {
+      element.should("be.visible");
+    } else {
+      element.should("not.be.visible");
+    }
+  }
+
   /**
    * Checks @element readonly
    * - set @isReadonly = true if @element expected to be readonly
@@ -31,7 +54,7 @@ class PageBase {
    * @param element
    * @param isReadonly
    */
-  checkElementReadOnly(element, isReadonly) {
+  checkElementReadonly(element, isReadonly) {
     if (isReadonly === true) {
       element.parent().should("have.class", "akReadOnlyDynselect");
     } else {
@@ -65,6 +88,31 @@ class PageBase {
       errorMsg : "Element is not visible",
       timeout  : 100000
     };
+    return this;
+  }
+
+  /**
+   * Checks @element has @color
+   * @param element
+   * @param color
+   * @param hasColor
+   * @returns {PageBase}
+   */
+  checkElementColor(element, color, shouldHave) {
+    if (shouldHave) {
+      element.should("have.css", "border-left-color", color);
+    } else {
+      element.should("not.have.css", "border-left-color", color);
+    }
+    return this;
+  }
+
+  checkMsgOnThePage(msg, isExist) {
+    if (isExist) {
+      cy.contains(msg).should("exist");
+    } else {
+      cy.contains(msg).should("not.exist");
+    }
     return this;
   }
 }

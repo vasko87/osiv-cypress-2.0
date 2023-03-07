@@ -30,6 +30,18 @@ pipeline {
                 bat "npx cypress run " + TEST_ENV
             }
         }
+              //always {
+              //  junit '**/reports/junit/*.xml'
+              //}
+
+    }
+    post {
+        always{
+            script{
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'cypress/reports', reportFiles: '*/index.html', reportName: 'HTML Report', reportTitles: 'Report'])
+                archiveArtifacts 'cypress/reports'
+            }
+        }
     }
 }
 
@@ -58,7 +70,7 @@ def composeArgs() {
     } else {
         UNCAUGHT_EXCEPTION_FAIL = ",uncaughtExceptionFailure=true"
     }
-    TEST_ENV = "--env url=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec " + SPEC + " --browser chrome --record --key " + RECORD_KEY
+    TEST_ENV = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec " + SPEC + " --browser chrome --record --key " + RECORD_KEY
 }
 
 def setJobName(){

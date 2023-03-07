@@ -6,7 +6,7 @@ class AdressenCommonElements extends PageBase{
     super();
 
     super.elements = {
-      vmdatumDate : () => cy.get(baseCSS).find("[akid='FinalizeTypAbklaerungUrsprungEntscheidTypVMForm-entscheid_vmdatum'] input")
+      vmdatumDate : () => cy.get(baseCSS).find("[akid$='-entscheid_vmdatum'] input")
     };
   }
 

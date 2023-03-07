@@ -1,9 +1,10 @@
 import EntscheidGridFilter from "./EntscheidGridFilter";
 import EntscheidGridHeaderActivePanel from "./EntscheidGridHeaderActivePanel";
 import GridBase from "../../../base/GridBase";
+import constants from "../../../helpers/Constants"
 class EntscheidGrid extends GridBase{
   constructor() {
-    super("[style*='opacity: 1']");
+    super(constants.cssOpacity);
     this.filter = new EntscheidGridFilter();
     this.headerActivePanel = new EntscheidGridHeaderActivePanel();
     super.elements = {

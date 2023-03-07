@@ -1,32 +1,175 @@
 {
-  "data1": {
-    "entId": "23210",
+  "leicht": {
+    "data1": {
+      "entId": "23210",
+      "testCondition": "Leicht -> assistance is needed in 2 of the 6 daily living activities('An-Auskleiden'+'Essen')",
+      "alltaglicheLebensverrichtungBlock": {
+        "anAuskleidenDate": true,
+        "aufstehenAbsitzenDate": false,
+        "essenDate": true,
+        "korperpflegeDate": false,
+        "verrichtenDerNDDate": false,
+        "fortbewegungDate": false,
+        "medPflegeDate": false,
+        "persUebvondatDate": false
+      }
+    },
+    "data2": {
+      "entId": "23211",
+      "testCondition": "Leicht -> assistance is needed in 3 of the 6 daily living activities('Aufstehen,Absitzen' + 'Körperpflege' + 'Fortbewegung')",
+      "alltaglicheLebensverrichtungBlock": {
+        "anAuskleidenDate": false,
+        "aufstehenAbsitzenDate": true,
+        "essenDate": false,
+        "korperpflegeDate": true,
+        "verrichtenDerNDDate": false,
+        "fortbewegungDate": true,
+        "medPflegeDate": false,
+        "persUebvondatDate": false
+      }
+    },
+    "data3": {
+      "entId": "23212",
+      "testCondition": "Leicht -> personal supervision is needed('Pers. Überwachung')",
+      "alltaglicheLebensverrichtungBlock": {
+        "anAuskleidenDate": false,
+        "aufstehenAbsitzenDate": false,
+        "essenDate": false,
+        "korperpflegeDate": false,
+        "verrichtenDerNDDate": false,
+        "fortbewegungDate": false,
+        "medPflegeDate": false,
+        "persUebvondatDate": true
+      }
+    },
+    "data4": {
+      "entId": "23213",
+      "testCondition": "Leicht -> 1 of the 3 areas of practical life assistance is fulfilled('Wohnen')",
+      "lebenspraktischeBegleitungBlock": {
+        "whnvondatDate": true,
+        "begleitungDate": false,
+        "isolationDate": false
+      }
+    },
+    "data5": {
+      "entId": "23214",
+      "testCondition": "Leicht -> 2 of the 3 areas of practical life assistance is fulfilled('Wohnen' + 'Begleitung')",
+      "lebenspraktischeBegleitungBlock": {
+        "whnvondatDate": true,
+        "begleitungDate": true,
+        "isolationDate": false
+      }
+    },
+    "data6": {
+      "entId": "23215",
+      "testCondition": "Leicht -> 3 of the 3 areas of practical life assistance is fulfilled('Wohnen' + 'Begleitung' + 'Isolation')",
+      "lebenspraktischeBegleitungBlock": {
+        "whnvondatDate": true,
+        "begleitungDate": true,
+        "isolationDate": true
+      }
+    },
     "hEGradDropdown": "Leicht",
     "hEGradTxt": "Leicht"
   },
-  "data2": {
-    "entId": "23211",
-    "hEGradDropdown": "Leicht",
-    "hEGradTxt": "Leicht"
+  "mittel": {
+    "data1": {
+      "entId": "23231",
+      "testCondition": "Mittel -> assistance is needed in 4 of the 6 daily living activities('An-Auskleiden' + 'Aufstehen,Absitzen' + 'Essen' + 'Körperpflege')",
+      "alltaglicheLebensverrichtungBlock": {
+        "anAuskleidenDate": true,
+        "aufstehenAbsitzenDate": true,
+        "essenDate": true,
+        "korperpflegeDate": true,
+        "verrichtenDerNDDate": false,
+        "fortbewegungDate": false,
+        "medPflegeDate": false,
+        "persUebvondatDate": false
+      }
+    },
+    "data2": {
+      "entId": "23232",
+      "testCondition": "Mittel -> assistance is needed in 5 of the 6 daily living activities('An-Auskleiden'+'Aufstehen,absitzen'+'Essen'+'Körperpflege')",
+      "alltaglicheLebensverrichtungBlock": {
+        "anAuskleidenDate": true,
+        "aufstehenAbsitzenDate": true,
+        "essenDate": true,
+        "korperpflegeDate": true,
+        "verrichtenDerNDDate": false,
+        "fortbewegungDate": true,
+        "medPflegeDate": false,
+        "persUebvondatDate": false
+      }
+    },
+    "data3": {
+      "entId": "23233",
+      "testCondition": "Mittel -> assistance is required in 2 of the 6 daily living activities and  personal supervision is needed('Verrichten Der ND' + 'Fortbewegung' + 'Pers. Überwachung')",
+      "alltaglicheLebensverrichtungBlock": {
+        "anAuskleidenDate": false,
+        "aufstehenAbsitzenDate": false,
+        "essenDate": false,
+        "korperpflegeDate": false,
+        "verrichtenDerNDDate": true,
+        "fortbewegungDate": true,
+        "medPflegeDate": false,
+        "persUebvondatDate": true
+      }
+    },
+    "data4": {
+      "entId": "23233",
+      "testCondition": "Mittel -> assistance is required in at least 2 of the 6 daily living activities and in addition, at least one of the 3 areas of practical life support is fulfilled",
+      "alltaglicheLebensverrichtungBlock": {
+        "anAuskleidenDate": true,
+        "aufstehenAbsitzenDate": false,
+        "essenDate": false,
+        "korperpflegeDate": true,
+        "verrichtenDerNDDate": false,
+        "fortbewegungDate": false,
+        "medPflegeDate": false,
+        "persUebvondatDate": false
+      },
+      "lebenspraktischeBegleitungBlock": {
+        "whnvondatDate": true,
+        "begleitungDate": false,
+        "isolationDate": false
+      }
+    },
+    "data5": {
+      "entId": "23234",
+      "testCondition": "Mittel -> assistance is required in at least 2 of the 6 daily living activities and in addition, at least one of the 3 areas of practical life support is fulfilled",
+      "alltaglicheLebensverrichtungBlock": {
+        "anAuskleidenDate": true,
+        "aufstehenAbsitzenDate": false,
+        "essenDate": true,
+        "korperpflegeDate": true,
+        "verrichtenDerNDDate": true,
+        "fortbewegungDate": false,
+        "medPflegeDate": false,
+        "persUebvondatDate": false
+      },
+      "lebenspraktischeBegleitungBlock": {
+        "whnvondatDate": true,
+        "begleitungDate": true,
+        "isolationDate": false
+      }
+    },
+    "hEGradDropdown": "Mittel",
+    "hEGradTxt": "Mittel"
   },
-  "data3": {
-    "entId": "23212",
-    "hEGradDropdown": "Leicht",
-    "hEGradTxt": "Leicht"
-  },
-  "data4": {
-    "entId": "23213",
-    "hEGradDropdown": "Leicht",
-    "hEGradTxt": "Leicht"
-  },
-  "data5": {
-    "entId": "23214",
-    "hEGradDropdown": "Leicht",
-    "hEGradTxt": "Leicht"
-  },
-  "data6": {
-    "entId": "23215",
-    "hEGradDropdown": "Leicht",
-    "hEGradTxt": "Leicht"
+  "schwer": {
+    "entId": "23235",
+    "testCondition": "Schwer -> assistance is required in all 6 daily living activities and in addition  medical-care assistance or personal supervision is required.",
+    "alltaglicheLebensverrichtungBlock": {
+      "anAuskleidenDate": true,
+      "aufstehenAbsitzenDate": true,
+      "essenDate": true,
+      "korperpflegeDate": true,
+      "verrichtenDerNDDate": true,
+      "fortbewegungDate": true,
+      "medPflegeDate": true,
+      "persUebvondatDate": true
+    },
+    "hEGradDropdown": "Schwer",
+    "hEGradTxt": "Schwer"
   }
 }

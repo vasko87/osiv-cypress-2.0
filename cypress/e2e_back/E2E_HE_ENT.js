@@ -20,10 +20,10 @@ import entscheidSendungenTab          from "../support/page_objects/EntscheidSen
 //Call getBaseUrl() to get environment specific url value
 const url               = getBaseUrl();
 const today             = dateHelper.getCurrentDate();
-const countOfdaysInYear = dateHelper.getCountOfdaysInYear();
+const countOfdaysInYear = dateHelper.daysInYear();
 const nextyear          = dateHelper.getSameDayNextYear();
 const firstday          = dateHelper.getTheFirstDayOfMonth();
-const end               = dateHelper.getOneDayLess();
+const end               = dateHelper.getOneDayLessNextYear();
 
 console.log( `today ${ today}` );
 console.log( `count ${ countOfdaysInYear}` );
@@ -71,6 +71,7 @@ describe( `E2E test of createting and sending Entscheide for HE code ${  url}`, 
     entscheidDetails.ValidateBearbeiterValue( "Hulk1 - Hulk Eins" );
     entscheidDetails.ValidateLeistungsgruppeValue( "HE" );
     entscheidDetails.ValidateLeistungscodeValue( "HE - Hilflosenentschädigung" );
+
     entscheidDetails.SelectEntscheidValue( "Zusprache" );
     entscheidDetails.SelectSupertextValue( "3205" );
     entscheidDetails.SelectEntscheidtypValue( "Mitteilung der IV-Stelle (IV Allgemein)" );

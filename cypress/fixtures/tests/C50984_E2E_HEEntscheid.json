@@ -1,0 +1,38 @@
+{
+  "step1": {
+    "versicherteName": "Wait Will",
+    "leistungsgruppeDropdown": "Hilflosenentschädigung",
+    "leistungtextDropdown": "Hilflosenentschädigung"
+  },
+  "step2": {
+    "verifyEntNew": {
+      "gesuchDropdown": "vom 01.02.2022",
+      "ereignisDropdown": "Basis vom 22.11.2022",
+      "bereichDropdown": "IV",
+      "bearbeiterDropdown": "username",
+      "arbeitslistevalueTxt": "Neu"
+    },
+    "verifyEntDetail": {
+      "arbeitslistevalueTxt": "Neu",
+      "bearbeiterDropdown": "username",
+      "leistungsgruppeDropdown": "HE",
+      "leistungtextDropdown": "HE - Hilflosenentschädigung",
+      "gesuchDropdown": "vom 01.02.2022",
+      "ereignisDropdown": "Basis vom 22.11.2022",
+      "bereichDropdown": "IV"
+    }
+  },
+  "step3": {
+    "fillInEntDetail": {
+      "entscheidDropdown": "Zusprache",
+      "supertextDropdown": "3205",
+      "entscheidtypDropdown": "Mitteilung der IV-Stelle (IV Allgemein)",
+      "gebrechenDropdown": "101",
+      "funktausfallDropdown": "01",
+      "beginnDate": "today"
+    }
+  },
+  "step5": {
+    "arbeitslistevalueTxt": "Bearbeiten"
+  }
+}

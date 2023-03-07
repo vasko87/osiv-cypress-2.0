@@ -1,18 +1,19 @@
-// Defect step 10
-// https://jiraosiv3g.atlassian.net/browse/OSIV-21033
+// Defect step 10: https://jiraosiv3g.atlassian.net/browse/OSIV-21033
 
 import pages from "../support/base/OsivPageObject";
 import helpers from "../support/helpers/HelperObject";
 import {c44744 as testData} from "../support/helpers/DataManager";
 
-describe(`C44744: (ENT ${testData.entId}) Add Hilflosigkeit data Happy case`, () => {
+describe(`C44744: (ENT ${testData.entId}) Add Hilflosigkeit data Happy case; 
+  TestRail:https://osiv.testrail.net/index.php?/cases/view/44744`, () => {
+
   before("Login", () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
   });
 
   it("Step 1: Open ENT", () => {
     pages.loginPage.openUrl();
-    pages.desktopMenu.navigateToEntscheidTab()
+    pages.desktopMenu.navigateToEntscheidTab();
     pages.entscheid.grid.searchAndOpenEntscheidID(testData.entId);
   });
 
@@ -21,60 +22,63 @@ describe(`C44744: (ENT ${testData.entId}) Add Hilflosigkeit data Happy case`, ()
   });
 
   it("Step 3: fill in mandatory field Art der Invalidität", () => {
-    pages.entscheid.detail.hilflosigkeitTab.selectArtderInvaliditatDropdown(testData.artderInvaliditätDropDown);
-    pages.entscheid.detail.hilflosigkeitTab.selectAusgleichskasseDropdown(testData.ausgleichskasseDropdown);
+    pages.entscheid.detail.hilflosigkeitTab.allgemeineAngabenBlock
+      .selectArtderInvaliditatDropdown(testData.artderInvaliditatDropDown)
+      .selectAusgleichskasseDropdown(testData.ausgleichskasseDropdown);
   });
 
   it("Step 4: fill in 'Alltägliche Lebensverrichtung' or/and 'Lebenspraktische Begleitung' fields", () => {
     pages.entscheid.detail
-         .hilflosigkeitTab
-         .setAnAuskleidenDate(helpers.date.getCurrentDate())
-         .setAufstehenAbsitzenDate(helpers.date.getCurrentDate())
-         .setEssenDate(helpers.date.getCurrentDate());
+      .hilflosigkeitTab.alltaglicheLebensverrichtungBlock
+      .setAnAuskleidenDate(helpers.date.getCurrentDate())
+      .setAufstehenAbsitzenDate(helpers.date.getCurrentDate())
+      .setEssenDate(helpers.date.getCurrentDate());
   });
 
   it("Step 5: Click Speichern button >> warning is presented (OSCIENT:465); Confirm warning", () => {
     pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
     pages.warningPopup.ckeckWarningContainsText(testData.warningMessage)
-         .clickOkBtn();
+      .clickOkBtn();
   });
 
   it("Step 6: System calculated Wartefrist", () => {
     pages.entscheid.detail
-         .hilflosigkeitTab.checkAblaufWartefristDate(helpers.date.getSameDayNextYear());
+      .hilflosigkeitTab
+      .allgemeineAngabenBlock
+      .checkAblaufWartefristDate(helpers.date.getSameDayNextYear());
     pages.entscheid.detail
-         .hilflosigkeitTab
-         .wartefristBlock
-         .checkWFGradTxt(testData.wFGradTxt)
-         .checkTageTxt(helpers.date.getCountOfdaysInYear())
-         .checkGrenzgradTxt(testData.grenzgradTxt);
+      .hilflosigkeitTab
+      .wartefristBlock
+      .checkWFGradTxt(testData.wFGradTxt)
+      .checkTageTxt(helpers.date.getDaysDiffFromTodayTillSameDayNextYear())
+      .checkGrenzgradTxt(testData.grenzgradTxt);
   });
 
   it("Step 7: Check system calculated Wartefrist Verlauf", () => {
     pages.entscheid.detail
-         .hilflosigkeitTab
-         .wartefristVerlaufBlock
-         .checkBeginnDate(helpers.date.getCurrentDate())
-         .checkEndeDate(helpers.date.getOneDayLess())
-         .checkAnzahlTageTxt(helpers.date.getCountOfdaysInYear())
-         .checkHEGradinPersentTxt(testData.hEGradinPersentTxt);
+      .hilflosigkeitTab
+      .wartefristVerlaufBlock
+      .checkBeginnDate(helpers.date.getCurrentDate())
+      .checkEndeDate(helpers.date.getOneDayLessNextYear())
+      .checkAnzahlTageTxt(helpers.date.getDaysDiffFromTodayTillSameDayNextYear())
+      .checkHEGradinPersentTxt(testData.hEGradinPersentTxt);
   });
 
   it("Step 8: Check system calculated HE-Grad", () => {
     pages.entscheid.detail
-         .hilflosigkeitTab
-         .hEGradBlock
-         .checkHEGradDropdown(testData.hEGradDropdown)
-         .checkBeginnDate(helpers.date.getTheFirstDayOfMonth());
+      .hilflosigkeitTab
+      .hEGradBlock
+      .checkHEGradDropdown(testData.hEGradDropdown)
+      .checkBeginnDate(helpers.date.getTheFirstDayOfMonth());
   });
 
   it("Step 9: Check system calculated HE-Grad Verlauf", () => {
     pages.entscheid.detail
-         .hilflosigkeitTab
-         .hEGradVerlaufBlock
-         .checkHEGradAbTxt(helpers.date.getTheFirstDayOfMonth())
-         .checkHEAbTxt(helpers.date.getTheFirstDayOfMonth())
-         .checkHEGradTxt(testData.hEGradTxt);
+      .hilflosigkeitTab
+      .hEGradVerlaufBlock
+      .checkHEGradAbTxt(helpers.date.getTheFirstDayOfMonth())
+      .checkHEAbTxt(helpers.date.getTheFirstDayOfMonth())
+      .checkHEGradTxt(testData.hEGradTxt);
   });
 
   it("Step 10: Click Speichern button >> warning is not presented", () => {
@@ -84,8 +88,10 @@ describe(`C44744: (ENT ${testData.entId}) Add Hilflosigkeit data Happy case`, ()
 
   afterEach(function() {
     if (this.currentTest.state === "failed") {
+      const screenshotFileName = `${test.title} (failed).png`;
+      cy.screenshot(screenshotFileName);
+      // addContext({test}, `assets/${Cypress.spec.name}/${screenshotFileName}`);
       Cypress.runner.stop();
     }
   });
-
 });

@@ -20,7 +20,7 @@ import LoginPage from "./standalone/LoginPage";
 const loginPage = new LoginPage();
 
 Cypress.Commands.add( "UILogin", ( username, password ) => {
-  loginPageOld.open(Cypress.env("url"));
+  loginPageOld.open(Cypress.env("baseUrl"));
 
   // cy.get('[name="login_name"]').should('be.visible').type(user.email) - if I use this chain of command,
   // cypress might miss the several first characters because of typing too fast, or there is another reason

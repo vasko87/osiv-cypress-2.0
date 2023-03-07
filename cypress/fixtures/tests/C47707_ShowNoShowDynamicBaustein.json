@@ -1,0 +1,14 @@
+{
+  "data1": {
+    "versichertenName": "Dynamic-Baustein Émilia",
+    "entId": "23'039",
+    "bausteinValue": "Reisekosten Auflistung",
+    "bausteinValueVisibility": true
+  },
+  "data2": {
+    "versichertenName": "Dynamic-Baustein Émilia",
+    "entId": "23'040",
+    "bausteinValue": "Reisekosten Auflistung",
+    "bausteinValueVisibility": false
+  }
+}

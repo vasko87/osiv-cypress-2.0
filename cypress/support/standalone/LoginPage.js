@@ -1,10 +1,9 @@
-
 class LoginPage {
   constructor() {
     this.elements = {
-      nameTxt : () => cy.get("[name='login_name']"),
-      passwordTxt : () => cy.get("[name='login_password']"),
-      okBtn : () => cy.get("[class='dhxform_btn']")
+      nameTxt: () => cy.get("[name='login_name']"),
+      passwordTxt: () => cy.get("[name='login_password']"),
+      okBtn: () => cy.get("[class='dhxform_btn']")
     };
   }
 
@@ -13,13 +12,13 @@ class LoginPage {
     // workaround to make detail vew pages open correctly
     // redefined Akioma method 'isWindowInTaskbarMode' to return true.
     // Otherwise, Detail view windows opening work incorrectly, probably because cypress run tests inside frame
-    cy.window().then(function(win) {
+    cy.window().then(function (win) {
       win.akioma.swat.MasterLayout.isWindowInTaskbarMode = () => true;
     });
 
-    Cypress.on("uncaught:exception", (err, runnable) => {
-      console.log(err);
-      if (Cypress.env("uncaughtExceptionFailure")) {
+    Cypress.on("uncaught:exception", (err) => {
+      console.log(err.message);
+      if (Cypress.env("uncaughtExceptionFailure") === true) {
         return err;
       } else {
         return false;
@@ -31,7 +30,7 @@ class LoginPage {
    * Opens default URL from 'cypress.env.json' file
    */
   openUrl() {
-    this.open(Cypress.env("url"));
+    this.open(Cypress.env("baseUrl"));
   }
 
   login(username, password) {
@@ -39,4 +38,5 @@ class LoginPage {
     this.elements.passwordTxt().type(`${password}{enter}`);
   }
 }
+
 export default LoginPage;
