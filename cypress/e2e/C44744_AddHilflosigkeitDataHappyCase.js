@@ -1,5 +1,4 @@
-// Defect step 10
-// https://jiraosiv3g.atlassian.net/browse/OSIV-21033
+// Defect step 10: https://jiraosiv3g.atlassian.net/browse/OSIV-21033
 
 import pages from "../support/base/OsivPageObject";
 import helpers from "../support/helpers/HelperObject";
@@ -14,7 +13,7 @@ describe(`C44744: (ENT ${testData.entId}) Add Hilflosigkeit data Happy case;
 
   it("Step 1: Open ENT", () => {
     pages.loginPage.openUrl();
-    pages.desktopMenu.navigateToEntscheidTab()
+    pages.desktopMenu.navigateToEntscheidTab();
     pages.entscheid.grid.searchAndOpenEntscheidID(testData.entId);
   });
 
@@ -24,7 +23,7 @@ describe(`C44744: (ENT ${testData.entId}) Add Hilflosigkeit data Happy case;
 
   it("Step 3: fill in mandatory field Art der Invalidität", () => {
     pages.entscheid.detail.hilflosigkeitTab.allgemeineAngabenBlock
-      .selectArtderInvaliditatDropdown(testData.artderInvaliditätDropDown)
+      .selectArtderInvaliditatDropdown(testData.artderInvaliditatDropDown)
       .selectAusgleichskasseDropdown(testData.ausgleichskasseDropdown);
   });
 
@@ -87,10 +86,10 @@ describe(`C44744: (ENT ${testData.entId}) Add Hilflosigkeit data Happy case;
     pages.warningPopup.checkWarningVisible(false);
   });
 
-  afterEach(function () {
+  afterEach(function() {
     if (this.currentTest.state === "failed") {
-      // const screenshotFileName = `${test.title} (failed).png`;
-      cy.screenshot();
+      const screenshotFileName = `${test.title} (failed).png`;
+      cy.screenshot(screenshotFileName);
       // addContext({test}, `assets/${Cypress.spec.name}/${screenshotFileName}`);
       Cypress.runner.stop();
     }

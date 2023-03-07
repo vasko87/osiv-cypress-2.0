@@ -1,11 +1,13 @@
 import RibbonBase from "./../../../base/RibbonBase";
+import BearbeitungEinleitenPopup from "../popup/BearbeitungEinleitenPopup";
 
 class EntscheidRibbon extends RibbonBase {
   constructor() {
     super();
     super.elements = {
       ...this.elements,
-      korrekturfunktionenBtn : () => this.elements.ribbonBlock().contains("Korrekturfunktionen")
+      korrekturfunktionenBtn : () => this.elements.ribbonBlock().contains("Korrekturfunktionen"),
+      bearbeitungEinleitenBtn : () => this.elements.ribbonBlock().contains("Bearbeitung einleiten")
     };
 
     this.korrekturfunktionenSubMenu =  {
@@ -27,6 +29,11 @@ class EntscheidRibbon extends RibbonBase {
   clickKorrekturfunktionenBtn() {
     this.elements.korrekturfunktionenBtn().click();
     return this;
+  }
+
+  clickBearbeitungEinleitenBtn() {
+    this.elements.bearbeitungEinleitenBtn().click();
+    return new BearbeitungEinleitenPopup();
   }
 
   checkSupertextEntscheidtypandernMenuItemEnable(isEnabled){

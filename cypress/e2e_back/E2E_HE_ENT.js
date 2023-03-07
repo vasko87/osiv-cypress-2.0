@@ -71,6 +71,7 @@ describe( `E2E test of createting and sending Entscheide for HE code ${  url}`, 
     entscheidDetails.ValidateBearbeiterValue( "Hulk1 - Hulk Eins" );
     entscheidDetails.ValidateLeistungsgruppeValue( "HE" );
     entscheidDetails.ValidateLeistungscodeValue( "HE - Hilflosenentschädigung" );
+
     entscheidDetails.SelectEntscheidValue( "Zusprache" );
     entscheidDetails.SelectSupertextValue( "3205" );
     entscheidDetails.SelectEntscheidtypValue( "Mitteilung der IV-Stelle (IV Allgemein)" );

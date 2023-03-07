@@ -24,8 +24,8 @@ TestRail:https://osiv.testrail.net/index.php?/cases/view/44194`, () => {
       pages.desktopMenu.navigateToEntscheidTab();
       pages.entscheid.grid.searchAndOpenEntscheidID(data.entId);
       pages.entscheid.detail
-           .checkSupertextDropdownReadOnly(true)
-           .checkEntscheidTypDropdownReadOnly(true);
+           .checkSupertextDropdownReadonly(true)
+           .checkEntscheidTypDropdownReadonly(true);
       pages.entscheid.detail.ribbonMenu.clickKorrekturfunktionenBtn()
            .clickSubMenuMenuItem(pages.entscheid.detail.ribbonMenu.korrekturfunktionenSubMenu.supertextEntscheidtypandern);
       pages.warningPopup.ckeckWarningContainsText(data.warningMsg)
@@ -34,8 +34,8 @@ TestRail:https://osiv.testrail.net/index.php?/cases/view/44194`, () => {
            .clickOkBtn();
       pages.notification.checkSuccessMessageVisible();
 
-      pages.entscheid.detail.checkSupertextDropdownReadOnly(false);
-      pages.entscheid.detail.checkEntscheidTypDropdownReadOnly(false);
+      pages.entscheid.detail.checkSupertextDropdownReadonly(false);
+      pages.entscheid.detail.checkEntscheidTypDropdownReadonly(false);
       pages.entscheid.detail.ribbonMenu.clickKorrekturfunktionenBtn()
            .checkSupertextEntscheidtypandernMenuItemEnable(false);
 

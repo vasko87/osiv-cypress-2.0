@@ -1,13 +1,14 @@
 import EntscheidGrid from "./grid/EntscheidGrid";
 import EntscheidDetail from "./detail/EntscheidDetail";
-import AdressenAddDialog from "../addresen/popup/AdressenAddDialog";
-import EntscheidNueDialog from "./popup/EntscheidNueDialog";
+import EntscheidNeuPopup from "./popup/EntscheidNeuPopup";
+import BearbeitungEinleitenPopup from "./popup/BearbeitungEinleitenPopup";
 
 class EntscheidPageObject {
   constructor() {
     this.grid = new EntscheidGrid();
     this.detail = new EntscheidDetail();
-    this.nueDialog = new EntscheidNueDialog();
+    this.neuPopup = new EntscheidNeuPopup();
+    this.bearbeitungEinleitenPopup = new BearbeitungEinleitenPopup();
   }
 }
 

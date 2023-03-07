@@ -1,11 +1,13 @@
+import PageBase from "../../base/PageBase";
 
-class ModalWindow {
+class ModalWindow extends PageBase{
   static css = "[class='dhxwin_active'][modalwindow='true']";
 
   constructor() {
+    super();
     this.elements = {
       modalWindow : () => cy.get(ModalWindow.css),
-      okBtn: () => cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]')
+      okBtn: () => this.elements.modalWindow().find('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]')
     };
   }
 

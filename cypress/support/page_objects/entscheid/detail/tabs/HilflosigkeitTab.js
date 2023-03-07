@@ -1,23 +1,23 @@
-import PageBase from "../../../../base/PageBase";
 import dateHelper from "../../../../helpers/DateHelper";
+import constants from "../../../../helpers/Constants";
+import PageBase from "../../../../base/PageBase";
 
 class HilflosigkeitTab extends PageBase {
   constructor() {
     super();
     const pageBase = this;
-    const activeFormCss = "[class='dhxwin_active']";
     this.allgemeineAngabenBlock = {
-      artderInvaliditatDropdown: () => cy.get(`${activeFormCss} [akid='EntscheidHilflosigkeitForm-verfahrenbez']`),
-      ausgleichskasseDropdown  : () => cy.get(`${activeFormCss}  [akid='EntscheidHilflosigkeitForm-akbez']`),
-      ablaufWartefristDate     : () => cy.get(`${activeFormCss} [akid='EntscheidHilflosigkeitForm-re_ablauf_wf'] input`),
+      artderInvaliditatDropdown: () => cy.get(`${constants.cssActiveForm} [akid='EntscheidHilflosigkeitForm-verfahrenbez']`),
+      ausgleichskasseDropdown  : () => cy.get(`${constants.cssActiveForm}  [akid='EntscheidHilflosigkeitForm-akbez']`),
+      ablaufWartefristDate     : () => cy.get(`${constants.cssActiveForm} [akid='EntscheidHilflosigkeitForm-re_ablauf_wf'] input`),
 
       selectArtderInvaliditatDropdown(value) {
-        this.selectInDropdownContains(this.artderInvaliditatDropdown(), value);
+        pageBase.selectInDropdownContains(this.artderInvaliditatDropdown(), value);
         return this;
       },
 
       selectAusgleichskasseDropdown(value) {
-        this.selectInDropdownContains(this.ausgleichskasseDropdown(), value);
+        pageBase.selectInDropdownContains(this.ausgleichskasseDropdown(), value);
         return this;
       },
 
@@ -28,14 +28,14 @@ class HilflosigkeitTab extends PageBase {
     };
 
     this.alltaglicheLebensverrichtungBlock = {
-      anAuskleidenDate     : () => cy.get(`${activeFormCss} [akid='EntscheidHilflosigkeitForm-aakvondat'] input`),
-      aufstehenAbsitzenDate: () => cy.get(`${activeFormCss} [akid='EntscheidHilflosigkeitForm-aaavondat'] input`),
-      essenDate            : () => cy.get(`${activeFormCss} [akid='EntscheidHilflosigkeitForm-essvondat'] input`),
-      korperpflegeDate     : () => cy.get(`${activeFormCss} [akid='EntscheidHilflosigkeitForm-kpfvondat'] input`),
-      verrichtenDerNDDate  : () => cy.get(`${activeFormCss} [akid='EntscheidHilflosigkeitForm-vdnvondat'] input`),
-      fortbewegungDate     : () => cy.get(`${activeFormCss} [akid='EntscheidHilflosigkeitForm-fbwvondat'] input`),
-      medPflegeDate        : () => cy.get(`${activeFormCss} [akid='EntscheidHilflosigkeitForm-mpfvondat'] input`),
-      persUebvondatDate    : () => cy.get(`${activeFormCss} [akid='EntscheidHilflosigkeitForm-uebvondat'] input`),
+      anAuskleidenDate     : () => cy.get(`${constants.cssActiveForm} [akid='EntscheidHilflosigkeitForm-aakvondat'] input`),
+      aufstehenAbsitzenDate: () => cy.get(`${constants.cssActiveForm} [akid='EntscheidHilflosigkeitForm-aaavondat'] input`),
+      essenDate            : () => cy.get(`${constants.cssActiveForm} [akid='EntscheidHilflosigkeitForm-essvondat'] input`),
+      korperpflegeDate     : () => cy.get(`${constants.cssActiveForm} [akid='EntscheidHilflosigkeitForm-kpfvondat'] input`),
+      verrichtenDerNDDate  : () => cy.get(`${constants.cssActiveForm} [akid='EntscheidHilflosigkeitForm-vdnvondat'] input`),
+      fortbewegungDate     : () => cy.get(`${constants.cssActiveForm} [akid='EntscheidHilflosigkeitForm-fbwvondat'] input`),
+      medPflegeDate        : () => cy.get(`${constants.cssActiveForm} [akid='EntscheidHilflosigkeitForm-mpfvondat'] input`),
+      persUebvondatDate    : () => cy.get(`${constants.cssActiveForm} [akid='EntscheidHilflosigkeitForm-uebvondat'] input`),
 
       setAnAuskleidenDate(date) {
         this.anAuskleidenDate().should("be.enabled").click().type(date);
@@ -173,9 +173,9 @@ class HilflosigkeitTab extends PageBase {
     };
 
     this.lebenspraktischeBegleitungBlock = {
-      whnvondatDate : () => cy.get(`${activeFormCss} [akid='EntscheidHilflosigkeitForm-whnvondat'] input`),
-      begleitungDate: () => cy.get(`${activeFormCss} [akid='EntscheidHilflosigkeitForm-begvondat'] input`),
-      isolationDate : () => cy.get(`${activeFormCss} [akid='EntscheidHilflosigkeitForm-isovondat'] input`),
+      whnvondatDate : () => cy.get(`${constants.cssActiveForm} [akid='EntscheidHilflosigkeitForm-whnvondat'] input`),
+      begleitungDate: () => cy.get(`${constants.cssActiveForm} [akid='EntscheidHilflosigkeitForm-begvondat'] input`),
+      isolationDate : () => cy.get(`${constants.cssActiveForm} [akid='EntscheidHilflosigkeitForm-isovondat'] input`),
 
       setWhnvondatDate(date) {
         this.whnvondatDate().should("be.enabled").type(date);
@@ -233,9 +233,9 @@ class HilflosigkeitTab extends PageBase {
     };
 
     this.wartefristBlock = {
-      wFGradTxt   : () => cy.get(`${activeFormCss} [akid='EntscheidWartefristForm-augradds'] input`),
-      tageTxt     : () => cy.get(`${activeFormCss} [akid='EntscheidWartefristForm-audauer'] input`),
-      grenzgradTxt: () => cy.get(`${activeFormCss} [akid='EntscheidWartefristForm-re_au_grenzgrad'] input`),
+      wFGradTxt   : () => cy.get(`${constants.cssActiveForm} [akid='EntscheidWartefristForm-augradds'] input`),
+      tageTxt     : () => cy.get(`${constants.cssActiveForm} [akid='EntscheidWartefristForm-audauer'] input`),
+      grenzgradTxt: () => cy.get(`${constants.cssActiveForm} [akid='EntscheidWartefristForm-re_au_grenzgrad'] input`),
 
       checkWFGradTxt(value) {
         this.wFGradTxt().should("have.value", value);
@@ -254,10 +254,10 @@ class HilflosigkeitTab extends PageBase {
     };
 
     this.wartefristVerlaufBlock = {
-      beginnDate        : () => cy.get(`${activeFormCss} [akid='WartefristQueryGrid'] tr[class=' ev_material rowselected'] td:nth-child(1)`),
-      endeDate          : () => cy.get(`${activeFormCss} [akid='WartefristQueryGrid'] tr[class=' ev_material rowselected'] td:nth-child(2)`),
-      anzahlTageTxt     : () => cy.get(`${activeFormCss} [akid='WartefristQueryGrid'] tr[class=' ev_material rowselected'] td:nth-child(3)`),
-      hEGradinPersentTxt: () => cy.get(`${activeFormCss} [akid='WartefristQueryGrid'] tr[class=' ev_material rowselected'] td:nth-child(4)`),
+      beginnDate        : () => cy.get(`${constants.cssActiveForm} [akid='WartefristQueryGrid'] tr[class=' ev_material rowselected'] td:nth-child(1)`),
+      endeDate          : () => cy.get(`${constants.cssActiveForm} [akid='WartefristQueryGrid'] tr[class=' ev_material rowselected'] td:nth-child(2)`),
+      anzahlTageTxt     : () => cy.get(`${constants.cssActiveForm} [akid='WartefristQueryGrid'] tr[class=' ev_material rowselected'] td:nth-child(3)`),
+      hEGradinPersentTxt: () => cy.get(`${constants.cssActiveForm} [akid='WartefristQueryGrid'] tr[class=' ev_material rowselected'] td:nth-child(4)`),
 
       checkBeginnDate(value) {
         this.beginnDate().should("have.text", value);
@@ -281,8 +281,8 @@ class HilflosigkeitTab extends PageBase {
     };
 
     this.hEGradBlock = {
-      hEGradDropdown: () => cy.get(`${activeFormCss} [akid='EntscheidHEGradBerechnungForm-beginnhebez']`),
-      beginnDate    : () => cy.get(`${activeFormCss} [akid='EntscheidHEGradBerechnungForm-beginn_dat'] input`),
+      hEGradDropdown: () => cy.get(`${constants.cssActiveForm} [akid='EntscheidHEGradBerechnungForm-beginnhebez']`),
+      beginnDate    : () => cy.get(`${constants.cssActiveForm} [akid='EntscheidHEGradBerechnungForm-beginn_dat'] input`),
 
       checkHEGradDropdown(value) {
         pageBase.checkDropdownSelectedValue(this.hEGradDropdown(), value);
@@ -296,9 +296,9 @@ class HilflosigkeitTab extends PageBase {
     };
 
     this.hEGradVerlaufBlock = {
-      hEGradAbTxt: () => cy.get(`${activeFormCss} [akid='HeGradQueryGrid'] tr[class=' ev_material rowselected'] td:nth-child(1)`),
-      hEAbTxt    : () => cy.get(`${activeFormCss} [akid='HeGradQueryGrid'] tr[class=' ev_material rowselected'] td:nth-child(2)`),
-      hEGradTxt  : () => cy.get(`${activeFormCss} [akid='HeGradQueryGrid'] tr[class=' ev_material rowselected'] td:nth-child(3)`),
+      hEGradAbTxt: () => cy.get(`${constants.cssActiveForm} [akid='HeGradQueryGrid'] tr[class=' ev_material rowselected'] td:nth-child(1)`),
+      hEAbTxt    : () => cy.get(`${constants.cssActiveForm} [akid='HeGradQueryGrid'] tr[class=' ev_material rowselected'] td:nth-child(2)`),
+      hEGradTxt  : () => cy.get(`${constants.cssActiveForm} [akid='HeGradQueryGrid'] tr[class=' ev_material rowselected'] td:nth-child(3)`),
 
       checkHEGradAbTxt(value) {
         this.hEGradAbTxt().should("have.text", value);

@@ -1,14 +1,15 @@
 import VersicherteGridFilter from "./VersicherteGridFilter";
 import VersicherteGridHeaderActivePanel from "./VersicherteGridHeaderActivePanel";
 import GridBase from "../../../base/GridBase";
-class VersicherteGrid extends GridBase{
+import constants from "../../../helpers/Constants"
+
+class VersicherteGrid extends GridBase {
   constructor() {
-    super("[style*='opacity: 1']");
+    super(constants.cssOpacity);
     this.filter = new VersicherteGridFilter();
     this.headerActivePanel = new VersicherteGridHeaderActivePanel();
     super.elements = {
       ...this.elements
-
     };
   }
 
