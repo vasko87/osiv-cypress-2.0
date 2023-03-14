@@ -211,13 +211,13 @@ describe(`C50984: E2E (HE Entscheid);
   });
 
 
-  // afterEach(function () {
-  //   if (this.currentTest.state === "failed") {
-  //     const screenshotFileName = `${test.title} (failed).png`;
-  //     cy.screenshot(screenshotFileName);
-  //     Cypress.log(this.currentTest.err);
-  //     // addContext({test}, `assets/${Cypress.spec.name}/${screenshotFileName}`);
-  //     Cypress.runner.stop();
-  //   }
-  // });
+  afterEach(function () {
+    if (this.currentTest.state === "failed") {
+      const screenshotFileName = `${test.title} (failed).png`;
+      cy.screenshot(screenshotFileName);
+      Cypress.log(this.currentTest.err);
+      // addContext({test}, `assets/${Cypress.spec.name}/${screenshotFileName}`);
+      Cypress.runner.stop();
+    }
+  });
 });
