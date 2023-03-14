@@ -1,19 +1,20 @@
 import FreitexteTab from "./tabs/FreitexteTab";
 import HilflosigkeitTab from "./tabs/HilflosigkeitTab";
-import PageBase from "../../../base/PageBase";
 import EntscheidDetail from "./EntscheidDetail";
 import constants from "../../../helpers/Constants";
+import pageBase from "../../../base/PageBase";
+import VisierenTab from "./tabs/VisierenTab";
 
-class EntscheidSideMenu extends PageBase {
+class EntscheidSideMenu {
   constructor() {
-    super();
     this.elements = {
-      basisdatenTab          : () => cy.get(`${constants.cssActiveForm} [akid='EntscheidDetailBasisFrameTabbar-Basisdaten']`),
-      durchfuhrungsstellenTab: () => cy.get(`${constants.cssActiveForm} [akid='EntscheidDetailBasisFrameTabbar-Durchführungsstellen']`),
-      hilflosigkeitTab       : () => cy.get(`${constants.cssActiveForm} [akid='EntscheidDetailBasisFrameTabbar-Hilflosigkeit']`),
-      freitexteTab           : () => cy.get(`${constants.cssActiveForm} [akid='EntscheidDetailBasisFrameTabbar-Freitexte']`),
-      entscheidSendungenTab  : () => cy.get(`${constants.cssActiveForm} [akid='EntscheidDetailBasisFrameTabbar-Entscheid-Sendungen']`),
-      diskutierenTab         : () => cy.get(`${constants.cssActiveForm} [akid='EntscheidDetailBasisFrameTabbar-Diskutieren']`)
+      basisdatenTab          : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailBasisFrameTabbar-Basisdaten']`),
+      durchfuhrungsstellenTab: () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailBasisFrameTabbar-Durchführungsstellen']`),
+      hilflosigkeitTab       : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailBasisFrameTabbar-Hilflosigkeit']`),
+      freitexteTab           : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailBasisFrameTabbar-Freitexte']`),
+      entscheidSendungenTab  : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailBasisFrameTabbar-Entscheid-Sendungen']`),
+      visierenTab  : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailBasisFrameTabbar-Visieren']`),
+      diskutierenTab         : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailBasisFrameTabbar-Diskutieren']`)
     };
   }
 
@@ -37,18 +38,28 @@ class EntscheidSideMenu extends PageBase {
     return this;
   }
 
+  navigateToVisierenTab() {
+    this.elements.visierenTab().should("be.visible").click();
+    return new VisierenTab();
+  }
+
   checkEntscheidSendungenTabVisible(isVisible) {
-    super.checkElementVisible(this.elements.entscheidSendungenTab(), isVisible);
+    pageBase.checkElementVisible(this.elements.entscheidSendungenTab(), isVisible);
     return this;
   }
 
   checkFreitexteTabVisible(isVisible) {
-    super.checkElementVisible(this.elements.freitexteTab(), isVisible);
+    pageBase.checkElementVisible(this.elements.freitexteTab(), isVisible);
+    return this;
+  }
+
+  checkvisierenTabVisible(isVisible) {
+    pageBase.checkElementVisible(this.elements.visierenTab(), isVisible);
     return this;
   }
 
   checkDiskutierenTabVisible(isVisible) {
-    super.checkElementVisible(this.elements.diskutierenTab(), isVisible);
+    pageBase.checkElementVisible(this.elements.diskutierenTab(), isVisible);
     return this;
   }
 
@@ -58,17 +69,32 @@ class EntscheidSideMenu extends PageBase {
   }
 
   checkBasisdatenTabColor(color, shouldHave) {
-    super.checkElementColor(this.elements.basisdatenTab(), color, shouldHave);
+    pageBase.checkElementColor(this.elements.basisdatenTab(), color, shouldHave);
     return this;
   }
 
   checkHilflosigkeitTabColor(color, shouldHave) {
-    super.checkElementColor(this.elements.hilflosigkeitTab(), color, shouldHave);
+    pageBase.checkElementColor(this.elements.hilflosigkeitTab(), color, shouldHave);
+    return this;
+  }
+
+  checkFreitexteTabColor(color, shouldHave) {
+    pageBase.checkElementColor(this.elements.freitexteTab(), color, shouldHave);
     return this;
   }
 
   checkDurchfuhrungsstellenTabColor(color, shouldHave) {
-    super.checkElementColor(this.elements.durchfuhrungsstellenTab(), color, shouldHave);
+    pageBase.checkElementColor(this.elements.durchfuhrungsstellenTab(), color, shouldHave);
+    return this;
+  }
+
+  checkEntscheidSendungenTabColor(color, shouldHave) {
+    pageBase.checkElementColor(this.elements.entscheidSendungenTab(), color, shouldHave);
+    return this;
+  }
+
+  checkVisierenTabColor(color, shouldHave) {
+    pageBase.checkElementColor(this.elements.visierenTab(), color, shouldHave);
     return this;
   }
 }

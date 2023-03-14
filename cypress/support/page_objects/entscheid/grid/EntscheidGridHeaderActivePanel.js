@@ -1,10 +1,8 @@
-class EntscheidGridHeaderActivePanel{
+class EntscheidGridHeaderActivePanel {
   constructor() {
 
     this.elements = {
-
-
-    }
+    };
   }
 }
 

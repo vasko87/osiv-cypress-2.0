@@ -7,20 +7,22 @@ import SendungenGrid from "../../sendungen/grid/SendungenGrid";
 import FreitexteTab from "./tabs/FreitexteTab";
 import helpers from "../../../helpers/HelperObject";
 import constants from "../../../helpers/Constants";
+import VisierenTab from "./tabs/VisierenTab";
 
 class EntscheidDetail extends EntscheidPageBase {
   constructor() {
-    const detailFormCSS = `${constants.cssActiveForm} [akid='EntscheidDetailBasisDatenForm']`;
+    const detailFormCSS = `${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailBasisDatenForm']`;
     super(detailFormCSS);
     this.sideMenu = new EntscheidSideMenu();
     this.tabBar = new EntscheidTabBar();
     this.ribbonMenu = new EntscheidRibbon();
     this.hilflosigkeitTab = new HilflosigkeitTab();
     this.freitexteTab = new FreitexteTab();
-    this.sendungenGrid = new SendungenGrid(`${constants.cssActiveForm} [akid='EntscheidDetailWindow']`);
+    this.visierenTab = new VisierenTab();
+    this.sendungenGrid = new SendungenGrid(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailWindow'],[akid='EntscheidDetailBasisFrame'] [akid='eSendungQueryVPContextB']`);
     super.elements = {
       ...this.elements,
-      detailForm: () => cy.get(`${constants.cssActiveForm} [akid='EntscheidDetailBasisDatenForm']`)
+      detailForm: () => cy.get(detailFormCSS)
     };
   }
 

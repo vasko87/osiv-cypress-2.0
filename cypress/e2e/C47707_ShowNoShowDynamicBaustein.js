@@ -3,7 +3,7 @@ import pages from "../support/base/OsivPageObject";
 
 describe(`C47707: (ENT: ${testData.data1.entId}) Entscheid Freitext - Show (no show) Dynamic Baustein; 
   TestRail: https://osiv.testrail.net/index.php?/cases/view/47707`, () => {
-  [testData.data1].forEach((data) => {
+  [testData.data1, testData.data2].forEach((data) => {
 
     before("Login", () => {
       cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
@@ -20,7 +20,8 @@ describe(`C47707: (ENT: ${testData.data1.entId}) Entscheid Freitext - Show (no s
       pages.versicherte.detail.tabBar.navigateToEntscheideTab();
       pages.versicherte.detail.entscheidGrid.dblClickRowWithText(data.entId);
       pages.entscheid.detail.sideMenu.navigateToFreitexteTab();
-      pages.entscheid.detail.freitexteTab.checkBausteinGridHasValue(data.bausteinValue, data.bausteinValueVisibility);
+      pages.entscheid.detail.freitexteTab.verfugungBeiblattAKTab
+           .checkBausteinGridHasValue(data.bausteinValue, data.bausteinValueVisibility);
     });
   });
 });

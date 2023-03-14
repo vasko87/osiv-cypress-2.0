@@ -28,7 +28,7 @@ TestRail:https://osiv.testrail.net/index.php?/cases/view/44194`, () => {
            .checkEntscheidTypDropdownReadonly(true);
       pages.entscheid.detail.ribbonMenu.clickKorrekturfunktionenBtn()
            .clickSubMenuMenuItem(pages.entscheid.detail.ribbonMenu.korrekturfunktionenSubMenu.supertextEntscheidtypandern);
-      pages.warningPopup.ckeckWarningContainsText(data.warningMsg)
+      pages.warningPopup.checkWarningContainsText(data.warningMsg)
            .clickOkBtn();
       pages.infoPopup.ckeckInformationContainsText(data.infoMsg)
            .clickOkBtn();
@@ -41,8 +41,8 @@ TestRail:https://osiv.testrail.net/index.php?/cases/view/44194`, () => {
 
       pages.entscheid.detail.tabBar.navigateToSendungenTab();
       pages.entscheid.detail.sendungenGrid
-           .checkAllValuesInGridExist(data.sendungen.formilarNotVisible, false)
-           .checkAllValuesInGridExist(data.sendungen.formilarVisible, true);
+           .checkAllValuesInGridExist(data.sendungen.formularNotVisible, false)
+           .checkAllValuesInGridExist(data.sendungen.formularVisible, true);
     });
   });
 });

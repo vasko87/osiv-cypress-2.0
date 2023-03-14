@@ -1,6 +1,7 @@
-import ModalWindow from "../../../standalone/popup/ModalWindow";
+import ModalWindowBase from "../../../standalone/popup/ModalWindowBase";
+import pageBase from "../../../base/PageBase";
 
-class BearbeitungEinleitenPopup extends ModalWindow {
+class BearbeitungEinleitenPopup extends ModalWindowBase {
   constructor() {
     super();
     super.elements = {
@@ -17,7 +18,7 @@ class BearbeitungEinleitenPopup extends ModalWindow {
   }
 
   checkBearbeiterDropdown(value) {
-    super.checkDropdownContainsValue(this.elements.bearbeiterDropdown(), value);
+    pageBase.checkDropdownContainsValue(this.elements.bearbeiterDropdown(), value);
     return this;
   }
 }

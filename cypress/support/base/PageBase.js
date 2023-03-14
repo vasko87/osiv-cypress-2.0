@@ -1,3 +1,5 @@
+import constants from "../helpers/Constants";
+
 class PageBase {
   /**
    * Clicks on @element dropdown;
@@ -7,7 +9,7 @@ class PageBase {
    * @returns {PageBase}
    */
   selectInDropdownContains(element, value) {
-    element.click("top").get("[class='select2-results__options']").contains(value).click();
+    element.click("top").get("[class='select2-results__options']", {timeout:constants.DEFAULT_TIMEOUT}).contains(value).click();
     return this;
   }
 
@@ -100,21 +102,17 @@ class PageBase {
    */
   checkElementColor(element, color, shouldHave) {
     if (shouldHave) {
-      element.should("have.css", "border-left-color", color);
+      element.should("have.css", "border-left-color", color, {timeout:10000});
     } else {
-      element.should("not.have.css", "border-left-color", color);
+      element.should("not.have.css", "border-left-color", color, {timeout:10000});
     }
     return this;
   }
 
-  checkMsgOnThePage(msg, isExist) {
-    if (isExist) {
-      cy.contains(msg).should("exist");
-    } else {
-      cy.contains(msg).should("not.exist");
-    }
+  waitForLoadingDisappears() {
+    cy.get("[class='dhx_cell_prcircle']", {timeout: constants.LONG_TIMEOUT}).should("not.exist");
     return this;
   }
 }
 
-export default PageBase;
+export default new PageBase();

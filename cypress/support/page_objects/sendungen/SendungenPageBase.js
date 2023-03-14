@@ -1,19 +1,21 @@
-import PageBase from "./../../base/PageBase";
 
-class AdressenCommonElements extends PageBase{
+class SendungenPageBase {
 
   constructor(baseCSS) {
-    super();
-
-    super.elements = {
+    this.elements = {
+      arbeitslisteTxt : () => cy.get(baseCSS).find("[akid$='-arbeitsliste_bez']"),
       vmdatumDate : () => cy.get(baseCSS).find("[akid$='-entscheid_vmdatum'] input")
     };
   }
 
+  checkArbeitslisteTxt(value) {
+    this.elements.arbeitslisteTxt().should("have.value", value);
+    return this;
+  }
   setVmdatumDate(date) {
     this.elements.vmdatumDate().type(date);
     return this;
   }
 }
 
-export default AdressenCommonElements;
+export default SendungenPageBase;

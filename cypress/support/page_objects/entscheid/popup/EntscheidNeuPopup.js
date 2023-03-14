@@ -1,10 +1,10 @@
-import ModalWindow from "../../../standalone/popup/ModalWindow";
+import ModalWindowBase from "../../../standalone/popup/ModalWindowBase";
 import EntscheidPageBase from "../EntscheidPageBase";
 
 class EntscheidNeuPopup extends EntscheidPageBase {
   constructor() {
-    super(ModalWindow.css);
-    this.modalWindow = new ModalWindow();
+    super(ModalWindowBase.css);
+    this.modalWindow = new ModalWindowBase();
   }
 
   waitForLoaded() {

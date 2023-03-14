@@ -30,7 +30,7 @@ export default {
   },
 
   // get date for first day of current month
-  getTheFirstDayOfMonth() {
+  getFirstDayOfSameMonthNextYear() {
     const date = new Date();
     const firstDay = new Date(date.getFullYear() + 1, date.getMonth(), 1);
     return firstDay.toLocaleDateString("de-CH", {year: "numeric", month: "2-digit", day: "2-digit"});

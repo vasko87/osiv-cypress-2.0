@@ -37,7 +37,7 @@ describe(`C44744: (ENT ${testData.entId}) Add Hilflosigkeit data Happy case;
 
   it("Step 5: Click Speichern button >> warning is presented (OSCIENT:465); Confirm warning", () => {
     pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
-    pages.warningPopup.ckeckWarningContainsText(testData.warningMessage)
+    pages.warningPopup.checkWarningContainsText(testData.warningMessage)
       .clickOkBtn();
   });
 
@@ -69,15 +69,15 @@ describe(`C44744: (ENT ${testData.entId}) Add Hilflosigkeit data Happy case;
       .hilflosigkeitTab
       .hEGradBlock
       .checkHEGradDropdown(testData.hEGradDropdown)
-      .checkBeginnDate(helpers.date.getTheFirstDayOfMonth());
+      .checkBeginnDate(helpers.date.getFirstDayOfSameMonthNextYear());
   });
 
   it("Step 9: Check system calculated HE-Grad Verlauf", () => {
     pages.entscheid.detail
       .hilflosigkeitTab
       .hEGradVerlaufBlock
-      .checkHEGradAbTxt(helpers.date.getTheFirstDayOfMonth())
-      .checkHEAbTxt(helpers.date.getTheFirstDayOfMonth())
+      .checkHEGradAbTxt(helpers.date.getFirstDayOfSameMonthNextYear())
+      .checkHEAbTxt(helpers.date.getFirstDayOfSameMonthNextYear())
       .checkHEGradTxt(testData.hEGradTxt);
   });
 

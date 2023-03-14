@@ -1,10 +1,9 @@
-import PageBase from "./../../base/PageBase";
+import pageBase from "./../../base/PageBase";
 
-class AdressenPageBase extends PageBase {
+class AdressenPageBase {
 
   constructor(baseCSS) {
-    super();
-    super.elements = {
+    this.elements = {
       adressTypeDropdown : () => cy.get(baseCSS).find("[akid$='-adresstyp']"),
       spracheDropdown    : () => cy.get(baseCSS).find("[akid$='-sprache_bez']"),
       anredeartDropdown  : () => cy.get(baseCSS).find("[akid$='-anredeartbez']"),
@@ -20,42 +19,42 @@ class AdressenPageBase extends PageBase {
   }
 
   selectAdressTypeDropdown(value) {
-    super.selectInDropdownContains(this.elements.adressTypeDropdown(), value);
+    pageBase.selectInDropdownContains(this.elements.adressTypeDropdown(), value);
     return this;
   }
 
   selectSpracheDropdown(value) {
-    super.selectInDropdownContains(this.elements.spracheDropdown(), value);
+    pageBase.selectInDropdownContains(this.elements.spracheDropdown(), value);
     return this;
   }
 
   selectAnredeartDropdown(value) {
-    super.selectInDropdownContains(this.elements.anredeartDropdown(), value);
+    pageBase.selectInDropdownContains(this.elements.anredeartDropdown(), value);
     return this;
   }
 
   selectTitelDropdown(value) {
-    super.selectInDropdownContains(this.elements.titelDropdown(), value);
+    pageBase.selectInDropdownContains(this.elements.titelDropdown(), value);
     return this;
   }
 
   selectPlzDropdownDropdown(value) {
-    super.selectInDropdownContains(this.elements.plzDropdown(), value);
+    pageBase.selectInDropdownContains(this.elements.plzDropdown(), value);
     return this;
   }
 
   checkAnschriftTxtEmpty(isEmpty) {
-    super.checkElementEmpty(this.elements.anschriftTxt(), isEmpty);
+    pageBase.checkElementEmpty(this.elements.anschriftTxt(), isEmpty);
     return this;
   }
 
   checkFloskelTxtEmpty(isEmpty) {
-    super.checkElementEmpty(this.elements.floskelTxt(), isEmpty);
+    pageBase.checkElementEmpty(this.elements.floskelTxt(), isEmpty);
     return this;
   }
 
   checkKurzadresseTxtEmpty(isEmpty) {
-    super.checkElementEmpty(this.elements.kurzadresseTxt(), isEmpty);
+    pageBase.checkElementEmpty(this.elements.kurzadresseTxt(), isEmpty);
     return this;
   }
 }

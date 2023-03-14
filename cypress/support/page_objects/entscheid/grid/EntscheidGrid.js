@@ -4,7 +4,7 @@ import GridBase from "../../../base/GridBase";
 import constants from "../../../helpers/Constants"
 class EntscheidGrid extends GridBase{
   constructor() {
-    super(constants.cssOpacity);
+    super(constants.CSS_OPACITY1);
     this.filter = new EntscheidGridFilter();
     this.headerActivePanel = new EntscheidGridHeaderActivePanel();
     super.elements = {
