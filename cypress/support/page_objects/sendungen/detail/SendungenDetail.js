@@ -18,7 +18,7 @@ class SendungenDetail extends SendungenPageBase {
   }
 
   waitForLoaded() {
-    this.elements.detailForm().should("be.visible", 10000);
+    this.elements.detailForm().should("be.visible", constants.DEFAULT_TIMEOUT);
   }
 }
 

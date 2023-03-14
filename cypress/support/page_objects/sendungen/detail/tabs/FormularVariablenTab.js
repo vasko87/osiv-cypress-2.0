@@ -9,8 +9,6 @@ class FormularVariablenTab {
 
   waitForLoaded() {
     pageBase.waitForLoadingDisappears();
-    cy.wait(3000);
-    pageBase.waitForLoadingDisappears();
   }
 }
 

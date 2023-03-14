@@ -8,6 +8,7 @@ import FreitexteTab from "./tabs/FreitexteTab";
 import helpers from "../../../helpers/HelperObject";
 import constants from "../../../helpers/Constants";
 import VisierenTab from "./tabs/VisierenTab";
+import pageBase from "../../../base/PageBase";
 
 class EntscheidDetail extends EntscheidPageBase {
   constructor() {
@@ -27,12 +28,14 @@ class EntscheidDetail extends EntscheidPageBase {
   }
 
   waitForLoaded() {
+    pageBase.waitForLoadingDisappears();
     this.elements.detailForm().should("be.visible", 10000);
+    return this;
   }
 
   verifyValuesBulk(data) {
-    if (data.arbeitslistevalueTxt) {
-      this.checkArbeitslistevalueTxt(data.arbeitslistevalueTxt);
+    if (data.arbeitslisteTxt) {
+      this.checkArbeitslisteTxt(data.arbeitslisteTxt);
     }
     if (data.bearbeiterDropdown === "username") {
       this.checkBearbeiterDropdownReadonlyValue(Cypress.env("username"));

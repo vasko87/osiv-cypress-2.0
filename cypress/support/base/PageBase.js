@@ -25,6 +25,10 @@ class PageBase {
     return this;
   }
 
+  getDropdownSelectedValue(element) {
+    return element.find("[role='textbox']").invoke("textContent");
+  }
+
   checkDropdownContainsValue(element, selectedValue) {
     element.find("option").should("contain.text", selectedValue);
     return this;

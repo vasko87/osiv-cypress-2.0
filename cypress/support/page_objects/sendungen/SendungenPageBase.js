@@ -3,7 +3,7 @@ class SendungenPageBase {
 
   constructor(baseCSS) {
     this.elements = {
-      arbeitslisteTxt : () => cy.get(baseCSS).find("[akid$='-arbeitsliste_bez']"),
+      arbeitslisteTxt : () => cy.get(baseCSS).find("[akid$='-arbeitsliste_bez'] input"),
       vmdatumDate : () => cy.get(baseCSS).find("[akid$='-entscheid_vmdatum'] input")
     };
   }

@@ -33,8 +33,8 @@ class EntscheidNeuPopup extends EntscheidPageBase {
     } else if (data.bearbeiterDropdown) {
       this.checkBearbeiterDropdownReadonlyValue(data.bearbeiterDropdown);
     }
-    if(data.arbeitslistevalueTxt) {
-      this.checkArbeitslistevalueTxt(data.arbeitslistevalueTxt);
+    if(data.arbeitslisteTxt) {
+      this.checkArbeitslisteTxt(data.arbeitslisteTxt);
     }
   }
 }

@@ -2,6 +2,7 @@ import pages from "../support/base/OsivPageObject";
 import constants from "../support/helpers/Constants";
 import helpers from "../support/helpers/HelperObject";
 import {c50984 as testData} from "../support/helpers/DataManager";
+import dateHelper from "../support/helpers/DateHelper";
 
 describe(`C50984: E2E (HE Entscheid);
   TestRail: https://osiv.testrail.net/index.php?/cases/view/50984`, () => {
@@ -63,7 +64,7 @@ describe(`C50984: E2E (HE Entscheid);
   tabs Freitexte and Diskutieren are presented on the left`, () => {
     pages.modalWindow.clickOkBtn();
     pages.notification.checkSuccessMessageVisible();
-    pages.entscheid.detail.checkArbeitslistevalueTxt(testData.step5.arbeitslistevalueTxt);
+    pages.entscheid.detail.checkArbeitslisteTxt(testData.step5.arbeitslisteTxt);
     pages.checkMsgOnThePage(constants.MSG.OSCIENT_522, false)
          .checkMsgOnThePage(constants.MSG.OSCIENT_523, false);
     pages.entscheid.detail.sideMenu
@@ -153,13 +154,10 @@ describe(`C50984: E2E (HE Entscheid);
   it(`Step 12: Open Entscheid-Sendungen tab; click Entscheid-Sendungen generieren button ->
   Sendung is created, orange flag disapper fron sendungen tan and presented near Visieren tab`, () => {
     pages.entscheid.detail.sideMenu.navigateToEntscheidSendungenTab();
-    pages.waitForLoadingDisappears();
     pages.entscheid.detail.ribbonMenu.clickEntscheidSendungenGenerierenBtn();
-    pages.waitForLoadingDisappears();
     pages.entscheid.detail.sideMenu.checkEntscheidSendungenTabColor(constants.COLOR.orange, false)
          .checkVisierenTabColor(constants.COLOR.orange, true);
     pages.entscheid.detail.sendungenGrid.checkGridRowCount(1);
-    pages.waitForLoadingDisappears();
   });
 
   it(`Step 13: Open Visieren tab; make a visa by clicking Visum speichern button
@@ -194,22 +192,25 @@ describe(`C50984: E2E (HE Entscheid);
     pages.sendungen.detail.ribbonMenu.clickDruckVersandBtn().waitForLoaded();
     pages.sendungen.druckUndVersandPopup.nav.navigateDruckVorschauTab();
     pages.sendungen.druckUndVersandPopup.waitForLoaded();
-    pages.sendungen.druckUndVersandPopup.druckVorschauTab.virtualViewer().waitVirtualViewerLoaded()
-      .waitForSpinnerAppearAndDisappeared();
-    // pages.waitForLoadingCircleDisappears();
-    // .checkDocumentDataVisible(true);
+    pages.sendungen.druckUndVersandPopup.druckVorschauTab.virtualViewer().waitVirtualViewerLoaded();
+    pages.waitForLoadingDisappears();
+    // .waitForSpinnerAppearAndDisappeared();
   });
 
   it(`Step 17: Go back on druck-versand, select test printer and click ok; click ja for frage ->
   Sendung arbeitliste is abgeschlossen, Ent is abgeschlossen`, () => {
     pages.sendungen.druckUndVersandPopup.nav.navigateDruckVersandTab();
-    pages.sendungen.druckUndVersandPopup.druckVersandTab.selectDruckerBenutzerDropdown(testData.step17.druckerBenutzerDropdown);
+    pages.sendungen.druckUndVersandPopup.druckVersandTab.selectDruckerBenutzerDropdown(testData.step17.druckerBenutzerDropdown)
+         .setVersandDate(dateHelper.getCurrentDayPlusDays(helpers.random.randomIntFromInterval(1, 14)));
     pages.sendungen.druckUndVersandPopup.clickOkBtn();
     pages.confirmPopup.clickJaBtn();
     pages.waitForLoadingDisappears();
     pages.sendungen.detail.checkArbeitslisteTxt(testData.step17.arbeitslisteTxt);
+    pages.groupedTaskbar.clickEntscheidHEHETab();
+    pages.entscheid.detail.sideMenu.navigateToBasisdatenTab()
+         .waitForLoaded()
+         .checkArbeitslisteTxt(testData.step17.arbeitslisteTxt);
   });
-
 
   afterEach(function () {
     if (this.currentTest.state === "failed") {

@@ -28,9 +28,16 @@ class DruckUndVersandPopup extends ModalWindowBase {
 
     this.druckVersandTab = {
       druckerBenutzerDropdown: () => this.elements.druckauftragCreateDialog().find("[akid='DruckauftragDetailForm-drucker_benutzer']"),
+      versandDate: () => this.elements.druckauftragCreateDialog().find("[akid='DruckauftragDetailForm-versand_dat'] input"),
 
       selectDruckerBenutzerDropdown(value) {
         pageBase.selectInDropdownContains(this.druckerBenutzerDropdown(), value);
+        return this;
+      },
+
+      setVersandDate(date) {
+        this.versandDate().should("be.enabled").click().clear().type(date);
+        return this;
       }
     };
 

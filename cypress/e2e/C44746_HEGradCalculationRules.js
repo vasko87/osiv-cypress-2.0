@@ -100,6 +100,7 @@ function step_searchEnt_navigateToHilflosigkeitTab(data) {
   pages.desktopMenu.navigateToEntscheidTab();
   pages.entscheid.grid.searchAndOpenEntscheidID(data.entId);
   pages.entscheid.detail.sideMenu.navigateToHilflosigkeitTab();
+  pages.waitForLoadingDisappears();
 }
 
 function step_clickSave_warningOK_checkHEGrad(data) {

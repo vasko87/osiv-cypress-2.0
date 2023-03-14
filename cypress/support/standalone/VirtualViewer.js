@@ -29,7 +29,7 @@ class VirtualViewer {
    * @returns {Notifications}
    */
   waitForSpinnerAppearAndDisappeared() {
-    cy.wait(10000);
+    // cy.wait(10000);
     // this.elements.spinnerDoc().should("be.visible");
     // this.elements.spinnerDoc().should("not.be.visible");
     return this;

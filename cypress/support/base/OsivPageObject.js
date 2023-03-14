@@ -10,14 +10,15 @@ import SendungenPageObject from "../page_objects/sendungen/SendungenPageObject";
 import Navigation from "../standalone/navigation/Navigation";
 import VersichertePageObject from "../page_objects/versicherte/VersichertePageObject";
 import ConfirmPopup from "../standalone/popup/ConfirmationPopup";
-import constants from "../helpers/Constants";
 import pageBase from "./PageBase";
+import GroupedTaskbar from "./GroupedTaskbar";
 
 class OsivPageObject {
   constructor() {
     this.nav = new Navigation();
     this.loginPage = new LoginPage();
     this.desktopMenu = new DesktopMenu();
+    this.groupedTaskbar = new GroupedTaskbar();
     this.modalWindow = new ModalWindowBase();
     this.warningPopup = new WarningPopup();
     this.infoPopup = new InformationPopup();

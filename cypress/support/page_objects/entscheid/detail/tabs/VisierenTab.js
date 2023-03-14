@@ -1,4 +1,5 @@
 import pageBase from "../../../../base/PageBase";
+import constants from "../../../../helpers/Constants";
 
 class VisierenTab {
   constructor() {
@@ -8,7 +9,7 @@ class VisierenTab {
   }
 
   waitForLoaded() {
-    pageBase.waitForLoadingDisappears();
+    cy.wait(constants.SHORT_TIMEOUT);
     this.elements.visumtypebezDropdown().should("be.visible");
     pageBase.waitForLoadingDisappears();
   }

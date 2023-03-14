@@ -13,7 +13,8 @@ class EntscheidRibbon extends RibbonBase {
       freitextSpeichernBtn           : () => this.elements.ribbonBlock().contains("Freitext speichern"),
       entscheidSendungenGenerierenBtn: () => this.elements.ribbonBlock().contains("Entscheid-Sendungen generieren"),
       entscheidSendungVerschickenBtn: () => this.elements.ribbonBlock().contains("Entscheid-Sendung verschicken"),
-      visumSpeichernBtn              : () => this.elements.ribbonBlock().contains("Visum speichern")
+      visumSpeichernBtn              : () => this.elements.ribbonBlock().contains("Visum speichern"),
+      kopierenBtn              : () => this.elements.ribbonBlock().contains("Kopieren")
     };
 
     this.korrekturfunktionenSubMenu = {
@@ -69,6 +70,11 @@ class EntscheidRibbon extends RibbonBase {
 
   clickVisumSpeichernBtn() {
     this.elements.visumSpeichernBtn().click();
+    return this;
+  }
+
+  clickKopierenBtn() {
+    this.elements.kopierenBtn().click();
     return this;
   }
 

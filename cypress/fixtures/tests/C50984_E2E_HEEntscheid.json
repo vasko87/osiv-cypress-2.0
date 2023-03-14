@@ -8,12 +8,12 @@
     "verifyEntNew": {
       "gesuchDropdown": "vom 01.02.2022",
       "ereignisDropdown": "Basis vom 22.11.2022",
-      "bereichDropdown": "IV",
+      "bereichDropdown": "IV Erwachsene",
       "bearbeiterDropdown": "username",
-      "arbeitslistevalueTxt": "Neu"
+      "arbeitslisteTxt": "Neu"
     },
     "verifyEntDetail": {
-      "arbeitslistevalueTxt": "Neu",
+      "arbeitslisteTxt": "Neu",
       "bearbeiterDropdown": "username",
       "leistungsgruppeDropdown": "HE",
       "leistungtextDropdown": "HE - Hilflosenentschädigung",
@@ -33,7 +33,7 @@
     }
   },
   "step5": {
-    "arbeitslistevalueTxt": "Bearbeiten"
+    "arbeitslisteTxt": "Bearbeiten"
   },
   "step6": {
     "artderInvaliditatDropdown": "Langdauernde Erwerbsunfähigkeit",

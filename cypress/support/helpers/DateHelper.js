@@ -43,5 +43,12 @@ export default {
     end.setDate(date.getDate() - 1);
     end.setFullYear(date.getFullYear() + 1);
     return end.toLocaleDateString("de-CH", {year: "numeric", month: "2-digit", day: "2-digit"});
+  },
+
+  getCurrentDayPlusDays(days) {
+    const date = new Date();
+    const end = new Date(date.getTime());
+    end.setDate(date.getDate() + days);
+    return end.toLocaleDateString("de-CH", {year: "numeric", month: "2-digit", day: "2-digit"});
   }
 };
