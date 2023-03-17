@@ -3,7 +3,7 @@ import GridBase from "../../../base/GridBase";
 import constants from "../../../helpers/Constants"
 class AdressenGrid extends GridBase{
   constructor() {
-    super(constants.cssOpacity);
+    super(constants.CSS_OPACITY1);
     super.elements = {
       ...this.elements,
       adresseNewBtn: () => cy.get("[akid='AdresseQueryGrid-AdresseNew']")

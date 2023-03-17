@@ -8,12 +8,12 @@
     "verifyEntNew": {
       "gesuchDropdown": "vom 01.02.2022",
       "ereignisDropdown": "Basis vom 22.11.2022",
-      "bereichDropdown": "IV",
+      "bereichDropdown": "IV Erwachsene",
       "bearbeiterDropdown": "username",
-      "arbeitslistevalueTxt": "Neu"
+      "arbeitslisteTxt": "Neu"
     },
     "verifyEntDetail": {
-      "arbeitslistevalueTxt": "Neu",
+      "arbeitslisteTxt": "Neu",
       "bearbeiterDropdown": "username",
       "leistungsgruppeDropdown": "HE",
       "leistungtextDropdown": "HE - Hilflosenentschädigung",
@@ -33,6 +33,53 @@
     }
   },
   "step5": {
-    "arbeitslistevalueTxt": "Bearbeiten"
+    "arbeitslisteTxt": "Bearbeiten"
+  },
+  "step6": {
+    "artderInvaliditatDropdown": "Langdauernde Erwerbsunfähigkeit",
+    "ausgleichskasseDropdown": "10 - Ausgleichskasse des Kantons Freiburg",
+    "aufenthaltDropdown": "Zu Hause"
+  },
+  "step7": {
+    "warningMsg": "(OSCIENT:465)",
+    "wFGradTxt": "20 %",
+    "grenzgradTxt": "20 %",
+    "hEGradDropdown": "Leicht",
+    "hEGradTxt": "Leicht"
+  },
+  "step8": {
+    "textForm": "text"
+  },
+  "step9": {
+    "warningMsg": "(OSCIENT:154)",
+    "generatedValues": {
+      "span": [
+        "Sehr geehrte Frau ",
+        "Wait",
+        "Grad der Hilflosigkeit",
+        "leichten Grades",
+        "Anspruchsbeginn ab"
+      ]
+    }
+  },
+  "step10": {
+    "warningMsg": "(OSCIENT:154)",
+    "textValues": {
+      "span": [
+        "Wait"
+      ],
+      "p": [
+        "Sehr geehrte Frau "
+      ],
+      "b": [
+        "Grad der Hilflosigkeit",
+        "leichten Grades",
+        "Anspruchsbeginn ab"
+      ]
+    }
+  },
+  "step17": {
+    "druckerBenutzerDropdown": "Testdrucker",
+    "arbeitslisteTxt": "Abgeschlossen"
   }
 }

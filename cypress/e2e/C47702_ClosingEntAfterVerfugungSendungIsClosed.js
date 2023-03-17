@@ -28,7 +28,7 @@ describe(`C47702: (ENT ${testData.data1.entId}) Closing ENT after Verfugung send
       pages.notification.checkSuccessMessageVisible();
       pages.nav.groupedTaskbar.navigateToTabByTitle("Entscheid");
       pages.entscheid.detail.tabBar.navigateToDetailsTab();
-      pages.entscheid.detail.checkArbeitslistevalueTxt(data.arbeitsliste);
+      pages.entscheid.detail.checkArbeitslisteTxt(data.arbeitsliste);
     });
   });
 });

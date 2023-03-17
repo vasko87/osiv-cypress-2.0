@@ -1,12 +1,9 @@
-import PageBase from "./PageBase";
-
-class GridBase extends PageBase {
-
+class GridBase {
   constructor(baseCSS) {
-    super();
     this.elements = {
-      gridWrapper : () => cy.get(baseCSS).find("[class*='gridWrapper']"),
-      rowSelected : () => this.elements.gridWrapper().find("tr[class=' ev_material rowselected']")
+      grid: () => cy.get(baseCSS),
+      gridWrapper: () => cy.get(baseCSS),
+      rowSelected: () => this.elements.gridWrapper().find("tr[class=' ev_material rowselected']")
     };
   }
 
@@ -30,7 +27,7 @@ class GridBase extends PageBase {
   }
 
   dblClickRowWithText(text) {
-    this.elements.gridWrapper().find( "tbody" ).contains( "td", text ).dblclick();
+    this.elements.gridWrapper().find("tbody").contains("td", text).dblclick();
     return this;
   }
 
@@ -59,6 +56,11 @@ class GridBase extends PageBase {
     valuesArr.forEach((item) => {
       this.checkValueInGridExists(item, isExist);
     });
+    return this;
+  }
+
+  checkGridRowCount(count) {
+    this.elements.gridWrapper().find("tr[class*='material']").should("have.length", count);
     return this;
   }
 

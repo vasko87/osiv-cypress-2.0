@@ -1,6 +1,5 @@
 const {defineConfig} = require("cypress");
 const path = require("path");
-const addContext = require("mochawesome/addContext");
 const TestRailReporter = require("cypress-testrail");
 
 module.exports = defineConfig(

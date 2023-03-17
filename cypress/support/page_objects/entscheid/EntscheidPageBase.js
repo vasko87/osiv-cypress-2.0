@@ -1,8 +1,7 @@
-import PageBase from "../../base/PageBase";
+import pageBase from "../../base/PageBase";
 
-class EntscheidPageBase extends PageBase {
+class EntscheidPageBase {
   constructor(baseCSS) {
-    super();
     this.elements = {
       leistungsgruppeDropdown: () => cy.get(baseCSS).find("[akid$='-leistungsgruppe']"),
       leistungscodeDropdown  : () => cy.get(baseCSS).find("[akid$='-leistungtext']"),
@@ -10,128 +9,150 @@ class EntscheidPageBase extends PageBase {
       ereignisDropdown       : () => cy.get(baseCSS).find("[akid$='-ereignistext']"),
       bereichDropdown        : () => cy.get(baseCSS).find("[akid$='-bereich']"),
       bearbeiterDropdown     : () => cy.get(baseCSS).find("[akid$='-bearbeiter']"),
-      arbeitslistevalueTxt   : () => cy.get(baseCSS).find("[akid$='-arbeitslistevalue'] input"),
+      arbeitslisteTxt        : () => cy.get(baseCSS).find("[akid$='-arbeitslistevalue'] input"),
 
       entscheidDropdown   : () => cy.get(baseCSS).find("[akid$='-entscheidvalue']"),
       supertextDropdown   : () => cy.get(baseCSS).find("[akid$='-supertextbez']"),
       entscheidtypDropdown: () => cy.get(baseCSS).find("[akid$='-entscheidtypbez']"),
       gebrechenDropdown   : () => cy.get(baseCSS).find("[akid$='-gebrechen']"),
       funktausfallDropdown: () => cy.get(baseCSS).find("[akid$='-funktausfall']"),
-      beginnDate          : () => cy.get(baseCSS).find("[akid$='-beginn_dat'] input")
+      beginnDate          : () => cy.get(baseCSS).find("[akid$='-beginn_dat'] input"),
+
+      notizenTextarea        : () => cy.get(baseCSS).find("[akid$='-bem'] textarea")
     };
   }
 
   selectLeistungsgruppeDropdown(value) {
-    super.selectInDropdownContains(this.elements.leistungsgruppeDropdown(), value);
+    pageBase.selectInDropdownContains(this.elements.leistungsgruppeDropdown(), value);
     return this;
   }
 
   checkLeistungsgruppeDropdown(value) {
-    super.checkDropdownSelectedValue(this.elements.leistungsgruppeDropdown(), value);
+    pageBase.checkDropdownSelectedValue(this.elements.leistungsgruppeDropdown(), value);
     return this;
   }
 
+  getLeistungsgruppeDropdownSelectedValue() {
+    return pageBase.getDropdownSelectedValue(this.elements.leistungsgruppeDropdown());
+  }
+
   selectLeistungscodeDropdown(value) {
-    super.selectInDropdownContains(this.elements.leistungscodeDropdown(), value);
+    pageBase.selectInDropdownContains(this.elements.leistungscodeDropdown(), value);
     return this;
   }
 
   checkLeistungscodeDropdown(value) {
-    super.checkDropdownSelectedValue(this.elements.leistungscodeDropdown(), value);
+    pageBase.checkDropdownSelectedValue(this.elements.leistungscodeDropdown(), value);
     return this;
+  }
+
+  getLeistungscodeDropdownSelectedValue() {
+    return pageBase.getDropdownSelectedValue(this.elements.leistungscodeDropdown());
   }
 
   checkGesuchDropdown(value) {
-    super.checkDropdownSelectedValue(this.elements.gesuchDropdown(), value);
+    pageBase.checkDropdownSelectedValue(this.elements.gesuchDropdown(), value);
     return this;
+  }
+
+  getGesuchDropdownSelectedValue() {
+    return pageBase.getDropdownSelectedValue(this.elements.gesuchDropdown());
   }
 
   checkEreignisDropdown(value) {
-    super.checkDropdownSelectedValue(this.elements.ereignisDropdown(), value);
+    pageBase.checkDropdownSelectedValue(this.elements.ereignisDropdown(), value);
     return this;
+  }
+
+  getEreignisDropdownSelectedValue() {
+    return pageBase.getDropdownSelectedValue(this.elements.ereignisDropdown());
   }
 
   checkBereichDropdown(value) {
-    super.checkDropdownSelectedValue(this.elements.bereichDropdown(), value);
+    pageBase.checkDropdownSelectedValue(this.elements.bereichDropdown(), value);
     return this;
   }
 
+  getBereichDropdownSelectedValue() {
+    return pageBase.getDropdownSelectedValue(this.elements.bereichDropdown());
+  }
+
   checkBearbeiterDropdownContains(value) {
-    super.checkDropdownContainsValue(this.elements.bearbeiterDropdown(), value);
+    pageBase.checkDropdownContainsValue(this.elements.bearbeiterDropdown(), value);
     return this;
   }
 
   checkBearbeiterDropdownReadonlyValue(value) {
-    super.checkReadonlyDropdownContainsValue(this.elements.bearbeiterDropdown(), value);
+    pageBase.checkReadonlyDropdownContainsValue(this.elements.bearbeiterDropdown(), value);
     return this;
   }
 
-  checkArbeitslistevalueTxt(value) {
-    this.elements.arbeitslistevalueTxt().should("have.value", value);
+  checkArbeitslisteTxt(value) {
+    this.elements.arbeitslisteTxt().should("have.value", value);
     return this;
   }
 
   selectEntscheidDropdown(value) {
-    super.selectInDropdownContains(this.elements.entscheidDropdown(), value);
+    pageBase.selectInDropdownContains(this.elements.entscheidDropdown(), value);
     return this;
   }
 
   checkEntscheidDropdown(value) {
-    super.checkDropdownSelectedValue(this.elements.entscheidDropdown(), value);
+    pageBase.checkDropdownSelectedValue(this.elements.entscheidDropdown(), value);
     return this;
   }
 
   checkEntscheidDropdownReadonly(isReadonly) {
-    super.checkElementReadonly(this.elements.entscheidDropdown(), isReadonly);
+    pageBase.checkElementReadonly(this.elements.entscheidDropdown(), isReadonly);
     return this;
   }
 
   selectSupertextDropdown(value) {
-    super.selectInDropdownContains(this.elements.supertextDropdown(), value);
+    pageBase.selectInDropdownContains(this.elements.supertextDropdown(), value);
     return this;
   }
 
   checkSupertextDropdown(value) {
-    super.checkDropdownSelectedValue(this.elements.supertextDropdown(), value);
+    pageBase.checkDropdownSelectedValue(this.elements.supertextDropdown(), value);
     return this;
   }
 
   checkSupertextDropdownReadonly(isReadonly) {
-    super.checkElementReadonly(this.elements.supertextDropdown(), isReadonly);
+    pageBase.checkElementReadonly(this.elements.supertextDropdown(), isReadonly);
     return this;
   }
 
   selectEntscheidtypDropdown(value) {
-    super.selectInDropdownContains(this.elements.entscheidtypDropdown(), value);
+    pageBase.selectInDropdownContains(this.elements.entscheidtypDropdown(), value);
     return this;
   }
 
   checkEntscheidtypDropdown(value) {
-    super.checkDropdownSelectedValue(this.elements.entscheidtypDropdown(), value);
+    pageBase.checkDropdownSelectedValue(this.elements.entscheidtypDropdown(), value);
     return this;
   }
   checkEntscheidTypDropdownReadonly(isReadonly) {
-    super.checkElementReadonly(this.elements.entscheidtypDropdown(), isReadonly);
+    pageBase.checkElementReadonly(this.elements.entscheidtypDropdown(), isReadonly);
     return this;
   }
 
   selectGebrechenDropdown(value) {
-    super.selectInDropdownContains(this.elements.gebrechenDropdown(), value);
+    pageBase.selectInDropdownContains(this.elements.gebrechenDropdown(), value);
     return this;
   }
 
   checkGebrechenDropdown(value) {
-    super.checkDropdownSelectedValue(this.elements.gebrechenDropdown(), value);
+    pageBase.checkDropdownSelectedValue(this.elements.gebrechenDropdown(), value);
     return this;
   }
 
   selectFunktausfallDropdown(value) {
-    super.selectInDropdownContains(this.elements.funktausfallDropdown(), value);
+    pageBase.selectInDropdownContains(this.elements.funktausfallDropdown(), value);
     return this;
   }
 
   checkFunktausfallDropdown(value) {
-    super.checkDropdownSelectedValue(this.elements.funktausfallDropdown(), value);
+    pageBase.checkDropdownSelectedValue(this.elements.funktausfallDropdown(), value);
     return this;
   }
 
@@ -143,6 +164,20 @@ class EntscheidPageBase extends PageBase {
   checkBeginnDate(value) {
     this.elements.beginnDate().should("have.value", value);
     return this;
+  }
+
+  setNotizenTextarea(value) {
+    this.elements.notizenTextarea().type(value);
+    return this;
+  }
+
+  checkNotizenTextarea(value) {
+    this.elements.notizenTextarea().should("have.value", value);
+    return this;
+  }
+
+  getNotizenTextarea() {
+    return this.elements.notizenTextarea().invoke("val");
   }
 
 }

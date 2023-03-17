@@ -1,8 +1,7 @@
-import PageBase from "../../../base/PageBase";
+import pageBase from "../../../base/PageBase";
 
-class EntscheidTabBar extends PageBase{
+class EntscheidTabBar {
   constructor() {
-    super();
     this.elements = {
       detailsTab : () => cy.get("[akid='EntscheidDetailWindowTabbar-Details']"),
       sendungenTab : () => cy.get("[akid='EntscheidDetailWindowTabbar-Sendungen']")
@@ -19,7 +18,7 @@ class EntscheidTabBar extends PageBase{
   }
 
   checkDetailsTabColor(color, shouldHave) {
-    super.checkElementColor(this.elements.detailsTab(), color, shouldHave);
+    pageBase.checkElementColor(this.elements.detailsTab(), color, shouldHave);
     return this;
   }
 }

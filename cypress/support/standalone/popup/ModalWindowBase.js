@@ -1,12 +1,12 @@
 import PageBase from "../../base/PageBase";
+import constants from "../../helpers/Constants";
 
-class ModalWindow extends PageBase{
+class ModalWindowBase {
   static css = "[class='dhxwin_active'][modalwindow='true']";
 
   constructor() {
-    super();
     this.elements = {
-      modalWindow : () => cy.get(ModalWindow.css),
+      modalWindow : () => cy.get(ModalWindowBase.css, {timeout:constants.DEFAULT_TIMEOUT}),
       okBtn: () => this.elements.modalWindow().find('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]')
     };
   }
@@ -23,4 +23,4 @@ class ModalWindow extends PageBase{
   }
 }
 
-export default ModalWindow;
+export default ModalWindowBase;

@@ -1,8 +1,6 @@
-import PageBase from "../../base/PageBase";
 
-class VersichertePageBase extends PageBase {
+class VersichertePageBase {
   constructor(baseCSS) {
-    super();
     this.elements = {
     };
   }

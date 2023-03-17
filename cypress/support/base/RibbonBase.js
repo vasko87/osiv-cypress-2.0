@@ -1,8 +1,6 @@
-import PageBase from "./PageBase";
 
-class RibbonBase extends PageBase {
+class RibbonBase {
   constructor() {
-    super();
     this.elements = {
       ribbonBlock : () => cy.get("[class='dhxwin_active'] [akid='SimpleSwatRibbon'] [class='dhxrb_block_base ribbonBlock']"),
       speichernBtn : () => this.elements.ribbonBlock().find("[title='Speichern']"),

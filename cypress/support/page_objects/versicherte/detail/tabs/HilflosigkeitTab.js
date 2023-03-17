@@ -1,9 +1,6 @@
-import PageBase from "../../../../base/PageBase";
-
-class HilflosigkeitTab extends PageBase {
+import pageBase from "../../../../base/PageBase";
+class HilflosigkeitTab {
   constructor() {
-    super();
-    const pageBase = this;
     this.elements = {
       artderInvaliditatDropdown : () => cy.get("[akid='EntscheidHilflosigkeitForm-verfahrenbez']"),
       ausgleichskasseDropdown   : () => cy.get("[akid='EntscheidHilflosigkeitForm-akbez']"),

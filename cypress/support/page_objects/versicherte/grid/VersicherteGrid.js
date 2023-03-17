@@ -5,7 +5,7 @@ import constants from "../../../helpers/Constants"
 
 class VersicherteGrid extends GridBase {
   constructor() {
-    super(constants.cssOpacity);
+    super(constants.CSS_OPACITY1);
     this.filter = new VersicherteGridFilter();
     this.headerActivePanel = new VersicherteGridHeaderActivePanel();
     super.elements = {

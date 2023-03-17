@@ -38,7 +38,14 @@ pipeline {
     post {
         always{
             script{
-                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'cypress/reports', reportFiles: '*/index.html', reportName: 'HTML Report', reportTitles: 'Report'])
+                publishHTML([
+                allowMissing: false,
+                alwaysLinkToLastBuild: false,
+                keepAll: true,
+                reportDir: 'cypress/reports',
+                reportFiles: '*/index.html',
+                reportName: 'HTML Report',
+                reportTitles: 'Mocha Report'])
                 archiveArtifacts 'cypress/reports'
             }
         }

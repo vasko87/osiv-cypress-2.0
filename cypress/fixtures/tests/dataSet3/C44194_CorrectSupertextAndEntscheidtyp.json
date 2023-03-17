@@ -4,12 +4,12 @@
     "warningMsg": "(OSCIENT:440)",
     "infoMsg": "(OSCIENT:446)",
     "sendungen": {
-      "formilarNotVisible": [
+      "formularNotVisible": [
         "VM",
         "VB",
         "MB"
       ],
-      "formilarVisible": [
+      "formularVisible": [
         "MIB",
         "Korrigiert"
       ]
@@ -20,12 +20,12 @@
     "warningMsg": "(OSCIENT:441)",
     "infoMsg": "(OSCIENT:446)",
     "sendungen": {
-      "formilarNotVisible": [
+      "formularNotVisible": [
         "VM",
         "VB",
         "MB"
       ],
-      "formilarVisible": [
+      "formularVisible": [
         "100a",
         "101V"
       ]

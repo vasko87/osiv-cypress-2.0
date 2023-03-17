@@ -1,10 +1,10 @@
 import AdressenPageBase from "../AdressenPageBase";
-import ModalWindow from "../../../standalone/popup/ModalWindow";
+import ModalWindowBase from "../../../standalone/popup/ModalWindowBase";
 
 class AdressenAddDialog extends AdressenPageBase {
   constructor() {
-    super(ModalWindow.css);
-    this.modalWindow = new ModalWindow();
+    super(ModalWindowBase.css);
+    this.modalWindow = new ModalWindowBase();
   }
 
   waitForLoaded() {

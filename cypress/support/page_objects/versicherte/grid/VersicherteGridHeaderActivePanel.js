@@ -2,9 +2,7 @@ class VersicherteGridHeaderActivePanel {
   constructor() {
 
     this.elements = {
-
-
-    }
+    };
   }
 }
 

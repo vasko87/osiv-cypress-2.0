@@ -22,7 +22,7 @@ const url               = getBaseUrl();
 const today             = dateHelper.getCurrentDate();
 const countOfdaysInYear = dateHelper.daysInYear();
 const nextyear          = dateHelper.getSameDayNextYear();
-const firstday          = dateHelper.getTheFirstDayOfMonth();
+const firstday          = dateHelper.getFirstDayOfSameMonthNextYear();
 const end               = dateHelper.getOneDayLessNextYear();
 
 console.log( `today ${ today}` );
@@ -98,6 +98,7 @@ describe( `E2E test of createting and sending Entscheide for HE code ${  url}`, 
     entHilflosigkeitTab.SpeichernBtn().click();
     entHilflosigkeitTab.ConfirmBtn().click();
     entscheidDetails.ValidateOrangeHilflosigkeitTabColor( "rgb(255, 165, 0)" );
+
     entHilflosigkeitTab.ValidateAblaufWartefristValue( nextyear );
     entHilflosigkeitTab.ValidateWFGradValue( "20 %" );
     entHilflosigkeitTab.ValidateTageValue( countOfdaysInYear );
@@ -110,6 +111,7 @@ describe( `E2E test of createting and sending Entscheide for HE code ${  url}`, 
     entHilflosigkeitTab.ValidateHEGradBeginnDate( firstday );
     entHilflosigkeitTab.ValidateHeGradabDate( firstday );
     entHilflosigkeitTab.ValidateHEGradVerlaufValue( "Leicht" );
+
     entscheidDetails.FreitexteTab().click();
     entscheidDetails.ValidateOrangeFreitextColor( "rgb(255, 165, 0)" );
     entscheidFreitexteTab.TextForm( "test" );

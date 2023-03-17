@@ -3,7 +3,7 @@ import pageBase from "../base/PageBase";
 class Notifications {
   constructor() {
     this.elements = {
-      successMessage : () => cy.get("[class='dhtmlx-info dhtmlx-success']", {timeout : 10000})
+      successMessage : () => cy.get("[class='dhtmlx-info dhtmlx-success']", {timeout : 20000})
     };
   }
 
