@@ -20,7 +20,6 @@ pipeline {
             steps{
                echo "Setup the application"
                bat "npm install cypress"
-               bat "npm audit fix"
                composeArgs();
                setJobName();
             }
