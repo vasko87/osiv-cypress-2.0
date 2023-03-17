@@ -87,6 +87,10 @@ class EntscheidPageBase {
     return this;
   }
 
+  getBearbeiterDropdownReadonlyValue() {
+    return this.elements.bearbeiterDropdown().find("input[readonly='true']");
+  }
+
   checkArbeitslisteTxt(value) {
     this.elements.arbeitslisteTxt().should("have.value", value);
     return this;
@@ -171,13 +175,18 @@ class EntscheidPageBase {
     return this;
   }
 
+  clearNotizenTextarea() {
+    this.elements.notizenTextarea().clear();
+    return this;
+  }
+
   checkNotizenTextarea(value) {
     this.elements.notizenTextarea().should("have.value", value);
     return this;
   }
 
   getNotizenTextarea() {
-    return this.elements.notizenTextarea().invoke("val");
+    return this.elements.notizenTextarea();
   }
 
 }

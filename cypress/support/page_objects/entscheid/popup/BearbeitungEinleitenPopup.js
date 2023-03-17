@@ -17,8 +17,13 @@ class BearbeitungEinleitenPopup extends ModalWindowBase {
     return this;
   }
 
-  checkBearbeiterDropdown(value) {
+  checkBearbeiterDropdownContains(value) {
     pageBase.checkDropdownContainsValue(this.elements.bearbeiterDropdown(), value);
+    return this;
+  }
+
+  checkBearbeiterDropdown(value) {
+    pageBase.checkDropdownSelectedValue(this.elements.bearbeiterDropdown(), value);
     return this;
   }
 }

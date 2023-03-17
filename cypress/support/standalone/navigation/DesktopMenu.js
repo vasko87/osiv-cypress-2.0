@@ -8,7 +8,9 @@ class DesktopMenu {
       versicherteTab     : () => cy.get("[class*='level-2'][menuname='Versicherte']"),
       adressenTab        : () => cy.get("[menuname='Adressen']"),
       entscheidMainTab   : () => cy.get("[class*='level-1'][menuname='Entscheid']"),
-      entscheidTab       : () => cy.get("[class*='level-2'][menuname='Entscheid']")
+      entscheidTab       : () => cy.get("[class*='level-2'][menuname='Entscheid']"),
+      gesucheMainTab   : () => cy.get("[class*='level-1'][menuname='Gesuche']"),
+      gesucheTab       : () => cy.get("[class*='level-2'][menuname='Gesuche']")
     };
   }
 

@@ -9,7 +9,7 @@ class PageBase {
    * @returns {PageBase}
    */
   selectInDropdownContains(element, value) {
-    element.click("top").get("[class='select2-results__options']", {timeout:constants.DEFAULT_TIMEOUT}).contains(value).click();
+    element.click("top").get("[class='select2-results__options']", {timeout: constants.DEFAULT_TIMEOUT}).contains(value).click();
     return this;
   }
 
@@ -26,7 +26,7 @@ class PageBase {
   }
 
   getDropdownSelectedValue(element) {
-    return element.find("[role='textbox']").invoke("textContent");
+    return element.find("select").should("be.visible");
   }
 
   checkDropdownContainsValue(element, selectedValue) {
@@ -91,8 +91,8 @@ class PageBase {
    */
   waitForElementVisible(element) {
     cy.waitUntil(() => element.should("be.visible")), {
-      errorMsg : "Element is not visible",
-      timeout  : 100000
+      errorMsg: "Element is not visible",
+      timeout : 100000
     };
     return this;
   }
@@ -106,9 +106,9 @@ class PageBase {
    */
   checkElementColor(element, color, shouldHave) {
     if (shouldHave) {
-      element.should("have.css", "border-left-color", color, {timeout:10000});
+      element.should("have.css", "border-left-color", color, {timeout: 10000});
     } else {
-      element.should("not.have.css", "border-left-color", color, {timeout:10000});
+      element.should("not.have.css", "border-left-color", color, {timeout: 10000});
     }
     return this;
   }

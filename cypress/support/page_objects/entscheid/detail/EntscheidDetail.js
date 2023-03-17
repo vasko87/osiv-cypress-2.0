@@ -9,6 +9,8 @@ import helpers from "../../../helpers/HelperObject";
 import constants from "../../../helpers/Constants";
 import VisierenTab from "./tabs/VisierenTab";
 import pageBase from "../../../base/PageBase";
+import DurchfuhrungsstellenTab from "./tabs/DurchfuhrungsstellenTab";
+import VersicherungenTab from "./tabs/VersicherungenTab";
 
 class EntscheidDetail extends EntscheidPageBase {
   constructor() {
@@ -18,6 +20,8 @@ class EntscheidDetail extends EntscheidPageBase {
     this.tabBar = new EntscheidTabBar();
     this.ribbonMenu = new EntscheidRibbon();
     this.hilflosigkeitTab = new HilflosigkeitTab();
+    this.durchfuhrungsstellenTab = new DurchfuhrungsstellenTab();
+    this.versicherungenTab = new VersicherungenTab();
     this.freitexteTab = new FreitexteTab();
     this.visierenTab = new VisierenTab();
     this.sendungenGrid = new SendungenGrid(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailWindow'],[akid='EntscheidDetailBasisFrame'] [akid='eSendungQueryVPContextB']`);

@@ -6,7 +6,8 @@ class Navigation {
     this.leftMenu = new DesktopMenu();
     this.groupedTaskbar = new GroupedTaskbar();
     this.elements = {
-      homeBtn : () => cy.get("[class*='dhx_toolbar_btn dhxtoolbar_btn']")
+      homeBtn : () => cy.get("[class*='dhx_toolbar_btn dhxtoolbar_btn']"),
+      userInfoTxt : () => cy.get("[class='akUserInfo']")
     }
   }
 }
