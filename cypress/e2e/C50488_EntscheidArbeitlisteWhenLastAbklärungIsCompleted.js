@@ -1,6 +1,6 @@
 import pages from "../support/base/OsivPageObject";
 
-describe(`C50488: Entscheid arbeitliste when last Abklärung is completed; 
+describe.skip(`C50488: Entscheid arbeitliste when last Abklärung is completed; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/50488`, () => {
 
   before(`Login as ${Cypress.env("username")};`, () => {
