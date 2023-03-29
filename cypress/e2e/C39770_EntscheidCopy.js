@@ -1,9 +1,8 @@
-// fails on last step due to Defect https://jiraosiv3g.atlassian.net/browse/OSIV-21493
 import pages from "../support/base/OsivPageObject";
 import {c39770 as testData} from "../support/helpers/DataManager";
 import Utility from "../support/Utility";
 
-describe(`C39770: HE-Grad is calculation rules; 
+describe(`C39770: Entscheid Copy; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/39770`, () => {
 
   before(`Login as ${Cypress.env("username")}; VP = ${testData.versicherteName}, 

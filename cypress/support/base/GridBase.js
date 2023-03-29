@@ -1,9 +1,9 @@
 class GridBase {
   constructor(baseCSS) {
     this.elements = {
-      grid       : () => cy.get(baseCSS),
       gridWrapper: () => cy.get(baseCSS),
-      rowSelected: () => this.elements.gridWrapper().find("tr[class=' ev_material rowselected']")
+      rowSelected: () => this.elements.gridWrapper().find("tr[class=' ev_material rowselected']"),
+      rowElementsList: () => this.elements.gridWrapper().find("[class='objbox'] tr[class*=material]")
     };
   }
 
@@ -45,6 +45,22 @@ class GridBase {
   }
 
   /**
+   * Returns all values from the column of the grid
+   * @param {String} columnName
+   * @returns {Cypress.Chainable<JQuery<*[] extends ArrayLike<infer T> ? T : never>>}
+   */
+  getAllColumnValues(columnName) {
+    const colValues = [];
+    return this.getGridData().then((gridData) => {
+      gridData.forEach((row) => {
+        colValues.push(row[`${columnName}`]);
+      });
+      console.log(colValues);
+      return colValues;
+    });
+  }
+
+  /**
    * Waits for the Grid view is loaded, by checkin the grid selected row is visible
    * @returns {GridBase}
    */
@@ -59,7 +75,23 @@ class GridBase {
    * @returns {GridBase}
    */
   dblClickRowValue(value) {
-    this.elements.gridWrapper().contains(value).should("be.visible").dblclick();
+    this.elements.rowElementsList()
+        .contains(value)
+        .should("be.visible")
+        .dblclick();
+    return this;
+  }
+
+  dblClickRowNumber(rowNumber) {
+    this.elements.rowElementsList()
+        .eq(rowNumber - 1).should("be.visible")
+        .find("td").eq(0).dblclick();
+    return this;
+  }
+
+  clickRowNumber(rowNumber) {
+    this.elements.rowElementsList()
+        .eq(rowNumber - 1).should("be.visible").click();
     return this;
   }
 
@@ -96,8 +128,17 @@ class GridBase {
     return this;
   }
 
+  /**
+   * Check the count of grid rows
+   * @param {int} count
+   * @returns {GridBase}
+   */
   checkGridRowCount(count) {
-    this.elements.gridWrapper().find("tr[class*='material']").should("have.length", count);
+    if (count !== 0) {
+      this.elements.gridWrapper().find("tr[class*='material']").should("have.length", count);
+    } else {
+      this.elements.gridWrapper().find("tr[class*='material']").should("not.exist");
+    }
     return this;
   }
 

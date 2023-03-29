@@ -11,11 +11,13 @@ import VisierenTab from "./tabs/VisierenTab";
 import pageBase from "../../../base/PageBase";
 import DurchfuhrungsstellenTab from "./tabs/DurchfuhrungsstellenTab";
 import VersicherungenTab from "./tabs/VersicherungenTab";
+import DetailWindowHeader from "../../../base/DetailWindowHeader";
 
 class EntscheidDetail extends EntscheidPageBase {
   constructor() {
     const detailFormCSS = `${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailBasisDatenForm']`;
     super(detailFormCSS);
+    this.windowHeader = new DetailWindowHeader();
     this.sideMenu = new EntscheidSideMenu();
     this.tabBar = new EntscheidTabBar();
     this.ribbonMenu = new EntscheidRibbon();

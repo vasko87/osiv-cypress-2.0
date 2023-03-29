@@ -26,8 +26,8 @@ TestRail:https://osiv.testrail.net/index.php?/cases/view/44194`, () => {
       pages.entscheid.detail
            .checkSupertextDropdownReadonly(true)
            .checkEntscheidTypDropdownReadonly(true);
-      pages.entscheid.detail.ribbonMenu.clickKorrekturfunktionenBtn()
-           .clickSubMenuMenuItem(pages.entscheid.detail.ribbonMenu.korrekturfunktionenSubMenu.supertextEntscheidtypandern);
+      pages.entscheid.detail.ribbonMenu.clickKorrekturfunktionenBtn();
+      pages.entscheid.detail.ribbonMenu.korrekturfunktionenSubMenu.supertextEntscheidtypandern().click();
       pages.warningPopup.checkWarningContainsText(data.warningMsg)
            .clickOkBtn();
       pages.infoPopup.ckeckInformationContainsText(data.infoMsg)

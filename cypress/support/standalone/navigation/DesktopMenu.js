@@ -1,26 +1,27 @@
 import EntscheidGrid from "../../page_objects/entscheid/grid/EntscheidGrid";
 import AdressenGrid from "../../page_objects/addresen/grid/AdressenGrid";
+import PosteingangGrid from "../../page_objects/posteingang/grid/PosteingangGrid";
+import pageBase from "../../base/PageBase";
+import GesucheGrid from "../../page_objects/gesuche/detail/GesucheGrid";
 
 class DesktopMenu {
   constructor() {
     this.elements = {
-      versicherteMainTab : () => cy.get("[class*='level-1'][menuname='Versicherte']"),
-      versicherteTab     : () => cy.get("[class*='level-2'][menuname='Versicherte']"),
-      adressenTab        : () => cy.get("[menuname='Adressen']"),
-      entscheidMainTab   : () => cy.get("[class*='level-1'][menuname='Entscheid']"),
-      entscheidTab       : () => cy.get("[class*='level-2'][menuname='Entscheid']"),
-      gesucheMainTab   : () => cy.get("[class*='level-1'][menuname='Gesuche']"),
-      gesucheTab       : () => cy.get("[class*='level-2'][menuname='Gesuche']")
+      versicherteMainTab: () => cy.get("[class*='level-1'][menuname='Versicherte']"),
+      versicherteTab    : () => cy.get("[class*='level-2'][menuname='Versicherte']"),
+      adressenTab       : () => cy.get("[menuname='Adressen']"),
+      posteingangTab    : () => cy.get("[menuname='Posteingang']"),
+      entscheidMainTab  : () => cy.get("[class*='level-1'][menuname='Entscheid']"),
+      entscheidTab      : () => cy.get("[class*='level-2'][menuname='Entscheid']"),
+      gesucheMainTab    : () => cy.get("[class*='level-1'][menuname='Gesuche']"),
+      gesucheTab        : () => cy.get("[class*='level-2'][menuname='Gesuche']")
     };
   }
 
-
-  /**
-   *
-   */
   navigateToVersicherteTab() {
     this.elements.versicherteMainTab().should("be.visible").click();
     this.elements.versicherteTab().click();
+    this.elements.versicherteMainTab().click();
   }
 
   navigateToAdressenTab() {
@@ -31,8 +32,22 @@ class DesktopMenu {
   navigateToEntscheidTab() {
     this.elements.entscheidMainTab().should("be.visible").click();
     this.elements.entscheidTab().click();
+    this.elements.entscheidMainTab().click();
     return new EntscheidGrid();
   }
+
+  navigateToGesucheTab() {
+    this.elements.gesucheMainTab().should("be.visible").click();
+    this.elements.gesucheTab().click();
+    this.elements.gesucheMainTab().click();
+    return new GesucheGrid();
+  }
+
+  navigateToPosteingangTab() {
+    this.elements.posteingangTab().should("be.visible").click();
+    return new PosteingangGrid();
+  }
+
 }
 
 export default DesktopMenu;

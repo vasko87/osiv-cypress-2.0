@@ -1,4 +1,3 @@
-import PageBase from "../../base/PageBase";
 import constants from "../../helpers/Constants";
 
 class ModalWindowBase {

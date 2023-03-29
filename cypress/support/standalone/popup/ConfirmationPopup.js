@@ -4,7 +4,7 @@ class ConfirmPopup {
   constructor() {
     this.elements = {
       confirmPopup : () => cy.get("div [class='swal-modal confirmModal']", {timeout:constants.DEFAULT_TIMEOUT}),
-      jaBtn        : () => this.elements.confirmPopup().find("[class='swal-button swal-button--yesreply default']"),
+      jaBtn        : () => this.elements.confirmPopup().find("[class='swal-button swal-button--yesreply default'],[class='swal-button swal-button--confirm']"),
       neinBtn        : () => this.elements.confirmPopup().find("[class='swal-button swal-button--noreply']")
     };
   }

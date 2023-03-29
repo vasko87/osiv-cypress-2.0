@@ -2,6 +2,7 @@ import VersicherteGridFilter from "./VersicherteGridFilter";
 import VersicherteGridHeaderActivePanel from "./VersicherteGridHeaderActivePanel";
 import GridBase from "../../../base/GridBase";
 import constants from "../../../helpers/Constants"
+import pageBase from "../../../base/PageBase";
 
 class VersicherteGrid extends GridBase {
   constructor() {
@@ -22,6 +23,7 @@ class VersicherteGrid extends GridBase {
   searchAndOpenVersicherteName(value) {
     this.filter.searchByVersicherteName(value);
     super.dblClickRowValue(value);
+    pageBase.waitForLoadingDisappears();
     return this;
   }
 }

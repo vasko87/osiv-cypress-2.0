@@ -1,11 +1,11 @@
-
+import constants from "../helpers/Constants";
 class RibbonBase {
   constructor() {
     this.elements = {
-      ribbonBlock : () => cy.get("[class='dhxwin_active'] [akid='SimpleSwatRibbon'] [class='dhxrb_block_base ribbonBlock']"),
+      ribbonBlock : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='SimpleSwatRibbon']`),
       speichernBtn : () => this.elements.ribbonBlock().find("[title='Speichern']"),
       neuBtn : () => this.elements.ribbonBlock().find("[title='Neu']"),
-      subMenu : () => cy.get("[class='dhtmlxMebu_SubLevelArea_Tbl']")
+      subMenu : () => cy.get("[class='dhtmlxMenu_material_SubLevelArea_Polygon ']:not([style='display: none;'])")
     };
   }
 
@@ -24,16 +24,16 @@ class RibbonBase {
     return this;
   }
 
-  checkMenuItemEnable(menuItem, isEnable) {
+  checkMenuItemEnable(element, isEnable) {
     if (isEnable) {
-      this.elements.subMenu().get(`[id*='${menuItem}']`).should("have.class", "sub_item");
+      element.should("have.class", "sub_item");
     } else {
-      this.elements.subMenu().get(`[id*='${menuItem}']`).should("have.class", "sub_item_dis");
+      element.should("have.class", "sub_item_dis");
     }
     return this;
   }
 
-  clickSubMenuMenuItem(item){
+  clickSubMenuMenuItem(element){
     this.elements.subMenu().get(`[id*='${item}']`).click();
     return this;
   }

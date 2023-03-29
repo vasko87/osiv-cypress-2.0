@@ -12,6 +12,9 @@ import VersichertePageObject from "../page_objects/versicherte/VersichertePageOb
 import ConfirmPopup from "../standalone/popup/ConfirmationPopup";
 import pageBase from "./PageBase";
 import GroupedTaskbar from "./GroupedTaskbar";
+import GesuchePageObject from "../page_objects/gesuche/GesuchePageObject";
+import PosteingangPageObject from "../page_objects/posteingang/PosteingangPageObject";
+import VirtualViewer from "../standalone/VirtualViewer";
 
 class OsivPageObject {
   constructor() {
@@ -25,9 +28,12 @@ class OsivPageObject {
     this.confirmPopup = new ConfirmPopup();
     this.notification = new Notifications();
     this.versicherte = new VersichertePageObject();
+    this.gesuche = new GesuchePageObject();
     this.entscheid = new EntscheidPageObject();
+    this.posteingang = new PosteingangPageObject();
     this.adressen = new AdressenPageObject();
     this.sendungen = new SendungenPageObject();
+    this.virtualViewer = new VirtualViewer();
   }
 
   checkMsgOnThePage(msg, isExist) {

@@ -20,8 +20,9 @@ describe(`C47707: (ENT: ${testData.data1.entId}) Entscheid Freitext - Show (no s
       pages.versicherte.detail.tabBar.navigateToEntscheideTab();
       pages.versicherte.detail.entscheidGrid.dblClickRowWithText(data.entId);
       pages.entscheid.detail.sideMenu.navigateToFreitexteTab();
+      pages.waitForLoadingDisappears();
       pages.entscheid.detail.freitexteTab.verfugungBeiblattAKTab
-           .checkBausteinGridHasValue(data.bausteinValue, data.bausteinValueVisibility);
+           .checkBausteinGridBezeichnungColumnHasValue(data.bausteinValue, data.bausteinValueVisibility);
     });
   });
 });
