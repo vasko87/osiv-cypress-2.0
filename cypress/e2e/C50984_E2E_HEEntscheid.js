@@ -1,3 +1,4 @@
+// Defect step 2: https://jiraosiv3g.atlassian.net/browse/OSIV-20583
 import pages from "../support/base/OsivPageObject";
 import constants from "../support/helpers/Constants";
 import helpers from "../support/helpers/HelperObject";
@@ -57,7 +58,7 @@ describe(`C50984: E2E (HE Entscheid);
   it(`Step 4: Click Bearbeitung Einleiten button -> berabeitung einleiten popup dialog is presented`, () => {
     pages.entscheid.detail.ribbonMenu.clickBearbeitungEinleitenBtn()
          .waitForLoaded()
-         .checkBearbeiterDropdown(Cypress.env("username"));
+         .checkBearbeiterDropdownContains(Cypress.env("username"));
   });
 
   it(`Step 5: Click OK button -> ENT arbeitliste = Bearbeiten, no info panel messages; 

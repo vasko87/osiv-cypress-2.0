@@ -148,7 +148,7 @@ module.exports = {
     // enforce consistent spacing inside computed property brackets
     "computed-property-spacing" : [
       "warn",
-      "always"
+      "never"
     ],
     // require or disallow spacing between function identifiers and their invocations
     "func-call-spacing" : [

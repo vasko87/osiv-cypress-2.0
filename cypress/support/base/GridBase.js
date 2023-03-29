@@ -1,10 +1,47 @@
 class GridBase {
   constructor(baseCSS) {
     this.elements = {
-      grid: () => cy.get(baseCSS),
+      grid       : () => cy.get(baseCSS),
       gridWrapper: () => cy.get(baseCSS),
       rowSelected: () => this.elements.gridWrapper().find("tr[class=' ev_material rowselected']")
     };
+  }
+
+  /**
+   * Get Full grid data in the following format: [{…}, {…}, {…}]
+   * template: [{column1Name: 'value1', column2Name: 'value2', ...}, {…}, {…}]
+   * example:
+   * [ {Sortierung: ' 1', Gesperrt: '', Kurzadresse: 'Schaeppi Grundstücke per Adresse: Stamm Immobilien AG, Holbeinstrasse 75, 4002 Basel', Adresstyp: '560', Kosten: '', …}
+   *   {Sortierung: ' 1', Gesperrt: '', Kurzadresse: 'Basler Orthopädie René Ruepp AG, Austrasse 109, 4051 Basel', Adresstyp: '300', Kosten: '', …}
+   *   {Sortierung: ' 1', Gesperrt: '', Kurzadresse: 'Ergotherapie Rheinfelden, Petra Leisinger-Burns, Thermenstrasse 11, 4310 Rheinfelden', Adresstyp: '400', Kosten: '', …}
+   * ]
+   * see example of usage in test C39770_EntscheidCopy.js
+   * @returns {Cypress.Chainable<JQuery<*[] extends ArrayLike<infer T> ? T : never>>}
+   */
+  getGridData() {
+    const columnsList = [];
+    const finalGridDataList = [];
+
+    return this.elements.gridWrapper().then((gridWrapper) => {
+      gridWrapper.find("[class='xhdr'] table tr:nth-child(2) td")
+                 .each((i, el) => {
+                   columnsList.push(el.getAttribute("title"));
+                 });
+
+      gridWrapper.find("[class='objbox'] table tr[class*='material']")
+                 .each((i, tr) => {
+                   const row = {};
+                   cy.$$(tr).find("td").each((i, td) => {
+                     row[columnsList[i] || "unknown"] = td.textContent;
+                   });
+
+                   finalGridDataList.push(row);
+                 });
+
+      console.log(finalGridDataList);
+
+      return finalGridDataList;
+    });
   }
 
   /**

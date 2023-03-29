@@ -4,16 +4,19 @@ import EntscheidDetail from "./EntscheidDetail";
 import constants from "../../../helpers/Constants";
 import pageBase from "../../../base/PageBase";
 import VisierenTab from "./tabs/VisierenTab";
+import DurchfuhrungsstellenTab from "./tabs/DurchfuhrungsstellenTab";
+import VersicherungenTab from "./tabs/VersicherungenTab";
 
 class EntscheidSideMenu {
   constructor() {
     this.elements = {
       basisdatenTab          : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailBasisFrameTabbar-Basisdaten']`),
       durchfuhrungsstellenTab: () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailBasisFrameTabbar-Durchführungsstellen']`),
+      versicherungTab        : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailBasisFrameTabbar-Versicherungen']`),
       hilflosigkeitTab       : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailBasisFrameTabbar-Hilflosigkeit']`),
       freitexteTab           : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailBasisFrameTabbar-Freitexte']`),
       entscheidSendungenTab  : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailBasisFrameTabbar-Entscheid-Sendungen']`),
-      visierenTab  : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailBasisFrameTabbar-Visieren']`),
+      visierenTab            : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailBasisFrameTabbar-Visieren']`),
       diskutierenTab         : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailBasisFrameTabbar-Diskutieren']`)
     };
   }
@@ -30,7 +33,12 @@ class EntscheidSideMenu {
 
   navigateToDurchfuhrungsstellenTab() {
     this.elements.durchfuhrungsstellenTab().should("be.visible").click();
-    return this;
+    return new DurchfuhrungsstellenTab();
+  }
+
+  navigateToVersicherungTab() {
+    this.elements.versicherungTab().should("be.visible").click();
+    return new VersicherungenTab();
   }
 
   navigateToEntscheidSendungenTab() {

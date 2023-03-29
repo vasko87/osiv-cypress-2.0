@@ -1,24 +1,19 @@
 export default {
-  getBaseUrl() {
-    //Get the value of evnironment variable i.e FR, NR, FW
-    const envi = Cypress.env("ENV");
+  /**
+   * Gather elements which specified as parameters.
+   * Uses for collecting values from elements on the page to make some actions with them later.
+   *
+   * See example of usage in test: C39770_EntscheidCopy.js
+   * @param cmds
+   * @returns {Cypress.Chainable<{}>}
+   */
+  gatherElements(cmds) {
+    const results = {};
 
-    //Check the value and return desired url
-    if (envi === "FR") return "https://osiv-frtest.ivnet.ch";
-    if (envi === "NR") return "https://osiv-nrtest.ivnet.ch";
-    if (envi === "FW") return "https://osiv-devcwe.ivnet.ch";
-    return "https://osiv-frtest.ivnet.ch";
-  },
+    for (const k in cmds) {
+      cmds[k].then((el) => results[k] = el);
+    }
 
-  Entscheidrequest() {
-    const envi = Cypress.env("ENV");
-    if (envi === "FR") return "FRCopiedinOsiv5";
-    if (envi === "NR") return "NRCopiedinOsiv5";
-  },
-
-  UserInfo() {
-    const user = Cypress.env("user")
-    if (user === "username") return "Hulk1";
-    if (user === "username1") return "User1"
+    return cy.wrap(results);
   }
 };
