@@ -18,6 +18,7 @@ import C44746 from "../../fixtures/tests/C44746_HEGradCalculationRules.json";
 import C47707 from "../../fixtures/tests/C47707_ShowNoShowDynamicBaustein.json";
 import C50984 from "../../fixtures/tests/C50984_E2E_HEEntscheid.json";
 import C39770 from "../../fixtures/tests/C39770_EntscheidCopy.json";
+import C42473 from "../../fixtures/tests/C42473_EntscheidInDenPapierkorbVerschiebenHappyFlow.json";
 
 const dataFiles = {
   c44194 : C44194_ds1,
@@ -27,7 +28,8 @@ const dataFiles = {
   c44746 : C44746,
   c47707 : C47707,
   c50984 : C50984,
-  c39770 : C39770
+  c39770 : C39770,
+  c42473 : C42473
 };
 
 const dataSet = Cypress.env("dataSet");

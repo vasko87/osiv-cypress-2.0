@@ -5,6 +5,7 @@ import constants from "../support/helpers/Constants";
 import helpers from "../support/helpers/HelperObject";
 import {c50984 as testData} from "../support/helpers/DataManager";
 import dateHelper from "../support/helpers/DateHelper";
+import pageBase from "../support/base/PageBase";
 
 describe(`C50984: E2E (HE Entscheid);
   TestRail: https://osiv.testrail.net/index.php?/cases/view/50984`, () => {
@@ -19,12 +20,13 @@ describe(`C50984: E2E (HE Entscheid);
     pages.versicherte.grid.searchAndOpenVersicherteName(testData.step1.versicherteName);
     pages.versicherte.detail.waitForLoaded();
     pages.versicherte.detail.tabBar.navigateToEntscheideTab();
+    pageBase.waitForLoadingDisappears();
     pages.entscheid.detail.ribbonMenu.clickNeuBtn();
   });
 
-  it(`Step 2: Select Leistunggruppe and Leistungscode = HE; fill in mandatory data and click OK -> 
-  ENT details page opens in a separate tab: Tabs basisdate, Durfuhrungsstellen and Hilflosigkeit 
-  are presented on the left side; orange flag is near Details tab, basisdaten abd hilflosigkeit; 
+  it(`Step 2: Select Leistunggruppe and Leistungscode = HE; fill in mandatory data and click OK ->
+  ENT details page opens in a separate tab: Tabs basisdate, Durfuhrungsstellen and Hilflosigkeit
+  are presented on the left side; orange flag is near Details tab, basisdaten abd hilflosigkeit;
   correct info panel messages; data from ent creation form is prefilled, ENT Arbeitliste = Neu`, () => {
     pages.entscheid.neuPopup
          .selectLeistungsgruppeDropdown("Hilflosenentschädigung")
@@ -43,7 +45,7 @@ describe(`C50984: E2E (HE Entscheid);
     pages.entscheid.detail.verifyValuesBulk(testData.step2.verifyEntDetail);
   });
 
-  it(`Step 3: Fill in the data on Basisdaten tab -> data is filled in as on screenshot; 
+  it(`Step 3: Fill in the data on Basisdaten tab -> data is filled in as on screenshot;
   orange flag is removed from tab Basisdaten and orange info panel message is not presented anymore;
   side tab Entscheid sendungen appears on the left menu`, () => {
     pages.entscheid.detail.fillInFieldsBulk(testData.step3.fillInEntDetail);
@@ -62,7 +64,7 @@ describe(`C50984: E2E (HE Entscheid);
          .checkBearbeiterDropdownContains(Cypress.env("username"));
   });
 
-  it(`Step 5: Click OK button -> ENT arbeitliste = Bearbeiten, no info panel messages; 
+  it(`Step 5: Click OK button -> ENT arbeitliste = Bearbeiten, no info panel messages;
   tabs Freitexte and Diskutieren are presented on the left`, () => {
     pages.modalWindow.clickOkBtn();
     pages.notification.checkSuccessMessageVisible();
@@ -140,8 +142,8 @@ describe(`C50984: E2E (HE Entscheid);
          .checkTagTextAndBackgroundColor("b", helpers.date.getFirstDayOfSameMonthNextYear(), constants.COLOR.yellow, false);
   });
 
-  it(`Step 11: open Gesetzliche Grundlagen and click Freitexte generiren; confirm warning (OSCIENT:154) 
-  -> text is saved -> text is generated; var marked in yellow aut generated, no orange flag newr freitexte tab; 
+  it(`Step 11: open Gesetzliche Grundlagen and click Freitexte generiren; confirm warning (OSCIENT:154)
+  -> text is saved -> text is generated; var marked in yellow aut generated, no orange flag newr freitexte tab;
   orange flag appears near Entscheid-sendungen tab`, () => {
     pages.entscheid.detail.freitexteTab.navigation.navigateToGesetzlicheGrundlagenTab();
     pages.entscheid.detail.ribbonMenu.clickFreitextGenerierenBtn();
@@ -160,6 +162,7 @@ describe(`C50984: E2E (HE Entscheid);
     pages.entscheid.detail.sideMenu.checkEntscheidSendungenTabColor(constants.COLOR.orange, false)
          .checkVisierenTabColor(constants.COLOR.orange, true);
     pages.entscheid.detail.sendungenGrid.checkGridRowCount(1);
+    pageBase.waitForLoadingDisappears();
   });
 
   it(`Step 13: Open Visieren tab; make a visa by clicking Visum speichern button
@@ -180,7 +183,7 @@ describe(`C50984: E2E (HE Entscheid);
     pages.sendungen.detail.waitForLoaded();
   });
 
-  it(`Step 15: Open Formular variablen tab, add Formular variabl and click Variablen speichern button 
+  it(`Step 15: Open Formular variablen tab, add Formular variabl and click Variablen speichern button
   -> it is saved`, () => {
     pages.sendungen.detail.sideMenu.navigateToFormularVariablenTab()
          .waitForLoaded();
@@ -189,7 +192,7 @@ describe(`C50984: E2E (HE Entscheid);
     pages.waitForLoadingDisappears();
   });
 
-  it(`Step 16: Clic Druck/versand button; open Druck-Vorschau -> 
+  it(`Step 16: Clic Druck/versand button; open Druck-Vorschau ->
   correct document is presnted (includes all texts generated on freitexte tab)`, () => {
     pages.sendungen.detail.ribbonMenu.clickDruckVersandBtn().waitForLoaded();
     pages.sendungen.druckUndVersandPopup.nav.navigateDruckVorschauTab();
