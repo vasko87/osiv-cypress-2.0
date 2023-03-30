@@ -161,7 +161,7 @@ describe(`C50984: E2E (HE Entscheid);
     pages.entscheid.detail.ribbonMenu.clickEntscheidSendungenGenerierenBtn();
     pages.entscheid.detail.sideMenu.checkEntscheidSendungenTabColor(constants.COLOR.orange, false)
          .checkVisierenTabColor(constants.COLOR.orange, true);
-    pages.entscheid.detail.sendungenGrid.checkGridRowCount(1);
+    pages.entscheid.detail.sendungenTabBar.grid.checkGridRowCount(1);
     pageBase.waitForLoadingDisappears();
   });
 
@@ -199,7 +199,6 @@ describe(`C50984: E2E (HE Entscheid);
     pages.sendungen.druckUndVersandPopup.waitForLoaded();
     pages.sendungen.druckUndVersandPopup.druckVorschauTab.virtualViewer().waitVirtualViewerLoaded();
     pages.waitForLoadingDisappears();
-    // .waitForSpinnerAppearAndDisappeared();
   });
 
   it(`Step 17: Go back on druck-versand, select test printer and click ok; click ja for frage ->
@@ -208,6 +207,7 @@ describe(`C50984: E2E (HE Entscheid);
     pages.sendungen.druckUndVersandPopup.druckVersandTab.selectDruckerBenutzerDropdown(testData.step17.druckerBenutzerDropdown)
          .setVersandDate(dateHelper.getCurrentDayPlusDays(helpers.random.randomIntFromInterval(1, 14)));
     pages.sendungen.druckUndVersandPopup.clickOkBtn();
+    pages.infoPopup.clickOkBtn();
     pages.confirmPopup.clickJaBtn();
     pages.waitForLoadingDisappears();
     pages.sendungen.detail.checkArbeitslisteTxt(testData.step17.arbeitslisteTxt);

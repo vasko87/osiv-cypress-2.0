@@ -1,20 +1,30 @@
 import pageBase from "../../../base/PageBase";
+import MetaInfoTab from "./tabBarTabs/MetaInfoTab";
+import EntscheidDetail from "./EntscheidDetail";
+import SendungenTab_Ent from "./tabBarTabs/SendungenTab_Ent";
 
 class EntscheidTabBar {
   constructor() {
     this.elements = {
       detailsTab : () => cy.get("[akid='EntscheidDetailWindowTabbar-Details']"),
-      sendungenTab : () => cy.get("[akid='EntscheidDetailWindowTabbar-Sendungen']")
+      sendungenTab : () => cy.get("[akid='EntscheidDetailWindowTabbar-Sendungen']"),
+      metaInfoTab : () => cy.get("[akid='EntscheidDetailWindowTabbar-Meta-Info']")
     };
   }
 
   navigateToDetailsTab(){
     this.elements.detailsTab().should("be.visible").click();
-    return this;
+    return new EntscheidDetail();
   }
+
   navigateToSendungenTab(){
     this.elements.sendungenTab().should("be.visible").click();
-    return this;
+    return new SendungenTab_Ent();
+  }
+
+  navigateToMetaInfoTab(){
+    this.elements.metaInfoTab().should("be.visible").click();
+    return new MetaInfoTab();
   }
 
   checkDetailsTabColor(color, shouldHave) {

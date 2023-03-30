@@ -1,17 +1,19 @@
 import EntscheidPageBase from "../EntscheidPageBase";
 import EntscheidSideMenu from "./EntscheidSideMenu";
-import HilflosigkeitTab from "./tabs/HilflosigkeitTab";
+import HilflosigkeitTab from "./sideMenuTabs/HilflosigkeitTab";
 import EntscheidRibbon from "./EntscheidRibbon";
 import EntscheidTabBar from "./EntscheidTabBar";
 import SendungenGrid from "../../sendungen/grid/SendungenGrid";
-import FreitexteTab from "./tabs/FreitexteTab";
+import FreitexteTab from "./sideMenuTabs/FreitexteTab";
 import helpers from "../../../helpers/HelperObject";
 import constants from "../../../helpers/Constants";
-import VisierenTab from "./tabs/VisierenTab";
+import VisierenTab from "./sideMenuTabs/VisierenTab";
 import pageBase from "../../../base/PageBase";
-import DurchfuhrungsstellenTab from "./tabs/DurchfuhrungsstellenTab";
-import VersicherungenTab from "./tabs/VersicherungenTab";
+import DurchfuhrungsstellenTab from "./sideMenuTabs/DurchfuhrungsstellenTab";
+import VersicherungenTab from "./sideMenuTabs/VersicherungenTab";
 import DetailWindowHeader from "../../../base/DetailWindowHeader";
+import MetaInfoTab from "./tabBarTabs/MetaInfoTab";
+import SendungenTab_Ent from "./tabBarTabs/SendungenTab_Ent";
 
 class EntscheidDetail extends EntscheidPageBase {
   constructor() {
@@ -26,7 +28,8 @@ class EntscheidDetail extends EntscheidPageBase {
     this.versicherungenTab = new VersicherungenTab();
     this.freitexteTab = new FreitexteTab();
     this.visierenTab = new VisierenTab();
-    this.sendungenGrid = new SendungenGrid(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailWindow'],[akid='EntscheidDetailBasisFrame'] [akid='eSendungQueryVPContextB']`);
+    this.sendungenTabBar = new SendungenTab_Ent();
+    this.metaInfoTabBar = new MetaInfoTab();
     super.elements = {
       ...this.elements,
       detailForm: () => cy.get(detailFormCSS)

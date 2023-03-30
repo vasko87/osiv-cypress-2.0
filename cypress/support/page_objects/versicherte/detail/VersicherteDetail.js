@@ -6,6 +6,8 @@ import SendungenGrid from "../../sendungen/grid/SendungenGrid";
 import EntscheidGrid from "../../entscheid/grid/EntscheidGrid";
 import constants from "../../../helpers/Constants";
 import DetailWindowHeader from "../../../base/DetailWindowHeader";
+import EntscheidTab_Versicherte from "./tabBarTabs/EntscheidTab_Versicherte";
+import SendungenTab_Versicherte from "./tabBarTabs/SendungenTab_Versicherte";
 
 class VersicherteDetail extends VersichertePageBase {
   constructor() {
@@ -15,8 +17,8 @@ class VersicherteDetail extends VersichertePageBase {
     this.sideMenu = new VersicherteSideMenu();
     this.tabBar = new VersicherteTabBar();
     this.ribbonMenu = new VersicherteRibbon();
-    this.entscheidGrid = new EntscheidGrid(`${constants.CSS_ACTIVE_FORM} [akid='sStammDetailWindow'] [akid='EntscheidQueryStammGrid']`);
-    this.sendungenGrid = new SendungenGrid(`${constants.CSS_ACTIVE_FORM} [akid='sStammDetailWindow'] [akid='eSendungQueryVPContextB']`);
+    this.entscheidTabBar = new EntscheidTab_Versicherte();
+    this.sendungenTabBar = new SendungenTab_Versicherte();
     super.elements = {
       ...this.elements,
       detailForm : () => cy.get(detailFormCSS)

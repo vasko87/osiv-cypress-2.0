@@ -19,10 +19,10 @@ describe(`C47702: (ENT ${testData.data1.entId}) Closing ENT after Verfugung send
       pages.desktopMenu.navigateToEntscheidTab();
       pages.entscheid.grid.searchAndOpenEntscheidID(data.entId);
       pages.entscheid.detail.tabBar.navigateToSendungenTab();
-      pages.entscheid.detail.sendungenGrid.dblClickRowValue(data.formular);
-      pages.sendungen.detail.ribbonMenu.clickAbschliessenBtn();
-      pages.sendungen.detail
-        .sendungenAbschliessenPopup.setVmdatumDate(helpers.date.getCurrentDate());
+      pages.entscheid.detail.sendungenTabBar.grid.dblClickRowValue(data.formular);
+      pages.entscheid.detail.sendungenTabBar.detail.ribbonMenu.clickAbschliessenBtn();
+      pages.entscheid.detail.sendungenTabBar.detail
+           .sendungenAbschliessenPopup.setVmdatumDate(helpers.date.getCurrentDate());
       pages.modalWindow.clickOkBtn();
       pages.warningPopup.clickOkBtn();
       pages.notification.checkSuccessMessageVisible();

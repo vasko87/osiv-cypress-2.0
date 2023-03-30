@@ -1,11 +1,15 @@
 import RibbonBase from "./../../../base/RibbonBase";
 import BearbeitungEinleitenPopup from "../popup/BearbeitungEinleitenPopup";
+import pageBase from "../../../base/PageBase";
 
 class EntscheidRibbon extends RibbonBase {
   constructor() {
     super();
     super.elements = {
       ...this.elements,
+      inDenPapierkorbBtn : () => this.elements.ribbonBlock().find("[title='In den Papierkorb']"),
+      wiederherstellenBtn : () => this.elements.ribbonBlock().find("[title='Wiederherstellen']"),
+
       korrekturfunktionenBtn         : () => this.elements.ribbonBlock().contains("Korrekturfunktionen"),
       bearbeitungEinleitenBtn        : () => this.elements.ribbonBlock().contains("Bearbeitung einleiten"),
       begrundungSpeichernBtn         : () => this.elements.ribbonBlock().contains("Begründung speichern"),
@@ -31,6 +35,26 @@ class EntscheidRibbon extends RibbonBase {
       entscheidUngUltigMarkieren : () => this.elements.subMenu().get("[id*='EntscheidUngueltigMarkieren']"),
       entscheidGultigMarkieren   : () => this.elements.subMenu().get("[id*='EntscheidGueltigMarkieren']")
     };
+  }
+
+  clickInDenPapierkorbBtn() {
+    this.elements.inDenPapierkorbBtn().should("be.visible").click();
+    return this;
+  }
+
+  checkInDenPapierkorbBtnVisible(isVisible) {
+    pageBase.checkElementVisible(this.elements.inDenPapierkorbBtn(), isVisible);
+    return this;
+  }
+
+  clickWiederherstellenBtn() {
+    this.elements.wiederherstellenBtn().should("be.visible").click();
+    return this;
+  }
+
+  checkWiederherstellenBtnVisible(isVisible) {
+    pageBase.checkElementVisible(this.elements.wiederherstellenBtn(), isVisible);
+    return this;
   }
 
   clickKorrekturfunktionenBtn() {

@@ -40,7 +40,7 @@ TestRail:https://osiv.testrail.net/index.php?/cases/view/44194`, () => {
            .checkSupertextEntscheidtypandernMenuItemEnable(false);
 
       pages.entscheid.detail.tabBar.navigateToSendungenTab();
-      pages.entscheid.detail.sendungenGrid
+      pages.entscheid.detail.sendungenTabBar.grid
            .checkAllValuesInGridExist(data.sendungen.formularNotVisible, false)
            .checkAllValuesInGridExist(data.sendungen.formularVisible, true);
     });

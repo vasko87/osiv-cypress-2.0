@@ -121,13 +121,13 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
     pages.versicherte.grid.searchAndOpenVersicherteName(testData.scenario4.versicherteName);
 
     pages.versicherte.detail.tabBar.navigateToEntscheideTab()
-         .waitGridViewLoaded()
+         .grid.waitGridViewLoaded()
          .dblClickRowNumber(1);
     pages.entscheid.detail.checkArbeitslisteTxt(testData.scenario4.arbeitslisteEntInitial);
     pageBase.waitForLoadingDisappears();
     pages.entscheid.detail.windowHeader.clickCloseBtn();
     pages.versicherte.detail.tabBar.navigateToSendungenTab()
-         .waitGridViewLoaded()
+         .grid.waitGridViewLoaded()
          .checkGridRowCount(2)
          .dblClickRowNumber(1);
     pageBase.waitForLoadingDisappears();
@@ -140,7 +140,7 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
     pages.sendungen.detail.windowHeader.clickCloseBtn();
 
     pages.groupedTaskbar.clickContainsVersichertendatenTab();
-    pages.versicherte.detail.sendungenGrid.dblClickRowWithText(testData.scenario4.arbeitslisteSendungenOpen);
+    pages.versicherte.detail.sendungenTabBar.grid.dblClickRowWithText(testData.scenario4.arbeitslisteSendungenOpen);
     pages.sendungen.detail.ribbonMenu.clickKorrekturfunktionenBtn();
     pages.sendungen.detail.ribbonMenu.korrekturfunktionenSubMenu.abklaerungEinchecken().click();
     pages.confirmPopup.clickJaBtn();
@@ -150,14 +150,14 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
     pages.sendungen.detail.windowHeader.clickCloseBtn();
 
     pages.groupedTaskbar.clickContainsVersichertendatenTab();
-    pages.versicherte.detail.sendungenGrid.dblClickRowNumber(1);
+    pages.versicherte.detail.sendungenTabBar.grid.dblClickRowNumber(1);
     pages.sendungen.detail.ribbonMenu.clickAbschliessenBtn();
     ModalPopupFlows.clickOkBtn_CheckSuccessMsg();
     pages.waitForLoadingDisappears();
     pages.sendungen.detail.checkArbeitslisteTxt(testData.scenario4.arbeitslisteSendungenCompleted);
 
     pages.groupedTaskbar.clickContainsVersichertendatenTab();
-    pages.versicherte.detail.sendungenGrid.dblClickRowWithText(testData.scenario4.arbeitslisteSendungenReceived);
+    pages.versicherte.detail.sendungenTabBar.grid.dblClickRowWithText(testData.scenario4.arbeitslisteSendungenReceived);
     pages.sendungen.detail.ribbonMenu.clickAbschliessenBtn();
     ModalPopupFlows.clickOkBtn_CheckSuccessMsg();
     pages.waitForLoadingDisappears();
@@ -165,7 +165,7 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
 
     pages.groupedTaskbar.clickContainsVersichertendatenTab();
     pages.versicherte.detail.tabBar.navigateToEntscheideTab()
-         .waitGridViewLoaded()
+         .grid.waitGridViewLoaded()
          .dblClickRowNumber(1);
     pages.entscheid.detail.checkArbeitslisteTxt(testData.scenario4.arbeitslisteEntChanged);
   });

@@ -74,6 +74,19 @@ class PageBase {
   }
 
   /**
+   * Checks if element checked or not. Actual for Checkboxes and Radio buttons
+   * @param element
+   * @param isChecked
+   */
+  checkElementChecked(element, isChecked) {
+    if (isChecked === true) {
+      element.should("have.value", "true");
+    } else {
+      element.should("not.have.value", "true");
+    }
+  }
+
+  /**
    * Checks @element readonly
    * - set @isReadonly = true if @element expected to be readonly
    * - set @isReadonly = false if @element expected to NOT be readonly

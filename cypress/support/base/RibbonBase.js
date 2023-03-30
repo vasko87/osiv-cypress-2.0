@@ -1,11 +1,11 @@
 import constants from "../helpers/Constants";
+import pageBase from "./PageBase";
 class RibbonBase {
   constructor() {
     this.elements = {
       ribbonBlock : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='SimpleSwatRibbon'] [class='dhxrb_block_base ribbonBlock']`),
       speichernBtn : () => this.elements.ribbonBlock().find("[title='Speichern']"),
       neuBtn : () => this.elements.ribbonBlock().find("[title='Neu']"),
-      inDenPapierkorbBtn : () => this.elements.ribbonBlock().find("[title='In den Papierkorb']"),
       subMenu : () => cy.get("[class='dhtmlxMenu_material_SubLevelArea_Polygon ']:not([style='display: none;'])")
     };
   }
@@ -17,11 +17,6 @@ class RibbonBase {
 
   clickNeuBtn() {
     this.elements.neuBtn().should("be.visible").click();
-    return this;
-  }
-
-  clickInDenPapierkorbBtn() {
-    this.elements.inDenPapierkorbBtn().should("be.visible").click();
     return this;
   }
 

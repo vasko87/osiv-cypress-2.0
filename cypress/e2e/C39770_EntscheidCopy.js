@@ -21,7 +21,7 @@ describe(`C39770: Entscheid Copy;
     "Bearbeiter = current user; " +
     "fields  LG (dynselect), LC (dynselect), Gesuch (dynselect), Ereignis (dynselect),  " +
     "Bereich (dynselect) and Notizen (text) are copied from the initial entscheid", () => {
-    pages.versicherte.detail.entscheidGrid.dblClickRowWithText(testData.entId);
+    pages.versicherte.detail.entscheidTabBar.grid.dblClickRowWithText(testData.entId);
     pages.entscheid.detail.sideMenu.navigateToDurchfuhrungsstellenTab().waitForLoaded();
     pages.entscheid.detail.durchfuhrungsstellenTab.durchfuehrungGrid.getGridData().then((durchfuehrungGridData) => {
       pages.entscheid.detail.sideMenu.navigateToVersicherungTab().waitForLoaded();

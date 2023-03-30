@@ -1,6 +1,8 @@
 import SendungenGrid from "../../sendungen/grid/SendungenGrid";
 import constants from "../../../helpers/Constants";
 import EntscheidGrid from "../../entscheid/grid/EntscheidGrid";
+import EntscheidTab_Versicherte from "./tabBarTabs/EntscheidTab_Versicherte";
+import SendungenTab_Versicherte from "./tabBarTabs/SendungenTab_Versicherte";
 
 class VersicherteTabBar {
   constructor() {
@@ -18,12 +20,12 @@ class VersicherteTabBar {
 
   navigateToEntscheideTab() {
     this.elements.entscheideTab().click();
-    return new EntscheidGrid(`${constants.CSS_ACTIVE_FORM} [akid='sStammDetailWindow'] [akid='EntscheidQueryStammGrid']`);
+    return new EntscheidTab_Versicherte();
   }
 
   navigateToSendungenTab() {
     this.elements.sendungenTab().click();
-    return new SendungenGrid(`${constants.CSS_ACTIVE_FORM} [akid='sStammDetailWindow'] [akid='eSendungQueryVPContextB']`);
+    return new SendungenTab_Versicherte();
   }
 }
 
