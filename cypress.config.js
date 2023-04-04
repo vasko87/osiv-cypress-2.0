@@ -65,7 +65,7 @@ module.exports = defineConfig(
       defaultCommandTimeout : 50000,
       hideXHR               : true,
       chromeWebSecurity     : false,
-      video                 : false,
+      video                 : true,
       videoUploadOnPasses   : false,
       videoCompression      : 15,
       testIsolation         : false,
