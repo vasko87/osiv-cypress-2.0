@@ -7,7 +7,7 @@ pipeline {
 
      parameters{
         string(name: 'SPEC', defaultValue: "cypress/e2e/**/**", description: "Enter the script path you want to execute")
-        choice(name: 'ENV', choices: ['FR','NR','FW'], description: "Select the test environment")
+        choice(name: 'ENV', choices: ['FR','NR','FW'], description: "Select the test environment\n FR = 'https://osiv-frtest.ivnet.ch'\n NR = 'https://osiv-nrtest.ivnet.ch' \n FW = 'https://fw-test.ivnet.ch'")
         string(name: 'CUSTOM_ENV', defaultValue: "", description: "Enter the custom url")
         choice(name: 'DATA_SET', choices: ['dataSet1','dataSet2','dataSet3'], description: "Data set")
         string(name: 'USERNAME', defaultValue: "default", description: "Set username if not default")
