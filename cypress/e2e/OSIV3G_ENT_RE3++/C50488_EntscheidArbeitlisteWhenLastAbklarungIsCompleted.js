@@ -31,10 +31,12 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
       pages.gesuche.detail.tabBar.navigateToSendungenTab()
            .waitGridViewLoaded()
            .dblClickRowNumber(1);
+      pages.waitForLoadingDisappears();
       pages.sendungen.detail.waitForLoaded();
       pages.sendungen.detail.ribbonMenu.clickAbschliessenBtn();
       ModalPopupFlows.clickOkBtn_CheckSuccessMsg();
-      pages.sendungen.detail.waitForLoaded().checkArbeitslisteTxt(data.arbeitslisteSendungenCompleted);
+      pages.sendungen.detail.waitForLoaded()
+           .checkArbeitslisteTxt(data.arbeitslisteSendungenCompleted);
 
       pages.groupedTaskbar.clickContainsGesuchTab();
       pages.gesuche.detail.tabBar.navigateToEntscheideTab()
@@ -46,6 +48,7 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
 
       pages.gesuche.detail.tabBar.navigateToSendungenTab()
            .dblClickRowWithText(data.arbeitslisteSendungenReceived);
+      pages.waitForLoadingDisappears();
       pages.sendungen.detail.waitForLoaded();
       pages.sendungen.detail.ribbonMenu.clickAbschliessenBtn();
       ModalPopupFlows.clickOkBtn_CheckSuccessMsg();
