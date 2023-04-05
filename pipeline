@@ -45,7 +45,6 @@ pipeline {
                 reportFiles: '*/index.html',
                 reportName: 'HTML Report',
                 reportTitles: 'Mocha Report'])
-                archiveArtifacts 'cypress/reports'
             }
         }
     }
