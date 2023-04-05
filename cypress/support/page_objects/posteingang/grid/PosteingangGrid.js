@@ -1,10 +1,12 @@
 import GridBase from "../../../base/GridBase";
 import PosteingangGridFilter from "./PosteingangGridFilter";
+import PosteingangGridHeaderActivePanel from "./PosteingangGridHeaderActivePanel";
 
 class PosteingangGrid extends GridBase{
   constructor(css) {
     super(css);
     this.filter = new PosteingangGridFilter();
+    this.headerActivePanel = new PosteingangGridHeaderActivePanel();
     super.elements = {
       ...this.elements
     };
