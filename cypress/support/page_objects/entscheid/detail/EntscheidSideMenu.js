@@ -1,11 +1,12 @@
-import FreitexteTab from "./tabs/FreitexteTab";
-import HilflosigkeitTab from "./tabs/HilflosigkeitTab";
+import FreitexteTab from "./sideMenuTabs/FreitexteTab";
+import HilflosigkeitTab from "./sideMenuTabs/HilflosigkeitTab";
 import EntscheidDetail from "./EntscheidDetail";
 import constants from "../../../helpers/Constants";
 import pageBase from "../../../base/PageBase";
-import VisierenTab from "./tabs/VisierenTab";
-import DurchfuhrungsstellenTab from "./tabs/DurchfuhrungsstellenTab";
-import VersicherungenTab from "./tabs/VersicherungenTab";
+import VisierenTab from "./sideMenuTabs/VisierenTab";
+import DurchfuhrungsstellenTab from "./sideMenuTabs/DurchfuhrungsstellenTab";
+import VersicherungenTab from "./sideMenuTabs/VersicherungenTab";
+import BasisdatenTab_Ent from "./tabBarTabs/BasisdatenTab_Ent";
 
 class EntscheidSideMenu {
   constructor() {
@@ -23,7 +24,7 @@ class EntscheidSideMenu {
 
   navigateToBasisdatenTab() {
     this.elements.basisdatenTab().should("be.visible").click();
-    return new EntscheidDetail();
+    return new BasisdatenTab_Ent();
   }
 
   navigateToHilflosigkeitTab() {

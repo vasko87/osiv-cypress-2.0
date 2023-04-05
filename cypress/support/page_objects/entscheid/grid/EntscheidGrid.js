@@ -1,10 +1,10 @@
 import EntscheidGridFilter from "./EntscheidGridFilter";
 import EntscheidGridHeaderActivePanel from "./EntscheidGridHeaderActivePanel";
 import GridBase from "../../../base/GridBase";
-import constants from "../../../helpers/Constants"
+import pageBase from "../../../base/PageBase";
 class EntscheidGrid extends GridBase{
-  constructor() {
-    super(constants.CSS_OPACITY1);
+  constructor(css) {
+    super(css);
     this.filter = new EntscheidGridFilter();
     this.headerActivePanel = new EntscheidGridHeaderActivePanel();
     super.elements = {
@@ -22,6 +22,7 @@ class EntscheidGrid extends GridBase{
   searchAndOpenEntscheidID(value) {
     this.filter.searchEntscheidID(value);
     super.dblClickRowValue(value);
+    pageBase.waitForLoadingDisappears();
     return this;
   }
 }

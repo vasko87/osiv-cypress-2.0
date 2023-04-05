@@ -1,5 +1,5 @@
-import pages from "../support/base/OsivPageObject";
-import {c44746 as testData} from "../support/helpers/DataManager";
+import pages from "../../support/base/OsivPageObject";
+import {c44746 as testData} from "../../support/helpers/DataManager";
 
 describe(`C44746: HE-Grad is calculation rules; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/44746`, () => {
@@ -17,6 +17,7 @@ describe(`C44746: HE-Grad is calculation rules;
            .alltaglicheLebensverrichtungBlock
            .fillInFieldsBulk(data.alltaglicheLebensverrichtungBlock);
       step_clickSave_warningOK_checkHEGrad(testData.leicht);
+      pages.waitForLoadingDisappears();
     });
 
     it(`ENT ${data.entId}: Cleaning fields`, () => {
@@ -34,6 +35,7 @@ describe(`C44746: HE-Grad is calculation rules;
            .lebenspraktischeBegleitungBlock
            .fillInFieldsBulk(data.lebenspraktischeBegleitungBlock);
       step_clickSave_warningOK_checkHEGrad(testData.leicht);
+      pages.waitForLoadingDisappears();
     });
 
     it(`ENT ${data.entId}: Cleaning fields`, () => {
@@ -51,6 +53,7 @@ describe(`C44746: HE-Grad is calculation rules;
            .alltaglicheLebensverrichtungBlock
            .fillInFieldsBulk(data.alltaglicheLebensverrichtungBlock);
       step_clickSave_warningOK_checkHEGrad(testData.mittel);
+      pages.waitForLoadingDisappears();
     });
 
     it(`ENT ${data.entId}: Cleaning fields`, () => {
@@ -69,6 +72,7 @@ describe(`C44746: HE-Grad is calculation rules;
       pages.entscheid.detail.hilflosigkeitTab
            .lebenspraktischeBegleitungBlock.fillInFieldsBulk(data.lebenspraktischeBegleitungBlock);
       step_clickSave_warningOK_checkHEGrad(testData.mittel);
+      pages.waitForLoadingDisappears();
     });
 
     it(`ENT ${data.entId}: Cleaning fields`, () => {
@@ -86,6 +90,7 @@ describe(`C44746: HE-Grad is calculation rules;
          .alltaglicheLebensverrichtungBlock
          .fillInFieldsBulk(testData.schwer.alltaglicheLebensverrichtungBlock);
     step_clickSave_warningOK_checkHEGrad(testData.schwer);
+    pages.waitForLoadingDisappears();
   });
 
   it(`ENT ${testData.schwer.entId}: Cleaning fields`, () => {
@@ -116,4 +121,5 @@ function step_clickSave_warningOK_checkHEGrad(data) {
 function step_clickSave_checkSuccessMsg() {
   pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
   pages.notification.checkSuccessMessageVisible();
+  pages.waitForLoadingDisappears();
 }

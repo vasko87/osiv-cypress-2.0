@@ -7,6 +7,7 @@ logs
 *.Entscheid_Copy_2
 *.node_modules
 cypress/reports
+cypress/e2e_back
 *.videos
 *.results
 *.test

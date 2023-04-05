@@ -27,7 +27,6 @@ Cypress.Commands.add("loginWithSession", (username, password) => {
   });
 });
 
-
 // Hide all fetch/XHR requests in Cy console, toggle via cypress.json
 
 if (Cypress.config("hideXHR")) {

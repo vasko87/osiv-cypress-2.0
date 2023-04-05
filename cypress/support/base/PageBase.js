@@ -5,11 +5,22 @@ class PageBase {
    * Clicks on @element dropdown;
    * Selects value which contains @value parameter
    * @param element
-   * @param value
+   * @param {string} value
    * @returns {PageBase}
    */
   selectInDropdownContains(element, value) {
     element.click("top").get("[class='select2-results__options']", {timeout: constants.DEFAULT_TIMEOUT}).contains(value).click();
+    return this;
+  }
+
+  /**
+   *
+   * @param element
+   * @param {int} index
+   * @returns {PageBase}
+   */
+  selectDropdownValueByIndex(element, index) {
+    element.click("top").get("[class='select2-results__options']", {timeout: constants.DEFAULT_TIMEOUT}).eq(index - 1).click();
     return this;
   }
 
@@ -44,11 +55,34 @@ class PageBase {
     return this;
   }
 
+  isElementVisible(element) {
+    return element.then(el => {
+      if (el.is(":visible")){
+        return true;
+      } else {
+        return  false;
+      }
+    });
+  }
+
   checkElementVisible(element, isVisible) {
     if (isVisible === true) {
       element.should("be.visible");
     } else {
       element.should("not.be.visible");
+    }
+  }
+
+  /**
+   * Checks if element checked or not. Actual for Checkboxes and Radio buttons
+   * @param element
+   * @param isChecked
+   */
+  checkElementChecked(element, isChecked) {
+    if (isChecked === true) {
+      element.should("have.value", "true");
+    } else {
+      element.should("not.have.value", "true");
     }
   }
 

@@ -1,6 +1,6 @@
-import pages from "../support/base/OsivPageObject";
-import {c47702 as testData} from "../support/helpers/DataManager";
-import helpers from "../support/helpers/HelperObject";
+import pages from "../../support/base/OsivPageObject";
+import {c47702 as testData} from "../../support/helpers/DataManager";
+import helpers from "../../support/helpers/HelperObject";
 
 describe(`C47702: (ENT ${testData.data1.entId}) Closing ENT after Verfugung sendung is closed; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/47702`, () => {
@@ -19,16 +19,18 @@ describe(`C47702: (ENT ${testData.data1.entId}) Closing ENT after Verfugung send
       pages.desktopMenu.navigateToEntscheidTab();
       pages.entscheid.grid.searchAndOpenEntscheidID(data.entId);
       pages.entscheid.detail.tabBar.navigateToSendungenTab();
-      pages.entscheid.detail.sendungenGrid.dblClickRowValue(data.formular);
-      pages.sendungen.detail.ribbonMenu.clickAbschliessenBtn();
-      pages.sendungen.detail
-        .sendungenAbschliessenPopup.setVmdatumDate(helpers.date.getCurrentDate());
+      pages.entscheid.detail.sendungenTabBar.grid.dblClickRowValue(data.formular);
+      pages.waitForLoadingDisappears();
+      pages.entscheid.detail.sendungenTabBar.detail.waitForLoaded();
+      pages.entscheid.detail.sendungenTabBar.detail.ribbonMenu.clickAbschliessenBtn();
+      pages.entscheid.detail.sendungenTabBar.detail
+           .sendungenAbschliessenPopup.setVmdatumDate(helpers.date.getCurrentDate());
       pages.modalWindow.clickOkBtn();
       pages.warningPopup.clickOkBtn();
       pages.notification.checkSuccessMessageVisible();
       pages.nav.groupedTaskbar.navigateToTabByTitle("Entscheid");
       pages.entscheid.detail.tabBar.navigateToDetailsTab();
-      pages.entscheid.detail.checkArbeitslisteTxt(data.arbeitsliste);
+      pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(data.arbeitsliste);
     });
   });
 });

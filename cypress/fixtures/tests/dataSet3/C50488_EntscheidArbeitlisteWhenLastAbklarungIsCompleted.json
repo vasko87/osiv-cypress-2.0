@@ -1,0 +1,45 @@
+{
+  "scenario1": {
+    "scenarioNumber": "1",
+    "gesuchID": "14306",
+    "entID": "23180",
+    "arbeitslisteSendungenReceived": "Eingegangen",
+    "arbeitslisteSendungenCompleted": "Abgeschlossen",
+    "arbeitslisteEntInitial": "Warten",
+    "arbeitslisteEntChanged": "Neu"
+  },
+  "scenario2": {
+    "scenarioNumber": "2",
+    "gesuchID": "14307",
+    "entID": "23181",
+    "arbeitslisteSendungenReceived": "Eingegangen",
+    "arbeitslisteSendungenCompleted": "Abgeschlossen",
+    "arbeitslisteEntInitial": "Warten",
+    "arbeitslisteEntChanged": "Bearbeiten"
+  },
+  "scenario3": {
+    "vpNr": "0395.5119.85",
+    "abklarungDropdown": "Roche Pharma",
+    "entID": "23194",
+    "arbeitslisteSendungenReceived": "Eingegangen",
+    "arbeitslisteSendungenCompleted": "Abgeschlossen",
+    "arbeitslisteEntInitial": "Warten",
+    "arbeitslisteEntChanged": "Bearbeiten"
+  },
+  "scenario4": {
+    "versicherteName": "Xalando Xaver",
+    "arbeitslisteSendungenOpen": "Offen",
+    "arbeitslisteSendungenReceived": "Eingegangen",
+    "arbeitslisteSendungenCompleted": "Abgeschlossen",
+    "arbeitslisteEntInitial": "Warten",
+    "arbeitslisteEntChanged": "Bearbeiten"
+  },
+  "scenario5": {
+    "vpNr": "1499.9832.58",
+    "entID": "23198",
+    "arbeitslisteSendungenReceived": "Eingegangen",
+    "arbeitslisteSendungenCompleted": "Abgeschlossen",
+    "arbeitslisteEntInitial": "Warten",
+    "arbeitslisteEntChanged": "Neu"
+  }
+}

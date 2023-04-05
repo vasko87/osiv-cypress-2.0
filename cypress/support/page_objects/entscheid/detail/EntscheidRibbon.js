@@ -1,36 +1,60 @@
 import RibbonBase from "./../../../base/RibbonBase";
 import BearbeitungEinleitenPopup from "../popup/BearbeitungEinleitenPopup";
+import pageBase from "../../../base/PageBase";
 
 class EntscheidRibbon extends RibbonBase {
   constructor() {
     super();
     super.elements = {
       ...this.elements,
+      inDenPapierkorbBtn : () => this.elements.ribbonBlock().find("[title='In den Papierkorb']"),
+      wiederherstellenBtn : () => this.elements.ribbonBlock().find("[title='Wiederherstellen']"),
+
       korrekturfunktionenBtn         : () => this.elements.ribbonBlock().contains("Korrekturfunktionen"),
       bearbeitungEinleitenBtn        : () => this.elements.ribbonBlock().contains("Bearbeitung einleiten"),
       begrundungSpeichernBtn         : () => this.elements.ribbonBlock().contains("Begründung speichern"),
       freitextGenerierenBtn          : () => this.elements.ribbonBlock().contains("Freitext generieren"),
       freitextSpeichernBtn           : () => this.elements.ribbonBlock().contains("Freitext speichern"),
       entscheidSendungenGenerierenBtn: () => this.elements.ribbonBlock().contains("Entscheid-Sendungen generieren"),
-      entscheidSendungVerschickenBtn: () => this.elements.ribbonBlock().contains("Entscheid-Sendung verschicken"),
+      entscheidSendungVerschickenBtn : () => this.elements.ribbonBlock().contains("Entscheid-Sendung verschicken"),
       visumSpeichernBtn              : () => this.elements.ribbonBlock().contains("Visum speichern"),
-      kopierenBtn              : () => this.elements.ribbonBlock().contains("Kopieren")
+      kopierenBtn                    : () => this.elements.ribbonBlock().contains("Kopieren")
     };
 
     this.korrekturfunktionenSubMenu = {
-      visumAufheben              : "CancelVisieren",
-      alleFreitexteLoschen       : "DeleteAllVolltext",
-      notizenEditieren           : "EditNotizen",
-      revisionAktivieren         : "RevisionAktivieren",
-      revisionReaktivieren       : "RevisionReaktivieren",
-      korrekturEntscheiddaten    : "EntscheidKorrekturen",
-      supertextEntscheidtypandern: "CorrectSupertext",
-      vorbescheidErsetzen        : "VorbescheidErsetzen",
-      mitteilungAKKorrigieren    : "MitteilungAKKorrigieren",
-      verfugungKorrigieren       : "VerfuegungKorrigieren",
-      entscheidUngUltigMarkieren : "EntscheidUngueltigMarkieren",
-      entscheidGultigMarkieren   : "EntscheidGueltigMarkieren"
+      visumAufheben              : () => this.elements.subMenu().get("[id*='CancelVisieren']"),
+      alleFreitexteLoschen       : () => this.elements.subMenu().get("[id*='DeleteAllVolltext']"),
+      notizenEditieren           : () => this.elements.subMenu().get("[id*='EditNotizen']"),
+      revisionAktivieren         : () => this.elements.subMenu().get("[id*='RevisionAktivieren']"),
+      revisionReaktivieren       : () => this.elements.subMenu().get("[id*='RevisionReaktivieren']"),
+      korrekturEntscheiddaten    : () => this.elements.subMenu().get("[id*='EntscheidKorrekturen']"),
+      supertextEntscheidtypandern: () => this.elements.subMenu().get("[id*='CorrectSupertext']"),
+      vorbescheidErsetzen        : () => this.elements.subMenu().get("[id*='VorbescheidErsetzen']"),
+      mitteilungAKKorrigieren    : () => this.elements.subMenu().get("[id*='MitteilungAKKorrigieren']"),
+      verfugungKorrigieren       : () => this.elements.subMenu().get("[id*='VerfuegungKorrigieren']"),
+      entscheidUngUltigMarkieren : () => this.elements.subMenu().get("[id*='EntscheidUngueltigMarkieren']"),
+      entscheidGultigMarkieren   : () => this.elements.subMenu().get("[id*='EntscheidGueltigMarkieren']")
     };
+  }
+
+  clickInDenPapierkorbBtn() {
+    this.elements.inDenPapierkorbBtn().should("be.visible").click();
+    return this;
+  }
+
+  checkInDenPapierkorbBtnVisible(isVisible) {
+    pageBase.checkElementVisible(this.elements.inDenPapierkorbBtn(), isVisible);
+    return this;
+  }
+
+  clickWiederherstellenBtn() {
+    this.elements.wiederherstellenBtn().should("be.visible").click();
+    return this;
+  }
+
+  checkWiederherstellenBtnVisible(isVisible) {
+    pageBase.checkElementVisible(this.elements.wiederherstellenBtn(), isVisible);
+    return this;
   }
 
   clickKorrekturfunktionenBtn() {
@@ -79,7 +103,7 @@ class EntscheidRibbon extends RibbonBase {
   }
 
   checkSupertextEntscheidtypandernMenuItemEnable(isEnabled) {
-    super.checkMenuItemEnable(this.korrekturfunktionenSubMenu.supertextEntscheidtypandern, isEnabled);
+    super.checkMenuItemEnable(this.korrekturfunktionenSubMenu.supertextEntscheidtypandern(), isEnabled);
     return this;
   }
 }

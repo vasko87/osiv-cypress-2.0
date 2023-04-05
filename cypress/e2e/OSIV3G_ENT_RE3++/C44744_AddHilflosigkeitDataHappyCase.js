@@ -1,8 +1,8 @@
 // Defect step 10: https://jiraosiv3g.atlassian.net/browse/OSIV-21033
 
-import pages from "../support/base/OsivPageObject";
-import helpers from "../support/helpers/HelperObject";
-import {c44744 as testData} from "../support/helpers/DataManager";
+import pages from "../../support/base/OsivPageObject";
+import helpers from "../../support/helpers/HelperObject";
+import {c44744 as testData} from "../../support/helpers/DataManager";
 
 describe(`C44744: (ENT ${testData.entId}) Add Hilflosigkeit data Happy case; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/44744`, () => {
@@ -23,8 +23,8 @@ describe(`C44744: (ENT ${testData.entId}) Add Hilflosigkeit data Happy case;
 
   it("Step 3: fill in mandatory field Art der Invalidität", () => {
     pages.entscheid.detail.hilflosigkeitTab.allgemeineAngabenBlock
-      .selectArtderInvaliditatDropdown(testData.artderInvaliditatDropDown)
-      .selectAusgleichskasseDropdown(testData.ausgleichskasseDropdown);
+         .selectArtderInvaliditatDropdown(testData.artderInvaliditatDropDown)
+         .selectAusgleichskasseDropdown(testData.ausgleichskasseDropdown);
   });
 
   it("Step 4: fill in 'Alltägliche Lebensverrichtung' or/and 'Lebenspraktische Begleitung' fields", () => {

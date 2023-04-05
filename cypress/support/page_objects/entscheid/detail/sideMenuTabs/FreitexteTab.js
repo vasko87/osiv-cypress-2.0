@@ -1,5 +1,6 @@
 import DocumentValidator from "../../../../helpers/DocumentValidator";
 import pageBase from "../../../../base/PageBase";
+import GridBase from "../../../../base/GridBase";
 
 class FreitexteTab {
   constructor() {
@@ -57,20 +58,23 @@ class FreitexteTab {
 
     this.verfugungBeiblattAKTab = {
       docValidator     : () => new DocumentValidator("[akid='VerfuegungBeiblattHTMLtextForm']"),
-      bausteinGrid     : () => cy.get("[akid='BausteinlisteIndiVerfuegungBeiblattGrid']"),
+      bausteinGrid     : () => new GridBase("[akid='BausteinlisteIndiVerfuegungBeiblattGrid']"),
       generatedTextForm: () => cy.get("[id='cke_3_contents']"),
 
-      checkBausteinGridHasValue(value, hasValue) {
-        if (hasValue === true) {
-          this.bausteinGrid().contains(value);
-        } else {
-          this.bausteinGrid().find('[class="objbox"] tbody td').each(($td) => {
-            cy.wrap($td).invoke("text").then(text => {
-              expect(text).not.contain(value);
-            });
-          });
-        }
-        return this;
+      /**
+       * Returns a List of all values from the Bezeichnung column
+       * @returns {Cypress.Chainable<JQuery<*[] extends ArrayLike<infer T> ? T : never>>}
+       */
+      getBausteinGridBezeichnungColumnValues() {
+        this.bausteinGrid().waitGridViewLoaded();
+        return this.bausteinGrid().getAllColumnValues("Bezeichnung");
+      },
+
+      checkBausteinGridBezeichnungColumnHasValue(value, shouldHave) {
+        this.getBausteinGridBezeichnungColumnValues().then((valList) => {
+          expect(valList.some((v) => v === value))
+            .to.be.equal(shouldHave, `Assert 'Bezeichnung' column should have value = '${value}'`);
+        });
       }
     };
 
