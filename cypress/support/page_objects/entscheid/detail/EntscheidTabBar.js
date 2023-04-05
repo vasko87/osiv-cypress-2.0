@@ -1,5 +1,5 @@
 import pageBase from "../../../base/PageBase";
-import MetaInfoTab from "./tabBarTabs/MetaInfoTab";
+import MetaInfoTab_Ent from "./tabBarTabs/MetaInfoTab_Ent";
 import EntscheidDetail from "./EntscheidDetail";
 import SendungenTab_Ent from "./tabBarTabs/SendungenTab_Ent";
 
@@ -24,7 +24,7 @@ class EntscheidTabBar {
 
   navigateToMetaInfoTab(){
     this.elements.metaInfoTab().should("be.visible").click();
-    return new MetaInfoTab();
+    return new MetaInfoTab_Ent();
   }
 
   checkDetailsTabColor(color, shouldHave) {

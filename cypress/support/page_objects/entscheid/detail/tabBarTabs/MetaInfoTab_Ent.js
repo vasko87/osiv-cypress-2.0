@@ -1,7 +1,7 @@
 import constants from "../../../../helpers/Constants";
 import pageBase from "../../../../base/PageBase";
 
-class MetaInfoTab {
+class MetaInfoTab_Ent {
   constructor() {
     this.elements = {
       imPapierkorbCheckbox: () => cy.get("[akid='EntscheidMetaInfoForm-geloescht'] input"),
@@ -37,4 +37,4 @@ class MetaInfoTab {
   }
 }
 
-export default MetaInfoTab;
+export default MetaInfoTab_Ent;

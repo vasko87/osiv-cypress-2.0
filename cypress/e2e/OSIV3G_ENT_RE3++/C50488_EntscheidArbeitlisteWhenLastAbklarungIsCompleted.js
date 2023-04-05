@@ -1,7 +1,7 @@
-import pages from "../support/base/OsivPageObject";
-import {c50488 as testData} from "../support/helpers/DataManager";
-import ModalPopupFlows from "../support/flows/ModalPopupFlows";
-import pageBase from "../support/base/PageBase";
+import pages from "../../support/base/OsivPageObject";
+import {c50488 as testData} from "../../support/helpers/DataManager";
+import ModalPopupFlows from "../../support/flows/ModalPopupFlows";
+import pageBase from "../../support/base/PageBase";
 
 describe(`C50488: Entscheid arbeitliste when last Abklärung is completed; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/50488`, () => {
@@ -24,37 +24,38 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
       pages.gesuche.detail.tabBar.navigateToEntscheideTab()
            .checkGridRowCount(1)
            .dblClickRowNumber(1);
-      pages.entscheid.detail.checkArbeitslisteTxt(data.arbeitslisteEntInitial);
+      pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(data.arbeitslisteEntInitial);
       pages.groupedTaskbar.clickContainsGesuchTab();
       pages.groupedTaskbar.closeContainsEntscheidTab();
 
       pages.gesuche.detail.tabBar.navigateToSendungenTab()
            .waitGridViewLoaded()
            .dblClickRowNumber(1);
+      pages.sendungen.detail.waitForLoaded();
       pages.sendungen.detail.ribbonMenu.clickAbschliessenBtn();
       ModalPopupFlows.clickOkBtn_CheckSuccessMsg();
-      pages.waitForLoadingDisappears();
-      pages.sendungen.detail.checkArbeitslisteTxt(data.arbeitslisteSendungenCompleted);
+      pages.sendungen.detail.waitForLoaded().checkArbeitslisteTxt(data.arbeitslisteSendungenCompleted);
 
       pages.groupedTaskbar.clickContainsGesuchTab();
       pages.gesuche.detail.tabBar.navigateToEntscheideTab()
            .dblClickRowNumber(1);
-      pages.entscheid.detail.checkArbeitslisteTxt(data.arbeitslisteEntInitial);
+      pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(data.arbeitslisteEntInitial);
 
       pages.groupedTaskbar.clickContainsGesuchTab();
       pages.groupedTaskbar.closeContainsEntscheidTab();
 
       pages.gesuche.detail.tabBar.navigateToSendungenTab()
            .dblClickRowWithText(data.arbeitslisteSendungenReceived);
+      pages.sendungen.detail.waitForLoaded();
       pages.sendungen.detail.ribbonMenu.clickAbschliessenBtn();
       ModalPopupFlows.clickOkBtn_CheckSuccessMsg();
-      pages.waitForLoadingDisappears();
-      pages.sendungen.detail.checkArbeitslisteTxt(data.arbeitslisteSendungenCompleted);
+      pages.sendungen.detail.waitForLoaded()
+           .checkArbeitslisteTxt(data.arbeitslisteSendungenCompleted);
 
       pages.groupedTaskbar.clickContainsGesuchTab();
       pages.gesuche.detail.tabBar.navigateToEntscheideTab()
            .dblClickRowNumber(1);
-      pages.entscheid.detail.checkArbeitslisteTxt(data.arbeitslisteEntChanged);
+      pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(data.arbeitslisteEntChanged);
     });
   });
 
@@ -70,7 +71,7 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
     pages.loginPage.openUrl();
     pages.nav.leftMenu.navigateToEntscheidTab();
     pages.entscheid.grid.searchAndOpenEntscheidID(testData.scenario3.entID);
-    pages.entscheid.detail.checkArbeitslisteTxt(testData.scenario3.arbeitslisteEntInitial);
+    pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(testData.scenario3.arbeitslisteEntInitial);
     pages.groupedTaskbar.closeContainsEntscheidTab();
 
     pages.nav.leftMenu.navigateToPosteingangTab();
@@ -89,7 +90,7 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
 
     pages.nav.leftMenu.navigateToEntscheidTab();
     pages.entscheid.grid.searchAndOpenEntscheidID(testData.scenario3.entID);
-    pages.entscheid.detail.checkArbeitslisteTxt(testData.scenario3.arbeitslisteEntInitial);
+    pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(testData.scenario3.arbeitslisteEntInitial);
     pages.groupedTaskbar.closeContainsEntscheidTab();
 
     pages.nav.leftMenu.navigateToPosteingangTab();
@@ -107,7 +108,7 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
 
     pages.nav.leftMenu.navigateToEntscheidTab();
     pages.entscheid.grid.searchAndOpenEntscheidID(testData.scenario3.entID);
-    pages.entscheid.detail.checkArbeitslisteTxt(testData.scenario3.arbeitslisteEntChanged);
+    pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(testData.scenario3.arbeitslisteEntChanged);
   });
 
   it(`Scenario 4: Open VP Xalando Xaver
@@ -123,20 +124,20 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
     pages.versicherte.detail.tabBar.navigateToEntscheideTab()
          .grid.waitGridViewLoaded()
          .dblClickRowNumber(1);
-    pages.entscheid.detail.checkArbeitslisteTxt(testData.scenario4.arbeitslisteEntInitial);
+    pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(testData.scenario4.arbeitslisteEntInitial);
     pageBase.waitForLoadingDisappears();
     pages.entscheid.detail.windowHeader.clickCloseBtn();
     pages.versicherte.detail.tabBar.navigateToSendungenTab()
          .grid.waitGridViewLoaded()
          .checkGridRowCount(2)
          .dblClickRowNumber(1);
-    pageBase.waitForLoadingDisappears();
+    pages.sendungen.detail.waitForLoaded();
     pages.sendungen.detail.ribbonMenu.clickKorrekturfunktionenBtn();
     pages.sendungen.detail.ribbonMenu.korrekturfunktionenSubMenu.abklaerungEinchecken().click();
     pages.confirmPopup.clickJaBtn();
     pages.notification.checkSuccessMessageVisible();
-    pages.waitForLoadingDisappears();
-    pages.sendungen.detail.checkArbeitslisteTxt(testData.scenario4.arbeitslisteSendungenReceived);
+    pages.sendungen.detail.waitForLoaded()
+         .checkArbeitslisteTxt(testData.scenario4.arbeitslisteSendungenReceived);
     pages.sendungen.detail.windowHeader.clickCloseBtn();
 
     pages.groupedTaskbar.clickContainsVersichertendatenTab();
@@ -145,29 +146,31 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
     pages.sendungen.detail.ribbonMenu.korrekturfunktionenSubMenu.abklaerungEinchecken().click();
     pages.confirmPopup.clickJaBtn();
     pages.notification.checkSuccessMessageVisible();
-    pages.waitForLoadingDisappears();
-    pages.sendungen.detail.checkArbeitslisteTxt(testData.scenario4.arbeitslisteSendungenReceived);
+    pages.sendungen.detail.waitForLoaded()
+         .checkArbeitslisteTxt(testData.scenario4.arbeitslisteSendungenReceived);
     pages.sendungen.detail.windowHeader.clickCloseBtn();
 
     pages.groupedTaskbar.clickContainsVersichertendatenTab();
     pages.versicherte.detail.sendungenTabBar.grid.dblClickRowNumber(1);
+    pages.sendungen.detail.waitForLoaded();
     pages.sendungen.detail.ribbonMenu.clickAbschliessenBtn();
     ModalPopupFlows.clickOkBtn_CheckSuccessMsg();
-    pages.waitForLoadingDisappears();
-    pages.sendungen.detail.checkArbeitslisteTxt(testData.scenario4.arbeitslisteSendungenCompleted);
+    pages.sendungen.detail.waitForLoaded()
+         .checkArbeitslisteTxt(testData.scenario4.arbeitslisteSendungenCompleted);
 
     pages.groupedTaskbar.clickContainsVersichertendatenTab();
     pages.versicherte.detail.sendungenTabBar.grid.dblClickRowWithText(testData.scenario4.arbeitslisteSendungenReceived);
+    pages.sendungen.detail.waitForLoaded();
     pages.sendungen.detail.ribbonMenu.clickAbschliessenBtn();
     ModalPopupFlows.clickOkBtn_CheckSuccessMsg();
-    pages.waitForLoadingDisappears();
-    pages.sendungen.detail.checkArbeitslisteTxt(testData.scenario4.arbeitslisteSendungenCompleted);
+    pages.sendungen.detail.waitForLoaded()
+         .checkArbeitslisteTxt(testData.scenario4.arbeitslisteSendungenCompleted);
 
     pages.groupedTaskbar.clickContainsVersichertendatenTab();
     pages.versicherte.detail.tabBar.navigateToEntscheideTab()
          .grid.waitGridViewLoaded()
          .dblClickRowNumber(1);
-    pages.entscheid.detail.checkArbeitslisteTxt(testData.scenario4.arbeitslisteEntChanged);
+    pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(testData.scenario4.arbeitslisteEntChanged);
   });
 
   it(`Scenario 5: Open POE list1499.9832.58
@@ -199,7 +202,7 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
     pages.nav.elements.homeBtn().click();
     pages.nav.leftMenu.navigateToEntscheidTab();
     pages.entscheid.grid.searchAndOpenEntscheidID(testData.scenario5.entID);
-    pages.entscheid.detail.checkArbeitslisteTxt(testData.scenario5.arbeitslisteEntInitial);
+    pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(testData.scenario5.arbeitslisteEntInitial);
     pages.entscheid.detail.windowHeader.clickCloseBtn();
 
     pages.nav.leftMenu.navigateToPosteingangTab();
@@ -219,6 +222,6 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
     pages.nav.leftMenu.navigateToEntscheidTab();
     pages.entscheid.grid.searchAndOpenEntscheidID(testData.scenario5.entID);
     pages.groupedTaskbar.clickContainsEntscheidTab();
-    pages.entscheid.detail.checkArbeitslisteTxt(testData.scenario5.arbeitslisteEntChanged);
+    pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(testData.scenario5.arbeitslisteEntChanged);
   });
 });

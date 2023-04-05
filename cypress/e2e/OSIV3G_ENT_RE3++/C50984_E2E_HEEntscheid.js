@@ -1,11 +1,9 @@
-// Defect step 2: https://jiraosiv3g.atlassian.net/browse/OSIV-20583
-// Defect step 2: https://jiraosiv3g.atlassian.net/browse/OSIV-21553
-import pages from "../support/base/OsivPageObject";
-import constants from "../support/helpers/Constants";
-import helpers from "../support/helpers/HelperObject";
-import {c50984 as testData} from "../support/helpers/DataManager";
-import dateHelper from "../support/helpers/DateHelper";
-import pageBase from "../support/base/PageBase";
+import pages from "../../support/base/OsivPageObject";
+import constants from "../../support/helpers/Constants";
+import helpers from "../../support/helpers/HelperObject";
+import {c50984 as testData} from "../../support/helpers/DataManager";
+import dateHelper from "../../support/helpers/DateHelper";
+import pageBase from "../../support/base/PageBase";
 
 describe(`C50984: E2E (HE Entscheid);
   TestRail: https://osiv.testrail.net/index.php?/cases/view/50984`, () => {
@@ -42,13 +40,13 @@ describe(`C50984: E2E (HE Entscheid);
     pages.entscheid.detail.tabBar.checkDetailsTabColor(constants.COLOR.orange, true);
     pages.checkMsgOnThePage(constants.MSG.OSCIENT_522, true)
          .checkMsgOnThePage(constants.MSG.OSCIENT_523, true);
-    pages.entscheid.detail.verifyValuesBulk(testData.step2.verifyEntDetail);
+    pages.entscheid.detail.basisdatenTabBar.verifyValuesBulk(testData.step2.verifyEntDetail);
   });
 
   it(`Step 3: Fill in the data on Basisdaten tab -> data is filled in as on screenshot;
   orange flag is removed from tab Basisdaten and orange info panel message is not presented anymore;
   side tab Entscheid sendungen appears on the left menu`, () => {
-    pages.entscheid.detail.fillInFieldsBulk(testData.step3.fillInEntDetail);
+    pages.entscheid.detail.basisdatenTabBar.fillInFieldsBulk(testData.step3.fillInEntDetail);
     pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
     pages.warningPopup.clickOkBtn();
     pages.entscheid.detail.sideMenu
@@ -68,7 +66,7 @@ describe(`C50984: E2E (HE Entscheid);
   tabs Freitexte and Diskutieren are presented on the left`, () => {
     pages.modalWindow.clickOkBtn();
     pages.notification.checkSuccessMessageVisible();
-    pages.entscheid.detail.checkArbeitslisteTxt(testData.step5.arbeitslisteTxt);
+    pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(testData.step5.arbeitslisteTxt);
     pages.checkMsgOnThePage(constants.MSG.OSCIENT_522, false)
          .checkMsgOnThePage(constants.MSG.OSCIENT_523, false);
     pages.entscheid.detail.sideMenu
@@ -158,6 +156,7 @@ describe(`C50984: E2E (HE Entscheid);
   it(`Step 12: Open Entscheid-Sendungen tab; click Entscheid-Sendungen generieren button ->
   Sendung is created, orange flag disapper fron sendungen tan and presented near Visieren tab`, () => {
     pages.entscheid.detail.sideMenu.navigateToEntscheidSendungenTab();
+    pageBase.waitForLoadingDisappears();
     pages.entscheid.detail.ribbonMenu.clickEntscheidSendungenGenerierenBtn();
     pages.entscheid.detail.sideMenu.checkEntscheidSendungenTabColor(constants.COLOR.orange, false)
          .checkVisierenTabColor(constants.COLOR.orange, true);
@@ -204,16 +203,15 @@ describe(`C50984: E2E (HE Entscheid);
   it(`Step 17: Go back on druck-versand, select test printer and click ok; click ja for frage ->
   Sendung arbeitliste is abgeschlossen, Ent is abgeschlossen`, () => {
     pages.sendungen.druckUndVersandPopup.nav.navigateDruckVersandTab();
+    pageBase.waitForLoadingDisappears();
     pages.sendungen.druckUndVersandPopup.druckVersandTab.selectDruckerBenutzerDropdown(testData.step17.druckerBenutzerDropdown)
          .setVersandDate(dateHelper.getCurrentDayPlusDays(helpers.random.randomIntFromInterval(1, 14)));
     pages.sendungen.druckUndVersandPopup.clickOkBtn();
-    pages.infoPopup.clickOkBtn();
     pages.confirmPopup.clickJaBtn();
     pages.waitForLoadingDisappears();
     pages.sendungen.detail.checkArbeitslisteTxt(testData.step17.arbeitslisteTxt);
     pages.groupedTaskbar.clickEntscheidHEHETab();
     pages.entscheid.detail.sideMenu.navigateToBasisdatenTab()
-         .waitForLoaded()
          .checkArbeitslisteTxt(testData.step17.arbeitslisteTxt);
   });
 

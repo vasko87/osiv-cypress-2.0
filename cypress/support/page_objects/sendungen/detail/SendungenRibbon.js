@@ -32,7 +32,7 @@ class EntscheidRibbon extends RibbonBase {
   }
 
   clickAbschliessenBtn() {
-    this.elements.abschliessenBtn().click();
+    this.elements.abschliessenBtn().should("be.visible").click();
     return new SendungenAbschliessenPopup();
   }
 

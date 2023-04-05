@@ -1,6 +1,6 @@
-import pages from "../support/base/OsivPageObject";
-import {c39770 as testData} from "../support/helpers/DataManager";
-import Utility from "../support/Utility";
+import pages from "../../support/base/OsivPageObject";
+import {c39770 as testData} from "../../support/helpers/DataManager";
+import Utility from "../../support/Utility";
 
 describe(`C39770: Entscheid Copy; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/39770`, () => {
@@ -28,12 +28,12 @@ describe(`C39770: Entscheid Copy;
       pages.entscheid.detail.versicherungenTab.versicherungGrid.getGridData().then((versicherungGridData) => {
         pages.entscheid.detail.sideMenu.navigateToBasisdatenTab();
         Utility.gatherElements({
-          lg      : pages.entscheid.detail.getLeistungsgruppeDropdownSelectedValue(),
-          lc      : pages.entscheid.detail.getLeistungscodeDropdownSelectedValue(),
-          gesuch  : pages.entscheid.detail.getGesuchDropdownSelectedValue(),
-          ereignis: pages.entscheid.detail.getEreignisDropdownSelectedValue(),
-          bereich : pages.entscheid.detail.getBereichDropdownSelectedValue(),
-          notizen : pages.entscheid.detail.getNotizenTextarea()
+          lg      : pages.entscheid.detail.basisdatenTabBar.getLeistungsgruppeDropdownSelectedValue(),
+          lc      : pages.entscheid.detail.basisdatenTabBar.getLeistungscodeDropdownSelectedValue(),
+          gesuch  : pages.entscheid.detail.basisdatenTabBar.getGesuchDropdownSelectedValue(),
+          ereignis: pages.entscheid.detail.basisdatenTabBar.getEreignisDropdownSelectedValue(),
+          bereich : pages.entscheid.detail.basisdatenTabBar.getBereichDropdownSelectedValue(),
+          notizen : pages.entscheid.detail.basisdatenTabBar.getNotizenTextarea()
         }).then((elements) => {
           pages.entscheid.detail.ribbonMenu.clickKopierenBtn();
           pages.entscheid.neuPopup.waitForLoaded()
@@ -52,7 +52,7 @@ describe(`C39770: Entscheid Copy;
           pages.notification.checkSuccessMessageVisible();
           pages.waitForLoadingDisappears();
           pages.entscheid.detail.waitForLoaded()
-               .checkArbeitslisteTxt(testData.arbeitslisteTxt)
+               .basisdatenTabBar.checkArbeitslisteTxt(testData.arbeitslisteTxt)
                .checkBearbeiterDropdownReadonlyValue(Cypress.env("username"))
                .checkLeistungsgruppeDropdown(elements.lg.text())
                .checkLeistungscodeDropdown(elements.lc.text())

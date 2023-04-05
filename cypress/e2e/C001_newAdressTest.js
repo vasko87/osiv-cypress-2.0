@@ -1,14 +1,5 @@
 import pages from "../support/base/OsivPageObject";
-
-const testData = {
-  adressTypeDropdown : "024",
-  spracheDropdown    : "Deutsch",
-  anredeartDropdown  : "Frau",
-  titelDropdown      : "Dr",
-  plzDropdown        : "1000",
-  nameTxt            : "Maria",
-  vornameTxt         : "Vasko"
-};
+import {c001 as testData} from "../support/helpers/DataManager";
 
 describe(`#: Test to add a new adress with Frau solutation`, () => {
   before("Login", () => {
@@ -34,7 +25,7 @@ describe(`#: Test to add a new adress with Frau solutation`, () => {
     pages.adressen.addDialog.elements.vornameTxt().type(testData.vornameTxt);
   });
 
-  it("Step: Click Generate btn => Ok confirmation; OK warning popup", () => {
+  it(`Step: Click Generate btn => Ok confirmation; OK warning popup -> verify success message`, () => {
     pages.adressen.addDialog.elements.generierenBtn().click();
     pages.modalWindow.clickOkBtn();
     pages.warningPopup.clickOkBtn();
@@ -44,6 +35,8 @@ describe(`#: Test to add a new adress with Frau solutation`, () => {
   // Add test steps dependency of each other. If any step fail - test stops
   afterEach(function() {
     if (this.currentTest.state === "failed") {
+      const screenshotFileName = `${test.title} (failed).png`;
+      cy.screenshot(screenshotFileName);
       Cypress.runner.stop();
     }
   });

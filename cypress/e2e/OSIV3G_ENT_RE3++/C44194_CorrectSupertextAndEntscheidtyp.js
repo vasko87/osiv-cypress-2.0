@@ -1,5 +1,5 @@
-import pages from "../support/base/OsivPageObject";
-import {c44194 as testData} from "../support/helpers/DataManager";
+import pages from "../../support/base/OsivPageObject";
+import {c44194 as testData} from "../../support/helpers/DataManager";
 
 describe(`C44194: (ENT ${testData.data1.entId}) Correct Supertext and Entscheidtyp; 
 TestRail:https://osiv.testrail.net/index.php?/cases/view/44194`, () => {
@@ -23,7 +23,7 @@ TestRail:https://osiv.testrail.net/index.php?/cases/view/44194`, () => {
       pages.loginPage.openUrl();
       pages.desktopMenu.navigateToEntscheidTab();
       pages.entscheid.grid.searchAndOpenEntscheidID(data.entId);
-      pages.entscheid.detail
+      pages.entscheid.detail.basisdatenTabBar
            .checkSupertextDropdownReadonly(true)
            .checkEntscheidTypDropdownReadonly(true);
       pages.entscheid.detail.ribbonMenu.clickKorrekturfunktionenBtn();
@@ -34,8 +34,8 @@ TestRail:https://osiv.testrail.net/index.php?/cases/view/44194`, () => {
            .clickOkBtn();
       pages.notification.checkSuccessMessageVisible();
 
-      pages.entscheid.detail.checkSupertextDropdownReadonly(false);
-      pages.entscheid.detail.checkEntscheidTypDropdownReadonly(false);
+      pages.entscheid.detail.basisdatenTabBar.checkSupertextDropdownReadonly(false);
+      pages.entscheid.detail.basisdatenTabBar.checkEntscheidTypDropdownReadonly(false);
       pages.entscheid.detail.ribbonMenu.clickKorrekturfunktionenBtn()
            .checkSupertextEntscheidtypandernMenuItemEnable(false);
 

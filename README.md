@@ -18,7 +18,7 @@ $ git clone https://github.com/vasko87/osiv-cypress-2.0
 
 Note: Parameters from [cypress.env.json](cypress.env.json) are used by default, if you would like to change them - update this file OR past them as env parameters directly in command line:
 
-Example: ```cypress run --env url=https://osiv3g-m01.ivnet.ch,username=User1,password=user1 --spec cypress/e2e/0_newAdressTest.js```
+Example: ```cypress run --env url=https://osiv3g-m01.ivnet.ch,username=User1,password=user1 --spec cypress/e2e/C001_newAdressTest.js```
 
 ## Jenkins CI execution
 

@@ -1,6 +1,6 @@
-import pages from "../support/base/OsivPageObject";
-import helpers from "../support/helpers/HelperObject";
-import {c42473 as testData} from "../support/helpers/DataManager";
+import pages from "../../support/base/OsivPageObject";
+import helpers from "../../support/helpers/HelperObject";
+import {c42473 as testData} from "../../support/helpers/DataManager";
 
 describe(`C42473: Entscheid 'In den Papierkorb verschieben' happy flow; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/42473`, () => {

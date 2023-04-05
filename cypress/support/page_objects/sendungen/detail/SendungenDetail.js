@@ -23,6 +23,7 @@ class SendungenDetail extends SendungenPageBase {
   waitForLoaded() {
     this.elements.detailForm().should("be.visible", constants.DEFAULT_TIMEOUT);
     pageBase.waitForLoadingDisappears();
+    return this;
   }
 }
 

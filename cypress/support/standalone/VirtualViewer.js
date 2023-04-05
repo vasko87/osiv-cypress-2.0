@@ -11,7 +11,7 @@ class VirtualViewer {
 
   waitVirtualViewerLoaded() {
     this.elements.virtualViewerFrame().should("be.visible");
-    cy.wait(constants.SHORT_TIMEOUT);
+    cy.wait(constants.SHORT_TIMEOUT * 2);
     return this;
   }
 
