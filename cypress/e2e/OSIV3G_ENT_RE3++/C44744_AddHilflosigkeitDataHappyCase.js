@@ -1,6 +1,5 @@
-// Defect step 10: https://jiraosiv3g.atlassian.net/browse/OSIV-21033
-
 import pages from "../../support/base/OsivPageObject";
+import flows from "../../support/base/OsivFlowsObject";
 import helpers from "../../support/helpers/HelperObject";
 import {c44744 as testData} from "../../support/helpers/DataManager";
 
@@ -13,8 +12,7 @@ describe(`C44744: (ENT ${testData.entId}) Add Hilflosigkeit data Happy case;
 
   it("Step 1: Open ENT", () => {
     pages.loginPage.openUrl();
-    pages.desktopMenu.navigateToEntscheidTab();
-    pages.entscheid.grid.searchAndOpenEntscheidID(testData.entId);
+    flows.entscheid.step_navigateEnt_searchEnt_openEnt(testData.entId);
   });
 
   it("Step 2: Open Hilflosigkeit", () => {

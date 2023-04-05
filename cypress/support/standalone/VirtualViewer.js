@@ -1,5 +1,6 @@
 import pageBase from "../base/PageBase";
 import constants from "../helpers/Constants";
+import pages from "../base/OsivPageObject";
 
 class VirtualViewer {
   constructor() {
@@ -10,8 +11,10 @@ class VirtualViewer {
   }
 
   waitVirtualViewerLoaded() {
+    pages.waitForLoadingDisappears();
     this.elements.virtualViewerFrame().should("be.visible");
     cy.wait(constants.SHORT_TIMEOUT * 2);
+    pages.waitForLoadingDisappears();
     return this;
   }
 

@@ -1,4 +1,5 @@
 import pages from "../../support/base/OsivPageObject";
+import flows from "../../support/base/OsivFlowsObject";
 import {c44194 as testData} from "../../support/helpers/DataManager";
 
 describe(`C44194: (ENT ${testData.data1.entId}) Correct Supertext and Entscheidtyp; 
@@ -21,8 +22,7 @@ TestRail:https://osiv.testrail.net/index.php?/cases/view/44194`, () => {
         - Sendungs (VM, VB or MB) in status Neu are deleted;
         - Sendung (MIB) in status Korrigiert is not deleted`, () => {
       pages.loginPage.openUrl();
-      pages.desktopMenu.navigateToEntscheidTab();
-      pages.entscheid.grid.searchAndOpenEntscheidID(data.entId);
+      flows.entscheid.step_navigateEnt_searchEnt_openEnt(data.entId);
       pages.entscheid.detail.basisdatenTabBar
            .checkSupertextDropdownReadonly(true)
            .checkEntscheidTypDropdownReadonly(true);

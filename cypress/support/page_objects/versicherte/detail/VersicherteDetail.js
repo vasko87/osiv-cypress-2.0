@@ -8,6 +8,7 @@ import constants from "../../../helpers/Constants";
 import DetailWindowHeader from "../../../base/DetailWindowHeader";
 import EntscheidTab_Versicherte from "./tabBarTabs/EntscheidTab_Versicherte";
 import SendungenTab_Versicherte from "./tabBarTabs/SendungenTab_Versicherte";
+import pageBase from "../../../base/PageBase";
 
 class VersicherteDetail extends VersichertePageBase {
   constructor() {
@@ -27,6 +28,7 @@ class VersicherteDetail extends VersichertePageBase {
 
   waitForLoaded(){
     this.elements.detailForm().should("be.visible", 10000);
+    pageBase.waitForLoadingDisappears();
   }
 }
 

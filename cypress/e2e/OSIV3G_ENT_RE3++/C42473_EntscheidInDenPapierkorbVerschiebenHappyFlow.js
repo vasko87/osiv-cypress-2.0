@@ -1,4 +1,5 @@
 import pages from "../../support/base/OsivPageObject";
+import flows from "../../support/base/OsivFlowsObject";
 import helpers from "../../support/helpers/HelperObject";
 import {c42473 as testData} from "../../support/helpers/DataManager";
 
@@ -9,9 +10,7 @@ describe(`C42473: Entscheid 'In den Papierkorb verschieben' happy flow;
   EntschediID = ${testData.entId} (Sendung is completed, the document in the DMS is available.)`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
     pages.loginPage.openUrl();
-    pages.desktopMenu.navigateToEntscheidTab();
-    pages.entscheid.grid.searchAndOpenEntscheidID(testData.entId);
-    pages.entscheid.detail.waitForLoaded();
+    flows.entscheid.step_navigateEnt_searchEnt_openEnt();
   });
 
   it(`Step 1: Click "In den Papierkorb verschieben" button for entscheid from preconditions
@@ -52,7 +51,7 @@ describe(`C42473: Entscheid 'In den Papierkorb verschieben' happy flow;
     pages.notification.checkSuccessMessageVisible();
   });
 
-  afterEach(function () {
+  afterEach(function() {
     if (this.currentTest.state === "failed") {
       const screenshotFileName = `${test.title} (failed).png`;
       cy.screenshot(screenshotFileName);

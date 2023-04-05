@@ -1,4 +1,5 @@
 import pages from "../../support/base/OsivPageObject";
+import flows from "../../support/base/OsivFlowsObject";
 import {c47702 as testData} from "../../support/helpers/DataManager";
 import helpers from "../../support/helpers/HelperObject";
 
@@ -16,8 +17,7 @@ describe(`C47702: (ENT ${testData.data1.entId}) Closing ENT after Verfugung send
     Verify:
     - AL = ${data.arbeitsliste}`, () => {
       pages.loginPage.openUrl();
-      pages.desktopMenu.navigateToEntscheidTab();
-      pages.entscheid.grid.searchAndOpenEntscheidID(data.entId);
+      flows.entscheid.step_navigateEnt_searchEnt_openEnt(data.entId);
       pages.entscheid.detail.tabBar.navigateToSendungenTab();
       pages.entscheid.detail.sendungenTabBar.grid.dblClickRowValue(data.formular);
       pages.waitForLoadingDisappears();
@@ -25,9 +25,7 @@ describe(`C47702: (ENT ${testData.data1.entId}) Closing ENT after Verfugung send
       pages.entscheid.detail.sendungenTabBar.detail.ribbonMenu.clickAbschliessenBtn();
       pages.entscheid.detail.sendungenTabBar.detail
            .sendungenAbschliessenPopup.setVmdatumDate(helpers.date.getCurrentDate());
-      pages.modalWindow.clickOkBtn();
-      pages.warningPopup.clickOkBtn();
-      pages.notification.checkSuccessMessageVisible();
+      flows.modalPopup.clickOkBtn_warningOk_CheckSuccessMsg();
       pages.nav.groupedTaskbar.navigateToTabByTitle("Entscheid");
       pages.entscheid.detail.tabBar.navigateToDetailsTab();
       pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(data.arbeitsliste);

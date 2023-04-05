@@ -1,4 +1,5 @@
 import pages from "../../support/base/OsivPageObject";
+import flows from "../../support/base/OsivFlowsObject";
 import constants from "../../support/helpers/Constants";
 import helpers from "../../support/helpers/HelperObject";
 import {c50984 as testData} from "../../support/helpers/DataManager";
@@ -14,9 +15,7 @@ describe(`C50984: E2E (HE Entscheid);
 
   it("Step 1: Open VP; Open Entscheide tab, Click Neu button -> Form for new ENT creation opens", () => {
     pages.loginPage.openUrl();
-    pages.desktopMenu.navigateToVersicherteTab();
-    pages.versicherte.grid.searchAndOpenVersicherteName(testData.step1.versicherteName);
-    pages.versicherte.detail.waitForLoaded();
+    flows.versicherte.step_navigateVP_searchByVPName_openVP(testData.step1.versicherteName)
     pages.versicherte.detail.tabBar.navigateToEntscheideTab();
     pageBase.waitForLoadingDisappears();
     pages.entscheid.detail.ribbonMenu.clickNeuBtn();
@@ -30,9 +29,7 @@ describe(`C50984: E2E (HE Entscheid);
          .selectLeistungsgruppeDropdown("Hilflosenentschädigung")
          .selectLeistungscodeDropdown("Hilflosenentschädigung")
          .verifyValuesBulk(testData.step2.verifyEntNew);
-    pages.modalWindow.clickOkBtn();
-    pages.warningPopup.clickOkBtn();
-    pages.notification.checkSuccessMessageVisible();
+    flows.modalPopup.clickOkBtn_warningOk_CheckSuccessMsg();
     pages.entscheid.detail.sideMenu
          .checkBasisdatenTabColor(constants.COLOR.orange, true)
          .checkHilflosigkeitTabColor(constants.COLOR.orange, true)
@@ -64,8 +61,7 @@ describe(`C50984: E2E (HE Entscheid);
 
   it(`Step 5: Click OK button -> ENT arbeitliste = Bearbeiten, no info panel messages;
   tabs Freitexte and Diskutieren are presented on the left`, () => {
-    pages.modalWindow.clickOkBtn();
-    pages.notification.checkSuccessMessageVisible();
+    flows.modalPopup.clickOkBtn_CheckSuccessMsg();
     pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(testData.step5.arbeitslisteTxt);
     pages.checkMsgOnThePage(constants.MSG.OSCIENT_522, false)
          .checkMsgOnThePage(constants.MSG.OSCIENT_523, false);
@@ -215,7 +211,7 @@ describe(`C50984: E2E (HE Entscheid);
          .checkArbeitslisteTxt(testData.step17.arbeitslisteTxt);
   });
 
-  afterEach(function () {
+  afterEach(function() {
     if (this.currentTest.state === "failed") {
       const screenshotFileName = `${test.title} (failed).png`;
       cy.screenshot(screenshotFileName);

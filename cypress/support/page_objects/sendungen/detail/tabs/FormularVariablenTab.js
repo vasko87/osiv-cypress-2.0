@@ -9,6 +9,7 @@ class FormularVariablenTab {
 
   waitForLoaded() {
     pageBase.waitForLoadingDisappears();
+    pageBase.waitForLoadingDisappears();
   }
 }
 
