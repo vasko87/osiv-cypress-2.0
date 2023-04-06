@@ -13,7 +13,7 @@ describe(`C44746: HE-Grad is calculation rules;
   [testData.leicht.data1, testData.leicht.data2, testData.leicht.data3].forEach((data) => {
     it(`ENT ${data.entId}: ${data.testCondition}`, () => {
       pages.loginPage.openUrl();
-      flows.entscheid.step_searchEnt_navigateToHilflosigkeitTab(data.entId);
+      flows.entscheid.step_navigateEnt_searchEnt_openEnt_navigateToHilflosigkeitTab(data.entId);
       pages.entscheid
            .detail.hilflosigkeitTab
            .alltaglicheLebensverrichtungBlock
@@ -33,7 +33,7 @@ describe(`C44746: HE-Grad is calculation rules;
   [testData.leicht.data4, testData.leicht.data5, testData.leicht.data6].forEach((data) => {
     it(`ENT ${data.entId}: ${data.testCondition}`, () => {
       pages.loginPage.openUrl();
-      flows.entscheid.step_searchEnt_navigateToHilflosigkeitTab(data.entId);
+      flows.entscheid.step_navigateEnt_searchEnt_openEnt_navigateToHilflosigkeitTab(data.entId);
       pages.entscheid.detail.hilflosigkeitTab
            .lebenspraktischeBegleitungBlock
            .fillInFieldsBulk(data.lebenspraktischeBegleitungBlock);
@@ -52,7 +52,7 @@ describe(`C44746: HE-Grad is calculation rules;
   [testData.mittel.data1, testData.mittel.data2, testData.mittel.data3].forEach((data) => {
     it(`ENT ${data.entId}: ${data.testCondition}`, () => {
       pages.loginPage.openUrl();
-      flows.entscheid.step_searchEnt_navigateToHilflosigkeitTab(data.entId);
+      flows.entscheid.step_navigateEnt_searchEnt_openEnt_navigateToHilflosigkeitTab(data.entId);
       pages.entscheid.detail.hilflosigkeitTab
            .alltaglicheLebensverrichtungBlock
            .fillInFieldsBulk(data.alltaglicheLebensverrichtungBlock);
@@ -71,7 +71,7 @@ describe(`C44746: HE-Grad is calculation rules;
   [testData.mittel.data4, testData.mittel.data5].forEach((data) => {
     it(`ENT ${data.entId}: ${data.testCondition}`, () => {
       pages.loginPage.openUrl();
-      flows.entscheid.step_searchEnt_navigateToHilflosigkeitTab(data.entId);
+      flows.entscheid.step_navigateEnt_searchEnt_openEnt_navigateToHilflosigkeitTab(data.entId);
       pages.entscheid.detail.hilflosigkeitTab
            .alltaglicheLebensverrichtungBlock.fillInFieldsBulk(data.alltaglicheLebensverrichtungBlock);
       pages.entscheid.detail.hilflosigkeitTab
@@ -91,7 +91,7 @@ describe(`C44746: HE-Grad is calculation rules;
 
   it(`ENT ${testData.schwer.entId}: ${testData.schwer.testCondition}`, () => {
     pages.loginPage.openUrl();
-    flows.entscheid.step_searchEnt_navigateToHilflosigkeitTab(testData.schwer.entId);
+    flows.entscheid.step_navigateEnt_searchEnt_openEnt_navigateToHilflosigkeitTab(testData.schwer.entId);
     pages.entscheid.detail.hilflosigkeitTab
          .alltaglicheLebensverrichtungBlock
          .fillInFieldsBulk(testData.schwer.alltaglicheLebensverrichtungBlock);

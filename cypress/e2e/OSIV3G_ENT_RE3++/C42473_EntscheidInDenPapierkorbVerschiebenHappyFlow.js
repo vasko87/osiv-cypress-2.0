@@ -10,7 +10,7 @@ describe(`C42473: Entscheid 'In den Papierkorb verschieben' happy flow;
   EntschediID = ${testData.entId} (Sendung is completed, the document in the DMS is available.)`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
     pages.loginPage.openUrl();
-    flows.entscheid.step_navigateEnt_searchEnt_openEnt();
+    flows.entscheid.step_navigateEnt_searchEnt_openEnt(testData.entId);
   });
 
   it(`Step 1: Click "In den Papierkorb verschieben" button for entscheid from preconditions

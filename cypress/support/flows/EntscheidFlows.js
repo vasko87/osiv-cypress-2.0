@@ -7,7 +7,7 @@ class EntscheidFlows {
     pages.entscheid.grid.searchAndOpenEntscheidID(entId);
     pages.entscheid.detail.waitForLoaded();
   }
-  step_searchEnt_navigateToHilflosigkeitTab(entId) {
+  step_navigateEnt_searchEnt_openEnt_navigateToHilflosigkeitTab(entId) {
     pages.desktopMenu.navigateToEntscheidTab();
     pages.entscheid.grid.searchAndOpenEntscheidID(entId);
     pages.entscheid.detail.sideMenu.navigateToHilflosigkeitTab();

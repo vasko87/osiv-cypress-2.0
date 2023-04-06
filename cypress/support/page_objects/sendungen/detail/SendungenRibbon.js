@@ -1,6 +1,7 @@
 import RibbonBase from "./../../../base/RibbonBase";
 import DruckUndVersandPopup from "../popup/DruckUndVersandPopup";
 import SendungenAbschliessenPopup from "../popup/SendungenAbschliessenPopup";
+import constants from "../../../helpers/Constants";
 
 class EntscheidRibbon extends RibbonBase {
   constructor() {
@@ -32,6 +33,7 @@ class EntscheidRibbon extends RibbonBase {
   }
 
   clickAbschliessenBtn() {
+    cy.wait(constants.MIN_TIMEOUT);
     this.elements.abschliessenBtn().should("be.visible").click();
     return new SendungenAbschliessenPopup();
   }

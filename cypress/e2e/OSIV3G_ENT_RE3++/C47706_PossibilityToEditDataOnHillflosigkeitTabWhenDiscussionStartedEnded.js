@@ -12,6 +12,6 @@ describe(`C47706: Possibility to edit data on Hillflosigkeit tab when discussion
   it(`Steps: Open ENT '${testData.entId}', Open ENT
   Open Hillflosigkeit tab`, () => {
     pages.loginPage.openUrl();
-    EntscheidFlows.step_searchEnt_navigateToHilflosigkeitTab(testData.entId);
+    EntscheidFlows.step_navigateEnt_searchEnt_openEnt_navigateToHilflosigkeitTab(testData.entId);
   });
 })
