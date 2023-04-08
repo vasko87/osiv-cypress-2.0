@@ -8,17 +8,31 @@ class EntscheidRibbon extends RibbonBase {
     super.elements = {
       ...this.elements,
       inDenPapierkorbBtn : () => this.elements.ribbonBlock().find("[title='In den Papierkorb']"),
-      wiederherstellenBtn : () => this.elements.ribbonBlock().find("[title='Wiederherstellen']"),
+      wiederherstellenBtn: () => this.elements.ribbonBlock().find("[title='Wiederherstellen']"),
 
-      korrekturfunktionenBtn         : () => this.elements.ribbonBlock().contains("Korrekturfunktionen"),
-      bearbeitungEinleitenBtn        : () => this.elements.ribbonBlock().contains("Bearbeitung einleiten"),
-      begrundungSpeichernBtn         : () => this.elements.ribbonBlock().contains("Begründung speichern"),
-      freitextGenerierenBtn          : () => this.elements.ribbonBlock().contains("Freitext generieren"),
-      freitextSpeichernBtn           : () => this.elements.ribbonBlock().contains("Freitext speichern"),
-      entscheidSendungenGenerierenBtn: () => this.elements.ribbonBlock().contains("Entscheid-Sendungen generieren"),
-      entscheidSendungVerschickenBtn : () => this.elements.ribbonBlock().contains("Entscheid-Sendung verschicken"),
-      visumSpeichernBtn              : () => this.elements.ribbonBlock().contains("Visum speichern"),
-      kopierenBtn                    : () => this.elements.ribbonBlock().contains("Kopieren")
+      korrekturfunktionenBtn         : () => this.elements.ribbonBlock().find("[title='Korrekturfunktionen']"),
+      bearbeitungEinleitenBtn        : () => this.elements.ribbonBlock().find("[title='Bearbeitung einleiten']"),
+      begrundungSpeichernBtn         : () => this.elements.ribbonBlock().find("[title='Begründung speichern']"),
+      freitextGenerierenBtn          : () => this.elements.ribbonBlock().find("[title='Freitext generieren']"),
+      freitextSpeichernBtn           : () => this.elements.ribbonBlock().find("[title='Freitext speichern']"),
+      entscheidSendungenGenerierenBtn: () => this.elements.ribbonBlock().find("[title='Entscheid-Sendungen generieren']"),
+      entscheidSendungVerschickenBtn : () => this.elements.ribbonBlock().find("[title='Entscheid-Sendung verschicken']"),
+      visumSpeichernBtn              : () => this.elements.ribbonBlock().find("[title='Visum speichern']"),
+      kopierenBtn                    : () => this.elements.ribbonBlock().find("[title='Kopieren']"),
+
+      //Entscheid Hilflosigkeit spezifische Funktionen block
+      grenzgradAb30TBtn      : () => this.elements.ribbonBlock().find("[title='Grenzgrad ab 30T']"),
+      wartefristBearbeitenBtn: () => this.elements.ribbonBlock().find("[title='Wartefrist Bearbeiten']"),
+      hEGradBearbeitenBtn: () => this.elements.ribbonBlock().find("[title='HE-Grad bearbeiten']"),
+
+      //Allgemeine Funktionen block
+      vPOffnenBtn: () => this.elements.ribbonBlock().find("[title='vP öffnen']"),
+      bearbeiterMeldungBtn: () => this.elements.ribbonBlock().find("[title='Bearbeiter & Meldung']"),
+      dossierExternOffnenBtn: () => this.elements.ribbonBlock().find("[title='Dossier extern öffnen']"),
+      dossierDokExternOffnenBtn: () => this.elements.ribbonBlock().find("[title='Dossier & Dok. extern öffnen']"),
+
+      diskussionStartenBtn: () => this.elements.ribbonBlock().find("[title='Diskussion starten']"),
+      diskussionBeendenBtn: () => this.elements.ribbonBlock().find("[title='Diskussion beenden']")
     };
 
     this.korrekturfunktionenSubMenu = {
@@ -103,7 +117,87 @@ class EntscheidRibbon extends RibbonBase {
   }
 
   checkSupertextEntscheidtypandernMenuItemEnable(isEnabled) {
-    super.checkMenuItemEnable(this.korrekturfunktionenSubMenu.supertextEntscheidtypandern(), isEnabled);
+    super.checkMenuItemDisable(this.korrekturfunktionenSubMenu.supertextEntscheidtypandern(), isEnabled);
+    return this;
+  }
+
+  clickGrenzgradAb30TBtn() {
+    this.elements.grenzgradAb30TBtn().click();
+    return this;
+  }
+
+  checkGrenzgradAb30TBtnDisabled(isDisabled) {
+    super.checkMenuItemDisable(this.elements.grenzgradAb30TBtn(), isDisabled);
+    return this;
+  }
+
+  clickWartefristBearbeitenBtnBtn() {
+    this.elements.wartefristBearbeitenBtn().click();
+    return this;
+  }
+
+  checkWartefristBearbeitenBtnDisabled(isDisabled) {
+    super.checkMenuItemDisable(this.elements.wartefristBearbeitenBtn(), isDisabled);
+    return this;
+  }
+
+  clickHEGradBearbeitenBtn() {
+    this.elements.hEGradBearbeitenBtn().click();
+    return this;
+  }
+
+  checkHEGradBearbeitenBtnDisabled(isDisabled) {
+    super.checkMenuItemDisable(this.elements.hEGradBearbeitenBtn(), isDisabled);
+    return this;
+  }
+
+  clickVPOffnenBtn() {
+    this.elements.vPOffnenBtn().click();
+    return this;
+  }
+
+  checkVPOffnenBtnDisabled(isDisabled) {
+    super.checkMenuItemDisable(this.elements.vPOffnenBtn(), isDisabled);
+    return this;
+  }
+
+  clickBearbeiterMeldungBtn() {
+    this.elements.bearbeiterMeldungBtn().click();
+    return this;
+  }
+
+  checkBearbeiterMeldungBtnDisabled(isDisabled) {
+    super.checkMenuItemDisable(this.elements.bearbeiterMeldungBtn(), isDisabled);
+    return this;
+  }
+
+  clickDossierExternOffnenBtn() {
+    this.elements.dossierExternOffnenBtn().click();
+    return this;
+  }
+
+  checkDossierExternOffnenBtnDisabled(isDisabled) {
+    super.checkMenuItemDisable(this.elements.dossierExternOffnenBtn(), isDisabled);
+    return this;
+  }
+
+  clickDossierDokExternOffnenBtn() {
+    this.elements.dossierDokExternOffnenBtn().click();
+    return this;
+  }
+
+  checkDossierDokExternOffnenBtnDisabled(isDisabled) {
+    super.checkMenuItemDisable(this.elements.dossierDokExternOffnenBtn(), isDisabled);
+    return this;
+  }
+
+  clickDiskussionStartenBtn() {
+    this.elements.diskussionStartenBtn().click();
+    return this;
+  }
+
+  clickDiskussionBeendenBtn() {
+    this.elements.diskussionBeendenBtn().click();
     return this;
   }
 }

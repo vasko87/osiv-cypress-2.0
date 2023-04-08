@@ -75,7 +75,7 @@ describe(`C50984: E2E (HE Entscheid);
          .allgemeineAngabenBlock
          .selectArtderInvaliditatDropdown(testData.step6.artderInvaliditatDropdown)
          .selectAusgleichskasseDropdown(testData.step6.ausgleichskasseDropdown)
-         .selectAufenthaltDropdown(testData.step6.aufenthaltDropdown);
+         .selectVorwAufenthaltDropdown(testData.step6.aufenthaltDropdown);
     pages.entscheid.detail.hilflosigkeitTab
          .alltaglicheLebensverrichtungBlock
          .setAnAuskleidenDate(helpers.date.getCurrentDate())

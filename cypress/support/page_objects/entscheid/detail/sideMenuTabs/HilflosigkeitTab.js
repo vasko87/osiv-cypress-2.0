@@ -9,10 +9,18 @@ class HilflosigkeitTab {
       artderInvaliditatDropdown: () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidHilflosigkeitForm-verfahrenbez']`),
       ausgleichskasseDropdown  : () => cy.get(`${constants.CSS_ACTIVE_FORM}  [akid='EntscheidHilflosigkeitForm-akbez']`),
       ablaufWartefristDate     : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidHilflosigkeitForm-re_ablauf_wf'] input`),
-      aufenthaltDropdown       : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid="EntscheidHilflosigkeitForm-aufenthaltbez"]`),
+      vorwAufenthaltDropdown   : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid="EntscheidHilflosigkeitForm-aufenthaltbez"]`),
+      befristungDate           : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid="EntscheidHilflosigkeitForm-ende_dat"] input`),
+      revisionDate             : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid="EntscheidHilflosigkeitForm-revision_dat"] input`),
+      bemerkungAKTextarea      : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid="EntscheidHilflosigkeitForm-ak_bem"] textarea`),
 
       selectArtderInvaliditatDropdown(value) {
         pageBase.selectInDropdownContains(this.artderInvaliditatDropdown(), value);
+        return this;
+      },
+
+      checkArtderInvaliditatDropdownReadonly(isReadonly) {
+        pageBase.checkDropdownReadonly(this.artderInvaliditatDropdown(), isReadonly);
         return this;
       },
 
@@ -21,13 +29,38 @@ class HilflosigkeitTab {
         return this;
       },
 
-      selectAufenthaltDropdown(value) {
-        pageBase.selectInDropdownContains(this.aufenthaltDropdown(), value);
+      checkAusgleichskasseDropdownReadonly(isReadonly) {
+        pageBase.checkDropdownReadonly(this.ausgleichskasseDropdown(), isReadonly);
+        return this;
+      },
+
+      selectVorwAufenthaltDropdown(value) {
+        pageBase.selectInDropdownContains(this.vorwAufenthaltDropdown(), value);
+        return this;
+      },
+
+      checkVorwAufenthaltDropdownReadonly(isReadonly) {
+        pageBase.checkDropdownReadonly(this.vorwAufenthaltDropdown(), isReadonly);
         return this;
       },
 
       checkAblaufWartefristDate(value) {
         this.ablaufWartefristDate().should("have.value", value);
+        return this;
+      },
+
+      checkBefristungDateReadonly(isReadonly) {
+        pageBase.checkElementReadonly(this.befristungDate(), isReadonly);
+        return this;
+      },
+
+      checkRevisionDateReadonly(isReadonly) {
+        pageBase.checkElementReadonly(this.revisionDate(), isReadonly);
+        return this;
+      },
+
+      checkBemerkungAKTextareaReadonly(isReadonly) {
+        pageBase.checkElementReadonly(this.bemerkungAKTextarea(), isReadonly);
         return this;
       }
     };

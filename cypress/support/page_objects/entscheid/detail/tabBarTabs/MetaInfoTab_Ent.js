@@ -4,7 +4,7 @@ import pageBase from "../../../../base/PageBase";
 class MetaInfoTab_Ent {
   constructor() {
     this.elements = {
-      imPapierkorbCheckbox: () => cy.get("[akid='EntscheidMetaInfoForm-geloescht'] input"),
+      imPapierkorbCheckbox: () => cy.get("[akid='EntscheidMetaInfoForm-geloescht']"),
       loeschtgrundTxt     : () => cy.get("[akid='EntscheidMetaInfoForm-geloeschtgrundbez'] input"),
       geandertAmDate      : () => cy.get("[akid='EntscheidMetaInfoForm-mut_dat'] input"),
       umTime              : () => cy.get("[akid='EntscheidMetaInfoForm-mutzeit'] input")
@@ -17,7 +17,7 @@ class MetaInfoTab_Ent {
   }
 
   checkImPapierkorbCheckboxChecked(isChecked) {
-    pageBase.checkElementChecked(this.elements.imPapierkorbCheckbox(), isChecked);
+    pageBase.checkCheckboxChecked(this.elements.imPapierkorbCheckbox(), isChecked);
     return this;
   }
 

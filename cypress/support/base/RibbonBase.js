@@ -15,6 +15,11 @@ class RibbonBase {
     return this;
   }
 
+  checkSpeichernBtnDisabled(isDisabled) {
+    super.checkMenuItemDisable(this.elements.speichernBtn(), isDisabled);
+    return this;
+  }
+
   clickNeuBtn() {
     this.elements.neuBtn().should("be.visible").click();
     return this;
@@ -25,17 +30,17 @@ class RibbonBase {
     return this;
   }
 
-  checkMenuItemEnable(element, isEnable) {
-    if (isEnable) {
-      element.should("have.class", "sub_item");
+  checkMenuItemDisable(element, isDisabled) {
+    if (isDisabled === true) {
+      element.invoke("attr", "class").should("contain", "item_dis");
     } else {
-      element.should("have.class", "sub_item_dis");
+      element.invoke("attr", "class").should("not.contain", "item_dis");
     }
     return this;
   }
 
-  clickSubMenuMenuItem(element){
-    this.elements.subMenu().get(`[id*='${item}']`).click();
+  clickSubMenuMenuItem(name){
+    this.elements.subMenu().get(`[id*='${name}']`).click();
     return this;
   }
 

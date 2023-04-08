@@ -78,11 +78,28 @@ class PageBase {
    * @param element
    * @param isChecked
    */
-  checkElementChecked(element, isChecked) {
+  checkCheckboxChecked(element, isChecked) {
     if (isChecked === true) {
-      element.should("have.value", "true");
+      element.find("input").should("have.value", "true");
     } else {
-      element.should("not.have.value", "true");
+      element.find("input").should("not.have.value", "true");
+    }
+  }
+
+  setCheckboxChecked(element, shouldCheck) {
+    if (shouldCheck === true) {
+      element.then((el) => {
+        if (!(el.find("input").value === "true")){
+          element.click();
+        }
+      });
+    }
+    if (shouldCheck === false) {
+      element.then((el) => {
+        if (el.find("input").value === "true"){
+          element.click();
+        }
+      });
     }
   }
 
@@ -94,11 +111,19 @@ class PageBase {
    * @param element
    * @param isReadonly
    */
-  checkElementReadonly(element, isReadonly) {
+  checkDropdownReadonly(element, isReadonly) {
     if (isReadonly === true) {
       element.parent().should("have.class", "akReadOnlyDynselect");
     } else {
       element.parent().should("not.have.class", "akReadOnlyDynselect");
+    }
+  }
+
+  checkElementReadonly(element, isReadonly) {
+    if (isReadonly === true) {
+      element.should("have.attr", "readonly");
+    } else {
+      element.should("not.have.attr", "readonly");
     }
   }
 

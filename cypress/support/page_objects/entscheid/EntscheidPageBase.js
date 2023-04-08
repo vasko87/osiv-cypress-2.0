@@ -107,7 +107,7 @@ class EntscheidPageBase {
   }
 
   checkEntscheidDropdownReadonly(isReadonly) {
-    pageBase.checkElementReadonly(this.elements.entscheidDropdown(), isReadonly);
+    pageBase.checkDropdownReadonly(this.elements.entscheidDropdown(), isReadonly);
     return this;
   }
 
@@ -122,7 +122,7 @@ class EntscheidPageBase {
   }
 
   checkSupertextDropdownReadonly(isReadonly) {
-    pageBase.checkElementReadonly(this.elements.supertextDropdown(), isReadonly);
+    pageBase.checkDropdownReadonly(this.elements.supertextDropdown(), isReadonly);
     return this;
   }
 
@@ -136,7 +136,7 @@ class EntscheidPageBase {
     return this;
   }
   checkEntscheidTypDropdownReadonly(isReadonly) {
-    pageBase.checkElementReadonly(this.elements.entscheidtypDropdown(), isReadonly);
+    pageBase.checkDropdownReadonly(this.elements.entscheidtypDropdown(), isReadonly);
     return this;
   }
 

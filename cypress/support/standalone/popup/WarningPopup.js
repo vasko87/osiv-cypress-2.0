@@ -1,4 +1,3 @@
-import pageBase from "../../base/PageBase";
 import constants from "../../helpers/Constants";
 
 class WarningPopup {
@@ -13,7 +12,7 @@ class WarningPopup {
     if (isVisible === true) {
       this.elements.warningPopup().should("be.visible");
     } else {
-      cy.wait(5000)
+      cy.wait(5000);
       this.elements.warningPopup().should("not.be.visible");
     }
     return this;

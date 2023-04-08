@@ -7,6 +7,8 @@ import VisierenTab from "./sideMenuTabs/VisierenTab";
 import DurchfuhrungsstellenTab from "./sideMenuTabs/DurchfuhrungsstellenTab";
 import VersicherungenTab from "./sideMenuTabs/VersicherungenTab";
 import BasisdatenTab_Ent from "./tabBarTabs/BasisdatenTab_Ent";
+import DruckUndVersandPopup from "../../sendungen/popup/DruckUndVersandPopup";
+import DiskutierenTab from "./sideMenuTabs/DiskutierenTab";
 
 class EntscheidSideMenu {
   constructor() {
@@ -27,11 +29,6 @@ class EntscheidSideMenu {
     return new BasisdatenTab_Ent();
   }
 
-  navigateToHilflosigkeitTab() {
-    this.elements.hilflosigkeitTab().should("be.visible").click();
-    return new HilflosigkeitTab();
-  }
-
   navigateToDurchfuhrungsstellenTab() {
     this.elements.durchfuhrungsstellenTab().should("be.visible").click();
     return new DurchfuhrungsstellenTab();
@@ -40,6 +37,16 @@ class EntscheidSideMenu {
   navigateToVersicherungTab() {
     this.elements.versicherungTab().should("be.visible").click();
     return new VersicherungenTab();
+  }
+
+  navigateToFreitexteTab() {
+    this.elements.freitexteTab().should("be.visible").click();
+    return new FreitexteTab();
+  }
+
+  navigateToHilflosigkeitTab() {
+    this.elements.hilflosigkeitTab().should("be.visible").click();
+    return new HilflosigkeitTab();
   }
 
   navigateToEntscheidSendungenTab() {
@@ -52,6 +59,11 @@ class EntscheidSideMenu {
     return new VisierenTab();
   }
 
+  navigateToDiskutierenTab() {
+    this.elements.diskutierenTab().should("be.visible").click();
+    return new DiskutierenTab();
+  }
+
   checkEntscheidSendungenTabVisible(isVisible) {
     pageBase.checkElementVisible(this.elements.entscheidSendungenTab(), isVisible);
     return this;
@@ -62,7 +74,7 @@ class EntscheidSideMenu {
     return this;
   }
 
-  checkvisierenTabVisible(isVisible) {
+  checkVisierenTabVisible(isVisible) {
     pageBase.checkElementVisible(this.elements.visierenTab(), isVisible);
     return this;
   }
@@ -70,11 +82,6 @@ class EntscheidSideMenu {
   checkDiskutierenTabVisible(isVisible) {
     pageBase.checkElementVisible(this.elements.diskutierenTab(), isVisible);
     return this;
-  }
-
-  navigateToFreitexteTab() {
-    this.elements.freitexteTab().should("be.visible").click();
-    return new FreitexteTab();
   }
 
   checkBasisdatenTabColor(color, shouldHave) {
