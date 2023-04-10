@@ -88,7 +88,6 @@ describe(`C44744: (ENT ${testData.entId}) Add Hilflosigkeit data Happy case;
 
   afterEach(function() {
     if (this.currentTest.state === "failed") {
-      mocha.throwError("ERROR");
       const screenshotFileName = `${test.title} (failed).png`;
       cy.screenshot(screenshotFileName);
       Cypress.runner.stop();
