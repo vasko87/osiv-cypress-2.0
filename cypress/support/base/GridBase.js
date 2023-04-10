@@ -1,3 +1,5 @@
+import pageBase from "./PageBase";
+
 class GridBase {
   constructor(baseCSS) {
     this.elements = {
@@ -65,6 +67,7 @@ class GridBase {
    * @returns {GridBase}
    */
   waitGridViewLoaded() {
+    pageBase.waitForLoadingDisappears();
     this.elements.rowSelected().should("be.visible");
     return this;
   }

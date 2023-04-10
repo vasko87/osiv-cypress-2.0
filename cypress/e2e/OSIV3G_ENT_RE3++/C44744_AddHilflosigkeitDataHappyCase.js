@@ -2,6 +2,7 @@ import pages from "../../support/base/OsivPageObject";
 import flows from "../../support/base/OsivFlowsObject";
 import helpers from "../../support/helpers/HelperObject";
 import {c44744 as testData} from "../../support/helpers/DataManager";
+import addContext from "mochawesome/src/addContext";
 
 describe(`C44744: (ENT ${testData.entId}) Add Hilflosigkeit data Happy case; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/44744`, () => {
@@ -12,6 +13,7 @@ describe(`C44744: (ENT ${testData.entId}) Add Hilflosigkeit data Happy case;
 
   it("Step 1: Open ENT", () => {
     pages.loginPage.openUrl();
+    pages.warningPopup.clickOkBtn();
     flows.entscheid.step_navigateEnt_searchEnt_openEnt(testData.entId);
   });
 
@@ -86,9 +88,9 @@ describe(`C44744: (ENT ${testData.entId}) Add Hilflosigkeit data Happy case;
 
   afterEach(function() {
     if (this.currentTest.state === "failed") {
+      mocha.throwError("ERROR");
       const screenshotFileName = `${test.title} (failed).png`;
       cy.screenshot(screenshotFileName);
-      // addContext({test}, `assets/${Cypress.spec.name}/${screenshotFileName}`);
       Cypress.runner.stop();
     }
   });

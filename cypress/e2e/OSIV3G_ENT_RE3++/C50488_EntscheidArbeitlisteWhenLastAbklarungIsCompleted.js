@@ -20,16 +20,15 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
       pages.loginPage.openUrl();
       flows.gesuche.step_navigateGes_searchGes_openGes(data.gesuchID);
       pages.gesuche.detail.tabBar.navigateToEntscheideTab()
-           .checkGridRowCount(1)
+           .grid.checkGridRowCount(1)
            .dblClickRowNumber(1);
       pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(data.arbeitslisteEntInitial);
       pages.groupedTaskbar.clickContainsGesuchTab();
       pages.groupedTaskbar.closeContainsEntscheidTab();
 
       pages.gesuche.detail.tabBar.navigateToSendungenTab()
-           .waitGridViewLoaded()
+           .grid.waitGridViewLoaded()
            .dblClickRowNumber(1);
-      pages.waitForLoadingDisappears();
       pages.sendungen.detail.waitForLoaded();
       pages.sendungen.detail.ribbonMenu.clickAbschliessenBtn();
       flows.modalPopup.clickOkBtn_CheckSuccessMsg();
@@ -38,15 +37,15 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
 
       pages.groupedTaskbar.clickContainsGesuchTab();
       pages.gesuche.detail.tabBar.navigateToEntscheideTab()
-           .dblClickRowNumber(1);
+           .grid.dblClickRowNumber(1);
       pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(data.arbeitslisteEntInitial);
 
       pages.groupedTaskbar.clickContainsGesuchTab();
       pages.groupedTaskbar.closeContainsEntscheidTab();
 
       pages.gesuche.detail.tabBar.navigateToSendungenTab()
+           .grid.waitGridViewLoaded()
            .dblClickRowWithText(data.arbeitslisteSendungenReceived);
-      pages.waitForLoadingDisappears();
       pages.sendungen.detail.waitForLoaded();
       pages.sendungen.detail.ribbonMenu.clickAbschliessenBtn();
       flows.modalPopup.clickOkBtn_CheckSuccessMsg();
@@ -55,7 +54,7 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
 
       pages.groupedTaskbar.clickContainsGesuchTab();
       pages.gesuche.detail.tabBar.navigateToEntscheideTab()
-           .dblClickRowNumber(1);
+           .grid.dblClickRowNumber(1);
       pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(data.arbeitslisteEntChanged);
     });
   });
