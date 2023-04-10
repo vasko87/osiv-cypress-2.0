@@ -10,7 +10,7 @@ class EntscheidRibbon extends RibbonBase {
       inDenPapierkorbBtn : () => this.elements.ribbonBlock().find("[title='In den Papierkorb']"),
       wiederherstellenBtn: () => this.elements.ribbonBlock().find("[title='Wiederherstellen']"),
 
-      korrekturfunktionenBtn         : () => this.elements.ribbonBlock().find("[title='Korrekturfunktionen']"),
+      korrekturfunktionenBtn         : () => this.elements.ribbonBlock().contains("Korrekturfunktionen"),
       bearbeitungEinleitenBtn        : () => this.elements.ribbonBlock().find("[title='Bearbeitung einleiten']"),
       begrundungSpeichernBtn         : () => this.elements.ribbonBlock().find("[title='Begründung speichern']"),
       freitextGenerierenBtn          : () => this.elements.ribbonBlock().find("[title='Freitext generieren']"),
@@ -116,8 +116,8 @@ class EntscheidRibbon extends RibbonBase {
     return this;
   }
 
-  checkSupertextEntscheidtypandernMenuItemEnable(isEnabled) {
-    super.checkMenuItemDisable(this.korrekturfunktionenSubMenu.supertextEntscheidtypandern(), isEnabled);
+  checkSupertextEntscheidtypandernMenuItemDisable(isDisabled) {
+    super.checkMenuItemDisable(this.korrekturfunktionenSubMenu.supertextEntscheidtypandern(), isDisabled);
     return this;
   }
 
