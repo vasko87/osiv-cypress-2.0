@@ -1,4 +1,5 @@
 import pages from "../support/base/OsivPageObject";
+import flows from "../support/base/OsivFlowsObject";
 import {c001 as testData} from "../support/helpers/DataManager";
 
 describe(`#: Test to add a new adress with Frau solutation`, () => {
@@ -27,9 +28,7 @@ describe(`#: Test to add a new adress with Frau solutation`, () => {
 
   it(`Step: Click Generate btn => Ok confirmation; OK warning popup -> verify success message`, () => {
     pages.adressen.addDialog.elements.generierenBtn().click();
-    pages.modalWindow.clickOkBtn();
-    pages.warningPopup.clickOkBtn();
-    pages.notification.checkSuccessMessageVisible();
+    flows.modalPopup.clickOkBtn_warningOk_CheckSuccessMsg();
   });
 
   // Add test steps dependency of each other. If any step fail - test stops

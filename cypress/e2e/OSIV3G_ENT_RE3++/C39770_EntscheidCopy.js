@@ -1,4 +1,5 @@
 import pages from "../../support/base/OsivPageObject";
+import flows from "../../support/base/OsivFlowsObject";
 import {c39770 as testData} from "../../support/helpers/DataManager";
 import Utility from "../../support/Utility";
 
@@ -47,10 +48,7 @@ describe(`C39770: Entscheid Copy;
                .checkNotizenTextarea(elements.notizen.val())
                .clearNotizenTextarea()
                .setNotizenTextarea("Copied");
-          pages.modalWindow.clickOkBtn();
-          pages.warningPopup.clickOkBtn();
-          pages.notification.checkSuccessMessageVisible();
-          pages.waitForLoadingDisappears();
+          flows.modalPopup.clickOkBtn_warningOk_CheckSuccessMsg();
           pages.entscheid.detail.waitForLoaded()
                .basisdatenTabBar.checkArbeitslisteTxt(testData.arbeitslisteTxt)
                .checkBearbeiterDropdownReadonlyValue(Cypress.env("username"))

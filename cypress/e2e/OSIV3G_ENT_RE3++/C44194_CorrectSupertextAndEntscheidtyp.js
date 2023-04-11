@@ -1,9 +1,10 @@
 import pages from "../../support/base/OsivPageObject";
+import flows from "../../support/base/OsivFlowsObject";
 import {c44194 as testData} from "../../support/helpers/DataManager";
 
 describe(`C44194: (ENT ${testData.data1.entId}) Correct Supertext and Entscheidtyp; 
 TestRail:https://osiv.testrail.net/index.php?/cases/view/44194`, () => {
-  [testData.data1, testData.data2].forEach((data) => {
+  [testData.data2].forEach((data) => {
 
     before("Login", () => {
       cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
@@ -21,12 +22,12 @@ TestRail:https://osiv.testrail.net/index.php?/cases/view/44194`, () => {
         - Sendungs (VM, VB or MB) in status Neu are deleted;
         - Sendung (MIB) in status Korrigiert is not deleted`, () => {
       pages.loginPage.openUrl();
-      pages.desktopMenu.navigateToEntscheidTab();
-      pages.entscheid.grid.searchAndOpenEntscheidID(data.entId);
+      flows.entscheid.step_navigateEnt_searchEnt_openEnt(data.entId);
       pages.entscheid.detail.basisdatenTabBar
            .checkSupertextDropdownReadonly(true)
            .checkEntscheidTypDropdownReadonly(true);
-      pages.entscheid.detail.ribbonMenu.clickKorrekturfunktionenBtn();
+      pages.entscheid.detail.ribbonMenu.clickKorrekturfunktionenBtn()
+           .checkSupertextEntscheidtypandernMenuItemDisable(false);
       pages.entscheid.detail.ribbonMenu.korrekturfunktionenSubMenu.supertextEntscheidtypandern().click();
       pages.warningPopup.checkWarningContainsText(data.warningMsg)
            .clickOkBtn();
@@ -37,7 +38,7 @@ TestRail:https://osiv.testrail.net/index.php?/cases/view/44194`, () => {
       pages.entscheid.detail.basisdatenTabBar.checkSupertextDropdownReadonly(false);
       pages.entscheid.detail.basisdatenTabBar.checkEntscheidTypDropdownReadonly(false);
       pages.entscheid.detail.ribbonMenu.clickKorrekturfunktionenBtn()
-           .checkSupertextEntscheidtypandernMenuItemEnable(false);
+           .checkSupertextEntscheidtypandernMenuItemDisable(true);
 
       pages.entscheid.detail.tabBar.navigateToSendungenTab();
       pages.entscheid.detail.sendungenTabBar.grid

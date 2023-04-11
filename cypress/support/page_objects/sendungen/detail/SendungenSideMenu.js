@@ -1,5 +1,5 @@
 import constants from "../../../helpers/Constants";
-import FormularVariablenTab from "./tabs/FormularVariablenTab";
+import FormularVariablenTab from "./sideMenuTabs/FormularVariablenTab";
 class SendungenSideMenu {
   constructor() {
     this.elements = {

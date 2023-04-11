@@ -1,6 +1,8 @@
 import SendungenGrid from "../../sendungen/grid/SendungenGrid";
 import EntscheidGrid from "../../entscheid/grid/EntscheidGrid";
 import constants from "../../../helpers/Constants";
+import EntscheidTab_Gesuche from "./tabBarTabs/EntscheidTab_Gesuche";
+import SendungenTab_Gesuche from "./tabBarTabs/SendungenTab_Gesuche";
 
 class GesucheTabBar {
   constructor() {
@@ -18,12 +20,12 @@ class GesucheTabBar {
 
   navigateToEntscheideTab() {
     this.elements.entscheideTab().click();
-    return new EntscheidGrid(`${constants.CSS_ACTIVE_FORM} [akid='GesuchDetailWindow'] [akid='EntscheidGesuchQueryGrid']`);
+    return new EntscheidTab_Gesuche();
   }
 
   navigateToSendungenTab() {
     this.elements.sendungenTab().click();
-    return new SendungenGrid(`${constants.CSS_ACTIVE_FORM} [akid='GesuchDetailWindow'] [akid='eSendungQueryVPContextB']`);
+    return new SendungenTab_Gesuche();
   }
 }
 

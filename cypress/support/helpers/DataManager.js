@@ -21,6 +21,7 @@ import C50984 from "../../fixtures/tests/C50984_E2E_HEEntscheid.json";
 import C39770 from "../../fixtures/tests/C39770_EntscheidCopy.json";
 import C42473 from "../../fixtures/tests/C42473_EntscheidInDenPapierkorbVerschiebenHappyFlow.json";
 import C47706 from "../../fixtures/tests/C47706_PossibilityToEditDataOnHillflosigkeitTabWhenDiscussionStartedEnded.json";
+import C50507 from "../../fixtures/tests/C50507_PresenceAndVisibilityConditionsOfNeueGemischteMethodeButtonInRenteSidebar.json";
 
 const dataFiles = {
   c44194 : C44194_ds1,
@@ -33,7 +34,8 @@ const dataFiles = {
   c50984 : C50984,
   c39770 : C39770,
   c42473 : C42473,
-  c47706 : C47706
+  c47706 : C47706,
+  c50507 : C50507
 };
 
 const dataSet = Cypress.env("dataSet");

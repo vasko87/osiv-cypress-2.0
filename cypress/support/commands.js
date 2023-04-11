@@ -1,5 +1,6 @@
 import LoginPage from "./standalone/LoginPage";
 import Navigation from "./standalone/navigation/Navigation";
+import addContext from "mochawesome/addContext"
 
 // ***********************************************
 // This example commands.js shows you how to
@@ -25,6 +26,10 @@ Cypress.Commands.add("loginWithSession", (username, password) => {
       expect(text).not.empty;
     });
   });
+});
+
+Cypress.Commands.add("addContext", (context) => {
+  cy.once("test:after:run", (test) => addContext({ test }, context));
 });
 
 // Hide all fetch/XHR requests in Cy console, toggle via cypress.json

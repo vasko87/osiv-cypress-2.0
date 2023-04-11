@@ -1,13 +1,18 @@
-import Notifications from "../standalone/Notifications";
-import ModalWindowBase from "../standalone/popup/ModalWindowBase";
+import pages from "../base/OsivPageObject";
 
-const modalWindow = new ModalWindowBase();
-const notification = new Notifications();
-export default {
+class ModalPopupFlows {
   clickOkBtn_CheckSuccessMsg() {
-    modalWindow.clickOkBtn();
-    notification.checkSuccessMessageVisible();
+    pages.modalWindow.clickOkBtn();
+    pages.notification.checkSuccessMessageVisible();
+    pages.waitForLoadingDisappears();
   }
-};
 
+  clickOkBtn_warningOk_CheckSuccessMsg(){
+    pages.modalWindow.clickOkBtn();
+    pages.warningPopup.clickOkBtn();
+    pages.notification.checkSuccessMessageVisible();
+    pages.waitForLoadingDisappears();
+  }
+}
+export default ModalPopupFlows;
 

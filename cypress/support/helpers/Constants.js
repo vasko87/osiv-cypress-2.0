@@ -1,5 +1,6 @@
 const CSS_ACTIVE_FORM = "[class='dhxwin_active']";
 const CSS_OPACITY1 = "[style*='opacity: 1']";
+const MIN_TIMEOUT = 1000;
 const SHORT_TIMEOUT = 5000;
 const DEFAULT_TIMEOUT = 20000;
 const LONG_TIMEOUT = 50000;
@@ -16,5 +17,5 @@ const MSG = {
   OSCIENT_523: "Es müssen noch folgende Felder ausgefüllt werden: Entscheid, Supertext, Entscheidtyp, Gebrechen, Funktionsausfall. (OSCIENT:523)"
 };
 
-module.exports = {CSS_ACTIVE_FORM, CSS_OPACITY1, SHORT_TIMEOUT, LONG_TIMEOUT, DEFAULT_TIMEOUT, COLOR, MSG};
+module.exports = {CSS_ACTIVE_FORM, CSS_OPACITY1, MIN_TIMEOUT, SHORT_TIMEOUT, LONG_TIMEOUT, DEFAULT_TIMEOUT, COLOR, MSG};
 
