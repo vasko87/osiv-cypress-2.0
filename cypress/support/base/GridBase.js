@@ -4,7 +4,7 @@ class GridBase {
   constructor(baseCSS) {
     this.elements = {
       gridWrapper: () => cy.get(baseCSS),
-      rowSelected: () => this.elements.gridWrapper().find("tr[class=' ev_material rowselected']"),
+      rowSelected: () => this.elements.gridWrapper().find("tr[class*='_material rowselected']"),
       rowElementsList: () => this.elements.gridWrapper().find("[class='objbox'] tr[class*=material]")
     };
   }

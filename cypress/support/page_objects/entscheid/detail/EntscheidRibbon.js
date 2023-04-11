@@ -32,7 +32,14 @@ class EntscheidRibbon extends RibbonBase {
       dossierDokExternOffnenBtn: () => this.elements.ribbonBlock().find("[title='Dossier & Dok. extern öffnen']"),
 
       diskussionStartenBtn: () => this.elements.ribbonBlock().find("[title='Diskussion starten']"),
-      diskussionBeendenBtn: () => this.elements.ribbonBlock().find("[title='Diskussion beenden']")
+      diskussionBeendenBtn: () => this.elements.ribbonBlock().find("[title='Diskussion beenden']"),
+
+      //Rente -> IV-Grad Berechnung
+      iVGradBerechnungBlock: () => this.elements.ribbonBlock().contains("IV-Grad Berechnung"),
+      neuerEinkommensvergleichBtn: () => this.elements.ribbonBlock().find("[title='Neuer Einkommensvergleich']"),
+      neueGemischteMethodeBtn: () => this.elements.ribbonBlock().find("[title='Neue gemischte Methode']"),
+      neueFruhinvaliditatBtn: () => this.elements.ribbonBlock().find("[title='Neue Frühinvalidität ']"),
+      neueSpezifischeMethodeBtn: () => this.elements.ribbonBlock().find("[title='Neue spezifische Methode']"),
     };
 
     this.korrekturfunktionenSubMenu = {
@@ -198,6 +205,75 @@ class EntscheidRibbon extends RibbonBase {
 
   clickDiskussionBeendenBtn() {
     this.elements.diskussionBeendenBtn().click();
+    return this;
+  }
+
+  clickNeuerEinkommensvergleichBtn() {
+    this.elements.neuerEinkommensvergleichBtn().click();
+    return this;
+  }
+
+  checkNeuerEinkommensvergleichBtnDisabled(isDisabled) {
+    super.checkMenuItemDisable(this.elements.neuerEinkommensvergleichBtn(), isDisabled);
+    return this;
+  }
+
+  checkNeuerEinkommensvergleichBtnVisible(isVisible) {
+    pageBase.checkElementVisible(this.elements.neuerEinkommensvergleichBtn(), isVisible);
+    return this;
+  }
+
+  clickNeueGemischteMethodeBtn() {
+    this.elements.neueGemischteMethodeBtn().click();
+    return this;
+  }
+
+  checkNeueGemischteMethodeBtnDisabled(isDisabled) {
+    super.checkMenuItemDisable(this.elements.neueGemischteMethodeBtn(), isDisabled);
+    return this;
+  }
+
+  checkNeueGemischteMethodeBtnVisible(isVisible) {
+    pageBase.checkElementVisible(this.elements.neueGemischteMethodeBtn(), isVisible);
+    return this;
+  }
+
+  clickNeueFruhinvaliditatBtn() {
+    this.elements.neueFruhinvaliditatBtn().click();
+    return this;
+  }
+
+  checkNeueFruhinvaliditatBtnDisabled(isDisabled) {
+    super.checkMenuItemDisable(this.elements.neueFruhinvaliditatBtn(), isDisabled);
+    return this;
+  }
+
+  checkNeueFruhinvaliditatBtnVisible(isVisible) {
+    pageBase.checkElementVisible(this.elements.neueFruhinvaliditatBtn(), isVisible);
+    return this;
+  }
+
+  clickNeueSpezifischeMethodeBtn() {
+    this.elements.neueSpezifischeMethodeBtn().click();
+    return this;
+  }
+
+  checkNeueSpezifischeMethodeBtnDisabled(isDisabled) {
+    super.checkMenuItemDisable(this.elements.neueSpezifischeMethodeBtn(), isDisabled);
+    return this;
+  }
+
+  checkNeueSpezifischeMethodeBtnVisible(isVisible) {
+    pageBase.checkElementVisible(this.elements.neueSpezifischeMethodeBtn(), isVisible);
+    return this;
+  }
+
+  verifyIVGradBerechnungBlockVisible(isVisible) {
+    pageBase.checkElementVisible(this.elements.iVGradBerechnungBlock(), isVisible);
+    this.checkNeuerEinkommensvergleichBtnVisible(isVisible);
+    this.checkNeueGemischteMethodeBtnVisible(isVisible);
+    this.checkNeueFruhinvaliditatBtnVisible(isVisible);
+    this.checkNeueSpezifischeMethodeBtnVisible(isVisible);
     return this;
   }
 }

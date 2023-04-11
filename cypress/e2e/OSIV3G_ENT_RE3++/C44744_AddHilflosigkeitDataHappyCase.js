@@ -13,7 +13,6 @@ describe(`C44744: (ENT ${testData.entId}) Add Hilflosigkeit data Happy case;
 
   it("Step 1: Open ENT", () => {
     pages.loginPage.openUrl();
-    pages.warningPopup.clickOkBtn();
     flows.entscheid.step_navigateEnt_searchEnt_openEnt(testData.entId);
   });
 

@@ -1,0 +1,14 @@
+{
+  "data1": {
+    "entId": "21800",
+    "testCondition": "(Erstvisum_Dat and Visum_Dat are not empty)"
+  },
+  "data2": {
+    "entId": "11946",
+    "testCondition": "(Arbeitsliste=P)"
+  },
+  "data3": {
+    "entId": "23167",
+    "lohnInFr": "1"
+  }
+}

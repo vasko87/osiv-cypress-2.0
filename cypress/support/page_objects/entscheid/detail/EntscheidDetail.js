@@ -12,6 +12,7 @@ import MetaInfoTab_Ent from "./tabBarTabs/MetaInfoTab_Ent";
 import SendungenTab_Ent from "./tabBarTabs/SendungenTab_Ent";
 import BasisdatenTab_Ent from "./tabBarTabs/BasisdatenTab_Ent";
 import constants from "./../../../helpers/Constants";
+import RenteTab from "./sideMenuTabs/RenteTab";
 
 class EntscheidDetail {
   constructor() {
@@ -24,6 +25,7 @@ class EntscheidDetail {
     this.versicherungenTab = new VersicherungenTab();
     this.freitexteTab = new FreitexteTab();
     this.visierenTab = new VisierenTab();
+    this.renteTab = new RenteTab();
     this.basisdatenTabBar = new BasisdatenTab_Ent();
     this.sendungenTabBar = new SendungenTab_Ent();
     this.metaInfoTabBar = new MetaInfoTab_Ent();
