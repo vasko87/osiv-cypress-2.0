@@ -1,5 +1,5 @@
-import SendungenCommonElements from "../SendungenPageBase";
-import ModalWindowBase from "../../../standalone/popup/ModalWindowBase";
+import SendungenCommonElements from "../../SendungenPageBase";
+import ModalWindowBase from "../../../../standalone/popup/ModalWindowBase";
 
 class SendungenAbschliessenPopup extends SendungenCommonElements {
   constructor() {

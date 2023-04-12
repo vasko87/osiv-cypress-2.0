@@ -1,6 +1,5 @@
-import ModalWindowBase from "../../../standalone/popup/ModalWindowBase";
-import EntscheidPageBase from "../EntscheidPageBase";
-import pageBase from "../../../base/PageBase";
+import ModalWindowBase from "../../../../standalone/popup/ModalWindowBase";
+import pageBase from "../../../../base/PageBase";
 
 class EntscheidInDenPapierkorbVerschiebenPopup extends ModalWindowBase {
 

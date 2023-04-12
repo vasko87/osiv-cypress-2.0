@@ -1,5 +1,5 @@
-import ModalWindowBase from "../../../standalone/popup/ModalWindowBase";
-import pageBase from "../../../base/PageBase";
+import ModalWindowBase from "../../../../standalone/popup/ModalWindowBase";
+import pageBase from "../../../../base/PageBase";
 
 class BearbeitungEinleitenPopup extends ModalWindowBase {
   constructor() {

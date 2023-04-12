@@ -1,7 +1,6 @@
-import ModalWindowBase from "../../../standalone/popup/ModalWindowBase";
-import constants from "../../../helpers/Constants";
-import pageBase from "../../../base/PageBase";
-import VirtualViewer from "../../../standalone/VirtualViewer";
+import ModalWindowBase from "../../../../standalone/popup/ModalWindowBase";
+import pageBase from "../../../../base/PageBase";
+import VirtualViewer from "../../../../standalone/VirtualViewer";
 
 class DruckUndVersandPopup extends ModalWindowBase {
   constructor() {

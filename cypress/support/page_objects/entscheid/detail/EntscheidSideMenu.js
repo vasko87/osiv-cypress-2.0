@@ -7,7 +7,7 @@ import DurchfuhrungsstellenTab from "./sideMenuTabs/DurchfuhrungsstellenTab";
 import VersicherungenTab from "./sideMenuTabs/VersicherungenTab";
 import BasisdatenTab_Ent from "./tabBarTabs/BasisdatenTab_Ent";
 import DiskutierenTab from "./sideMenuTabs/DiskutierenTab";
-import RenteTab from "./sideMenuTabs/RenteTab";
+import RenteTab from "./sideMenuTabs/rente/RenteTab";
 
 class EntscheidSideMenu {
   constructor() {

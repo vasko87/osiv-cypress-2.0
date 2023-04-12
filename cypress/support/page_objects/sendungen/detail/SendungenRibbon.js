@@ -1,6 +1,6 @@
 import RibbonBase from "./../../../base/RibbonBase";
-import DruckUndVersandPopup from "../popup/DruckUndVersandPopup";
-import SendungenAbschliessenPopup from "../popup/SendungenAbschliessenPopup";
+import DruckUndVersandPopup from "./popups/DruckUndVersandPopup";
+import SendungenAbschliessenPopup from "./popups/SendungenAbschliessenPopup";
 import constants from "../../../helpers/Constants";
 
 class EntscheidRibbon extends RibbonBase {

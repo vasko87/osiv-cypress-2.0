@@ -1,7 +1,7 @@
 import SendungenGrid from "./grid/SendungenGrid";
 import SendungenDetail from "./detail/SendungenDetail";
 import constants from "../../helpers/Constants"
-import DruckUndVersandPopup from "./popup/DruckUndVersandPopup";
+import DruckUndVersandPopup from "./detail/popups/DruckUndVersandPopup";
 
 class SendungenPageObject {
   constructor() {

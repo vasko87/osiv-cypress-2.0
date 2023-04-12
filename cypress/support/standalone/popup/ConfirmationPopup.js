@@ -26,9 +26,9 @@ class ConfirmPopup {
     return this;
   }
 
-  ckeckInformationContainsText(value) {
+  ckeckConfirmationContainsText(value) {
     this.waitForLoaded();
-    this.elements.informationPopup().find("[class='swal-content']").should("contain.text", value);
+    this.elements.confirmPopup().find("[class='swal-content']").should("contain.text", value);
     return this;
   }
 }

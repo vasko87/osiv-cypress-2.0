@@ -1,0 +1,18 @@
+{
+  "entId": "23168",
+  "anteilGekvTxt_toSet": "0",
+  "anteilGekvTxt_toCheck": "100",
+  "lohnartDropdown": "Stundenlohn",
+  "jahreslohnInFr": "20",
+  "indexierungInFrProJahrTxt": "20",
+  "reallohnerhohungInFrProJahrTxt": "20",
+  "sLGKInFrProJahrTxt": "20",
+  "abzugInFrProJahrTxt": "20",
+  "frInvalideneinkommenTxt": "20",
+  "invGrad": "99.61",
+  "renteTxt": "100 %",
+  "invGrad2": "50",
+  "renteTxt2": "50 %",
+  "anteilInPersent": "50",
+  "invaliditat": "100"
+}

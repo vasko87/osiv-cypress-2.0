@@ -1,4 +1,4 @@
-import AdressenAddDialog from "../popup/AdressenAddDialog";
+import AdressenAddDialog from "../detail/popups/AdressenAddDialog";
 import GridBase from "../../../base/GridBase";
 import constants from "../../../helpers/Constants"
 class AdressenGrid extends GridBase{

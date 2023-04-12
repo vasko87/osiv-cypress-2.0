@@ -6,7 +6,8 @@ class ModalWindowBase {
   constructor() {
     this.elements = {
       modalWindow : () => cy.get(ModalWindowBase.css, {timeout:constants.DEFAULT_TIMEOUT}),
-      okBtn: () => this.elements.modalWindow().find('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]')
+      okBtn: () => this.elements.modalWindow().find('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]'),
+      toolbar: () => cy.get(ModalWindowBase.css).find("[class='dhxtoolbar_float_left']")
     };
   }
 
@@ -18,6 +19,11 @@ class ModalWindowBase {
   clickOkBtn() {
     this.waitForLoaded();
     this.elements.okBtn().should("be.visible").click();
+    return this;
+  }
+
+  focusToolbar() {
+    this.elements.toolbar().should("be.visible").click();
     return this;
   }
 }
