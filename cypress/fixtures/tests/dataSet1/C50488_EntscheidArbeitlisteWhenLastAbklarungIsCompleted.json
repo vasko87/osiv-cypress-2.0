@@ -19,7 +19,6 @@
   },
   "scenario3": {
     "vpNr": "0395.5119.85",
-    "abklarungDropdown": "Roche Pharma",
     "entID": "23194",
     "arbeitslisteSendungenReceived": "Eingegangen",
     "arbeitslisteSendungenCompleted": "Abgeschlossen",

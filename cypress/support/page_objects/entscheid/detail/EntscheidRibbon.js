@@ -1,7 +1,7 @@
 import RibbonBase from "./../../../base/RibbonBase";
 import BearbeitungEinleitenPopup from "./popups/BearbeitungEinleitenPopup";
 import pageBase from "../../../base/PageBase";
-import GemischteCreatePopup from "./sideMenuTabs/rente/GemischteCreatePopup";
+import GemischtePopup from "./sideMenuTabs/rente/popups/GemischtePopup";
 import ModalWindowBase from "../../../standalone/popup/ModalWindowBase";
 
 class EntscheidRibbon extends RibbonBase {
@@ -227,7 +227,7 @@ class EntscheidRibbon extends RibbonBase {
 
   clickNeueGemischteMethodeBtn() {
     this.elements.neueGemischteMethodeBtn().click();
-    return new GemischteCreatePopup();
+    return new GemischtePopup();
   }
 
   checkNeueGemischteMethodeBtnDisabled(isDisabled) {

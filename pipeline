@@ -24,15 +24,9 @@ pipeline {
                setJobName();
             }
         }
-        stage('ENT Testing'){
+        stage('Testing'){
             steps{
                 bat "npx cypress run " + TEST_ENV
-            }
-        }
-
-        stage('RENTE'){
-            steps{
-                bat "npx cypress run " + TEST_ENV_RENTE
             }
         }
               //always {
@@ -82,7 +76,6 @@ def composeArgs() {
         UNCAUGHT_EXCEPTION_FAIL = ",uncaughtExceptionFailure=true"
     }
     TEST_ENV = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec " + SPEC + " --browser chrome --record --key " + RECORD_KEY
-    TEST_ENV_RENTE = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT_RE3++/rente/**" + " --browser chrome --record --key " + RECORD_KEY
 }
 
 def setJobName(){

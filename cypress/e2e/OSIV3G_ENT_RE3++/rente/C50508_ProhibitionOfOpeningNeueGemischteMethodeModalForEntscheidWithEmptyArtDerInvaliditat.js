@@ -1,6 +1,10 @@
 import pages from "../../../support/base/OsivPageObject";
 import flows from "../../../support/base/OsivFlowsObject";
-import {c50508 as testData} from "../../../support/helpers/DataManager";
+
+const testData = {
+  entId: "23000",
+  errMsg: "Definieren Sie zuerst die Art der Invalidität."
+};
 
 describe(`C50508: Prohibition of opening "Neue gemischte Methode" modal for Entscheid with empty "Art der Invalidität" 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/50508`, () => {

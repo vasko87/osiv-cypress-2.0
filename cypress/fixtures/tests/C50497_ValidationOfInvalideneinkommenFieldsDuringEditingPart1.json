@@ -1,0 +1,14 @@
+{
+  "entId": "23153",
+  "methode": "Fruehinvaliditaet",
+  "stundenProTag": ["0", "24", "50"],
+  "stundenProTagExpected": "8",
+  "tageDieWoche": ["0", "8", "50"],
+  "tageDieWocheExpected": "5",
+  "lohnart": "Stundenlohn",
+  "anzahlMonatsLohne": "0",
+  "anzahlMonatsLohneExpected": "12",
+  "inFrProJahr": "1",
+  "jahrDesIEk": "0000",
+  "errMsg": "Das Jahr des Invalideneinkommens muss definiert sein."
+}

@@ -7,7 +7,8 @@ import dateHelper from "../../support/helpers/DateHelper";
 import pageBase from "../../support/base/PageBase";
 
 describe(`C50984: E2E (HE Entscheid);
-  TestRail: https://osiv.testrail.net/index.php?/cases/view/50984`, () => {
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/50984
+  DEFECT (step 9): https://jiraosiv3g.atlassian.net/browse/OSIV-22145`, () => {
 
   before("Login", () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
@@ -36,7 +37,8 @@ describe(`C50984: E2E (HE Entscheid);
          .checkDurchfuhrungsstellenTabColor(constants.COLOR.orange, false);
     pages.entscheid.detail.tabBar.checkDetailsTabColor(constants.COLOR.orange, true);
     pages.checkMsgOnThePage(constants.MSG.OSCIENT_522, true)
-         .checkMsgOnThePage(constants.MSG.OSCIENT_523, true);
+         .checkMsgOnThePage(testData.step3.msg_523_code, true)
+         .checkMsgOnThePage(testData.step3.msg_523_text, true);
     pages.entscheid.detail.basisdatenTabBar.verifyValuesBulk(testData.step2.verifyEntDetail);
   });
 
@@ -50,7 +52,8 @@ describe(`C50984: E2E (HE Entscheid);
          .checkEntscheidSendungenTabVisible(true)
          .checkBasisdatenTabColor(constants.COLOR.orange, false);
     pages.checkMsgOnThePage(constants.MSG.OSCIENT_522, true)
-         .checkMsgOnThePage(constants.MSG.OSCIENT_523, false);
+         .checkMsgOnThePage(testData.step3.msg_523_code, false)
+         .checkMsgOnThePage(testData.step3.msg_523_text, false);
   });
 
   it(`Step 4: Click Bearbeitung Einleiten button -> berabeitung einleiten popup dialog is presented`, () => {
@@ -118,6 +121,7 @@ describe(`C50984: E2E (HE Entscheid);
   it(`Step 9: open verfugung/Beiblatt AK; click freitexte generiren; confirm warning (OSCIENT:154) ->
   text is generated; var marked in yellow aut generated`, () => {
     pages.entscheid.detail.freitexteTab.navigation.navigateToVerfugungBeiblattAKTab();
+    pageBase.waitForLoadingDisappears();
     pages.entscheid.detail.ribbonMenu.clickFreitextGenerierenBtn();
     pages.warningPopup.checkWarningContainsText(testData.step9.warningMsg)
          .clickOkBtn();
@@ -211,13 +215,13 @@ describe(`C50984: E2E (HE Entscheid);
          .checkArbeitslisteTxt(testData.step17.arbeitslisteTxt);
   });
 
-  afterEach(function() {
-    if (this.currentTest.state === "failed") {
-      const screenshotFileName = `${test.title} (failed).png`;
-      cy.screenshot(screenshotFileName);
-      Cypress.log(this.currentTest.err);
-      // addContext({test}, `assets/${Cypress.spec.name}/${screenshotFileName}`);
-      Cypress.runner.stop();
-    }
-  });
+  // afterEach(function() {
+  //   if (this.currentTest.state === "failed") {
+  //     const screenshotFileName = `${test.title} (failed).png`;
+  //     cy.screenshot(screenshotFileName);
+  //     Cypress.log(this.currentTest.err);
+  //     // addContext({test}, `assets/${Cypress.spec.name}/${screenshotFileName}`);
+  //     Cypress.runner.stop();
+  //   }
+  // });
 });

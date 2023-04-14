@@ -13,8 +13,7 @@ const COLOR = {
 };
 
 const MSG = {
-  OSCIENT_522: "Bitte die Bearbeitung einleiten. (OSCIENT:522)",
-  OSCIENT_523: "Es müssen noch folgende Felder ausgefüllt werden: Entscheid, Supertext, Entscheidtyp, Gebrechen, Funktionsausfall. (OSCIENT:523)"
+  OSCIENT_522: "Bitte die Bearbeitung einleiten. (OSCIENT:522)"
 };
 
 module.exports = {CSS_ACTIVE_FORM, CSS_OPACITY1, MIN_TIMEOUT, SHORT_TIMEOUT, LONG_TIMEOUT, DEFAULT_TIMEOUT, COLOR, MSG};
