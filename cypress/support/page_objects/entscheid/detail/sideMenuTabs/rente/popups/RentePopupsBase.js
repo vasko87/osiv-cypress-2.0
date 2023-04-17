@@ -246,6 +246,7 @@ class RentePopupsBase extends ModalWindowBase {
     this.invalidenGradRenteBlock = {
       invGradTxt: () => cy.get(ModalWindowBase.css).find("[akid$='-inv_grad'] input"),
       renteTxt  : () => cy.get(ModalWindowBase.css).find("[akid$='-rente'] input"),
+      renteAbDate  : () => cy.get(ModalWindowBase.css).find("[akid$='-rente_ab_dat'] input"),
 
       setInvGradTxt(value) {
         this.invGradTxt().clear().type(value);
@@ -260,6 +261,12 @@ class RentePopupsBase extends ModalWindowBase {
 
       checkRenteTxt(value) {
         this.renteTxt().should("have.visible", value);
+        return this;
+      },
+
+      setRenteAbDate(value) {
+        this.renteAbDate().click().clear().type(value);
+        modalWindow.focusToolbar();
         return this;
       }
     };
