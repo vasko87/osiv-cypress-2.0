@@ -1,6 +1,6 @@
-import {c47707 as testData} from "../support/helpers/DataManager";
-import pages from "../support/base/OsivPageObject";
-import flows from "../support/base/OsivFlowsObject";
+import {c47707 as testData} from "../../../support/helpers/DataManager";
+import pages from "../../../support/base/OsivPageObject";
+import flows from "../../../support/base/OsivFlowsObject";
 
 describe(`C47707: (ENT: ${testData.data1.entId}) Entscheid Freitext - Show (no show) Dynamic Baustein; 
   TestRail: https://osiv.testrail.net/index.php?/cases/view/47707`, () => {

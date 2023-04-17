@@ -1,10 +1,10 @@
-import pages from "../../support/base/OsivPageObject";
-import flows from "../../support/base/OsivFlowsObject";
-import constants from "../../support/helpers/Constants";
-import helpers from "../../support/helpers/HelperObject";
-import {c50984 as testData} from "../../support/helpers/DataManager";
-import dateHelper from "../../support/helpers/DateHelper";
-import pageBase from "../../support/base/PageBase";
+import pages from "../../../support/base/OsivPageObject";
+import flows from "../../../support/base/OsivFlowsObject";
+import constants from "../../../support/helpers/Constants";
+import helpers from "../../../support/helpers/HelperObject";
+import {c50984 as testData} from "../../../support/helpers/DataManager";
+import dateHelper from "../../../support/helpers/DateHelper";
+import pageBase from "../../../support/base/PageBase";
 
 describe(`C50984: E2E (HE Entscheid);
   TestRail: https://osiv.testrail.net/index.php?/cases/view/50984
@@ -67,7 +67,8 @@ describe(`C50984: E2E (HE Entscheid);
     flows.modalPopup.clickOkBtn_CheckSuccessMsg();
     pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(testData.step5.arbeitslisteTxt);
     pages.checkMsgOnThePage(constants.MSG.OSCIENT_522, false)
-         .checkMsgOnThePage(constants.MSG.OSCIENT_523, false);
+         .checkMsgOnThePage(testData.step3.msg_523_code, false)
+         .checkMsgOnThePage(testData.step3.msg_523_text, false);
     pages.entscheid.detail.sideMenu
          .checkFreitexteTabVisible(true)
          .checkDiskutierenTabVisible(true);

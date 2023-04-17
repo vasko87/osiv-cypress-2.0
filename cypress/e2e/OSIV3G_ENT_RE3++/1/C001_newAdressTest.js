@@ -1,6 +1,6 @@
-import pages from "../support/base/OsivPageObject";
-import flows from "../support/base/OsivFlowsObject";
-import {c001 as testData} from "../support/helpers/DataManager";
+import pages from "../../../support/base/OsivPageObject";
+import flows from "../../../support/base/OsivFlowsObject";
+import {c001 as testData} from "../../../support/helpers/DataManager";
 
 describe(`#: Test to add a new adress with Frau solutation`, () => {
   before("Login", () => {

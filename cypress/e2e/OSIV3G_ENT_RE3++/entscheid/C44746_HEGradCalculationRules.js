@@ -1,6 +1,6 @@
-import pages from "../../support/base/OsivPageObject";
-import flows from "../../support/base/OsivFlowsObject";
-import {c44746 as testData} from "../../support/helpers/DataManager";
+import pages from "../../../support/base/OsivPageObject";
+import flows from "../../../support/base/OsivFlowsObject";
+import {c44746 as testData} from "../../../support/helpers/DataManager";
 
 describe(`C44746: HE-Grad is calculation rules; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/44746`, () => {

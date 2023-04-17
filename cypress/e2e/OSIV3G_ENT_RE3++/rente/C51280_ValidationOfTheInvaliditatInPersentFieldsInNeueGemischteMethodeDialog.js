@@ -24,6 +24,7 @@ describe(`C51280: Validation of the "Invalidität in %" fields in "Neue gemischt
     flows.entscheid.step_navigateEnt_searchEnt_openEnt(testData.entId);
     pages.entscheid.detail.sideMenu.navigateToRenteTab().waitForLoaded();
     pages.entscheid.detail.renteTab.grid.dblClickRowValue(testData.methode);
+    pages.waitForLoadingDisappears();
   });
 
   it(`Step 4: Set to the "Invalidität in %" field from the second row the value greater than 100 and try to save ->

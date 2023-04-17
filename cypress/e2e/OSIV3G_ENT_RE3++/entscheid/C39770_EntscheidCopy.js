@@ -1,7 +1,7 @@
-import pages from "../../support/base/OsivPageObject";
-import flows from "../../support/base/OsivFlowsObject";
-import {c39770 as testData} from "../../support/helpers/DataManager";
-import Utility from "../../support/Utility";
+import pages from "../../../support/base/OsivPageObject";
+import flows from "../../../support/base/OsivFlowsObject";
+import {c39770 as testData} from "../../../support/helpers/DataManager";
+import Utility from "../../../support/Utility";
 
 describe(`C39770: Entscheid Copy; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/39770`, () => {

@@ -1,6 +1,6 @@
-import pages from "../../support/base/OsivPageObject";
-import flows from "../../support/base/OsivFlowsObject";
-import {c47706 as testData} from "../../support/helpers/DataManager";
+import pages from "../../../support/base/OsivPageObject";
+import flows from "../../../support/base/OsivFlowsObject";
+import {c47706 as testData} from "../../../support/helpers/DataManager";
 
 describe(`C47706: Possibility to edit data on Hillflosigkeit tab when discussion started/ended; 
   TestRail: https://osiv.testrail.net/index.php?/cases/view/47706`, () => {

@@ -1,7 +1,7 @@
-import pages from "../../support/base/OsivPageObject";
-import flows from "../../support/base/OsivFlowsObject";
-import helpers from "../../support/helpers/HelperObject";
-import {c44744 as testData} from "../../support/helpers/DataManager";
+import pages from "../../../support/base/OsivPageObject";
+import flows from "../../../support/base/OsivFlowsObject";
+import helpers from "../../../support/helpers/HelperObject";
+import {c44744 as testData} from "../../../support/helpers/DataManager";
 import addContext from "mochawesome/src/addContext";
 
 describe(`C44744: (ENT ${testData.entId}) Add Hilflosigkeit data Happy case; 
