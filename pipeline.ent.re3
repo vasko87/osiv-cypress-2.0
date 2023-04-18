@@ -25,8 +25,8 @@ pipeline {
         }
 
         stage('Testing e2e') {
-            node('ENT') {
-                steps {
+
+                steps('ENT') {
                    bat "npx cypress run " + TEST_ENV_ENT
                    script {
                        publishHTML([
@@ -39,9 +39,9 @@ pipeline {
                        reportTitles: 'Mocha Report'])
                    }
                 }
-            }
-            node('RENTE') {
-                steps {
+
+
+                steps('RENTE') {
                    bat "npx cypress run " + TEST_ENV_RENTE
                    script {
                        publishHTML([
@@ -54,7 +54,7 @@ pipeline {
                        reportTitles: 'Mocha Report'])
                    }
                 }
-            }
+            
         }
     }
 }
