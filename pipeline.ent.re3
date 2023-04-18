@@ -2,8 +2,7 @@ RECORD_KEY = "489ee484-b2a2-4452-b403-0677eb092c33"
 USERNAME_ENV = ""
 PASSWORD_ENV = ""
 pipeline {
-def build_ok = true
-
+build_ok = true
     agent any
 
      parameters{
@@ -29,7 +28,7 @@ def build_ok = true
             stages {
                 stage('ENT') {
                     steps{
-                       catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                       catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE', build_ok: false) {
                           bat "npx cypress run " + TEST_ENV_ENT
                        }
                        script {
@@ -47,11 +46,8 @@ def build_ok = true
                 }
                 stage('RENTE') {
                     steps {
-                        try{
+                        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                             bat "npx cypress run " + TEST_ENV_RENTE
-                        } catch(e) {
-                            build_ok = false
-                            echo e.toString()
                         }
                         script {
                             publishHTML([
