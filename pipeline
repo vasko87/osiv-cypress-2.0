@@ -25,12 +25,12 @@ pipeline {
             }
         }
         stage('Testing e2e'){
-            stage('ENT') {
+            stages('ENT') {
                 steps {
                     bat "npx cypress run " + TEST_ENV_ENT
                 }
             }
-            stage('RENTE') {
+            stages('RENTE') {
                  steps {
                     bat "npx cypress run " + TEST_ENV_RENTE
                  }
