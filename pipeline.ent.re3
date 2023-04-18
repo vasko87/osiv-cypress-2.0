@@ -28,7 +28,7 @@ pipeline {
             stages {
                 stage('ENT') {
                     steps{
-                       catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE', build_ok: false) {
+                       catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                           bat "npx cypress run " + TEST_ENV_ENT
                        }
                        script {
@@ -40,6 +40,9 @@ pipeline {
                            reportFiles: '*/index.html',
                            reportName: 'HTML Report ENT',
                            reportTitles: 'Mocha Report'])
+                       }
+                       if (stageResult == 'FAILURE') {
+                        build_ok = false;
                        }
                     }
 
@@ -58,6 +61,9 @@ pipeline {
                             reportFiles: '*/index.html',
                             reportName: 'HTML Report RENTE',
                             reportTitles: 'Mocha Report'])
+                        }
+                        if (stageResult == 'FAILURE') {
+                            build_ok = false;
                         }
                         buildRes();
                     }
