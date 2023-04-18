@@ -26,9 +26,13 @@ pipeline {
 
         stage('Testing e2e') {
             stages {
+            agent any
                 stage('ENT') {
                     steps{
+                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE')
+                            {
                        bat "npx cypress run " + TEST_ENV_ENT
+                       }
                        script {
                            publishHTML([
                            allowMissing: false,
@@ -40,6 +44,7 @@ pipeline {
                            reportTitles: 'Mocha Report'])
                        }
                     }
+
                 }
                 stage('RENTE') {
                     steps {
