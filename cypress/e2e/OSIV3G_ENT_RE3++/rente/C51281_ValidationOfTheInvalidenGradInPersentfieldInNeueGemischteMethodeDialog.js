@@ -12,7 +12,8 @@ const testData = {
 };
 
 describe(`C51281: Validation of the "Invaliden-Grad in %" field in "Neue gemischte Methode" dialog
-  TestRail:https://osiv.testrail.net/index.php?/cases/view/51281`, () => {
+  TestRail:https://osiv.testrail.net/index.php?/cases/view/51281; 
+  DEFECT (Step 4): ask Anton`, () => {
 
   before(`Login`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
@@ -25,6 +26,7 @@ describe(`C51281: Validation of the "Invaliden-Grad in %" field in "Neue gemisch
     flows.entscheid.step_navigateEnt_searchEnt_openEnt(testData.entId);
     pages.entscheid.detail.sideMenu.navigateToRenteTab().waitForLoaded();
     pages.entscheid.detail.renteTab.grid.dblClickRowValue(testData.methode);
+    pages.entscheid.detail.renteTab.gemischtePopup.waitForLoaded();
   });
 
   it(`Step 4: Set to the "Invalidität in %" field from the second row the value greater than 100 and try to save ->

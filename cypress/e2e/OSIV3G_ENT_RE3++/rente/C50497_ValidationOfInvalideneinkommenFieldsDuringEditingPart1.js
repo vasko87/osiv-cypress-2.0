@@ -17,6 +17,7 @@ describe(`C50497: Validation of Invalideneinkommen fields during editing (Part 1
     flows.entscheid.step_navigateEnt_searchEnt_openEnt(testData.entId);
     pages.entscheid.detail.sideMenu.navigateToRenteTab().waitForLoaded();
     pages.entscheid.detail.renteTab.grid.dblClickRowValue(testData.methode);
+    pages.entscheid.detail.renteTab.fruhinvaliditatPopup.waitForLoaded();
   });
 
   it(`Step 4: Set value "0" to “Stunden pro Tag“ field and change focus. 
@@ -50,6 +51,8 @@ describe(`C50497: Validation of Invalideneinkommen fields during editing (Part 1
     pages.entscheid.detail.renteTab.fruhinvaliditatPopup.invalideneinkommenBlock
       .setInFrProJahrTxt(testData.inFrProJahr)
       .setJahrDesIEkTxt(testData.jahrDesIEk);
-    //TODO last step Error verification
+    pages.entscheid.detail.renteTab.gemischtePopup.clickOkBtn();
+    pages.errorPopup.ckeckErrorContainsText(testData.errMsg)
+         .clickOkBtn();
   });
 });

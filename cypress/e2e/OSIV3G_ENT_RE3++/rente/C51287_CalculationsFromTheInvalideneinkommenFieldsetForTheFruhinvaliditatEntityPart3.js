@@ -16,8 +16,8 @@ describe(`C51286: Calculations from the Invalideneinkommen fieldset for the Frü
     flows.entscheid.step_navigateEnt_searchEnt_openEnt(testData.entId);
     pages.entscheid.detail.sideMenu.navigateToRenteTab().waitForLoaded();
     pages.entscheid.detail.renteTab.grid.dblClickRowValue(testData.methode);
-    pages.entscheid.detail.renteTab.fruhinvaliditatPopup.invalideneinkommenBlock
-         .selectLohnartDropdown(testData.lohnartS);
+    pages.entscheid.detail.renteTab.fruhinvaliditatPopup.waitForLoaded()
+         .invalideneinkommenBlock.selectLohnartDropdown(testData.lohnartS);
   });
 
   it(`Step 4: Set Fr.=2 and "Soziallohn / Gewinnkosten in %"=4 ->

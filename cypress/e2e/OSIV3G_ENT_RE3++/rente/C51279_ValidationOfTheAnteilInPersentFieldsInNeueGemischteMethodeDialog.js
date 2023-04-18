@@ -26,6 +26,7 @@ describe(`C51279: Validation of the "Anteil in %" fields in "Neue gemischte Meth
     flows.entscheid.step_navigateEnt_searchEnt_openEnt(testData.entId);
     pages.entscheid.detail.sideMenu.navigateToRenteTab().waitForLoaded();
     pages.entscheid.detail.renteTab.grid.dblClickRowValue(testData.methode);
+    pages.entscheid.detail.renteTab.gemischtePopup.waitForLoaded();
   });
 
   it(`Step 4: Check that the error "Das Total der Anteile der Mischrechnung darf nicht 100% überschreiten."

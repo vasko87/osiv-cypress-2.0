@@ -22,6 +22,7 @@ describe(`C51286: Calculations from the Invalideneinkommen fieldset for the Frü
     flows.entscheid.step_navigateEnt_searchEnt_openEnt(testData.entId);
     pages.entscheid.detail.sideMenu.navigateToRenteTab().waitForLoaded();
     pages.entscheid.detail.renteTab.grid.dblClickRowValue(testData.methode);
+    pages.entscheid.detail.renteTab.fruhinvaliditatPopup.waitForLoaded();
   });
 
   it(`Step 3: Set Lohnart=Stundenlohn; 
