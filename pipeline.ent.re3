@@ -59,7 +59,6 @@ pipeline {
                             reportName: 'HTML Report RENTE',
                             reportTitles: 'Mocha Report'])
                         }
-                        buildRes();
                     }
                 }
             }
@@ -99,12 +98,4 @@ def composeArgs() {
 def setJobName(){
     echo "ENV = [" + ENV_URL + "], dataSet = [" + DATA_SET + "]"
     currentBuild.displayName = ENV + "_" + DATA_SET
-}
-
-def buildRes(){
-    if(build_ok) {
-            currentBuild.result = "SUCCESS"
-        } else {
-            currentBuild.result = "FAILURE"
-        }
 }
