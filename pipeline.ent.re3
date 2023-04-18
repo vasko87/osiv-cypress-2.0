@@ -25,38 +25,38 @@ pipeline {
         }
 
         stage('Testing e2e') {
-                steps{
+            stages {
                 stage('ENT') {
-                   bat "npx cypress run " + TEST_ENV_ENT
-                   script {
-                       publishHTML([
-                       allowMissing: false,
-                       alwaysLinkToLastBuild: false,
-                       keepAll: true,
-                       reportDir: 'cypress/reports',
-                       reportFiles: '*/index.html',
-                       reportName: 'HTML Report ENT',
-                       reportTitles: 'Mocha Report'])
-                   }
+                    steps{
+                       bat "npx cypress run " + TEST_ENV_ENT
+                       script {
+                           publishHTML([
+                           allowMissing: false,
+                           alwaysLinkToLastBuild: false,
+                           keepAll: true,
+                           reportDir: 'cypress/reports',
+                           reportFiles: '*/index.html',
+                           reportName: 'HTML Report ENT',
+                           reportTitles: 'Mocha Report'])
+                       }
+                    }
                 }
-            }
-
-                steps {
                 stage('RENTE') {
-                   bat "npx cypress run " + TEST_ENV_RENTE
-                   script {
-                       publishHTML([
-                       allowMissing: false,
-                       alwaysLinkToLastBuild: false,
-                       keepAll: true,
-                       reportDir: 'cypress/reports',
-                       reportFiles: '*/index.html',
-                       reportName: 'HTML Report RENTE',
-                       reportTitles: 'Mocha Report'])
-                   }
+                    steps {
+                       bat "npx cypress run " + TEST_ENV_RENTE
+                       script {
+                           publishHTML([
+                           allowMissing: false,
+                           alwaysLinkToLastBuild: false,
+                           keepAll: true,
+                           reportDir: 'cypress/reports',
+                           reportFiles: '*/index.html',
+                           reportName: 'HTML Report RENTE',
+                           reportTitles: 'Mocha Report'])
+                       }
+                    }
                 }
             }
-
         }
     }
 }
