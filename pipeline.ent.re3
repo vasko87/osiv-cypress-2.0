@@ -6,7 +6,6 @@ pipeline {
     agent any
 
      parameters{
-        string(name: 'SPEC', defaultValue: "cypress/e2e/**/**/**", description: "Enter the script path you want to execute")
         choice(name: 'ENV', choices: ['FR','NR','FW'], description: "Select the test environment\n FR = 'https://osiv-frtest.ivnet.ch'\n NR = 'https://osiv-nrtest.ivnet.ch' \n FW = 'https://fw-test.ivnet.ch'")
         string(name: 'CUSTOM_ENV', defaultValue: "", description: "Enter the custom url")
         choice(name: 'DATA_SET', choices: ['dataSet1','dataSet2','dataSet3'], description: "Data set")
@@ -24,27 +23,35 @@ pipeline {
                setJobName();
             }
         }
-        stage('Testing'){
-            steps{
-                bat "npx cypress run " + TEST_ENV
+
+        stage('Testing ENT') {
+            steps {
+               bat "npx cypress run " + TEST_ENV_ENT
+               script {
+                   publishHTML([
+                   allowMissing: false,
+                   alwaysLinkToLastBuild: false,
+                   keepAll: true,
+                   reportDir: 'cypress/reports',
+                   reportFiles: '*/index.html',
+                   reportName: 'HTML Report ENT',
+                   reportTitles: 'Mocha Report'])
+               }
             }
         }
-              //always {
-              //  junit '**/reports/junit/*.xml'
-              //}
-
-    }
-    post {
-        always{
-            script{
-                publishHTML([
-                allowMissing: false,
-                alwaysLinkToLastBuild: false,
-                keepAll: true,
-                reportDir: 'cypress/reports',
-                reportFiles: '*/index.html',
-                reportName: 'HTML Report',
-                reportTitles: 'Mocha Report'])
+        stage('Testing RENTE') {
+            steps {
+               bat "npx cypress run " + TEST_ENV_RENTE
+               script {
+                   publishHTML([
+                   allowMissing: false,
+                   alwaysLinkToLastBuild: false,
+                   keepAll: true,
+                   reportDir: 'cypress/reports',
+                   reportFiles: '*/index.html',
+                   reportName: 'HTML Report RENTE',
+                   reportTitles: 'Mocha Report'])
+               }
             }
         }
     }
@@ -75,7 +82,8 @@ def composeArgs() {
     } else {
         UNCAUGHT_EXCEPTION_FAIL = ",uncaughtExceptionFailure=true"
     }
-    TEST_ENV = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec " + SPEC + " --browser chrome --record --key " + RECORD_KEY
+    TEST_ENV_ENT = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT_RE3++/entscheid/**" + " --browser chrome --record --key " + RECORD_KEY
+    TEST_ENV_RENTE = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT_RE3++/rente/**" + " --browser chrome --record --key " + RECORD_KEY
 }
 
 def setJobName(){
