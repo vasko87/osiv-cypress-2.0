@@ -25,8 +25,8 @@ pipeline {
         }
 
         stage('Testing e2e') {
-            stage('ENT') {
                 steps{
+                stage('ENT') {
                    bat "npx cypress run " + TEST_ENV_ENT
                    script {
                        publishHTML([
@@ -40,8 +40,9 @@ pipeline {
                    }
                 }
             }
-            stage('RENTE') {
+
                 steps {
+                stage('RENTE') {
                    bat "npx cypress run " + TEST_ENV_RENTE
                    script {
                        publishHTML([
