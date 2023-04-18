@@ -46,11 +46,8 @@ pipeline {
                 }
                 stage('RENTE') {
                     steps {
-                        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
                             bat "npx cypress run " + TEST_ENV_RENTE
-                            if (stageResult == 'FAILURE') {
-                                                        build_ok = false;
-                                                    }
                         }
                         script {
                             publishHTML([
