@@ -30,10 +30,30 @@ pipeline {
                     steps {
                         bat "npx cypress run " + TEST_ENV_ENT
                     }
+                    script {
+                         publishHTML([
+                         allowMissing: false,
+                         alwaysLinkToLastBuild: false,
+                         keepAll: true,
+                         reportDir: 'cypress/reports',
+                         reportFiles: '*/index.html',
+                         reportName: 'HTML Report ENT',
+                         reportTitles: 'Mocha Report'])
+                    }
                 }
                 stage('RENTE') {
                      steps {
                         bat "npx cypress run " + TEST_ENV_RENTE
+                     }
+                     script {
+                        publishHTML([
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: 'cypress/reports',
+                        reportFiles: '*/index.html',
+                        reportName: 'HTML Report RENTE',
+                        reportTitles: 'Mocha Report'])
                      }
                 }
             }
@@ -43,16 +63,7 @@ pipeline {
     }
     post {
         always{
-            script{
-                publishHTML([
-                allowMissing: false,
-                alwaysLinkToLastBuild: false,
-                keepAll: true,
-                reportDir: 'cypress/reports',
-                reportFiles: '*/index.html',
-                reportName: 'HTML Report',
-                reportTitles: 'Mocha Report'])
-            }
+
         }
     }
 }
