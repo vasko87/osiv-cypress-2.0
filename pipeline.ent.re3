@@ -28,7 +28,7 @@ pipeline {
             stages {
                 stage('ENT') {
                     steps{
-                       catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                       catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
                           bat "npx cypress run " + TEST_ENV_ENT
                        }
                        script {
@@ -92,7 +92,7 @@ def composeArgs() {
         UNCAUGHT_EXCEPTION_FAIL = ",uncaughtExceptionFailure=true"
     }
     TEST_ENV_ENT = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT_RE3++/e/**" + " --browser chrome --record --key " + RECORD_KEY
-    TEST_ENV_RENTE = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT_RE3++/r/**" + " --browser chrome --record --key " + RECORD_KEY
+    TEST_ENV_RENTE = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT_RE3++/e/**" + " --browser chrome --record --key " + RECORD_KEY
 }
 
 def setJobName(){
