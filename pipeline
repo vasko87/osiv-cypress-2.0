@@ -62,9 +62,7 @@ pipeline {
 
 
     }
-    post {
-       
-    }
+    
 }
 
 def composeArgs() {
