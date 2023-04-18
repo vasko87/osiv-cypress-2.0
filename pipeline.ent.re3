@@ -1,8 +1,8 @@
 RECORD_KEY = "489ee484-b2a2-4452-b403-0677eb092c33"
 USERNAME_ENV = ""
 PASSWORD_ENV = ""
-pipeline {
 build_ok = true
+pipeline {
     agent any
 
      parameters{
