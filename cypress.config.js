@@ -75,7 +75,7 @@ module.exports = defineConfig(
         openMode: 0
       },
       scrollBehavior        : "top",
-      slowTestThreshold     : 250//Time, in milliseconds, to consider a test "slow" during cypress run
+      slowTestThreshold     : 500//Time, in milliseconds, to consider a test "slow" during cypress run
     }
   }
 );

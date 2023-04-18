@@ -27,16 +27,16 @@ describe(`C51281: Validation of the "Invaliden-Grad in %" field in "Neue gemisch
     pages.entscheid.detail.renteTab.grid.dblClickRowValue(testData.methode);
   });
 
-  // it(`Step 4: Set to the "Invalidität in %" field from the second row the value greater than 100 and try to save ->
-  // Error message is appeared "Ein Inv.-Grad darf auch in der Mischrechnung 100% nicht überschreiten. "`, () => {
-  //   pages.entscheid.detail.renteTab.gemischtePopup.invalidenGradRenteBlock
-  //        .setInvGradTxt(testData.invGrad);
-  //   pages.entscheid.detail.renteTab.gemischtePopup.invalidenGradRenteBlock
-  //        .setRenteAbDate(helpers.date.getCurrentDate());
-  //   pages.entscheid.detail.renteTab.gemischtePopup.clickOkBtn();
-  //   pages.errorPopup.ckeckErrorContainsText(testData.errMsg)
-  //        .clickOkBtn();
-  // });
+  it(`Step 4: Set to the "Invalidität in %" field from the second row the value greater than 100 and try to save ->
+  Error message is appeared "Ein Inv.-Grad darf auch in der Mischrechnung 100% nicht überschreiten. "`, () => {
+    pages.entscheid.detail.renteTab.gemischtePopup.invalidenGradRenteBlock
+         .setInvGradTxt(testData.invGrad);
+    pages.entscheid.detail.renteTab.gemischtePopup.invalidenGradRenteBlock
+         .setRenteAbDate(helpers.date.getCurrentDate());
+    pages.entscheid.detail.renteTab.gemischtePopup.clickOkBtn();
+    pages.errorPopup.ckeckErrorContainsText(testData.errMsg)
+         .clickOkBtn();
+  });
 
   it(`Step 5: Set to the "Invalidität in %" field from the third row the value greater than 100 and try to save ->
   Error message is appeared "Ein Inv.-Grad darf auch in der Mischrechnung 100% nicht überschreiten. "`, () => {
