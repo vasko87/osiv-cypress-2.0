@@ -24,16 +24,18 @@ pipeline {
                setJobName();
             }
         }
-        stage('Testing e2e'){
-            stages('ENT') {
-                steps {
-                    bat "npx cypress run " + TEST_ENV_ENT
+        stage('Testing e2e') {
+            parallel {
+                stage('ENT') {
+                    steps {
+                        bat "npx cypress run " + TEST_ENV_ENT
+                    }
                 }
-            }
-            stages('RENTE') {
-                 steps {
-                    bat "npx cypress run " + TEST_ENV_RENTE
-                 }
+                stage('RENTE') {
+                     steps {
+                        bat "npx cypress run " + TEST_ENV_RENTE
+                     }
+                }
             }
         }
 
