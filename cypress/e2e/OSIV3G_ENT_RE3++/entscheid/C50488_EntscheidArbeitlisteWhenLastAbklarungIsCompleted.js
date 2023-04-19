@@ -37,7 +37,8 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
 
       pages.groupedTaskbar.clickContainsGesuchTab();
       pages.gesuche.detail.tabBar.navigateToEntscheideTab()
-           .grid.dblClickRowNumber(1);
+           .grid.waitGridViewLoaded()
+           .dblClickRowNumber(1);
       pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(data.arbeitslisteEntInitial);
 
       pages.groupedTaskbar.clickContainsGesuchTab();
