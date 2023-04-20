@@ -27,10 +27,6 @@ describe(`C51281: Validation of the "Invaliden-Grad in %" field in "Neue gemisch
     pages.entscheid.detail.sideMenu.navigateToRenteTab().waitForLoaded();
     pages.entscheid.detail.renteTab.grid.dblClickRowValue(testData.methode);
     pages.entscheid.detail.renteTab.gemischtePopup.waitForLoaded();
-  });
-
-  it(`Step 4: Set to the "Invalidität in %" field from the second row the value greater than 100 and try to save ->
-  Error message is appeared "Ein Inv.-Grad darf auch in der Mischrechnung 100% nicht überschreiten. "`, () => {
     // TODO Defect on step 4
     helpers.jira.isJiraDone("OSIV-22194").then((isDone) => {
       console.log(isDone);
@@ -38,6 +34,10 @@ describe(`C51281: Validation of the "Invaliden-Grad in %" field in "Neue gemisch
         Cypress.runner.stop();
       }
     });
+  });
+
+  it(`Step 4: Set to the "Invalidität in %" field from the second row the value greater than 100 and try to save ->
+  Error message is appeared "Ein Inv.-Grad darf auch in der Mischrechnung 100% nicht überschreiten. "`, () => {
     pages.entscheid.detail.renteTab.gemischtePopup.invalidenGradRenteBlock
          .setInvGradTxt(testData.invGrad);
     pages.entscheid.detail.renteTab.gemischtePopup.invalidenGradRenteBlock
