@@ -3,7 +3,7 @@ import flows from "../../../support/base/OsivFlowsObject";
 import {c50507 as testData} from "../../../support/helpers/DataManager";
 
 describe(`C50507: Presence and visibility conditions of "Neue gemischte Methode" button in Rente sidebar 
-  TestRail:https://osiv.testrail.net/index.php?/cases/view/50507`, () => {
+  TestRail:https://osiv.testrail.net/index.php?/cases/view/50507`, {failFast: {enabled: false}}, () => {
 
   before(`Login`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));

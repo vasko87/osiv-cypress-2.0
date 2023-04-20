@@ -4,7 +4,7 @@ import helpers from "../../../support/helpers/HelperObject";
 import {c42473 as testData} from "../../../support/helpers/DataManager";
 
 describe(`C42473: Entscheid 'In den Papierkorb verschieben' happy flow; 
-  TestRail:https://osiv.testrail.net/index.php?/cases/view/42473`, () => {
+  TestRail:https://osiv.testrail.net/index.php?/cases/view/42473`, {failFast: {enabled: true}}, () => {
 
   before(`Login as ${Cypress.env("username")}; 
   EntschediID = ${testData.entId} (Sendung is completed, the document in the DMS is available.)`, () => {
@@ -49,15 +49,6 @@ describe(`C42473: Entscheid 'In den Papierkorb verschieben' happy flow;
          .clickOkBtn()
          .clickOkBtn();
     pages.notification.checkSuccessMessageVisible();
-  });
-
-  afterEach(function() {
-    if (this.currentTest.state === "failed") {
-      const screenshotFileName = `${test.title} (failed).png`;
-      cy.screenshot(screenshotFileName);
-      // addContext({test}, `assets/${Cypress.spec.name}/${screenshotFileName}`);
-      Cypress.runner.stop();
-    }
   });
 });
 

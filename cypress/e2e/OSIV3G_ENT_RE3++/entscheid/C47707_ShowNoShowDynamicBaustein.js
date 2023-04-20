@@ -3,7 +3,7 @@ import pages from "../../../support/base/OsivPageObject";
 import flows from "../../../support/base/OsivFlowsObject";
 
 describe(`C47707: (ENT: ${testData.data1.entId}) Entscheid Freitext - Show (no show) Dynamic Baustein; 
-  TestRail: https://osiv.testrail.net/index.php?/cases/view/47707`, () => {
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/47707`, {failFast: {enabled: false}}, () => {
   [testData.data1, testData.data2].forEach((data) => {
 
     before("Login", () => {

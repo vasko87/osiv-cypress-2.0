@@ -4,7 +4,7 @@ import {c47702 as testData} from "../../../support/helpers/DataManager";
 import helpers from "../../../support/helpers/HelperObject";
 
 describe(`C47702: (ENT ${testData.data1.entId}) Closing ENT after Verfugung sendung is closed; 
-  TestRail:https://osiv.testrail.net/index.php?/cases/view/47702`, () => {
+  TestRail:https://osiv.testrail.net/index.php?/cases/view/47702`, {failFast: {enabled: false}}, () => {
   [testData.data1, testData.data2].forEach((data) => {
 
     before("Login", () => {

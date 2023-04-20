@@ -7,16 +7,14 @@ import dateHelper from "../../../support/helpers/DateHelper";
 import pageBase from "../../../support/base/PageBase";
 
 describe(`C50984: E2E (HE Entscheid);
-  TestRail: https://osiv.testrail.net/index.php?/cases/view/50984
-  DEFECT (step 9): https://jiraosiv3g.atlassian.net/browse/OSIV-22145`, () => {
-
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/50984`, {failFast: {enabled: true}}, () => {
   before("Login", () => {
-    cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
+      cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
   });
 
   it("Step 1: Open VP; Open Entscheide tab, Click Neu button -> Form for new ENT creation opens", () => {
     pages.loginPage.openUrl();
-    flows.versicherte.step_navigateVP_searchByVPName_openVP(testData.step1.versicherteName)
+    flows.versicherte.step_navigateVP_searchByVPName_openVP(testData.step1.versicherteName);
     pages.versicherte.detail.tabBar.navigateToEntscheideTab();
     pageBase.waitForLoadingDisappears();
     pages.entscheid.detail.ribbonMenu.clickNeuBtn();
@@ -214,15 +212,5 @@ describe(`C50984: E2E (HE Entscheid);
     pages.groupedTaskbar.clickEntscheidHEHETab();
     pages.entscheid.detail.sideMenu.navigateToBasisdatenTab()
          .checkArbeitslisteTxt(testData.step17.arbeitslisteTxt);
-  });
-
-  afterEach(function() {
-    if (this.currentTest.state === "failed") {
-      const screenshotFileName = `${test.title} (failed).png`;
-      cy.screenshot(screenshotFileName);
-      Cypress.log(this.currentTest.err);
-      // addContext({test}, `assets/${Cypress.spec.name}/${screenshotFileName}`);
-      Cypress.runner.stop();
-    }
   });
 });

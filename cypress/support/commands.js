@@ -28,6 +28,12 @@ Cypress.Commands.add("loginWithSession", (username, password) => {
   });
 });
 
+Cypress.Commands.add("skipWhen", function(expression) {
+  if (expression) {
+    this.skip();
+  }
+});
+
 Cypress.Commands.add("addContext", (context) => {
   cy.once("test:after:run", (test) => addContext({ test }, context));
 });

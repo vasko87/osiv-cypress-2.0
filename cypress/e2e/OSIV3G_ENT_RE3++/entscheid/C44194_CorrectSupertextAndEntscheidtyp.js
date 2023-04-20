@@ -3,7 +3,7 @@ import flows from "../../../support/base/OsivFlowsObject";
 import {c44194 as testData} from "../../../support/helpers/DataManager";
 
 describe(`C44194: (ENT ${testData.data1.entId}) Correct Supertext and Entscheidtyp; 
-TestRail:https://osiv.testrail.net/index.php?/cases/view/44194`, () => {
+TestRail:https://osiv.testrail.net/index.php?/cases/view/44194`, {failFast: {enabled: false}}, () => {
   [testData.data2].forEach((data) => {
 
     before("Login", () => {
