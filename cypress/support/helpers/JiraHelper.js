@@ -5,7 +5,7 @@ const client = new Version3Client({
   authentication: {
     basic: {
       email   : "osiv3g@web.de",
-      apiToken: "ATATT3xFfGF0lUUftqG1CZUlVfpo0IcImKx6r005mLZ_-yBS9wFNaLtjBjOH9NbiDoejmMJCHZz0s112U7LilTcLvWNdD-XKunuFWNrN1lIi1XEJU3_usWhztt0PlGepXkSDO9N3iHzDtodc9WKJxfS8mdw53lCPLChulWj5NcYZIVQNXu8nXlw=43C6FA9D"
+      apiToken: "ATATT3xFfGF09HloKSM_KsvmhCzCX7k54eJnpn6g-79Ci5yCEpiPulg-qZ8VI9DV5Af6OtbpgJMwJzc-ygx5Ve19h7-f_BecLZIeDEYYfcwNk0tAzlVSv1oaAutX6fcAMCXq4uPgBPAhth48ugqnjZz48KcbARMuCi7Cah0HT6hHQopvTE1O5l0=07BDAF7C"
     }
   }
 });

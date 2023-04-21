@@ -6,7 +6,6 @@ import helpers from "../../../support/helpers/HelperObject";
 describe(`C50497: Validation of Invalideneinkommen fields during editing (Part 1)" 
   TestRail: https://osiv.testrail.net/index.php?/cases/view/50497;
   DEFECT (step 7): https://jiraosiv3g.atlassian.net/browse/OSIV-22136`, {failFast: {enabled: false}}, () => {
-
   before(`Login`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
   });
@@ -45,6 +44,10 @@ describe(`C50497: Validation of Invalideneinkommen fields during editing (Part 1
          .selectLohnartDropdown(testData.lohnart)
          .setAnzahlMonathLohneTxt(testData.anzahlMonatsLohne)
          .checkAnzahlMonathLohneTxt(testData.anzahlMonatsLohneExpected);
+  });
+
+  it(`Step 7: Set "in Fr. pro Jahr" > 0 and set "im Jahr"("Jahr des Vek") to "0000" and save →  
+  Error message "Das Jahr des Invalideneinkommens muss definiert sein." is thrown`, () => {
     // TODO Defect on step 7
     helpers.jira.isJiraDone("OSIV-22136").then((isDone) => {
       console.log(isDone);
@@ -52,10 +55,6 @@ describe(`C50497: Validation of Invalideneinkommen fields during editing (Part 1
         Cypress.runner.stop();
       }
     });
-  });
-
-  it(`Step 7: Set "in Fr. pro Jahr" > 0 and set "im Jahr"("Jahr des Vek") to "0000" and save →  
-  Error message "Das Jahr des Invalideneinkommens muss definiert sein." is thrown`, () => {
     pages.entscheid.detail.renteTab.fruhinvaliditatPopup.invalideneinkommenBlock
          .setInFrProJahrTxt(testData.inFrProJahr)
          .setJahrDesIEkTxt(testData.jahrDesIEk);
