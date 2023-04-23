@@ -10,6 +10,7 @@ const client = new Version3Client({
   }
 });
 
+// add "10210" for Test status
 const doneStatuses = ["10001", "10225", "10267", "10288", "6", "10210"];
 
 export default {

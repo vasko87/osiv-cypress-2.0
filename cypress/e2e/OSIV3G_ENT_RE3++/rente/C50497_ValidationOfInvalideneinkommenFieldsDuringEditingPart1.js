@@ -52,6 +52,7 @@ describe(`C50497: Validation of Invalideneinkommen fields during editing (Part 1
     helpers.jira.isJiraDone("OSIV-22136").then((isDone) => {
       console.log(isDone);
       if (isDone === false) {
+        this.currentTest.skip();
         Cypress.runner.stop();
       }
     });
