@@ -35,7 +35,7 @@ describe(`C51281: Validation of the "Invaliden-Grad in %" field in "Neue gemisch
     helpers.jira.isJiraDone("OSIV-22194").then((isDone) => {
       console.log(isDone);
       if (isDone === false) {
-        Cypress.runner.stop();
+        Cypress.runner.suite.stop();
       }
     });
     pages.entscheid.detail.renteTab.gemischtePopup.invalidenGradRenteBlock

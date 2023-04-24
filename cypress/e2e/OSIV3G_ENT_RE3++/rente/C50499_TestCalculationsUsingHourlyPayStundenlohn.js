@@ -4,7 +4,7 @@ import flows from "../../../support/base/OsivFlowsObject";
 const testData = {
   entId            : "23153",
   methode          : "Fruehinvaliditaet",
-  lohnart          : "ç",
+  lohnart          : "Stundenlohn",
   fr               : "40",
   stundenProTag    : "7",
   tageDieWoche     : "4",

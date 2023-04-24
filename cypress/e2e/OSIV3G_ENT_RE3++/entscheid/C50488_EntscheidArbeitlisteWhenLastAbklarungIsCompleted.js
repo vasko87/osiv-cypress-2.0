@@ -20,7 +20,8 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
       pages.loginPage.openUrl();
       flows.gesuche.step_navigateGes_searchGes_openGes(data.gesuchID);
       pages.gesuche.detail.tabBar.navigateToEntscheideTab()
-           .grid.checkGridRowCount(1)
+           .grid.waitGridViewLoaded()
+           .checkGridRowCount(1)
            .dblClickRowNumber(1);
       pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(data.arbeitslisteEntInitial);
       pages.groupedTaskbar.clickContainsGesuchTab();

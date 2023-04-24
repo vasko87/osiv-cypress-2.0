@@ -53,7 +53,7 @@ describe(`C50497: Validation of Invalideneinkommen fields during editing (Part 1
       console.log(isDone);
       if (isDone === false) {
         this.currentTest.skip();
-        Cypress.runner.stop();
+        Cypress.runner.suite.stop();
       }
     });
     pages.entscheid.detail.renteTab.fruhinvaliditatPopup.invalideneinkommenBlock

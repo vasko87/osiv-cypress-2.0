@@ -35,7 +35,7 @@ pipeline {
                            publishHTML([
                            allowMissing: false,
                            alwaysLinkToLastBuild: false,
-                           keepAll: true,
+                           keepAll: false,
                            reportDir: 'cypress/reports',
                            reportFiles: '*/index.html',
                            reportName: 'HTML Report ENT',
@@ -52,7 +52,7 @@ pipeline {
                             publishHTML([
                             allowMissing: false,
                             alwaysLinkToLastBuild: false,
-                            keepAll: true,
+                            keepAll: false,
                             reportDir: 'cypress/reports',
                             reportFiles: '*/index.html',
                             reportName: 'HTML Report HE',
@@ -69,7 +69,7 @@ pipeline {
                             publishHTML([
                             allowMissing: false,
                             alwaysLinkToLastBuild: false,
-                            keepAll: true,
+                            keepAll: false,
                             reportDir: 'cypress/reports',
                             reportFiles: '*/index.html',
                             reportName: 'HTML Report RENTE',
@@ -86,7 +86,7 @@ pipeline {
                             publishHTML([
                             allowMissing: false,
                             alwaysLinkToLastBuild: false,
-                            keepAll: true,
+                            keepAll: false,
                             reportDir: 'cypress/reports',
                             reportFiles: '*/index.html',
                             reportName: 'HTML Report E2E',

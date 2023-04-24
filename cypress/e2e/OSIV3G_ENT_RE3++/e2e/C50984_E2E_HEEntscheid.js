@@ -124,7 +124,7 @@ describe(`C50984: E2E (HE Entscheid);
     helpers.jira.isJiraDone("OSIV-22145").then((isDone) => {
       console.log(isDone);
       if (isDone === false) {
-        Cypress.runner.stop();
+        Cypress.runner.suite.stop();
       }
     });
     pages.entscheid.detail.freitexteTab.navigation.navigateToVerfugungBeiblattAKTab();
