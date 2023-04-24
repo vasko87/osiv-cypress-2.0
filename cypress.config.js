@@ -9,7 +9,7 @@ module.exports = defineConfig(
     viewportHeight : 1080,
     reporter       : "cypress-mochawesome-reporter",
     reporterOptions: {
-      reportDir: "cypress/reports/mochawesome-report",
+      reportDir: "cypress/reports/mochawesome",
       charts: true,
       html: true,
       json: true,
@@ -80,8 +80,8 @@ module.exports = defineConfig(
         "**/2-advanced-examples/*"
       ],
       screenshotOnRunFailure: true,
-      screenshotsFolder     : "cypress/reports/mochawesome-report/assets",
-      videosFolder          : "cypress/reports/mochawesome-report/videos",
+      screenshotsFolder     : "cypress/reports/mochawesome/assets",
+      videosFolder          : "cypress/reports/mochawesome/videos",
       requestTimeout        : 50000,
       numTestsKeptInMemory  : 0,
       responseTimeout       : 50000,

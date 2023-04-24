@@ -6,6 +6,7 @@ import {c50984 as testData} from "../../../support/helpers/DataManager";
 import dateHelper from "../../../support/helpers/DateHelper";
 import pageBase from "../../../support/base/PageBase";
 
+let isJira = false;
 describe(`C50984: E2E (HE Entscheid);
   TestRail: https://osiv.testrail.net/index.php?/cases/view/50984`, {failFast: {enabled: true}}, () => {
   before("Login", () => {
@@ -116,17 +117,17 @@ describe(`C50984: E2E (HE Entscheid);
     // pages.entscheid.detail.ribbonMenu.clickBegrundungSpeichernBtn();
     // pages.notification.checkSuccessMessageVisible();
     // pages.entscheid.detail.freitexteTab.begrundungTab.checkTextForm(testData.step8.textForm);
-  });
-
-  it(`Step 9: open verfugung/Beiblatt AK; click freitexte generiren; confirm warning (OSCIENT:154) ->
-  text is generated; var marked in yellow aut generated`, () => {
     // TODO Defect on step 9
     helpers.jira.isJiraDone("OSIV-22145").then((isDone) => {
       console.log(isDone);
       if (isDone === false) {
-        Cypress.runner.suite.stop();
+        isJira = true;
       }
     });
+  });
+
+  it(`Step 9: open verfugung/Beiblatt AK; click freitexte generiren; confirm warning (OSCIENT:154) ->
+  text is generated; var marked in yellow aut generated`, () => {
     pages.entscheid.detail.freitexteTab.navigation.navigateToVerfugungBeiblattAKTab();
     pageBase.waitForLoadingDisappears();
     pages.entscheid.detail.ribbonMenu.clickFreitextGenerierenBtn();
@@ -220,5 +221,11 @@ describe(`C50984: E2E (HE Entscheid);
     pages.groupedTaskbar.clickEntscheidHEHETab();
     pages.entscheid.detail.sideMenu.navigateToBasisdatenTab()
          .checkArbeitslisteTxt(testData.step17.arbeitslisteTxt);
+  });
+
+  afterEach(function() {
+    if (isJira) {
+      cy.then(() => this.currentTest.skip());
+    }
   });
 });
