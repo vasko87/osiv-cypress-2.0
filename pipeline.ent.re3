@@ -26,7 +26,40 @@ pipeline {
 
         stage('Testing') {
             stages {
-                
+                stage('ENT') {
+                    steps{
+                       catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                          bat "npx cypress run " + TEST_ENV_ENT
+                       }
+                       script {
+                           publishHTML([
+                           allowMissing: false,
+                           alwaysLinkToLastBuild: false,
+                           keepAll: true,
+                           reportDir: 'cypress/reports',
+                           reportFiles: '*/index.html',
+                           reportName: 'HTML Report ENT',
+                           reportTitles: 'ENT'])
+                       }
+                    }
+                }
+                stage('HE') {
+                    steps{
+                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                            bat "npx cypress run " + TEST_ENV_HE
+                        }
+                        script {
+                            publishHTML([
+                            allowMissing: false,
+                            alwaysLinkToLastBuild: false,
+                            keepAll: true,
+                            reportDir: 'cypress/reports',
+                            reportFiles: '*/index.html',
+                            reportName: 'HTML Report HE',
+                            reportTitles: 'HE'])
+                        }
+                    }
+                }
                 stage('RENTE') {
                     steps {
                         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -35,12 +68,12 @@ pipeline {
                         script {
                             publishHTML([
                             allowMissing: false,
-                            alwaysLinkToLastBuild: true,
+                            alwaysLinkToLastBuild: false,
                             keepAll: true,
                             reportDir: 'cypress/reports',
                             reportFiles: '*/index.html',
                             reportName: 'HTML Report RENTE',
-                            reportTitles: 'Mocha Report'])
+                            reportTitles: 'RENTE'])
                         }
                     }
                 }
@@ -52,20 +85,15 @@ pipeline {
                         script {
                             publishHTML([
                             allowMissing: false,
-                            alwaysLinkToLastBuild: true,
+                            alwaysLinkToLastBuild: false,
                             keepAll: true,
                             reportDir: 'cypress/reports',
                             reportFiles: '*/index.html',
                             reportName: 'HTML Report E2E',
-                            reportTitles: 'Mocha Report'])
+                            reportTitles: 'E2E'])
                         }
                     }
                 }
-            }
-        }
-        stage('Finishing'){
-            steps{
-                echo "Testing finished"
             }
         }
     }
