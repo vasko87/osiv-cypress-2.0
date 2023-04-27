@@ -163,11 +163,26 @@ class PageBase {
    * @param hasColor
    * @returns {PageBase}
    */
-  checkElementColor(element, color, shouldHave) {
+  checkElementBorderLeftColor(element, color, shouldHave) {
     if (shouldHave) {
       element.should("have.css", "border-left-color", color, {timeout: 10000});
     } else {
       element.should("not.have.css", "border-left-color", color, {timeout: 10000});
+    }
+    return this;
+  }
+
+  checkElementColor(element, color, shouldHave) {
+    if (shouldHave) {
+      element.invoke("attr", "style", `color: ${color}`)
+             .then(new_element => {
+               expect(new_element).to.have.css("color", color);
+             });
+    } else {
+      element.invoke("attr", "style", `color: ${color}`)
+             .then(new_element => {
+               expect(new_element).not.to.have.css("color", color);
+             });
     }
     return this;
   }

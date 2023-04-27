@@ -1,12 +1,9 @@
 import pages from "../../../support/base/OsivPageObject";
 import flows from "../../../support/base/OsivFlowsObject";
 import {c50497 as testData} from "../../../support/helpers/DataManager";
-import helpers from "../../../support/helpers/HelperObject";
 
-let isJira = false;
 describe(`C50497: Validation of Invalideneinkommen fields during editing (Part 1)" 
-  TestRail: https://osiv.testrail.net/index.php?/cases/view/50497;
-  DEFECT (step 7): https://jiraosiv3g.atlassian.net/browse/OSIV-22136`, {failFast: {enabled: false}}, () => {
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/50497;`, {failFast: {enabled: false}}, () => {
   before(`Login`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
   });
@@ -45,13 +42,6 @@ describe(`C50497: Validation of Invalideneinkommen fields during editing (Part 1
          .selectLohnartDropdown(testData.lohnart)
          .setAnzahlMonathLohneTxt(testData.anzahlMonatsLohne)
          .checkAnzahlMonathLohneTxt(testData.anzahlMonatsLohneExpected);
-    // TODO Defect on step 7
-    helpers.jira.isJiraDone("OSIV-22136").then((isDone) => {
-      console.log(isDone);
-      if (isDone === false) {
-        isJira = true;
-      }
-    });
   });
 
   it(`Step 7: Set "in Fr. pro Jahr" > 0 and set "im Jahr"("Jahr des Vek") to "0000" and save →  
@@ -60,13 +50,8 @@ describe(`C50497: Validation of Invalideneinkommen fields during editing (Part 1
          .setInFrProJahrTxt(testData.inFrProJahr)
          .setJahrDesIEkTxt(testData.jahrDesIEk);
     pages.entscheid.detail.renteTab.gemischtePopup.clickOkBtn();
+    pages.warningPopup.clickOkBtn();
     pages.errorPopup.ckeckErrorContainsText(testData.errMsg)
          .clickOkBtn();
-  });
-
-  afterEach(function() {
-    if (isJira) {
-      cy.then(() => this.currentTest.skip());
-    }
   });
 });

@@ -8,6 +8,7 @@ const LONG_TIMEOUT = 50000;
 const COLOR = {
   orange: "rgb(255, 165, 0)",
   green : "rgb(255, 255, 255)",
+  red   : "rgb(255, 0, 0)",
   white : "rgb(255, 255, 255)",
   yellow: "rgb(255, 255, 0)"
 };

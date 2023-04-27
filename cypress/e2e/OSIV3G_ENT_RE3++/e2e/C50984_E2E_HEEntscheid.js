@@ -6,11 +6,17 @@ import {c50984 as testData} from "../../../support/helpers/DataManager";
 import dateHelper from "../../../support/helpers/DateHelper";
 import pageBase from "../../../support/base/PageBase";
 
-let isJira = false;
 describe(`C50984: E2E (HE Entscheid);
   TestRail: https://osiv.testrail.net/index.php?/cases/view/50984`, {failFast: {enabled: true}}, () => {
   before("Login", () => {
-      cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
+    cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
+    helpers.jira.isJiraDone("OSIV-22145").then((isDone) => {
+      console.log(isDone);
+      if (isDone === false) {
+        Cypress.env("isJira", true);
+        console.log(Cypress.env("isJira"));
+      }
+    });
   });
 
   it("Step 1: Open VP; Open Entscheide tab, Click Neu button -> Form for new ENT creation opens", () => {
@@ -117,17 +123,12 @@ describe(`C50984: E2E (HE Entscheid);
     // pages.entscheid.detail.ribbonMenu.clickBegrundungSpeichernBtn();
     // pages.notification.checkSuccessMessageVisible();
     // pages.entscheid.detail.freitexteTab.begrundungTab.checkTextForm(testData.step8.textForm);
-    // TODO Defect on step 9
-    helpers.jira.isJiraDone("OSIV-22145").then((isDone) => {
-      console.log(isDone);
-      if (isDone === false) {
-        isJira = true;
-      }
-    });
   });
 
   it(`Step 9: open verfugung/Beiblatt AK; click freitexte generiren; confirm warning (OSCIENT:154) ->
   text is generated; var marked in yellow aut generated`, () => {
+    // TODO Defect on step 9
+    cy.skipOn(Cypress.env("isJira") === true);
     pages.entscheid.detail.freitexteTab.navigation.navigateToVerfugungBeiblattAKTab();
     pageBase.waitForLoadingDisappears();
     pages.entscheid.detail.ribbonMenu.clickFreitextGenerierenBtn();

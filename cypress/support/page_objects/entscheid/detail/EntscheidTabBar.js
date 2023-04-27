@@ -28,7 +28,7 @@ class EntscheidTabBar {
   }
 
   checkDetailsTabColor(color, shouldHave) {
-    pageBase.checkElementColor(this.elements.detailsTab(), color, shouldHave);
+    pageBase.checkElementBorderLeftColor(this.elements.detailsTab(), color, shouldHave);
     return this;
   }
 }

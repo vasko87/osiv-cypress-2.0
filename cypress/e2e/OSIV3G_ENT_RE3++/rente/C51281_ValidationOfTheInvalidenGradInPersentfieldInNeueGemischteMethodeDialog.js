@@ -2,22 +2,21 @@ import pages from "../../../support/base/OsivPageObject";
 import flows from "../../../support/base/OsivFlowsObject";
 import helpers from "../../../support/helpers/HelperObject";
 
-let isJira = false;
-
 const testData = {
-  entId       : "23178",
-  methode     : "GemischteMethode",
-  invGrad     : "120",
-  invaliditat2: "105",
-  errMsg      : "Der Inv.-Grad darf 100% nicht überschreiten.",
-  errMsg2     : "Ein Inv.-Grad darf auch in der Mischrechnung 100% nicht überschreiten. (OSCINVGRAD:78)"
+  entId         : "23178",
+  methode       : "GemischteMethode",
+  invGrad       : "120",
+  invGradCorrect: "0.3",
+  invaliditat2  : "105",
+  errMsg        : "Ein oder mehrere Felder haben Validierungsfehler. Bitte korrigieren Sie die markierten Felder und speichern Sie dann erneut.",
+  errField      : "Zahl ist größer als 100",
+  errMsg2       : "Ein Inv.-Grad darf auch in der Mischrechnung 100% nicht überschreiten. (OSCINVGRAD:78)"
 };
 
 describe(`C51281: Validation of the "Invaliden-Grad in %" field in "Neue gemischte Methode" dialog
-  TestRail:https://osiv.testrail.net/index.php?/cases/view/51281; 
-  DEFECT (Step 4): https://jiraosiv3g.atlassian.net/browse/OSIV-22194`, {failFast: {enabled: false}}, () => {
+  TestRail:https://osiv.testrail.net/index.php?/cases/view/51281;`, {failFast: {enabled: false}}, () => {
 
-  before(`Login`, () => {
+  before(`Login`, function() {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
   });
 
@@ -29,24 +28,20 @@ describe(`C51281: Validation of the "Invaliden-Grad in %" field in "Neue gemisch
     pages.entscheid.detail.sideMenu.navigateToRenteTab().waitForLoaded();
     pages.entscheid.detail.renteTab.grid.dblClickRowValue(testData.methode);
     pages.entscheid.detail.renteTab.gemischtePopup.waitForLoaded();
-    // TODO Defect on step 4
-    helpers.jira.isJiraDone("OSIV-22194").then((isDone) => {
-      console.log(isDone);
-      if (isDone === false) {
-        isJira = true;
-      }
-    });
   });
 
-  it(`Step 4: Set to the "Invalidität in %" field from the second row the value greater than 100 and try to save ->
-  Error message is appeared "Ein Inv.-Grad darf auch in der Mischrechnung 100% nicht überschreiten. "`, () => {
+  it(`Step 4: Set to the "Inv.Grad in %" field the value greater than 100 and try to save ->
+  The red error message in the top right corner is appeared ("Ein oder mehrere Felder haben ...") 
+  and the field "Inv.Grad in %" is highlighted by red and has a red validation text under textfield. "`, () => {
     pages.entscheid.detail.renteTab.gemischtePopup.invalidenGradRenteBlock
          .setInvGradTxt(testData.invGrad);
+    pages.modalWindow.clickOkBtn();
+    pages.notification.checkErrorMessageText(testData.errMsg);
     pages.entscheid.detail.renteTab.gemischtePopup.invalidenGradRenteBlock
-         .setRenteAbDate(helpers.date.getCurrentDate());
-    pages.entscheid.detail.renteTab.gemischtePopup.clickOkBtn();
-    pages.errorPopup.ckeckErrorContainsText(testData.errMsg)
-         .clickOkBtn();
+         .checkInvGradColorRed()
+         .checkInvGradValidationError(testData.errField)
+         .checkInvGradValidationErrorColorRed()
+         .setInvGradTxt(testData.invGradCorrect);
   });
 
   it(`Step 5: Set to the "Invalidität in %" field from the third row the value greater than 100 and try to save ->
@@ -59,11 +54,5 @@ describe(`C51281: Validation of the "Invaliden-Grad in %" field in "Neue gemisch
     pages.entscheid.detail.renteTab.gemischtePopup.clickOkBtn();
     pages.errorPopup.ckeckErrorContainsText(testData.errMsg2)
          .clickOkBtn();
-  });
-
-  afterEach(function() {
-    if (isJira) {
-      cy.then(() => this.currentTest.skip());
-    }
   });
 });

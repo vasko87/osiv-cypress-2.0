@@ -1,6 +1,7 @@
 import pages from "../support/base/OsivPageObject";
 import flows from "../support/base/OsivFlowsObject";
 import {c001 as testData} from "../support/helpers/DataManager";
+import helpers from "../support/helpers/HelperObject";
 
 // use option {failFast: {enabled: true}} - to make skipping the rest of tests on first failure.
 // use option {failFast: {enabled: false}} - to make not skipping the rest of tests on first failure.
