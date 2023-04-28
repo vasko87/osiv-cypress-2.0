@@ -39,7 +39,7 @@ pipeline {
                            reportDir: 'cypress/reports',
                            reportFiles: '*/index.html',
                            reportName: 'HTML Report ENT',
-                           reportTitles: 'ENT'])
+                           reportTitles: 'Mocha Report'])
                        }
                     }
                 }
@@ -56,7 +56,7 @@ pipeline {
                             reportDir: 'cypress/reports',
                             reportFiles: '*/index.html',
                             reportName: 'HTML Report HE',
-                            reportTitles: 'HE'])
+                            reportTitles: 'Mocha Report'])
                         }
                     }
                 }
@@ -73,7 +73,7 @@ pipeline {
                             reportDir: 'cypress/reports',
                             reportFiles: '*/index.html',
                             reportName: 'HTML Report RENTE',
-                            reportTitles: 'RENTE'])
+                            reportTitles: 'Mocha Report'])
                         }
                     }
                 }
@@ -90,7 +90,7 @@ pipeline {
                             reportDir: 'cypress/reports',
                             reportFiles: '*/index.html',
                             reportName: 'HTML Report E2E',
-                            reportTitles: 'E2E'])
+                            reportTitles: 'Mocha Report'])
                         }
                     }
                 }

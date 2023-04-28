@@ -57,10 +57,10 @@ class PageBase {
 
   isElementVisible(element) {
     return element.then(el => {
-      if (el.is(":visible")){
+      if (el.is(":visible")) {
         return true;
       } else {
-        return  false;
+        return false;
       }
     });
   }
@@ -89,14 +89,14 @@ class PageBase {
   setCheckboxChecked(element, shouldCheck) {
     if (shouldCheck === true) {
       element.then((el) => {
-        if (!(el.find("input").value === "true")){
+        if (!(el.find("input").value === "true")) {
           element.click();
         }
       });
     }
     if (shouldCheck === false) {
       element.then((el) => {
-        if (el.find("input").value === "true"){
+        if (el.find("input").value === "true") {
           element.click();
         }
       });

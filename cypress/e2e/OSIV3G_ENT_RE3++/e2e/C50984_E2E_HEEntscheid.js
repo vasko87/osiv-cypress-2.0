@@ -223,10 +223,4 @@ describe(`C50984: E2E (HE Entscheid);
     pages.entscheid.detail.sideMenu.navigateToBasisdatenTab()
          .checkArbeitslisteTxt(testData.step17.arbeitslisteTxt);
   });
-
-  afterEach(function() {
-    if (isJira) {
-      cy.then(() => this.currentTest.skip());
-    }
-  });
 });

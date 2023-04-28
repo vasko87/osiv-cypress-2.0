@@ -16,7 +16,7 @@ const testData = {
 describe(`C51281: Validation of the "Invaliden-Grad in %" field in "Neue gemischte Methode" dialog
   TestRail:https://osiv.testrail.net/index.php?/cases/view/51281;`, {failFast: {enabled: false}}, () => {
 
-  before(`Login`, function() {
+  before(`Login`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
   });
 
