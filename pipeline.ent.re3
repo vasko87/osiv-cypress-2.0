@@ -110,7 +110,7 @@ def composeArgs() {
         ENV_URL = "https://fw-test.ivnet.ch"
     }
     if (ENV == "FWTEST2") {
-            ENV_URL = "https://fw-test2.ivnet.ch"
+        ENV_URL = "https://fw-test2.ivnet.ch"
     }
     if (CUSTOM_ENV != "") {
         ENV_URL = CUSTOM_ENV
