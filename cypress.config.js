@@ -16,7 +16,6 @@ module.exports = defineConfig(
         screenshotOnRunFailure: true,
         overwrite             : false,
         html                  : false,
-        charts                : true,
         json                  : true,
         timestamp             : "mmddyyyy_HHMMss",
         showSkipped           : true,
