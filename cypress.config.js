@@ -9,23 +9,47 @@ module.exports = defineConfig(
     viewportHeight : 1080,
     reporter       : "cypress-mochawesome-reporter",
     reporterOptions: {
-      reporterEnabled           : "mochawesome",
-      charts                    : true,
-      mochawesomeReporterOptions: {
-        reportDir             : "cypress/reports/mochawesome-report",
-        screenshotOnRunFailure: true,
-        overwrite             : false,
-        html                  : false,
-        json                  : true,
-        timestamp             : "mmddyyyy_HHMMss",
-        showSkipped           : true,
-        quite                 : true,
-        embeddedScreenshots   : true,
-        inlineAssets          : true,
-        capture               : "runner" // capture: "fullPage",
-      }
+      reportDir: "cypress/reports/mochawesome",
+      charts: true,
+      html: true,
+      json: true,
+      embeddedScreenshots: true,
+      inlineAssets: true,
+      showSkipped: true,
+      showPending: true
     },
-    e2e            : {
+    // reporter       : "cypress-mochawesome-reporter",
+    // reporterOptions: {
+    //   reporterEnabled: "mochawesome",
+    // reporterOptions: {
+    //   reportDir: "cypress/reports/mochawesome-report",
+    //   overwrite: false,
+    //   html: true,
+    //   json: true,
+    //   showPending: false,
+    //   showSkipped: false,
+    //   embeddedScreenshots   : true,
+    //   inlineAssets          : true,
+    //   screenshotOnRunFailure: true,
+    //   capture               : "fullPage" // capture: "fullPage",
+    // }
+    // mochawesomeReporterOptions: {
+    //   reportDir             : "cypress/reports/mochawesome-report",
+    //   showPending           : false,
+    //   showSkipped           : false,
+    //   screenshotOnRunFailure: true,
+    //   overwrite             : false,
+    //   html                  : false,
+    //   json                  : true,
+    //   timestamp             : "mmddyyyy_HHMMss",
+    //   charts                : true,
+    //   quite                 : true,
+    //   embeddedScreenshots   : true,
+    //   inlineAssets          : true,
+    //   capture               : "runner" // capture: "fullPage",
+    // }
+    // },
+    e2e: {
       setupNodeEvents(on, config) {
         require("cypress-mochawesome-reporter/plugin")(on);
         require("cypress-fail-fast/plugin")(on, config);
@@ -50,15 +74,14 @@ module.exports = defineConfig(
         });
         new TestRailReporter(on, config).register();
       },
-
       specPattern           : "cypress/e2e/**/*.{js,jsx,ts,tsx}",
       excludeSpecPattern    : [
         "**/1-getting-started/*",
         "**/2-advanced-examples/*"
       ],
       screenshotOnRunFailure: true,
-      screenshotsFolder     : "cypress/reports/mochawesome-report/assets",
-      videosFolder          : "cypress/reports/mochawesome-report/videos",
+      screenshotsFolder     : "cypress/reports/mochawesome/assets",
+      videosFolder          : "cypress/reports/mochawesome/videos",
       requestTimeout        : 50000,
       numTestsKeptInMemory  : 0,
       responseTimeout       : 50000,
@@ -76,7 +99,7 @@ module.exports = defineConfig(
         openMode: 0
       },
       scrollBehavior        : "top",
-      slowTestThreshold     : 250//Time, in milliseconds, to consider a test "slow" during cypress run
+      slowTestThreshold     : 500//Time, in milliseconds, to consider a test "slow" during cypress run
     }
   }
 );

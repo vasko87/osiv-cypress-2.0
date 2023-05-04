@@ -6,7 +6,7 @@ pipeline {
     agent any
 
      parameters{
-        choice(name: 'ENV', choices: ['FR','NR','FW'], description: "Select the test environment\n FR = 'https://osiv-frtest.ivnet.ch'\n NR = 'https://osiv-nrtest.ivnet.ch' \n FW = 'https://fw-test.ivnet.ch'")
+        choice(name: 'ENV', choices: ['FRTEST','NRTEST','FWTEST', FWTEST2], description: "Select the test environment\n FRTEST = 'https://osiv-frtest.ivnet.ch'\n NRTEST = 'https://osiv-nrtest.ivnet.ch' \n FWTEST = 'https://fw-test.ivnet.ch' \n FWTEST2 = 'https://fw-test2.ivnet.ch'")
         string(name: 'CUSTOM_ENV', defaultValue: "", description: "Enter the custom url")
         choice(name: 'DATA_SET', choices: ['dataSet1','dataSet2','dataSet3'], description: "Data set")
         string(name: 'USERNAME', defaultValue: "default", description: "Set username if not default")
@@ -100,14 +100,17 @@ pipeline {
 }
 
 def composeArgs() {
-    if (ENV == "FR") {
+    if (ENV == "FRTEST") {
         ENV_URL = "https://osiv-frtest.ivnet.ch"
     }
-    if (ENV == "NR") {
+    if (ENV == "NRTEST") {
         ENV_URL = "https://osiv-nrtest.ivnet.ch"
     }
-    if (ENV == "FW") {
+    if (ENV == "FWTEST") {
         ENV_URL = "https://fw-test.ivnet.ch"
+    }
+    if (ENV == "FWTEST2") {
+            ENV_URL = "https://fw-test2.ivnet.ch"
     }
     if (CUSTOM_ENV != "") {
         ENV_URL = CUSTOM_ENV

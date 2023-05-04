@@ -23,7 +23,6 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
            .grid.waitGridViewLoaded()
            .checkGridRowCount(1)
            .dblClickRowNumber(1);
-      pages.sendungen.detail.waitForLoaded();
       pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(data.arbeitslisteEntInitial);
       pages.groupedTaskbar.clickContainsGesuchTab();
       pages.groupedTaskbar.closeContainsEntscheidTab();
