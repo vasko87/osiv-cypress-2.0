@@ -3,10 +3,10 @@ import flows from "../../support/base/OsivFlowsObject";
 
 const testData = {
   vpName: "Crood Eep"
-}
+};
 
 describe(`C45772: Create Eingliederung from vP Eingliederungen; 
-  TestRail:https://osiv.testrail.net/index.php?/cases/view/45772`, {failFast: {enabled: true}}, () => {
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/45772`, {failFast: {enabled: true}}, () => {
 
   before(`Login as ${Cypress.env("username")};`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
