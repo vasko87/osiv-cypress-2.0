@@ -52,5 +52,14 @@ describe(`#: New address`, {failFast: {enabled: true}}, () => {
     pages.adressen.addDialog.elements.generierenBtn().click();
     flows.modalPopup.clickOkBtn_warningOk_CheckSuccessMsg();
   });
+
+// TODO: in case of Jira and step with jira skipped and you want to skip all further steps - use this afterEach method
+  // afterEach(function() {
+  //   console.log(this.currentTest.state);
+  //   if (this.currentTest.state === "pending") {
+  //     Cypress.log(this.currentTest.err);
+  //     Cypress.runner.stop();
+  //   }
+  // });
 });
 

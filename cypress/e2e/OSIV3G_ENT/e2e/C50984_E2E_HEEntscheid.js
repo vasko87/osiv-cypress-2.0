@@ -224,4 +224,12 @@ describe(`C50984: E2E (HE Entscheid);
     pages.entscheid.detail.sideMenu.navigateToBasisdatenTab()
          .checkArbeitslisteTxt(testData.step17.arbeitslisteTxt);
   });
+
+  afterEach(function() {
+    console.log(this.currentTest.state);
+    if (this.currentTest.state === "pending") {
+      Cypress.log(this.currentTest.err);
+      Cypress.runner.stop();
+    }
+  });
 });
