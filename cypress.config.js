@@ -10,7 +10,6 @@ module.exports = defineConfig(
     reporter       : "cypress-mochawesome-reporter",
     reporterOptions: {
       reporterEnabled           : "mochawesome",
-      charts                    : true,
       mochawesomeReporterOptions: {
         reportDir             : "cypress/reports/mochawesome-report",
         screenshotOnRunFailure: true,
