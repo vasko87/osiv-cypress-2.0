@@ -60,27 +60,10 @@ pipeline {
                         }
                     }
                 }
-                //stage('RENTE') {
-                //    steps {
-                //        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                //            bat "npx cypress run " + TEST_ENV_RENTE
-                //        }
-                //        script {
-                //            publishHTML([
-                //            allowMissing: false,
-                //            alwaysLinkToLastBuild: false,
-                //            keepAll: true,
-                //            reportDir: 'cypress/reports',
-                //            reportFiles: '*/index.html',
-                //            reportName: 'HTML Report RENTE',
-                //            reportTitles: 'Mocha Report'])
-                //        }
-                //    }
-                //}
-                stage('E2E') {
+                stage('RENTE') {
                     steps {
                         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                            bat "npx cypress run " + TEST_ENV_E2E
+                            bat "npx cypress run " + TEST_ENV_RENTE
                         }
                         script {
                             publishHTML([
@@ -89,11 +72,28 @@ pipeline {
                             keepAll: true,
                             reportDir: 'cypress/reports',
                             reportFiles: '*/index.html',
-                            reportName: 'HTML Report E2E',
+                            reportName: 'HTML Report RENTE',
                             reportTitles: 'Mocha Report'])
                         }
                     }
                 }
+                //stage('E2E') {
+                //    steps {
+                //        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                //            bat "npx cypress run " + TEST_ENV_E2E
+                //        }
+                //        script {
+                //            publishHTML([
+                //            allowMissing: false,
+                //            alwaysLinkToLastBuild: false,
+                //            keepAll: true,
+                //            reportDir: 'cypress/reports',
+                //            reportFiles: '*/index.html',
+                //            reportName: 'HTML Report E2E',
+                //            reportTitles: 'Mocha Report'])
+                //        }
+                //    }
+                //}
             }
         }
     }
