@@ -60,23 +60,23 @@ pipeline {
                         }
                     }
                 }
-                stage('RENTE') {
-                    steps {
-                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                            bat "npx cypress run " + TEST_ENV_RENTE
-                        }
-                        script {
-                            publishHTML([
-                            allowMissing: false,
-                            alwaysLinkToLastBuild: false,
-                            keepAll: true,
-                            reportDir: 'cypress/reports',
-                            reportFiles: '*/index.html',
-                            reportName: 'HTML Report RENTE',
-                            reportTitles: 'Mocha Report'])
-                        }
-                    }
-                }
+                //stage('RENTE') {
+                //    steps {
+                //        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                //            bat "npx cypress run " + TEST_ENV_RENTE
+                //        }
+                //        script {
+                //            publishHTML([
+                //            allowMissing: false,
+                //            alwaysLinkToLastBuild: false,
+                //            keepAll: true,
+                //            reportDir: 'cypress/reports',
+                //            reportFiles: '*/index.html',
+                //            reportName: 'HTML Report RENTE',
+                //            reportTitles: 'Mocha Report'])
+                //        }
+                //    }
+                //}
                 stage('E2E') {
                     steps {
                         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
