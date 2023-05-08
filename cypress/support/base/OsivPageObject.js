@@ -16,6 +16,7 @@ import GesuchePageObject from "../page_objects/gesuche/GesuchePageObject";
 import PosteingangPageObject from "../page_objects/posteingang/PosteingangPageObject";
 import VirtualViewer from "../standalone/VirtualViewer";
 import ErrorPopup from "../standalone/popup/ErrorPopup";
+import EingliederungPageObject from "../page_objects/eingliederungen/EingliederungPageObject";
 
 class OsivPageObject {
   constructor() {
@@ -32,6 +33,7 @@ class OsivPageObject {
     this.versicherte = new VersichertePageObject();
     this.gesuche = new GesuchePageObject();
     this.entscheid = new EntscheidPageObject();
+    this.eingliederung = new EingliederungPageObject();
     this.posteingang = new PosteingangPageObject();
     this.adressen = new AdressenPageObject();
     this.sendungen = new SendungenPageObject();
