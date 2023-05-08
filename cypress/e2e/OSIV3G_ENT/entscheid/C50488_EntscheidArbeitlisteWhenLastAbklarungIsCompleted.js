@@ -23,6 +23,7 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
            .grid.waitGridViewLoaded()
            .checkGridRowCount(1)
            .dblClickRowNumber(1);
+      pages.entscheid.detail.waitForLoaded();
       pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(data.arbeitslisteEntInitial);
       pages.groupedTaskbar.clickContainsGesuchTab();
       pages.groupedTaskbar.closeContainsEntscheidTab();
@@ -40,7 +41,7 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
       pages.gesuche.detail.tabBar.navigateToEntscheideTab()
            .grid.waitGridViewLoaded()
            .dblClickRowNumber(1);
-      pages.sendungen.detail.waitForLoaded();
+      pages.entscheid.detail.waitForLoaded();
       pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(data.arbeitslisteEntInitial);
 
       pages.groupedTaskbar.clickContainsGesuchTab();
@@ -58,6 +59,7 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
       pages.groupedTaskbar.clickContainsGesuchTab();
       pages.gesuche.detail.tabBar.navigateToEntscheideTab()
            .grid.dblClickRowNumber(1);
+      pages.entscheid.detail.waitForLoaded();
       pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(data.arbeitslisteEntChanged);
     });
   });

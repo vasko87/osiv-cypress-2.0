@@ -34,8 +34,8 @@ class LoginPage {
   }
 
   login(username, password) {
-    this.elements.nameTxt().wait(0).focus().clear().type(username);
-    this.elements.passwordTxt().type(`${password}{enter}`);
+    this.elements.nameTxt().wait(10).focus().clear().type(username);
+    this.elements.passwordTxt().wait(10).focus().clear().type(`${password}{enter}`);
   }
 }
 
