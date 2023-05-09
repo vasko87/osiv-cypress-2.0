@@ -1,10 +1,12 @@
 import pageBase from "../../../base/PageBase";
 import DetailWindowHeader from "../../../base/DetailWindowHeader";
 import constants from "../../../helpers/Constants";
+import EntscheidRibbon from "../../entscheid/detail/EntscheidRibbon";
 
 class EingliederungDetail {
   constructor() {
     this.windowHeader = new DetailWindowHeader();
+    this.ribbonMenu = new EntscheidRibbon();
   }
 
   waitForLoaded() {

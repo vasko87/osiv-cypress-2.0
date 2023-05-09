@@ -17,6 +17,7 @@ class EingliederungPageBase {
   }
 
   selectGesuchDropdownByIndex(index) {
+    this.elements.gesuchDropdown().should("be.visible");
     pageBase.selectDropdownValueByIndex(this.elements.gesuchDropdown(), index);
     return this;
   }

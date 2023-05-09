@@ -46,6 +46,11 @@ class EntscheidPageBase {
     return this;
   }
 
+  checkLeistungscodeDropdownEmpty(isEmpty) {
+    pageBase.checkDropdownEmpty(this.elements.leistungscodeDropdown(), isEmpty);
+    return this;
+  }
+
   getLeistungscodeDropdownSelectedValue() {
     return pageBase.getDropdownSelectedValue(this.elements.leistungscodeDropdown());
   }

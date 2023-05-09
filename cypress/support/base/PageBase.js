@@ -9,7 +9,10 @@ class PageBase {
    * @returns {PageBase}
    */
   selectInDropdownContains(element, value) {
-    element.click("top").get("[class='select2-results__options']", {timeout: constants.DEFAULT_TIMEOUT}).contains(value).click();
+    element.click("top")
+           .get("[class='select2-results__options']", {timeout: constants.DEFAULT_TIMEOUT})
+           .contains(value)
+           .click();
     return this;
   }
 
@@ -20,7 +23,10 @@ class PageBase {
    * @returns {PageBase}
    */
   selectDropdownValueByIndex(element, index) {
-    element.click("top").get("[class='select2-results__options']", {timeout: constants.DEFAULT_TIMEOUT}).eq(index - 1).click();
+    element.click("top")
+           .get("[class='select2-results__options']", {timeout: constants.DEFAULT_TIMEOUT})
+           .eq(index - 1)
+           .click();
     return this;
   }
 
@@ -33,6 +39,16 @@ class PageBase {
    */
   checkDropdownSelectedValue(element, selectedValue) {
     element.find("option").should("have.text", selectedValue);
+    return this;
+  }
+
+  checkDropdownEmpty(element, isEmpty) {
+    if(isEmpty) {
+      element.find("select").should("be.visible").find("option").should("be.empty");
+    } else {
+      element.find("select").should("be.visible").find("option").should("not.be.empty");
+    }
+
     return this;
   }
 

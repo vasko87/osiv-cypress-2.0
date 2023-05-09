@@ -11,7 +11,7 @@ const testData = {
 };
 
 describe(`C45772: Create Eingliederung from vP Eingliederungen; 
-  TestRail: https://osiv.testrail.net/index.php?/cases/view/45772`, {failFast: {enabled: true}}, () => {
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/45772`, () => {
 
   before(`Login as ${Cypress.env("username")};`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
@@ -29,9 +29,10 @@ describe(`C45772: Create Eingliederung from vP Eingliederungen;
   });
 
   it(`Step 3: Fill in mandatory fields; Add Meldung`, () => {
-    pages.eingliederung.neuPopup.selectGesuchDropdownByIndex(1)
+    pages.eingliederung.neuPopup
+         .selectGesuchDropdownByIndex(1)
          .selectEreignisDropdownByIndex(1)
-         .selectAuftragAnDropdownByIndex(1)
+         .selectAuftragDropdownByIndex(1)
          .selectAuftragAnDropdown(testData.auftragAn)
          .setMeldungTextarea("test");
   });
@@ -41,6 +42,7 @@ describe(`C45772: Create Eingliederung from vP Eingliederungen;
     pages.modalWindow.clickOkBtn();
     pages.warningPopup.checkWarningContainsText(testData.warningPart1)
          .checkWarningContainsText(testData.warningPart2);
+    pages.warningPopup.clickOkBtn();
     pages.notification.checkSuccessMessageVisible();
   });
 
@@ -48,13 +50,16 @@ describe(`C45772: Create Eingliederung from vP Eingliederungen;
     pages.eingliederung.detail.waitForLoaded();
     pages.groupedTaskbar.clickContainsVersichertendatenTab();
     pages.versicherte.detail.tabBar.navigateToEntscheideTab()
-      .grid.dblClickRowWithText(testData.auftragAn);
+         .grid.dblClickRowWithText(testData.arbeitsliste);
     pages.entscheid.detail.waitForLoaded();
-    pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(testData.arbeitsliste);
-    Utility.gatherElements({
-      lc      : pages.entscheid.detail.basisdatenTabBar.getLeistungscodeDropdownSelectedValue()
-    }).then((elements) => {
-      expect(elements.lc.text()).to.be.empty;
-    });
+    pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(testData.arbeitsliste)
+      .checkLeistungscodeDropdownEmpty(true);
+  });
+
+  it(`Step 6: Delete EIN`, () => {
+    pages.groupedTaskbar.clickContainsEingliederungTab();
+    pages.eingliederung.detail.ribbonMenu.clickLoschenBtn();
+    pages.confirmPopup.clickJaBtn();
+    pages.notification.checkSuccessMessageVisible();
   });
 });

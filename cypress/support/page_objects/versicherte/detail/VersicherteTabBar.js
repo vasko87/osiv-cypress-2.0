@@ -8,10 +8,10 @@ import EingliederungenTab_Versicherte from "./tabBarTabs/EingliederungenTab_Vers
 class VersicherteTabBar {
   constructor() {
     this.elements = {
-      detailsTab: () => cy.get("[class$='tab'][akid='SimpleSwatTabbar-Details der Versicherten Person'],[class$='tab_actv'][akid='SimpleSwatTabbar-Details der Versicherten Person']"),
-      entscheideTab: () => cy.get("[class$='tab'][akid='SimpleSwatTabbar-Entscheide'],[class$='tab_actv'][akid='SimpleSwatTabbar-Entscheide']"),
-      eingliederungenTab: () => cy.get("[class$='tab'][akid='SimpleSwatTabbar-Eingliederungen'],[class$='tab_actv'][akid='SimpleSwatTabbar-Eingliederungen']"),
-      sendungenTab: () => cy.get("[class$='tab'][akid='SimpleSwatTabbar-Sendungen'],[class$='tab_actv'][akid='SimpleSwatTabbar-Sendungen']")
+      detailsTab        : () => cy.get(`${constants.CSS_ACTIVE_FORM} [class$='tab'][akid='SimpleSwatTabbar-Details der Versicherten Person'],[class$='tab_actv'][akid='SimpleSwatTabbar-Details der Versicherten Person']`),
+      entscheideTab     : () => cy.get(`${constants.CSS_ACTIVE_FORM} [class$='tab'][akid='SimpleSwatTabbar-Entscheide'],[class$='tab_actv'][akid='SimpleSwatTabbar-Entscheide']`),
+      eingliederungenTab: () => cy.get(`${constants.CSS_ACTIVE_FORM} [class$='tab'][akid='SimpleSwatTabbar-Eingliederungen'],[class$='tab_actv'][akid='SimpleSwatTabbar-Eingliederungen']`),
+      sendungenTab      : () => cy.get(`${constants.CSS_ACTIVE_FORM} [class$='tab'][akid='SimpleSwatTabbar-Sendungen'],[class$='tab_actv'][akid='SimpleSwatTabbar-Sendungen']`)
     };
   }
 

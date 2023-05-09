@@ -2,7 +2,6 @@ import RibbonBase from "./../../../base/RibbonBase";
 import BearbeitungEinleitenPopup from "./popups/BearbeitungEinleitenPopup";
 import pageBase from "../../../base/PageBase";
 import GemischtePopup from "./sideMenuTabs/rente/popups/GemischtePopup";
-import ModalWindowBase from "../../../standalone/popup/ModalWindowBase";
 
 class EntscheidRibbon extends RibbonBase {
   constructor() {
