@@ -14,7 +14,7 @@ const testData = {
 };
 
 describe(`C50499: Test calculations - using hourly pay (Stundenlohn)" 
-  TestRail: https://osiv.testrail.net/index.php?/cases/view/510499`, {failFast: {enabled: true}}, () => {
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/510499`, () => {
 
   before(`Login`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));

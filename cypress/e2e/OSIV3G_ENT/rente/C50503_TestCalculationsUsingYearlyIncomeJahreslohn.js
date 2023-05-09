@@ -11,7 +11,7 @@ const testData = {
 };
 
 describe(`C50503: Test calculations - using Yearly income (Jahreslohn)
-  TestRail: https://osiv.testrail.net/index.php?/cases/view/50503`, {failFast: {enabled: true}}, () => {
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/50503`, () => {
 
   before(`Login`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));

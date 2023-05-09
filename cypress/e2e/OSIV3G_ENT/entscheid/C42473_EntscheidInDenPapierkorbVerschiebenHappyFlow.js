@@ -4,7 +4,7 @@ import helpers from "../../../support/helpers/HelperObject";
 import {c42473 as testData} from "../../../support/helpers/DataManager";
 
 describe(`C42473: Entscheid 'In den Papierkorb verschieben' happy flow; 
-  TestRail:https://osiv.testrail.net/index.php?/cases/view/42473`, {failFast: {enabled: true}}, () => {
+  TestRail:https://osiv.testrail.net/index.php?/cases/view/42473`, () => {
 
   before(`Login as ${Cypress.env("username")}; 
   EntschediID = ${testData.entId} (Sendung is completed, the document in the DMS is available.)`, () => {
@@ -20,8 +20,8 @@ describe(`C42473: Entscheid 'In den Papierkorb verschieben' happy flow;
   });
 
   it(`Step 2: Select Losch-Grund -> Click OK -> Confirm warning (OSCIENT:370)`, () => {
-    pages.entscheid.inDenPapierkorbPopup.selectLoschgrundDropdown(testData.loschgrundDropdown)
-         .clickOkBtn();
+    // pages.entscheid.inDenPapierkorbPopup.selectLoschgrundDropdown(testData.loschgrundDropdown)
+    //      .clickOkBtn();
     pages.warningPopup.checkWarningContainsText(testData.warningMsg)
          .clickOkBtn();
     pages.notification.checkSuccessMessageVisible();

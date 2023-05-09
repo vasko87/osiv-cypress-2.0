@@ -34,7 +34,7 @@ class EntscheidRibbon extends RibbonBase {
 
   clickAbschliessenBtn() {
     cy.wait(constants.MIN_TIMEOUT * 2);
-    this.elements.abschliessenBtn().should("be.visible").click();
+    this.elements.abschliessenBtn().should("be.visible").focus().click();
     return new SendungenAbschliessenPopup();
   }
 

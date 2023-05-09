@@ -17,7 +17,7 @@ const testData = {
 };
 
 describe(`C50504: Test Sociallohn and Abzug rows - with monthly salary (Monatslohn)
-  TestRail: https://osiv.testrail.net/index.php?/cases/view/50504`, {failFast: {enabled: true}}, () => {
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/50504`, () => {
 
   before(`Login`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));

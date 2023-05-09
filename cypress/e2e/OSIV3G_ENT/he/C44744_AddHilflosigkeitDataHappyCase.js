@@ -4,7 +4,7 @@ import helpers from "../../../support/helpers/HelperObject";
 import {c44744 as testData} from "../../../support/helpers/DataManager";
 
 describe(`C44744: (ENT ${testData.entId}) Add Hilflosigkeit data Happy case; 
-  TestRail:https://osiv.testrail.net/index.php?/cases/view/44744`, {failFast: {enabled: true}}, () => {
+  TestRail:https://osiv.testrail.net/index.php?/cases/view/44744`, () => {
 
   before("Login", () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));

@@ -32,7 +32,6 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
            .grid.waitGridViewLoaded()
            .dblClickRowNumber(1);
       pages.sendungen.detail.waitForLoaded();
-      pages.sendungen.detail.waitForLoaded();
       pages.sendungen.detail.ribbonMenu.clickAbschliessenBtn();
       flows.modalPopup.clickOkBtn_CheckSuccessMsg();
       pages.sendungen.detail.waitForLoaded()
