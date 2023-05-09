@@ -20,8 +20,8 @@ describe(`C42473: Entscheid 'In den Papierkorb verschieben' happy flow;
   });
 
   it(`Step 2: Select Losch-Grund -> Click OK -> Confirm warning (OSCIENT:370)`, () => {
-    // pages.entscheid.inDenPapierkorbPopup.selectLoschgrundDropdown(testData.loschgrundDropdown)
-    //      .clickOkBtn();
+    pages.entscheid.inDenPapierkorbPopup.selectLoschgrundDropdown(testData.loschgrundDropdown)
+         .clickOkBtn();
     pages.warningPopup.checkWarningContainsText(testData.warningMsg)
          .clickOkBtn();
     pages.notification.checkSuccessMessageVisible();
