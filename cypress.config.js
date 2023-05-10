@@ -77,7 +77,7 @@ module.exports = defineConfig(
       video                 : false,
       videoUploadOnPasses   : false,
       videoCompression      : 15,
-      // testIsolation         : false,
+      testIsolation         : false,
       all_frames       : true,
       retries          : {
         runMode : 0,
