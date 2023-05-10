@@ -1,6 +1,5 @@
 import pages from "../../../support/base/OsivPageObject";
 import flows from "../../../support/base/OsivFlowsObject";
-import {spec} from "mocha/lib/reporters";
 
 const testData = {
   entId            : "23153",
@@ -12,7 +11,7 @@ const testData = {
 };
 
 describe(`C50502: Test calculations - using monthly pay (Monatslohn) 
-  TestRail: https://osiv.testrail.net/index.php?/cases/view/50502`, {failFast: {enabled: true, strategy: spec}}, () => {
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/50502`, {failFast: {enabled: true}}, () => {
 
   before(`Login`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));

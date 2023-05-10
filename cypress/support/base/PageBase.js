@@ -9,7 +9,7 @@ class PageBase {
    * @returns {PageBase}
    */
   selectInDropdownContains(element, value) {
-    element.click("top")
+    element.click("center")
            .get("[class='select2-results__options']", {timeout: constants.DEFAULT_TIMEOUT})
            .contains(value)
            .click();
