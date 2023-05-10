@@ -26,6 +26,23 @@ pipeline {
 
         stage('Testing') {
             stages {
+                stage('E2E') {
+                    steps {
+                       catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                           bat "npx cypress run " + TEST_ENV_E2E
+                       }
+                       script {
+                           publishHTML([
+                              allowMissing: false,
+                              alwaysLinkToLastBuild: false,
+                              keepAll: true,
+                              reportDir: 'cypress/reports',
+                              reportFiles: '*/index.html',
+                              reportName: 'HTML Report E2E',
+                              reportTitles: 'Mocha Report'])
+                           }
+                       }
+                    }
                 stage('ENT') {
                     steps{
                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -73,23 +90,6 @@ pipeline {
                             reportDir: 'cypress/reports',
                             reportFiles: '*/index.html',
                             reportName: 'HTML Report RENTE',
-                            reportTitles: 'Mocha Report'])
-                        }
-                    }
-                }
-                stage('E2E') {
-                    steps {
-                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                            bat "npx cypress run " + TEST_ENV_E2E
-                        }
-                        script {
-                            publishHTML([
-                            allowMissing: false,
-                            alwaysLinkToLastBuild: false,
-                            keepAll: true,
-                            reportDir: 'cypress/reports',
-                            reportFiles: '*/index.html',
-                            reportName: 'HTML Report E2E',
                             reportTitles: 'Mocha Report'])
                         }
                     }

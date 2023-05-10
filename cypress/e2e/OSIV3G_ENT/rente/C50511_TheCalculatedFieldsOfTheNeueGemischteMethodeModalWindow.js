@@ -3,7 +3,7 @@ import flows from "../../../support/base/OsivFlowsObject";
 import {c50511 as testData} from "../../../support/helpers/DataManager";
 
 describe(`C50511: The calculated fields of the "Neue gemischte Methode" modal window" 
-  TestRail: https://osiv.testrail.net/index.php?/cases/view/50511`, {failFast: {enabled: false}}, () => {
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/50511`, () => {
 
   before(`Login`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));

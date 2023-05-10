@@ -3,7 +3,7 @@ import flows from "../../../support/base/OsivFlowsObject";
 import {c50497 as testData} from "../../../support/helpers/DataManager";
 
 describe(`C50497: Validation of Invalideneinkommen fields during editing (Part 1)" 
-  TestRail: https://osiv.testrail.net/index.php?/cases/view/50497;`, {failFast: {enabled: false}}, () => {
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/50497;`, () => {
   before(`Login`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
   });

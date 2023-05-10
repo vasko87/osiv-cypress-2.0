@@ -4,7 +4,7 @@ import {c39770 as testData} from "../../../support/helpers/DataManager";
 import Utility from "../../../support/Utility";
 
 describe(`C39770: Entscheid Copy; 
-  TestRail:https://osiv.testrail.net/index.php?/cases/view/39770`, {failFast: {enabled: false}}, () => {
+  TestRail:https://osiv.testrail.net/index.php?/cases/view/39770`, () => {
 
   before(`Login as ${Cypress.env("username")}; VP = ${testData.versicherteName}, 
   EntschediID = ${testData.entId} (contains Versicherungen and Df-stelle)`, () => {

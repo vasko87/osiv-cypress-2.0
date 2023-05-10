@@ -10,7 +10,7 @@ const testData = {
 };
 
 describe(`C51286: Calculations from the Invalideneinkommen fieldset for the Frühinvalidität entity (Part 2)" 
-  TestRail: https://osiv.testrail.net/index.php?/cases/view/51286`, {failFast: {enabled: false}}, () => {
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/51286`, () => {
 
   before(`Login`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));

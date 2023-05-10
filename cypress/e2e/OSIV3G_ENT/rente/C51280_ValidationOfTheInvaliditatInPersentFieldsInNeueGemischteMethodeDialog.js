@@ -11,7 +11,7 @@ const testData = {
 };
 
 describe(`C51280: Validation of the "Invalidität in %" fields in "Neue gemischte Methode" dialog 
-  TestRail:https://osiv.testrail.net/index.php?/cases/view/51280`, {failFast: {enabled: false}}, () => {
+  TestRail:https://osiv.testrail.net/index.php?/cases/view/51280`, () => {
 
   before(`Login`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));

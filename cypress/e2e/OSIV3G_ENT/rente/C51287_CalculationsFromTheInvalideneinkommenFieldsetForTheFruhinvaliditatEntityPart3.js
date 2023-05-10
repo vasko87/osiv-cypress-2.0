@@ -3,7 +3,7 @@ import flows from "../../../support/base/OsivFlowsObject";
 import {c51287 as testData} from "../../../support/helpers/DataManager";
 
 describe(`C51286: Calculations from the Invalideneinkommen fieldset for the Frühinvalidität entity (Part 3)" 
-  TestRail: https://osiv.testrail.net/index.php?/cases/view/51287`, {failFast: {enabled: false}}, () => {
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/51287`, () => {
 
   before(`Login`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));

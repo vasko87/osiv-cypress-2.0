@@ -9,45 +9,54 @@ module.exports = defineConfig(
     viewportHeight : 1080,
     reporter       : "cypress-mochawesome-reporter",
     reporterOptions: {
-      reporterEnabled           : "mochawesome",
-      mochawesomeReporterOptions: {
-        reportDir             : "cypress/reports/mochawesome-report",
-        screenshotOnRunFailure: true,
-        overwrite             : false,
-        html                  : false,
-        json                  : true,
-        timestamp             : "mmddyyyy_HHMMss",
-        showSkipped           : true,
-        quite                 : true,
-        embeddedScreenshots   : true,
-        inlineAssets          : true,
-        capture               : "runner" // capture: "fullPage",
-      }
+      reportDir          : "cypress/reports/mochawesome-report",
+      charts             : true,
+      html               : true,
+      json               : true,
+      embeddedScreenshots: true,
+      inlineAssets       : true,
+      showSkipped        : true,
+      showPending        : true,
+      capture            : "runner" // capture: "fullPage",
     },
-    e2e            : {
+    // reporter       : "cypress-mochawesome-reporter",
+    // reporterOptions: {
+    //   reporterEnabled           : "mochawesome",
+    //   charts                : true,
+    //   mochawesomeReporterOptions: {
+    //     reportDir             : "cypress/reports/mochawesome-report",
+    //     screenshotOnRunFailure: true,
+    //     overwrite             : false,
+    //     html                  : false,
+    //     json                  : true,
+    //     timestamp             : "mmddyyyy_HHMMss",
+    //     showSkipped           : true,
+    //     quite                 : true,
+    //     embeddedScreenshots   : true,
+    //     inlineAssets          : true,
+    //     capture               : "runner" // capture: "fullPage",
+    //   }
+    // },
+    e2e: {
       setupNodeEvents(on, config) {
         require("cypress-mochawesome-reporter/plugin")(on);
         require("cypress-fail-fast/plugin")(on, config);
+        new TestRailReporter(on, config).register();
 
-        on("task", {
-          log(message) {
-            console.log(message);
-
-            return null;
-          }
-        });
+        config.env.FAIL_FAST_STRATEGY = "spec";
+        config.env.FAIL_FAST_ENABLED = false;
 
         on("before:browser:launch", (browser = {}, launchOptions) => {
-          console.log(config, browser, launchOptions);
-          if (browser.name === "chrome") {
-            launchOptions.args.push("--disable-features=CrossSiteDocumentBlockingIfIsolating," +
-              "CrossSiteDocumentBlockingAlways,IsolateOrigins,site-per-process");
-            const ignoreXFrameHeadersExtension = path.join(__dirname, "../extensions/ignore-x-frame-headers");
-            launchOptions.args.push(`--load-extension=${ignoreXFrameHeadersExtension}`);
-          }
-          return launchOptions;
+          // console.log(config, browser, launchOptions);
+          // if (browser.name === "chrome") {
+          //   launchOptions.args.push("--disable-features=CrossSiteDocumentBlockingIfIsolating," +
+          //     "CrossSiteDocumentBlockingAlways,IsolateOrigins,site-per-process");
+          //   const ignoreXFrameHeadersExtension = path.join(__dirname, "../extensions/ignore-x-frame-headers");
+          //   launchOptions.args.push(`--load-extension=${ignoreXFrameHeadersExtension}`);
+          // }
+          // return launchOptions;
         });
-        new TestRailReporter(on, config).register();
+        return config;
       },
 
       specPattern           : "cypress/e2e/**/*.{js,jsx,ts,tsx}",
@@ -68,14 +77,14 @@ module.exports = defineConfig(
       video                 : false,
       videoUploadOnPasses   : false,
       videoCompression      : 15,
-      testIsolation         : false,
-      all_frames            : true,
-      retries               : {
+      // testIsolation         : false,
+      all_frames       : true,
+      retries          : {
         runMode : 0,
         openMode: 0
       },
-      scrollBehavior        : "top",
-      slowTestThreshold     : 500//Time, in milliseconds, to consider a test "slow" during cypress run
+      scrollBehavior   : "top",
+      slowTestThreshold: 500//Time, in milliseconds, to consider a test "slow" during cypress run
     }
   }
 );

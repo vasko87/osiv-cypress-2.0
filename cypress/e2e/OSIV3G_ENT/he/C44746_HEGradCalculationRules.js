@@ -3,7 +3,7 @@ import flows from "../../../support/base/OsivFlowsObject";
 import {c44746 as testData} from "../../../support/helpers/DataManager";
 
 describe(`C44746: HE-Grad is calculation rules; 
-  TestRail:https://osiv.testrail.net/index.php?/cases/view/44746`, {failFast: {enabled: false}}, () => {
+  TestRail:https://osiv.testrail.net/index.php?/cases/view/44746`, () => {
 
   before("Login", () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
