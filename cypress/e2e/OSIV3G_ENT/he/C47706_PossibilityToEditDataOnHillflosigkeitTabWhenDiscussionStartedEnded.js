@@ -1,9 +1,10 @@
 import pages from "../../../support/base/OsivPageObject";
 import flows from "../../../support/base/OsivFlowsObject";
 import {c47706 as testData} from "../../../support/helpers/DataManager";
+import {spec} from "mocha/lib/reporters";
 
 describe(`C47706: Possibility to edit data on Hillflosigkeit tab when discussion started/ended; 
-  TestRail: https://osiv.testrail.net/index.php?/cases/view/47706`, () => {
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/47706`, {failFast: {enabled: true, strategy: spec}}, () => {
 
   before(`Login as ${Cypress.env("username")}`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));

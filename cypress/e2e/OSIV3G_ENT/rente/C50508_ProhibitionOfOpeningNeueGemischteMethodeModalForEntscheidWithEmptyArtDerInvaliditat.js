@@ -1,5 +1,6 @@
 import pages from "../../../support/base/OsivPageObject";
 import flows from "../../../support/base/OsivFlowsObject";
+import {spec} from "mocha/lib/reporters";
 
 const testData = {
   entId: "23000",
@@ -7,7 +8,7 @@ const testData = {
 };
 
 describe(`C50508: Prohibition of opening "Neue gemischte Methode" modal for Entscheid with empty "Art der Invalidität" 
-  TestRail:https://osiv.testrail.net/index.php?/cases/view/50508`, () => {
+  TestRail:https://osiv.testrail.net/index.php?/cases/view/50508`, {failFast: {enabled: true, strategy: spec}}, () => {
 
   before(`Login`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));

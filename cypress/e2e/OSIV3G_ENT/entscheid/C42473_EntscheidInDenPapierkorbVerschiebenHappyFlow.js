@@ -2,9 +2,10 @@ import pages from "../../../support/base/OsivPageObject";
 import flows from "../../../support/base/OsivFlowsObject";
 import helpers from "../../../support/helpers/HelperObject";
 import {c42473 as testData} from "../../../support/helpers/DataManager";
+import {spec} from "mocha/lib/reporters";
 
 describe(`C42473: Entscheid 'In den Papierkorb verschieben' happy flow; 
-  TestRail:https://osiv.testrail.net/index.php?/cases/view/42473`, () => {
+  TestRail:https://osiv.testrail.net/index.php?/cases/view/42473`, {failFast: {enabled: true, strategy: spec}}, () => {
 
   before(`Login as ${Cypress.env("username")}; 
   EntschediID = ${testData.entId} (Sendung is completed, the document in the DMS is available.)`, () => {

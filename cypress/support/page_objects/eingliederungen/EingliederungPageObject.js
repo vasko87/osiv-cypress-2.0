@@ -5,7 +5,7 @@ import EingliederungGrid from "./grid/EingliederungGrid";
 
 class EingliederungPageObject {
   constructor() {
-    this.grid = new EingliederungGrid(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidQueryGrid'],[akid='EntscheidGesuchQueryGrid']`);
+    this.grid = new EingliederungGrid(`${constants.CSS_ACTIVE_FORM} [akid='EingliederungGrid']`);
     this.detail = new EingliederungDetail();
     this.neuPopup = new EingliederungsauftragErteilenPopup();
   }

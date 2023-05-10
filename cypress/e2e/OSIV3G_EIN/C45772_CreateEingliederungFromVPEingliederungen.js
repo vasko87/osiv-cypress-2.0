@@ -1,6 +1,5 @@
 import pages from "../../support/base/OsivPageObject";
 import flows from "../../support/base/OsivFlowsObject";
-import Utility from "../../support/Utility";
 
 const testData = {
   vpName      : "Crood Eep",

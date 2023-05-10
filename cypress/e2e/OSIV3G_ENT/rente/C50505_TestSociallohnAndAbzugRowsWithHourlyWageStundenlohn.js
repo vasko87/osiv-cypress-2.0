@@ -1,5 +1,6 @@
 import pages from "../../../support/base/OsivPageObject";
 import flows from "../../../support/base/OsivFlowsObject";
+import {spec} from "mocha/lib/reporters";
 
 const testData = {
   entId                          : "23153",
@@ -18,7 +19,7 @@ const testData = {
 };
 
 describe(`C50505: Test Sociallohn and Abzug rows - with hourly wage (Stundenlohn)
-  TestRail: https://osiv.testrail.net/index.php?/cases/view/50505`, () => {
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/50505`, {failFast: {enabled: true, strategy: spec}}, () => {
 
   before(`Login`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));

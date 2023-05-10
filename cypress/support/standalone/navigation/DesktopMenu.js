@@ -14,6 +14,7 @@ class DesktopMenu {
       posteingangTab    : () => cy.get("[class*='level-2'][menuname='Posteingang']"),
       entscheidMainTab  : () => cy.get("[class*='level-1'][menuname='Entscheid']"),
       entscheidTab      : () => cy.get("[class*='level-2'][menuname='Entscheid']"),
+      eingliederungTab  : () => cy.get("[class*='level-2'][menuname='Eingliederung']"),
       gesucheMainTab    : () => cy.get("[class*='level-1'][menuname='Gesuche']"),
       gesucheTab        : () => cy.get("[class*='level-2'][menuname='Gesuche']")
     };
@@ -35,6 +36,11 @@ class DesktopMenu {
     this.elements.entscheidTab().click();
     this.elements.entscheidMainTab().click();
     return new EntscheidGrid();
+  }
+
+  navigateToEingliederungTab() {
+    this.elements.eingliederungTab().should("be.visible").click();
+    return new Ein();
   }
 
   navigateToGesucheTab() {

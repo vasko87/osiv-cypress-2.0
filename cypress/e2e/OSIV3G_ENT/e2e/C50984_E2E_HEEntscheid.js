@@ -5,10 +5,11 @@ import helpers from "../../../support/helpers/HelperObject";
 import {c50984 as testData} from "../../../support/helpers/DataManager";
 import dateHelper from "../../../support/helpers/DateHelper";
 import pageBase from "../../../support/base/PageBase";
+import {spec} from "mocha/lib/reporters";
 
 describe(`C50984: E2E (HE Entscheid);
   TestRail: https://osiv.testrail.net/index.php?/cases/view/50984; 
-  DEFECT (step 9): https://jiraosiv3g.atlassian.net/browse/OSIV-22145`, () => {
+  DEFECT (step 9): https://jiraosiv3g.atlassian.net/browse/OSIV-22145`, {failFast: {enabled: true, strategy: spec}}, () => {
   before("Login", () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
     helpers.jira.isJiraDone("OSIV-22145").then((isDone) => {

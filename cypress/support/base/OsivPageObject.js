@@ -17,6 +17,7 @@ import PosteingangPageObject from "../page_objects/posteingang/PosteingangPageOb
 import VirtualViewer from "../standalone/VirtualViewer";
 import ErrorPopup from "../standalone/popup/ErrorPopup";
 import EingliederungPageObject from "../page_objects/eingliederungen/EingliederungPageObject";
+import TerminePageObject from "../page_objects/termine/TerminePageObject";
 
 class OsivPageObject {
   constructor() {
@@ -35,6 +36,7 @@ class OsivPageObject {
     this.entscheid = new EntscheidPageObject();
     this.eingliederung = new EingliederungPageObject();
     this.posteingang = new PosteingangPageObject();
+    this.termine = new TerminePageObject();
     this.adressen = new AdressenPageObject();
     this.sendungen = new SendungenPageObject();
     this.virtualViewer = new VirtualViewer();
