@@ -15,7 +15,7 @@ $ git clone https://github.com/vasko87/osiv-cypress-2.0
 - browser based run: ```npx cypress open```
 - headless run default suite: ```npx cypress run```
 - headless run single test: ```npx cypress run --spec cypress/e2e/[testName.js]```
-- headed run of single test (generates html result): ```npx cypress run --spec .\cypress\e2e\C001_newAdressTest --headed```
+- headed run of single test (generates html result): ```npx cypress run --spec ./cypress/e2e/C001_newAdressTest.js --headed```
 
 Note: Parameters from [cypress.env.json](cypress.env.json) are used by default, if you would like to change them - update this file OR past them as env parameters directly in command line:
 

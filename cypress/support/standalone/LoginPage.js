@@ -9,7 +9,7 @@ class LoginPage {
 
   open(url) {
     cy.visit(url);
-    // workaround to make detail vew pages open correctly
+    // workaround to make detail view pages open correctly
     // redefined Akioma method 'isWindowInTaskbarMode' to return true.
     // Otherwise, Detail view windows opening work incorrectly, probably because cypress run tests inside frame
     cy.window().then(function (win) {
@@ -34,8 +34,8 @@ class LoginPage {
   }
 
   login(username, password) {
-    this.elements.nameTxt().wait(0).focus().clear().type(username);
-    this.elements.passwordTxt().type(`${password}{enter}`);
+    this.elements.nameTxt().wait(10).focus().clear().type(username);
+    this.elements.passwordTxt().wait(10).focus().clear().type(`${password}{enter}`);
   }
 }
 

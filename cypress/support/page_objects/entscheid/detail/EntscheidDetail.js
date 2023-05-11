@@ -12,7 +12,7 @@ import MetaInfoTab_Ent from "./tabBarTabs/MetaInfoTab_Ent";
 import SendungenTab_Ent from "./tabBarTabs/SendungenTab_Ent";
 import BasisdatenTab_Ent from "./tabBarTabs/BasisdatenTab_Ent";
 import constants from "./../../../helpers/Constants";
-import RenteTab from "./sideMenuTabs/RenteTab";
+import RenteTab from "./sideMenuTabs/rente/RenteTab";
 
 class EntscheidDetail {
   constructor() {
@@ -34,6 +34,7 @@ class EntscheidDetail {
   waitForLoaded() {
     pageBase.waitForLoadingDisappears();
     cy.get(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailBasisDatenForm']`).should("be.visible", 10000);
+    pageBase.waitForLoadingDisappears();
     return this;
   }
 }

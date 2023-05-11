@@ -8,13 +8,15 @@ const LONG_TIMEOUT = 50000;
 const COLOR = {
   orange: "rgb(255, 165, 0)",
   green : "rgb(255, 255, 255)",
+  red   : "rgb(255, 0, 0)",
   white : "rgb(255, 255, 255)",
   yellow: "rgb(255, 255, 0)"
 };
 
 const MSG = {
   OSCIENT_522: "Bitte die Bearbeitung einleiten. (OSCIENT:522)",
-  OSCIENT_523: "Es müssen noch folgende Felder ausgefüllt werden: Entscheid, Supertext, Entscheidtyp, Gebrechen, Funktionsausfall. (OSCIENT:523)"
+  TERMIN_44: "Sie beenden einen fremden Termin. (Termin:44)",
+  TERMIN_26: "Die zugehörige Eingliederung bleibt aufgrund eines Termins im Warten. (Termin:26)"
 };
 
 module.exports = {CSS_ACTIVE_FORM, CSS_OPACITY1, MIN_TIMEOUT, SHORT_TIMEOUT, LONG_TIMEOUT, DEFAULT_TIMEOUT, COLOR, MSG};

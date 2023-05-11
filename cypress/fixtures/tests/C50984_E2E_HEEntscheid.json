@@ -30,7 +30,9 @@
       "gebrechenDropdown": "101",
       "funktausfallDropdown": "01",
       "beginnDate": "today"
-    }
+    },
+    "msg_523_text": "Es müssen noch folgende Felder ausgefüllt werden: Entscheid, Supertext, Entscheidtyp",
+    "msg_523_code": "(OSCIENT:523)"
   },
   "step5": {
     "arbeitslisteTxt": "Bearbeiten"

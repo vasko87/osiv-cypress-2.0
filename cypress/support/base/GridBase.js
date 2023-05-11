@@ -98,6 +98,11 @@ class GridBase {
     return this;
   }
 
+  clickRowWithTextToSelectIt(text) {
+    this.elements.gridWrapper().find("tbody").contains("td", text).click();
+    return this;
+  }
+
   dblClickRowWithText(text) {
     this.elements.gridWrapper().find("tbody").contains("td", text).dblclick();
     return this;

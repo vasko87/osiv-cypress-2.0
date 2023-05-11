@@ -9,7 +9,7 @@ class EntscheidGridFilter {
   /**
    * Search @value in 'Entscheid ID' field of Grid filter
    * @param value
-   * @returns {VersicherteGrid}
+   * @returns {EntscheidGridFilter}
    */
   searchEntscheidID(value) {
     this.elements.entscheidIDTxt().click().clear().type(`${value}{enter}`);

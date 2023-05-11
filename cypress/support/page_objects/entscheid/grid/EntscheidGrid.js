@@ -2,7 +2,7 @@ import EntscheidGridFilter from "./EntscheidGridFilter";
 import EntscheidGridHeaderActivePanel from "./EntscheidGridHeaderActivePanel";
 import GridBase from "../../../base/GridBase";
 import pageBase from "../../../base/PageBase";
-class EntscheidGrid extends GridBase{
+class EntscheidGrid extends GridBase {
   constructor(css) {
     super(css);
     this.filter = new EntscheidGridFilter();

@@ -1,5 +1,5 @@
 import SendungenRibbon from "./SendungenRibbon";
-import SendungenAbschliessenPopup from "../popup/SendungenAbschliessenPopup";
+import SendungenAbschliessenPopup from "./popups/SendungenAbschliessenPopup";
 import SendungenSideMenu from "./SendungenSideMenu";
 import constants from "../../../helpers/Constants";
 import SendungenPageBase from "../SendungenPageBase";

@@ -6,6 +6,7 @@ class GroupedTaskbar {
       groupedTaskbar  : () => cy.get("div[class='vue-taskbar-container']"),
       entscheidHEHETab: () => this.elements.groupedTaskbar().find("[title='Entscheid HE HE']"),
       entscheidTab: () => this.elements.groupedTaskbar().find("[title*='Entscheid']"),
+      eingliederungTab: () => this.elements.groupedTaskbar().find("[title*='Eingliederung']"),
       gesuchTab: () => this.elements.groupedTaskbar().find("[title*='Gesuch']"),
       versichertendatenTab: () => this.elements.groupedTaskbar().find("[title*='Versichertendaten']")
     };
@@ -33,6 +34,11 @@ class GroupedTaskbar {
 
   clickContainsVersichertendatenTab() {
     this.elements.versichertendatenTab().click();
+    return this;
+  }
+
+  clickContainsEingliederungTab() {
+    this.elements.eingliederungTab().click();
     return this;
   }
 }

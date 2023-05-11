@@ -9,7 +9,10 @@ class PageBase {
    * @returns {PageBase}
    */
   selectInDropdownContains(element, value) {
-    element.click("top").get("[class='select2-results__options']", {timeout: constants.DEFAULT_TIMEOUT}).contains(value).click();
+    element.click("center")
+           .get("[class='select2-results__options']", {timeout: constants.DEFAULT_TIMEOUT})
+           .contains(value)
+           .click();
     return this;
   }
 
@@ -20,7 +23,10 @@ class PageBase {
    * @returns {PageBase}
    */
   selectDropdownValueByIndex(element, index) {
-    element.click("top").get("[class='select2-results__options']", {timeout: constants.DEFAULT_TIMEOUT}).eq(index - 1).click();
+    element.click("top")
+           .get("[class='select2-results__options']", {timeout: constants.DEFAULT_TIMEOUT})
+           .eq(index - 1)
+           .click();
     return this;
   }
 
@@ -33,6 +39,16 @@ class PageBase {
    */
   checkDropdownSelectedValue(element, selectedValue) {
     element.find("option").should("have.text", selectedValue);
+    return this;
+  }
+
+  checkDropdownEmpty(element, isEmpty) {
+    if(isEmpty) {
+      element.find("select").should("be.visible").find("option").should("be.empty");
+    } else {
+      element.find("select").should("be.visible").find("option").should("not.be.empty");
+    }
+
     return this;
   }
 
@@ -57,10 +73,10 @@ class PageBase {
 
   isElementVisible(element) {
     return element.then(el => {
-      if (el.is(":visible")){
+      if (el.is(":visible")) {
         return true;
       } else {
-        return  false;
+        return false;
       }
     });
   }
@@ -89,14 +105,14 @@ class PageBase {
   setCheckboxChecked(element, shouldCheck) {
     if (shouldCheck === true) {
       element.then((el) => {
-        if (!(el.find("input").value === "true")){
+        if (!(el.find("input").value === "true")) {
           element.click();
         }
       });
     }
     if (shouldCheck === false) {
       element.then((el) => {
-        if (el.find("input").value === "true"){
+        if (el.find("input").value === "true") {
           element.click();
         }
       });
@@ -163,11 +179,26 @@ class PageBase {
    * @param hasColor
    * @returns {PageBase}
    */
-  checkElementColor(element, color, shouldHave) {
+  checkElementBorderLeftColor(element, color, shouldHave) {
     if (shouldHave) {
       element.should("have.css", "border-left-color", color, {timeout: 10000});
     } else {
       element.should("not.have.css", "border-left-color", color, {timeout: 10000});
+    }
+    return this;
+  }
+
+  checkElementColor(element, color, shouldHave) {
+    if (shouldHave) {
+      element.invoke("attr", "style", `color: ${color}`)
+             .then(new_element => {
+               expect(new_element).to.have.css("color", color);
+             });
+    } else {
+      element.invoke("attr", "style", `color: ${color}`)
+             .then(new_element => {
+               expect(new_element).not.to.have.css("color", color);
+             });
     }
     return this;
   }

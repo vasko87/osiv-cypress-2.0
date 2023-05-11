@@ -1,0 +1,25 @@
+{
+  "entId": "23316",
+  "methode": "Fruehinvaliditaet",
+  "lohnartS": "Stundenlohn",
+  "step4": {
+    "fr": "2",
+    "soziallohnGewinnkostenInPersent": "4",
+    "sLGKInFrProMonat": "9"
+  },
+  "step5": {
+    "fr": "3",
+    "soziallohnGewinnkostenInPersent": "3",
+    "sLGKInFrProJahr": "120"
+  },
+  "step6": {
+    "fr": "8",
+    "abzugInPersent": "2",
+    "abzugInFrProMonat": "17"
+  },
+  "step7": {
+    "fr": "7",
+    "abzugInPersent": "2",
+    "abzugInFrProJahr": "180"
+  }
+}

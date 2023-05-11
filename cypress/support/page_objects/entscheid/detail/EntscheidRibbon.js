@@ -1,6 +1,7 @@
 import RibbonBase from "./../../../base/RibbonBase";
-import BearbeitungEinleitenPopup from "../popup/BearbeitungEinleitenPopup";
+import BearbeitungEinleitenPopup from "./popups/BearbeitungEinleitenPopup";
 import pageBase from "../../../base/PageBase";
+import GemischtePopup from "./sideMenuTabs/rente/popups/GemischtePopup";
 
 class EntscheidRibbon extends RibbonBase {
   constructor() {
@@ -225,7 +226,7 @@ class EntscheidRibbon extends RibbonBase {
 
   clickNeueGemischteMethodeBtn() {
     this.elements.neueGemischteMethodeBtn().click();
-    return this;
+    return new GemischtePopup();
   }
 
   checkNeueGemischteMethodeBtnDisabled(isDisabled) {

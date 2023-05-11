@@ -17,11 +17,13 @@
   "devDependencies": {
     "@babel/code-frame": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
+    "@cypress/skip-test": "^2.6.1",
     "@cypress/snapshot": "^2.1.7",
     "@cypress/webpack-preprocessor": "^5.14.0",
     "@cypress/xpath": "^2.0.3",
     "@testing-library/cypress": "^9.0.0",
     "cypress": "^12.8.0",
+    "cypress-fail-fast": "^7.0.1",
     "cypress-file-upload": "^5.0.8",
     "cypress-iframe": "^1.0.1",
     "cypress-mochawesome-reporter": "^3.3.0",
@@ -44,6 +46,7 @@
     "@cypress/commit-info": "^2.2.0",
     "chrome-ext-downloader": "^1.0.4",
     "cypress-ag-grid": "^2.0.1",
+    "jira.js": "^2.18.0",
     "moment": "^2.29.4",
     "require": "^0.4.4"
   },

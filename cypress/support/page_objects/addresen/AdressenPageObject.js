@@ -1,4 +1,4 @@
-import AdressenAddDialog from "./popup/AdressenAddDialog";
+import AdressenAddDialog from "./detail/popups/AdressenAddDialog";
 import AdressenDetail from "./detail/AdressenDetail";
 import AdressenGrid from "./grid/AdressenGrid";
 

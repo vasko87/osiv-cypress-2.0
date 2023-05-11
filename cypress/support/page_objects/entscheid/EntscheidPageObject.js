@@ -1,9 +1,9 @@
 import EntscheidGrid from "./grid/EntscheidGrid";
 import EntscheidDetail from "./detail/EntscheidDetail";
-import EntscheidNeuPopup from "./popup/EntscheidNeuPopup";
-import BearbeitungEinleitenPopup from "./popup/BearbeitungEinleitenPopup";
+import EntscheidNeuPopup from "./detail/popups/EntscheidNeuPopup";
+import BearbeitungEinleitenPopup from "./detail/popups/BearbeitungEinleitenPopup";
 import constants from "../../helpers/Constants";
-import EntscheidInDenPapierkorbVerschiebenPopup from "./popup/EntscheidInDenPapierkorbVerschiebenPopup";
+import EntscheidInDenPapierkorbVerschiebenPopup from "./detail/popups/EntscheidInDenPapierkorbVerschiebenPopup";
 
 class EntscheidPageObject {
   constructor() {

@@ -37,7 +37,7 @@ class FreitexteTab {
       },
 
       checkGesetzlicheGrundlagenTabColor(color, shouldHave) {
-        pageBase.checkElementColor(this.gesetzlicheGrundlagenTab(), color, shouldHave);
+        pageBase.checkElementBorderLeftColor(this.gesetzlicheGrundlagenTab(), color, shouldHave);
         return this;
       }
     };
