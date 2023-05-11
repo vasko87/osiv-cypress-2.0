@@ -7,7 +7,7 @@ class ModalWindowBase {
     this.elements = {
       modalWindow : () => cy.get(ModalWindowBase.css, {timeout:constants.DEFAULT_TIMEOUT}),
       okBtn: () => this.elements.modalWindow().find('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]'),
-      toolbar: () => cy.get(ModalWindowBase.css).find("[class='dhxtoolbar_float_left']")
+      toolbar: () => cy.get(ModalWindowBase.css).find("[class='dhx_cell_toolbar_def']")
     };
   }
 

@@ -90,32 +90,32 @@ class EntscheidSideMenu {
   }
 
   checkBasisdatenTabColor(color, shouldHave) {
-    pageBase.checkElementColor(this.elements.basisdatenTab(), color, shouldHave);
+    pageBase.checkElementBorderLeftColor(this.elements.basisdatenTab(), color, shouldHave);
     return this;
   }
 
   checkHilflosigkeitTabColor(color, shouldHave) {
-    pageBase.checkElementColor(this.elements.hilflosigkeitTab(), color, shouldHave);
+    pageBase.checkElementBorderLeftColor(this.elements.hilflosigkeitTab(), color, shouldHave);
     return this;
   }
 
   checkFreitexteTabColor(color, shouldHave) {
-    pageBase.checkElementColor(this.elements.freitexteTab(), color, shouldHave);
+    pageBase.checkElementBorderLeftColor(this.elements.freitexteTab(), color, shouldHave);
     return this;
   }
 
   checkDurchfuhrungsstellenTabColor(color, shouldHave) {
-    pageBase.checkElementColor(this.elements.durchfuhrungsstellenTab(), color, shouldHave);
+    pageBase.checkElementBorderLeftColor(this.elements.durchfuhrungsstellenTab(), color, shouldHave);
     return this;
   }
 
   checkEntscheidSendungenTabColor(color, shouldHave) {
-    pageBase.checkElementColor(this.elements.entscheidSendungenTab(), color, shouldHave);
+    pageBase.checkElementBorderLeftColor(this.elements.entscheidSendungenTab(), color, shouldHave);
     return this;
   }
 
   checkVisierenTabColor(color, shouldHave) {
-    pageBase.checkElementColor(this.elements.visierenTab(), color, shouldHave);
+    pageBase.checkElementBorderLeftColor(this.elements.visierenTab(), color, shouldHave);
     return this;
   }
 }

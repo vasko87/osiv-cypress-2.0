@@ -18,7 +18,7 @@ class EntscheidPageBase {
       funktausfallDropdown: () => cy.get(baseCSS).find("[akid$='-funktausfall']"),
       beginnDate          : () => cy.get(baseCSS).find("[akid$='-beginn_dat'] input"),
 
-      notizenTextarea        : () => cy.get(baseCSS).find("[akid$='-bem'] textarea")
+      notizenTextarea: () => cy.get(baseCSS).find("[akid$='-bem'] textarea")
     };
   }
 
@@ -43,6 +43,11 @@ class EntscheidPageBase {
 
   checkLeistungscodeDropdown(value) {
     pageBase.checkDropdownSelectedValue(this.elements.leistungscodeDropdown(), value);
+    return this;
+  }
+
+  checkLeistungscodeDropdownEmpty(isEmpty) {
+    pageBase.checkDropdownEmpty(this.elements.leistungscodeDropdown(), isEmpty);
     return this;
   }
 
@@ -135,6 +140,7 @@ class EntscheidPageBase {
     pageBase.checkDropdownSelectedValue(this.elements.entscheidtypDropdown(), value);
     return this;
   }
+
   checkEntscheidTypDropdownReadonly(isReadonly) {
     pageBase.checkDropdownReadonly(this.elements.entscheidtypDropdown(), isReadonly);
     return this;

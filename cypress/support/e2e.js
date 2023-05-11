@@ -21,6 +21,7 @@ import "cypress-mochawesome-reporter/register";
 import "cypress-testrail";
 import "@testing-library/cypress/add-commands";
 import "cypress-iframe";
+import "cypress-fail-fast";
 
 // require("@cypress/snapshot").register();
 require("cypress-wait-until");
@@ -28,3 +29,5 @@ require("cypress-plugin-tab");
 require("cypress-iframe");
 require("cypress-xpath");
 require("cypress-testrail");
+require("@cypress/skip-test/support");
+require("cypress-fail-fast/plugin");

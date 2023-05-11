@@ -1,5 +1,6 @@
 import pageBase from "../../../../../../base/PageBase";
 import ModalWindowBase from "../../../../../../standalone/popup/ModalWindowBase";
+import constants from "../../../../../../helpers/Constants";
 
 class RentePopupsBase extends ModalWindowBase {
   constructor() {
@@ -40,6 +41,7 @@ class RentePopupsBase extends ModalWindowBase {
       anzahlMonathLohneTxt              : () => cy.get(ModalWindowBase.css).find("[akid$='-ie_anzahl_ml'] input"),
       soziallohnGewinnkostenInPersentTxt: () => cy.get(ModalWindowBase.css).find("[akid$='-ie_soziallohn'] input"),
       abzugInPersentTxt                 : () => cy.get(ModalWindowBase.css).find("[akid$='-ie_abzug'] input"),
+      totalInFrTxt                 : () => cy.get(ModalWindowBase.css).find("[akid$='-ie_total_ek'] input"),
 
       selectLohnartDropdown(value) {
         pageBase.selectInDropdownContains(this.lohnartDropdown(), value);
@@ -88,6 +90,11 @@ class RentePopupsBase extends ModalWindowBase {
       setInFrProJahrTxt(value) {
         this.inFrProJahrTxt().clear().type(value);
         modalWindow.focusToolbar();
+        return this;
+      },
+
+      checkInFrProJahrTxt(value) {
+        this.inFrProJahrTxt().should("have.value", value);
         return this;
       },
 
@@ -170,6 +177,11 @@ class RentePopupsBase extends ModalWindowBase {
       checkAbzugInFrProMonatTxt(value) {
         this.abzugInFrProMonatTxt().should("have.value", value);
         return this;
+      },
+
+      checkTotalInFrTxt(value) {
+        this.totalInFrTxt().should("have.value", value);
+        return this;
       }
     };
 
@@ -245,12 +257,28 @@ class RentePopupsBase extends ModalWindowBase {
 
     this.invalidenGradRenteBlock = {
       invGradTxt: () => cy.get(ModalWindowBase.css).find("[akid$='-inv_grad'] input"),
+      invGradTxtValidationError: () => cy.get(ModalWindowBase.css).find("[akid$='-inv_grad'] [class='validation-error-smartmessage']"),
       renteTxt  : () => cy.get(ModalWindowBase.css).find("[akid$='-rente'] input"),
       renteAbDate  : () => cy.get(ModalWindowBase.css).find("[akid$='-rente_ab_dat'] input"),
 
       setInvGradTxt(value) {
         this.invGradTxt().clear().type(value);
         modalWindow.focusToolbar();
+        return this;
+      },
+
+      checkInvGradColorRed() {
+        pageBase.checkElementColor(this.invGradTxt(), constants.COLOR.red, true);
+        return this;
+      },
+
+      checkInvGradValidationError(value) {
+        this.invGradTxtValidationError().should("have.text", value);
+        return this;
+      },
+
+      checkInvGradValidationErrorColorRed() {
+        pageBase.checkElementColor(this.invGradTxtValidationError(), constants.COLOR.red, true);
         return this;
       },
 
