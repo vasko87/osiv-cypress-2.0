@@ -1,7 +1,7 @@
 class TerminePageBase {
   constructor(baseCSS) {
     this.elements = {
-      terminText: () => cy.get(baseCSS).find("[name='termin_text']")
+      terminText: () => cy.get(baseCSS).find("div[role='textbox'] p")
     };
   }
 

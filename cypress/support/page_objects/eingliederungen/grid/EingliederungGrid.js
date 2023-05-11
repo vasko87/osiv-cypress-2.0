@@ -21,7 +21,7 @@ class EingliederungGrid extends GridBase {
    */
   searchAndOpenEingliederungID(value) {
     this.filter.searchEingliederungID(value);
-    super.dblClickRowValue(value);
+    super.dblClickRowNumber(1);
     pageBase.waitForLoadingDisappears();
     return this;
   }

@@ -7,7 +7,9 @@ class EingliederungPageBase {
       ereignisDropdown: () => cy.get(baseCSS).find("[akid$='-ereignisdynselect']"),
       auftragDropdown  : () => cy.get(baseCSS).find("[akid$='-auftragsart']"),
       auftragAnDropdown        : () => cy.get(baseCSS).find("[akid$='-berufberaterdynselect']"),
-      meldungTextarea     : () => cy.get(baseCSS).find("[akid$='-MeldungText']")
+      meldungTextarea     : () => cy.get(baseCSS).find("[akid$='-MeldungText']"),
+      arbeitslisteTxt     : () => cy.get(baseCSS).find("[akid$='-arbeitslistebez']"),
+      totalTxt     : () => cy.get(baseCSS).find("[akid$='-total_gespraeche']")
     };
   }
 
@@ -43,6 +45,11 @@ class EingliederungPageBase {
 
   checkEreignisDropdown(value) {
     pageBase.checkDropdownSelectedValue(this.elements.ereignisDropdown(), value);
+    return this;
+  }
+
+  checkEreignisDropdownContains(value, shouldContain) {
+    pageBase.checkDropdownSelectedValueContains(this.elements.ereignisDropdown(), value, shouldContain);
     return this;
   }
 
@@ -105,6 +112,21 @@ class EingliederungPageBase {
 
   getMeldungTextarea() {
     return this.elements.meldungTextarea();
+  }
+
+  checkArbeitslisteTxt(value) {
+    this.elements.arbeitslisteTxt().should("have.value", value);
+    return this;
+  }
+
+  checkTotalTxt(value) {
+    this.elements.totalTxt().should("have.value", value);
+    return this;
+  }
+
+  checkTotalTxtEmpty(isEmpty) {
+    pageBase.checkElementEmpty(this.elements.totalTxt(), isEmpty);
+    return this;
   }
 
 }

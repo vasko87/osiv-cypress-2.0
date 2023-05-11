@@ -16,7 +16,8 @@ const COLOR = {
 const MSG = {
   OSCIENT_522: "Bitte die Bearbeitung einleiten. (OSCIENT:522)",
   TERMIN_44: "Sie beenden einen fremden Termin. (Termin:44)",
-  TERMIN_26: "Die zugehörige Eingliederung bleibt aufgrund eines Termins im Warten. (Termin:26)"
+  TERMIN_26: "Die zugehörige Eingliederung bleibt aufgrund eines Termins im Warten. (Termin:26)",
+  TERMIN_27: "Die zugehörige Eingliederung wird aus dem Warten befreit. (Termin:27)"
 };
 
 module.exports = {CSS_ACTIVE_FORM, CSS_OPACITY1, MIN_TIMEOUT, SHORT_TIMEOUT, LONG_TIMEOUT, DEFAULT_TIMEOUT, COLOR, MSG};

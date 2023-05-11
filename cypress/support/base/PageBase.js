@@ -42,6 +42,15 @@ class PageBase {
     return this;
   }
 
+  checkDropdownSelectedValueContains(element, value, shouldContain) {
+    if (shouldContain) {
+      element.find("option").should("contain.text", value);
+    } else {
+      element.find("option").should("not.contain.text", value);
+    }
+    return this;
+  }
+
   checkDropdownEmpty(element, isEmpty) {
     if(isEmpty) {
       element.find("select").should("be.visible").find("option").should("be.empty");

@@ -1,5 +1,6 @@
 import EingliederungDetail from "./EingliederungDetail";
 import TermineTab_Ein from "./tabBarTabs/TermineTab_Ein";
+import DetailTab_Ein from "./tabBarTabs/DetailTab_Ein";
 
 class EingliederungTabBar {
   constructor() {
@@ -15,7 +16,7 @@ class EingliederungTabBar {
 
   navigateToDetailsTab(){
     this.elements.detailsTab().should("be.visible").click();
-    return new EingliederungDetail();
+    return new DetailTab_Ein();
   }
 
   navigateToTermineTab(){

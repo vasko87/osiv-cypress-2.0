@@ -1,0 +1,19 @@
+{
+  "data1": {
+    "einID"           : "3272",
+    "terminart"       : "Abklärung an Ort",
+    "confirmationText": "(OSCEIN:26)",
+    "al"              : "Warten",
+    "ereignis"        : "Ereignis Basis vom",
+    "total"           : "1",
+    "info"            : "Abklärung SDS"
+  },
+  "data2": {
+    "einID"           : "3273",
+    "terminart"       : "Abklärung an Ort",
+    "confirmationText": "(OSCEIN:26)",
+    "al"              : "Bearbeiten",
+    "ereignis"        : "Ereignis Basis vom",
+    "info"            : "Abklärung SDS"
+  }
+}

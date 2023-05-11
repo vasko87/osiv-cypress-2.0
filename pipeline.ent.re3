@@ -96,6 +96,11 @@ pipeline {
                 }
             }
         }
+        stage('Finishing') {
+            steps{
+                echo "Finishing testing"
+            }
+        }
     }
 }
 
