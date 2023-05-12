@@ -4,7 +4,7 @@ import constants from "../../support/helpers/Constants";
 import helperObject from "../../support/helpers/HelperObject";
 import {c47750 as testData} from "../../support/helpers/DataManager";
 
-describe.skip(`C47750: Termin Erledigen (appointment type=Abklärung an Ort); 
+describe(`C47750: Termin Erledigen (appointment type=Abklärung an Ort); 
   TestRail: https://osiv.testrail.net/index.php?/cases/view/47750`, () => {
 
   beforeEach(`Login as ${Cypress.env("username")};`, () => {
