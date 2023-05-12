@@ -34,10 +34,10 @@ pipeline {
                        script {
                            publishHTML([
                            allowMissing: false,
-                           alwaysLinkToLastBuild: true,
-                           keepAll: false,
-                           reportDir: 'cypress/reports/mochawesome-report',
-                           reportFiles: 'index.html',
+                           alwaysLinkToLastBuild: false,
+                           keepAll: true,
+                           reportDir: 'cypress/reports',
+                           reportFiles: '*/index.html',
                            reportName: 'HTML Report EIN',
                            reportTitles: 'Mocha Report'])
                        }
@@ -46,7 +46,7 @@ pipeline {
             }
         }
 
-        stage('Finishing'){
+        stage('Finishing testing'){
             steps{
                 echo "Finishing testing"
             }
