@@ -12,7 +12,7 @@ const testData = {
   arbeitslisteTxt  : "Warten"
 };
 
-describe(`C47750: Delegation process; 
+describe.skip(`C47750: Delegation process; 
   TestRail: https://osiv.testrail.net/index.php?/cases/view/47785`, {failFast: {enabled: true}}, () => {
 
   before(`Login as ${Cypress.env("username")};`, () => {

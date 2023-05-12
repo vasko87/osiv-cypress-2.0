@@ -34,11 +34,12 @@ pipeline {
                        script {
                            publishHTML([
                            allowMissing: false,
-                           alwaysLinkToLastBuild: false,
-                           keepAll: true,
+                           alwaysLinkToLastBuild: true,
+                           keepAll: false,
                            reportDir: 'cypress/reports/mochawesome-report',
-                           reportFiles: '*/index.html',
-                           reportName: 'HTML Report EIN'])
+                           reportFiles: 'index.html',
+                           reportName: 'HTML Report EIN',
+                           reportTitles: 'Mocha Report'])
                        }
                     }
                 }
