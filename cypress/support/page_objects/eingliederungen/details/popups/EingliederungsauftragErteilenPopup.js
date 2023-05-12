@@ -5,8 +5,9 @@ class EingliederungsauftragErteilenPopup extends EingliederungPageBase {
   constructor() {
     super(ModalWindowBase.css);
     this.modalWindow = new ModalWindowBase();
-    this.elements = {
-      createForm: () => this.modalWindow().find("[akid='EingliederungsauftragCreateForm']")
+    super.elements = {
+      ...this.elements,
+      createForm: () => this.modalWindow.elements.modalWindow().find("[akid='EingliederungsauftragCreateForm']")
     };
   }
 
