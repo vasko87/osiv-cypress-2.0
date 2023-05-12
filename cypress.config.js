@@ -11,12 +11,14 @@ module.exports = defineConfig(
     reporterOptions: {
       reportDir          : "cypress/reports/mochawesome-report",
       charts             : true,
+      overwrite          : false,
       html               : true,
       json               : true,
       embeddedScreenshots: true,
       inlineAssets       : true,
       showSkipped        : true,
       showPending        : true,
+      quite              : true,
       capture            : "runner" // capture: "fullPage",
     },
     // reporter       : "cypress-mochawesome-reporter",
@@ -78,13 +80,13 @@ module.exports = defineConfig(
       videoUploadOnPasses   : false,
       videoCompression      : 15,
       testIsolation         : false,
-      all_frames       : true,
-      retries          : {
+      all_frames            : true,
+      retries               : {
         runMode : 0,
         openMode: 0
       },
-      scrollBehavior   : "top",
-      slowTestThreshold: 500//Time, in milliseconds, to consider a test "slow" during cypress run
+      scrollBehavior        : "top",
+      slowTestThreshold     : 500//Time, in milliseconds, to consider a test "slow" during cypress run
     }
   }
 );
