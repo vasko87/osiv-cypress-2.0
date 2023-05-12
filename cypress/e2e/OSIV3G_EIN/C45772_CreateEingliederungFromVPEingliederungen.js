@@ -24,11 +24,11 @@ describe(`C45772: Create Eingliederung from vP Eingliederungen;
   it(`Step 2: Open Eingliederungen tab; Click Neu button`, () => {
     pages.versicherte.detail.tabBar.navigateToEingliederungenTab();
     pages.versicherte.detail.ribbonMenu.clickNeuBtn();
-    pages.eingliederung.neuPopup.waitForLoaded();
+    pages.eingliederung.eingliederungsauftragErteilenPopup.waitForLoaded();
   });
 
   it(`Step 3: Fill in mandatory fields; Add Meldung`, () => {
-    pages.eingliederung.neuPopup
+    pages.eingliederung.eingliederungsauftragErteilenPopup
          .selectGesuchDropdownByIndex(1)
          .selectEreignisDropdownByIndex(1)
          .selectAuftragDropdownByIndex(1)

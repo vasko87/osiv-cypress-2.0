@@ -7,7 +7,7 @@ import {c47750 as testData} from "../../support/helpers/DataManager";
 describe(`C47750: Termin Erledigen (appointment type=Abklärung an Ort); 
   TestRail: https://osiv.testrail.net/index.php?/cases/view/47750`, () => {
 
-  before(`Login as ${Cypress.env("username")};`, () => {
+  beforeEach(`Login as ${Cypress.env("username")};`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
     pages.loginPage.openUrl();
   });
@@ -43,10 +43,10 @@ describe(`C47750: Termin Erledigen (appointment type=Abklärung an Ort);
     pages.infoPopup.ckeckInformationContainsText(constants.MSG.TERMIN_26)
          .clickOkBtn();
 
-    pages.eingliederung.detail.termineTab.grid.checkValueInGridExists(testData.data1.terminart, false);
+    pages.eingliederung.detail.termineTabBar.grid.checkValueInGridExists(testData.data1.terminart, false);
     pages.eingliederung.detail.tabBar.navigateToDetailsTab()
          .checkArbeitslisteTxt(testData.data1.al)
-         .checkEreignisDropdown(testData.data1.ereignis)
+         .checkErstgesprachTxt(helperObject.date.getCurrentDate())
          .checkTotalTxt(testData.data1.total);
     pages.checkMsgOnThePage(testData.data1.info, true);
     pages.eingliederung.detail.ribbonMenu.checkKeinErstgesprachBtnDisabled(true);
@@ -80,11 +80,11 @@ describe(`C47750: Termin Erledigen (appointment type=Abklärung an Ort);
     pages.infoPopup.ckeckInformationContainsText(constants.MSG.TERMIN_27)
          .clickOkBtn();
 
-    pages.eingliederung.detail.termineTab.grid.checkValueInGridExists(testData.data2.terminart, false);
+    pages.eingliederung.detail.termineTabBar.grid.checkGridRowCount(0);
     pages.eingliederung.detail.tabBar.navigateToDetailsTab()
          .checkArbeitslisteTxt(testData.data2.al)
-         .checkEreignisDropdownContains(helperObject.date.getCurrentDate(), false)
-         .checkTotalTxtEmpty(true);
+         .checkErstgesprachTxtEmpty(true)
+         .checkTotalTxt(testData.data2.total);
     pages.eingliederung.detail.ribbonMenu.checkKeinErstgesprachBtnDisabled(true);
   });
 });

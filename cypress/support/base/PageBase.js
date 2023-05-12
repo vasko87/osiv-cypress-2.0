@@ -90,11 +90,27 @@ class PageBase {
     });
   }
 
+  checkElementMandatory(element, isMandatory) {
+    if (isMandatory) {
+      element.should("have.class", "akMandatory");
+    } else {
+      element.should("not.have.class", "akMandatory");
+    }
+  }
+
   checkElementVisible(element, isVisible) {
     if (isVisible === true) {
       element.should("be.visible");
     } else {
       element.should("not.be.visible");
+    }
+  }
+
+  checkElementExists(element, isExist) {
+    if (isExist === true) {
+      element.should("exist");
+    } else {
+      element.should("not.exist");
     }
   }
 

@@ -4,12 +4,17 @@ class EingliederungPageBase {
   constructor(baseCSS) {
     this.elements = {
       gesuchDropdown: () => cy.get(baseCSS).find("[akid$='-gesuchdynselect']"),
-      ereignisDropdown: () => cy.get(baseCSS).find("[akid$='-ereignisdynselect']"),
+      erstgesprachTxt: () => cy.get(baseCSS).find("[akid$='-erstgespraech_dat'] input"),
+      ereignisDropdown: () => cy.get(baseCSS).find("[akid$='-ereignistext']"),
       auftragDropdown  : () => cy.get(baseCSS).find("[akid$='-auftragsart']"),
       auftragAnDropdown        : () => cy.get(baseCSS).find("[akid$='-berufberaterdynselect']"),
       meldungTextarea     : () => cy.get(baseCSS).find("[akid$='-MeldungText']"),
-      arbeitslisteTxt     : () => cy.get(baseCSS).find("[akid$='-arbeitslistebez']"),
-      totalTxt     : () => cy.get(baseCSS).find("[akid$='-total_gespraeche']")
+      arbeitslisteTxt     : () => cy.get(baseCSS).find("[akid$='-arbeitslistebez'] input"),
+      totalTxt     : () => cy.get(baseCSS).find("[akid$='-total_gespraeche'] input"),
+      delegationAnTxt     : () => cy.get(baseCSS).find("[akid$='-delegationanbez'] input"),
+      ansprechpartnerTxt     : () => cy.get(baseCSS).find("[akid$='-ansprech_delegation'] input"),
+      tetlefonnumberTxt     : () => cy.get(baseCSS).find("[akid$='-telefon'] input"),
+      notizenTextarea     : () => cy.get(baseCSS).find("[akid$='-bem'] textarea")
     };
   }
 
@@ -126,6 +131,36 @@ class EingliederungPageBase {
 
   checkTotalTxtEmpty(isEmpty) {
     pageBase.checkElementEmpty(this.elements.totalTxt(), isEmpty);
+    return this;
+  }
+
+  checkErstgesprachTxt(value) {
+    this.elements.erstgesprachTxt().should("have.value", value);
+    return this;
+  }
+
+  checkErstgesprachTxtEmpty() {
+    this.elements.erstgesprachTxt().should("be.empty");
+    return this;
+  }
+
+  checkDelegationAnTxt(value) {
+    this.elements.delegationAnTxt().should("have.value", value);
+    return this;
+  }
+
+  checkAnsprechpartnerTxt(value) {
+    this.elements.ansprechpartnerTxt().should("have.value", value);
+    return this;
+  }
+
+  checkTetlefonnumberTxt(value) {
+    this.elements.tetlefonnumberTxt().should("have.value", value);
+    return this;
+  }
+
+  checkNotizenTexareaContains(value) {
+    this.elements.notizenTextarea().should("contain.value", value);
     return this;
   }
 
