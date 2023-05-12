@@ -36,7 +36,7 @@ pipeline {
                            allowMissing: false,
                            alwaysLinkToLastBuild: false,
                            keepAll: true,
-                           reportDir: 'cypress/reports',
+                           reportDir: 'cypress/reports/mochawesome-report',
                            reportFiles: '*/index.html',
                            reportName: 'HTML Report EIN'])
                        }
