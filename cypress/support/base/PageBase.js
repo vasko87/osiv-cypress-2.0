@@ -9,8 +9,8 @@ class PageBase {
    * @returns {PageBase}
    */
   selectInDropdownContains(element, value) {
-    element.click("center")
-           .get("[class='select2-results__options']", {timeout: constants.DEFAULT_TIMEOUT})
+    element.find("[class='select2-selection__arrow']").click();
+    element.get("[class='select2-results__options']", {timeout: constants.DEFAULT_TIMEOUT})
            .contains(value)
            .click();
     return this;
@@ -23,8 +23,8 @@ class PageBase {
    * @returns {PageBase}
    */
   selectDropdownValueByIndex(element, index) {
-    element.click("top")
-           .get("[class='select2-results__options']", {timeout: constants.DEFAULT_TIMEOUT})
+    element.find("[class='select2-selection__arrow']").click();
+    element.get("[class='select2-results__options']", {timeout: constants.DEFAULT_TIMEOUT})
            .eq(index - 1)
            .click();
     return this;

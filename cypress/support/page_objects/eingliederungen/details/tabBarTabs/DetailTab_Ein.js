@@ -1,5 +1,6 @@
 import constants from "../../../../helpers/Constants";
 import EingliederungPageBase from "../../EingliederungPageBase";
+import pageBase from "../../../../base/PageBase";
 
 class DetailTab_Ein extends EingliederungPageBase {
   constructor() {
@@ -9,6 +10,11 @@ class DetailTab_Ein extends EingliederungPageBase {
       ...this.elements,
       detailForm: () => cy.get(detailFormCSS)
     };
+  }
+
+  waitForLoaded() {
+    pageBase.waitForLoadingDisappears();
+    return this;
   }
 }
 

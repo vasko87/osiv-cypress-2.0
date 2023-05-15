@@ -5,7 +5,8 @@ class EingliederungPageBase {
     this.elements = {
       gesuchDropdown: () => cy.get(baseCSS).find("[akid$='-gesuchdynselect']"),
       erstgesprachTxt: () => cy.get(baseCSS).find("[akid$='-erstgespraech_dat'] input"),
-      ereignisDropdown: () => cy.get(baseCSS).find("[akid$='-ereignistext']"),
+      ereignisTxt: () => cy.get(baseCSS).find("[akid$='-ereignistext']"),
+      ereignisDropdown: () => cy.get(baseCSS).find("[akid$='-ereignisdynselect']"),
       auftragDropdown  : () => cy.get(baseCSS).find("[akid$='-auftragsart']"),
       auftragAnDropdown        : () => cy.get(baseCSS).find("[akid$='-berufberaterdynselect']"),
       meldungTextarea     : () => cy.get(baseCSS).find("[akid$='-MeldungText']"),
@@ -24,7 +25,6 @@ class EingliederungPageBase {
   }
 
   selectGesuchDropdownByIndex(index) {
-    this.elements.gesuchDropdown().should("be.visible");
     pageBase.selectDropdownValueByIndex(this.elements.gesuchDropdown(), index);
     return this;
   }
