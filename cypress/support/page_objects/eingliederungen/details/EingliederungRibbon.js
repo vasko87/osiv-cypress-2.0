@@ -3,7 +3,6 @@ import AbschlussEingliederungPopup from "./popups/AbschlussEingliederungPopup";
 import DelegationanIVStellePopup from "./popups/DelegationanIVStellePopup";
 import pageBase from "../../../base/PageBase";
 import EntscheidDetail from "../../entscheid/detail/EntscheidDetail";
-import BasisdatenTab_Ent from "../../entscheid/detail/tabBarTabs/BasisdatenTab_Ent";
 
 class EingliederungRibbon extends RibbonBase {
   constructor() {
@@ -30,6 +29,7 @@ class EingliederungRibbon extends RibbonBase {
   }
 
   clickDelegationAnBtn() {
+    this.elements.delegationAnBtn().invoke("attr", "class").should("not.contain", "item_dis");
     this.elements.delegationAnBtn().should("be.visible").click();
     return new DelegationanIVStellePopup();
   }
