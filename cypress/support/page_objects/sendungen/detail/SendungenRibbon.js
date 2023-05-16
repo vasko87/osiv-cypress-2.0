@@ -1,4 +1,4 @@
-import RibbonBase from "./../../../base/RibbonBase";
+import RibbonBase from "../../../base/RibbonBase";
 import DruckUndVersandPopup from "./popups/DruckUndVersandPopup";
 import SendungenAbschliessenPopup from "./popups/SendungenAbschliessenPopup";
 import constants from "../../../helpers/Constants";

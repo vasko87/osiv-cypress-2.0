@@ -45,7 +45,7 @@ class BasisdatenTab_Ent extends EntscheidPageBase {
     return this;
   }
 
-  fillInFieldsBulk(data) {
+    fillInFieldsBulk(data) {
     if (data.leistungsgruppeDropdown) {
       this.checkLeistungsgruppeDropdown(data.leistungsgruppeDropdown());
     }

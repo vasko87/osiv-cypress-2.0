@@ -1,6 +1,7 @@
-import DocumentValidator from "../../../../helpers/DocumentValidator";
+import DocumentValidator from "../../../../standalone/DocumentValidator";
 import pageBase from "../../../../base/PageBase";
 import GridBase from "../../../../base/GridBase";
+import TxtEditor from "../../../../standalone/TxtEditor";
 
 class FreitexteTab {
   constructor() {
@@ -43,17 +44,7 @@ class FreitexteTab {
     };
 
     this.begrundungTab = {
-      textForm: () => cy.get("[akid='BegruendungHTMLTextForm'] [role='textbox']"),
-
-      setTextForm(value) {
-        this.textForm().should("be.visible").type(value);
-        return this;
-      },
-
-      checkTextForm(value) {
-        this.textForm().should("have.text", value);
-        return this;
-      }
+      txtEditor: new TxtEditor()
     };
 
     this.verfugungBeiblattAKTab = {

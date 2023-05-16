@@ -3,21 +3,9 @@ import flows from "../../support/base/OsivFlowsObject";
 import constants from "../../support/helpers/Constants";
 import pageBase from "../../support/base/PageBase";
 import Utility from "../../support/Utility";
+import {c50464 as testData} from "../../support/helpers/DataManager";
 
-const testData = {
-  einID      : "1617",
-  resultat   : "Eingegliedert",
-  benutzer   : "RE-mte - Mirjam Tendon",
-  rentenfrage: "Ja",
-  al         : "Abgeschlossen",
-  ent        : {
-    lc: "RE - Rente",
-    lg: "RE",
-    al: "Bearbeiten"
-  }
-};
-
-describe.skip(`C50464: "Abschluss Eingliederung" _no linked objects (Prufen = Ja); 
+describe(`C50464: "Abschluss Eingliederung" _no linked objects (Prufen = Ja); 
   TestRail: https://osiv.testrail.net/index.php?/cases/view/50464`, {failFast: {enabled: true}}, () => {
 
   before(`Login as ${Cypress.env("username")};`, () => {
@@ -45,7 +33,7 @@ describe.skip(`C50464: "Abschluss Eingliederung" _no linked objects (Prufen = Ja
          .clickOkBtn();
   });
 
-  it(`Step 4: --> verify warning message: Zur Prüfung der Rentenfrage wird ein neuer Renten-Entscheid angelegt. 
+  it(`Step 4: --> verify warning message: Zur Prüfung der Rentenfrage wird ein neuer Renten-Entscheid angelegt.
     confirm it`, () => {
     pages.warningPopup
          .checkWarningContainsText(constants.MSG.OSCIENT_76_PART1)
@@ -67,11 +55,11 @@ describe.skip(`C50464: "Abschluss Eingliederung" _no linked objects (Prufen = Ja
       pages.eingliederung.detail.tabBar.navigateToEntscheideTab()
            .grid.dblClickRowWithText(testData.ent.al);
       pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(testData.ent.al)
-           .checkLeistungscodeDropdown(testData.ent.lg)
-           .checkLeistungscodeDropdownEmpty(testData.ent.lc)
-           .checkGesuchDropdown(elements.gesuch)
-           .checkEreignisDropdown(elements.ereignis)
-           .checkBereichDropdown(elements.bereich);
+           .checkLeistungsgruppeDropdown(testData.ent.lg)
+           .checkLeistungscodeDropdown(testData.ent.lc)
+           .checkGesuchDropdown(elements.gesuch.text())
+           .checkEreignisDropdown(elements.ereignis.text())
+           .checkBereichDropdown(elements.bereich.text());
     });
   });
 });

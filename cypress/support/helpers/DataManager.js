@@ -18,6 +18,14 @@ import C47750_ds1 from "../../fixtures/tests/dataSet1/C47750_TerminErledigenAppo
 import C47750_ds2 from "../../fixtures/tests/dataSet2/C47750_TerminErledigenAppointmentTypeAbklarungAnOrt.json";
 import C47750_ds3 from "../../fixtures/tests/dataSet3/C47750_TerminErledigenAppointmentTypeAbklarungAnOrt.json";
 
+import C50464_ds1 from "../../fixtures/tests/dataSet1/C50464_AbschlussEingliederungNoLinkedObjectsPrufenJa.json";
+import C50464_ds2 from "../../fixtures/tests/dataSet2/C50464_AbschlussEingliederungNoLinkedObjectsPrufenJa.json";
+import C50464_ds3 from "../../fixtures/tests/dataSet3/C50464_AbschlussEingliederungNoLinkedObjectsPrufenJa.json";
+
+import C47266_ds1 from "../../fixtures/tests/dataSet1/C47266_ChangeOriginOfProtokollToEingliederungAndThanDeleteEingliederung.json";
+import C47266_ds2 from "../../fixtures/tests/dataSet2/C47266_ChangeOriginOfProtokollToEingliederungAndThanDeleteEingliederung.json";
+import C47266_ds3 from "../../fixtures/tests/dataSet3/C47266_ChangeOriginOfProtokollToEingliederungAndThanDeleteEingliederung.json";
+
 import C001 from "../../fixtures/tests/C001_newAdressTest.json";
 import C44746 from "../../fixtures/tests/C44746_HEGradCalculationRules.json";
 import C47707 from "../../fixtures/tests/C47707_ShowNoShowDynamicBaustein.json";
@@ -36,6 +44,8 @@ const dataFiles = {
   c47702 : C47702_ds1,
   c50488 : C50488_ds1,
   c47750 : C47750_ds1,
+  c50464 : C50464_ds1,
+  c47266 : C47266_ds1,
   c001 : C001,
   c44746 : C44746,
   c47707 : C47707,
@@ -58,6 +68,8 @@ if (dataSet === "dataSet1") {
   dataFiles.c47702 = C47702_ds1;
   dataFiles.c50488 = C50488_ds1;
   dataFiles.c47750 = C47750_ds1;
+  dataFiles.c50464 = C50464_ds1;
+  dataFiles.c47266 = C47266_ds1;
 }
 if (dataSet === "dataSet2") {
   dataFiles.c44194 = C44194_ds2;
@@ -65,6 +77,8 @@ if (dataSet === "dataSet2") {
   dataFiles.c47702 = C47702_ds2;
   dataFiles.c50488 = C50488_ds2;
   dataFiles.c47750 = C47750_ds2;
+  dataFiles.c50464 = C50464_ds2;
+  dataFiles.c47266 = C47266_ds2;
 }
 if (dataSet === "dataSet3") {
   dataFiles.c44194 = C44194_ds3;
@@ -72,6 +86,8 @@ if (dataSet === "dataSet3") {
   dataFiles.c47702 = C47702_ds3;
   dataFiles.c50488 = C50488_ds3;
   dataFiles.c47750 = C47750_ds3;
+  dataFiles.c50464 = C50464_ds3;
+  dataFiles.c47266 = C47266_ds3;
 }
 
 module.exports = dataFiles;

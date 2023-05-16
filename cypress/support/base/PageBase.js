@@ -232,6 +232,13 @@ class PageBase {
     cy.get("[class='dhx_cell_prcircle']", {timeout: constants.LONG_TIMEOUT}).should("not.exist");
     return this;
   }
+
+  executeJS(commandJS) {
+    cy.window().then((win) => {
+      win.eval(commandJS);
+    });
+    return this;
+  }
 }
 
 export default new PageBase();

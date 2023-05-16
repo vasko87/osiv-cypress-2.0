@@ -6,6 +6,7 @@ class GroupedTaskbar {
       groupedTaskbar  : () => cy.get("div[class='vue-taskbar-container']"),
       entscheidHEHETab: () => this.elements.groupedTaskbar().find("[title='Entscheid HE HE']"),
       entscheidTab: () => this.elements.groupedTaskbar().find("[title*='Entscheid']"),
+      protocollTab: () => this.elements.groupedTaskbar().find("[title*='Protocoll']"),
       eingliederungTab: () => this.elements.groupedTaskbar().find("[title*='Eingliederung']"),
       gesuchTab: () => this.elements.groupedTaskbar().find("[title*='Gesuch']"),
       versichertendatenTab: () => this.elements.groupedTaskbar().find("[title*='Versichertendaten']")
@@ -24,6 +25,11 @@ class GroupedTaskbar {
 
   closeContainsEntscheidTab() {
     this.elements.entscheidTab().parent("div[class*='vue-taskbar-item']").find(".vue-close-icon").click();
+    return new EntscheidDetail();
+  }
+
+  closeContainsProtocollTab() {
+    this.elements.protocollTab().parent("div[class*='vue-taskbar-item']").find(".vue-close-icon").click();
     return new EntscheidDetail();
   }
 

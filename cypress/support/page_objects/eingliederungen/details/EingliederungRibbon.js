@@ -1,4 +1,4 @@
-import RibbonBase from "./../../../base/RibbonBase";
+import RibbonBase from "../../../base/RibbonBase";
 import AbschlussEingliederungPopup from "./popups/AbschlussEingliederungPopup";
 import DelegationanIVStellePopup from "./popups/DelegationanIVStellePopup";
 import pageBase from "../../../base/PageBase";

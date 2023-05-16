@@ -1,5 +1,6 @@
 import pages from "../../support/base/OsivPageObject";
 import flows from "../../support/base/OsivFlowsObject";
+import pageBase from "../../support/base/PageBase";
 
 const testData = {
   vpName      : "Crood Eep",
@@ -23,6 +24,7 @@ describe(`C45772: Create Eingliederung from vP Eingliederungen;
 
   it(`Step 2: Open Eingliederungen tab; Click Neu button`, () => {
     pages.versicherte.detail.tabBar.navigateToEingliederungenTab();
+    pageBase.waitForLoadingDisappears();
     pages.versicherte.detail.ribbonMenu.clickNeuBtn();
     pages.eingliederung.eingliederungsauftragErteilenPopup.waitForLoaded();
   });

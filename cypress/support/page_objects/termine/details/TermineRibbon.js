@@ -1,4 +1,4 @@
-import RibbonBase from "./../../../base/RibbonBase";
+import RibbonBase from "../../../base/RibbonBase";
 
 class TermineRibbon extends RibbonBase {
   constructor() {

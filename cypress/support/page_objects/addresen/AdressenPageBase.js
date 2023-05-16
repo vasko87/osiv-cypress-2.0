@@ -1,4 +1,4 @@
-import pageBase from "./../../base/PageBase";
+import pageBase from "../../base/PageBase";
 
 class AdressenPageBase {
 
