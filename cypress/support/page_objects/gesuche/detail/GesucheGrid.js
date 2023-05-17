@@ -19,7 +19,8 @@ class GesucheGrid extends GridBase {
    */
   searchAndOpenGesuchID(value) {
     this.filter.searchByGesuchID(value);
-    super.dblClickRowNumber(1);
+    super.waitGridViewLoaded()
+         .dblClickRowNumber(1);
     return this;
   }
 }

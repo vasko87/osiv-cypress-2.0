@@ -6,7 +6,12 @@ class ProtocollPageBase {
       typDropdown: () => cy.get(baseCSS).find("[akid$='-protokolltyptext']"),
       ursprungDropdown  : () => cy.get(baseCSS).find("[akid$='-ursprungbez']"),
       ursprungTxt  : () => cy.get(baseCSS).find("[akid$='-ursprung'] input"),
-      entscheidDropdown  : () => cy.get(baseCSS).find("[akid$='-entscheidbez']")
+      eingliederungDropdown  : () => cy.get(baseCSS).find("[akid$='-eingliederungbez']"),
+      entscheidDropdown  : () => cy.get(baseCSS).find("[akid$='-entscheidbez']"),
+      ereignisDropdown  : () => cy.get(baseCSS).find("[akid$='-ereignisbez']"),
+      gesuchDropdown  : () => cy.get(baseCSS).find("[akid$='-gesuchbez']"),
+      sendungDropdown  : () => cy.get(baseCSS).find("[akid$='-sendungbez']"),
+      versicherTxt  : () => cy.get(baseCSS).find("[akid$='-versichertenname'] input")
     };
   }
   selectTypDropdown(value) {
@@ -34,8 +39,33 @@ class ProtocollPageBase {
     return this;
   }
 
-  checkEntscheidDropdown(value) {
-    pageBase.checkDropdownSelectedValue(this.elements.entscheidDropdown(), value);
+  checkEntscheidDropdownContains(value) {
+    pageBase.checkDropdownContainsValue(this.elements.entscheidDropdown(), value);
+    return this;
+  }
+
+  checkEingliederungDropdownContains(value) {
+    pageBase.checkDropdownContainsValue(this.elements.eingliederungDropdown(), value);
+    return this;
+  }
+
+  checkEreignisDropdownContains(value) {
+    pageBase.checkDropdownContainsValue(this.elements.ereignisDropdown(), value);
+    return this;
+  }
+
+  checkGesuchDropdownContains(value) {
+    pageBase.checkDropdownContainsValue(this.elements.gesuchDropdown(), value);
+    return this;
+  }
+
+  checkSendungDropdownContains(value) {
+    pageBase.checkDropdownContainsValue(this.elements.sendungDropdown(), value);
+    return this;
+  }
+
+  checkVersicherTxt(value) {
+    this.elements.versicherTxt().should("be.visible").should("have.value", value);
     return this;
   }
 

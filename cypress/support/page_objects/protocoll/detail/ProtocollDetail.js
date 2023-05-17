@@ -6,7 +6,7 @@ import ProtocollRibbon from "./ProtocollRibbon";
 
 class ProtocollDetail extends ProtocollPageBase {
   constructor() {
-    const detailFormCSS = `${constants.CSS_ACTIVE_FORM} [akid='ProtokollTXTForm']`;
+    const detailFormCSS = `${constants.CSS_ACTIVE_FORM} [akid='ProtokollTXTForm'],[akid='ProtokollForm']`;
     super(detailFormCSS);
     this.windowHeader = new DetailWindowHeader();
     this.ribbonMenu = new ProtocollRibbon();

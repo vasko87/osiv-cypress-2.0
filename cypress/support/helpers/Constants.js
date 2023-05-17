@@ -17,7 +17,7 @@ const MSG = {
   OSCIENT_35 : "Die Sendung für die Delegation muss noch versendet werden. (OSCEIN:35)",
   OSCIENT_76_PART1 : "Zur Prüfung der Rentenfrage wird ein neuer Renten-Entscheid angelegt.",
   OSCIENT_76_PART2 : "Wollen Sie fortfahren? (OSCEIN:76)",
-  OSCIENT_77_PART1 : "Das angegebene Resultat und die Anstellungen werden gespeichert.)",
+  OSCIENT_77_PART1 : "Das angegebene Resultat und die Anstellungen werden gespeichert.",
   OSCIENT_77_PART2 : "Wollen Sie fortfahren? (OSCEIN:77)",
   OSCIENT_522: "Bitte die Bearbeitung einleiten. (OSCIENT:522)",
   TERMIN_44  : "Sie beenden einen fremden Termin. (Termin:44)",

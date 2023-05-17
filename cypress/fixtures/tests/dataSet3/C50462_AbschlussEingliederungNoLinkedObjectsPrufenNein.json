@@ -1,6 +1,11 @@
 {
   "einID": "3282",
-  "resultat": "Eingliederung im Arbeitsmarkt möglich",
+  "resultat": "Eingegliedert",
+  "art": "1. Arbeitsmarkt - neuer Arbeitgeber/neue Selbständigkeit",
+  "pensum": "Teilzeit",
   "benutzer": "User1 - User1 Eins",
-  "rentenfrage": "Nein"
+  "rentenfrage": "Nein",
+  "meldungTextarea": "AUTO Test",
+  "al": "Abgeschlossen",
+  "arbeitslisteTxt": "Bearbeiten"
 }

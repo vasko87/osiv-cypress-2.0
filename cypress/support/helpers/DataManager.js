@@ -22,6 +22,10 @@ import C50464_ds1 from "../../fixtures/tests/dataSet1/C50464_AbschlussEinglieder
 import C50464_ds2 from "../../fixtures/tests/dataSet2/C50464_AbschlussEingliederungNoLinkedObjectsPrufenJa.json";
 import C50464_ds3 from "../../fixtures/tests/dataSet3/C50464_AbschlussEingliederungNoLinkedObjectsPrufenJa.json";
 
+import C50462_ds1 from "../../fixtures/tests/dataSet1/C50462_AbschlussEingliederungNoLinkedObjectsPrufenNein.json";
+import C50462_ds2 from "../../fixtures/tests/dataSet2/C50462_AbschlussEingliederungNoLinkedObjectsPrufenNein.json";
+import C50462_ds3 from "../../fixtures/tests/dataSet3/C50462_AbschlussEingliederungNoLinkedObjectsPrufenNein.json";
+
 import C47266_ds1 from "../../fixtures/tests/dataSet1/C47266_ChangeOriginOfProtokollToEingliederungAndThanDeleteEingliederung.json";
 import C47266_ds2 from "../../fixtures/tests/dataSet2/C47266_ChangeOriginOfProtokollToEingliederungAndThanDeleteEingliederung.json";
 import C47266_ds3 from "../../fixtures/tests/dataSet3/C47266_ChangeOriginOfProtokollToEingliederungAndThanDeleteEingliederung.json";
@@ -45,6 +49,7 @@ const dataFiles = {
   c50488 : C50488_ds1,
   c47750 : C47750_ds1,
   c50464 : C50464_ds1,
+  c50462 : C50462_ds1,
   c47266 : C47266_ds1,
   c001 : C001,
   c44746 : C44746,
@@ -69,6 +74,7 @@ if (dataSet === "dataSet1") {
   dataFiles.c50488 = C50488_ds1;
   dataFiles.c47750 = C47750_ds1;
   dataFiles.c50464 = C50464_ds1;
+  dataFiles.c50462 = C50462_ds1;
   dataFiles.c47266 = C47266_ds1;
 }
 if (dataSet === "dataSet2") {
@@ -78,6 +84,7 @@ if (dataSet === "dataSet2") {
   dataFiles.c50488 = C50488_ds2;
   dataFiles.c47750 = C47750_ds2;
   dataFiles.c50464 = C50464_ds2;
+  dataFiles.c50462 = C50462_ds2;
   dataFiles.c47266 = C47266_ds2;
 }
 if (dataSet === "dataSet3") {
@@ -87,6 +94,7 @@ if (dataSet === "dataSet3") {
   dataFiles.c50488 = C50488_ds3;
   dataFiles.c47750 = C47750_ds3;
   dataFiles.c50464 = C50464_ds3;
+  dataFiles.c50462 = C50462_ds3;
   dataFiles.c47266 = C47266_ds3;
 }
 

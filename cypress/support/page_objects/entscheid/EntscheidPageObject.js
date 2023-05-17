@@ -4,6 +4,7 @@ import EntscheidNeuPopup from "./detail/popups/EntscheidNeuPopup";
 import BearbeitungEinleitenPopup from "./detail/popups/BearbeitungEinleitenPopup";
 import constants from "../../helpers/Constants";
 import EntscheidInDenPapierkorbVerschiebenPopup from "./detail/popups/EntscheidInDenPapierkorbVerschiebenPopup";
+import ZustandigkeitenWechselnPopup from "./detail/popups/ZustandigkeitenWechselnPopup";
 
 class EntscheidPageObject {
   constructor() {
@@ -12,6 +13,7 @@ class EntscheidPageObject {
     this.neuPopup = new EntscheidNeuPopup();
     this.inDenPapierkorbPopup = new EntscheidInDenPapierkorbVerschiebenPopup();
     this.bearbeitungEinleitenPopup = new BearbeitungEinleitenPopup();
+    this.zustandigkeitenWechselnPopup = new ZustandigkeitenWechselnPopup();
   }
 }
 

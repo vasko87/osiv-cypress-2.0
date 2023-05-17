@@ -12,7 +12,9 @@ class AbschlussEingliederungPopup extends ModalWindowBase {
       pensumDropdown: () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-weivvollzeitteilzeitbez']"),
       bearbeiterFolgeEntscheidDropdown: () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-sachbearbeiterbez']"),
       benutzerDropdown: () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-rentenfragebez']"),
-      rentenfrageDropdown: () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-rentenfragepruefendynselect']")
+      rentenfrageDropdown: () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-rentenfragepruefendynselect']"),
+      meldungFolgeEntscheidTextarea: () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-FolgeEntscheidMeldung'] textarea"),
+      rentenfrageFieldsSection: () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-rentenfragefieldset']")
     };
   }
 
@@ -37,6 +39,11 @@ class AbschlussEingliederungPopup extends ModalWindowBase {
     return this;
   }
 
+  checkArtDropdown(value) {
+    pageBase.checkDropdownSelectedValue(this.elements.artDropdown(), value);
+    return this;
+  }
+
   selectArtDropdownByIndex(index) {
     pageBase.selectDropdownValueByIndex(this.elements.artDropdown(), index);
     return this;
@@ -49,6 +56,11 @@ class AbschlussEingliederungPopup extends ModalWindowBase {
 
   selectPensumDropdownByIndex(index) {
     pageBase.selectDropdownValueByIndex(this.elements.pensumDropdown(), index);
+    return this;
+  }
+
+  checkPensumDropdown(value) {
+    pageBase.checkDropdownSelectedValue(this.elements.pensumDropdown(), value);
     return this;
   }
 
@@ -84,6 +96,21 @@ class AbschlussEingliederungPopup extends ModalWindowBase {
 
   checkRentenfrageDropdown(value) {
     pageBase.checkDropdownSelectedValue(this.elements.rentenfrageDropdown(), value);
+    return this;
+  }
+
+  setMeldungFolgeEntscheidTextarea(value) {
+    this.elements.meldungFolgeEntscheidTextarea().should("be.visible").type(value);
+    return this;
+  }
+
+  checkMeldungFolgeEntscheidTextarea(value) {
+    this.elements.meldungFolgeEntscheidTextarea().should("have.value", value);
+    return this;
+  }
+
+  checkRentenfrageFieldsSectionVisible(isVisible) {
+    pageBase.checkElementVisible(this.elements.rentenfrageFieldsSection(), isVisible);
     return this;
   }
 }

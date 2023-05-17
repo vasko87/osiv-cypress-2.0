@@ -1,3 +1,5 @@
+import pageBase from "../../../base/PageBase";
+
 class GesucheGridFilter {
   constructor() {
 
@@ -13,6 +15,7 @@ class GesucheGridFilter {
    */
   searchByGesuchID(value) {
     this.elements.gesuchIDTxt().click().type(`${value}{enter}`);
+    pageBase.waitForLoadingDisappears();
     return this;
   }
 

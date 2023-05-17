@@ -38,7 +38,7 @@ class PageBase {
    * @returns {PageBase}
    */
   checkDropdownSelectedValue(element, selectedValue) {
-    element.find("option").should("have.text", selectedValue);
+    element.find("[class='select2-selection__rendered']").should("have.text", selectedValue);
     return this;
   }
 
