@@ -27,9 +27,7 @@ describe(`C47266: Change origin of Protokoll to eingliederung (and than delete e
       Verify: Ursprung is changed to Eingliederung`, () => {
     let i = 1;
     pages.versicherte.detail.tabBar.protocoll.grid.getAllColumnValues("Ursprung").then((val) => val.forEach(() => {
-      pages.versicherte.detail.tabBar.protocoll
-           .grid.waitGridViewLoaded()
-           .dblClickRowNumber(i++);
+      pages.versicherte.detail.tabBar.protocoll.grid.dblClickRowNumber(i++);
       pages.versicherte.detail.tabBar.protocoll.detail.waitForLoaded()
            .ribbonMenu.clickUrsprungAndernBtn()
            .waitForLoaded()
@@ -39,8 +37,7 @@ describe(`C47266: Change origin of Protokoll to eingliederung (and than delete e
       pages.modalWindow.clickOkBtn();
       pages.notification.checkSuccessMessageVisible();
       pages.versicherte.detail.tabBar.protocoll.detail.checkUrsprungTxt(testData.ursprungTxt);
-      pages.groupedTaskbar.clickContainsVersichertendatenTab()
-           .waitForLoaded();
+      pages.groupedTaskbar.clickContainsVersichertendatenTab();
     }));
   });
 
