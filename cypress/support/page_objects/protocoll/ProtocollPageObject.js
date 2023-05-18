@@ -5,7 +5,7 @@ import UrsprungAndernPopup from "./detail/popups/UrsprungAndernPopup";
 
 class ProtocollPageObject {
   constructor() {
-    this.grid = new ProtocollGrid(`${constants.CSS_ACTIVE_FORM} [akid='ProtokollQueryGrid']`);
+    this.grid = new ProtocollGrid(`${constants.CSS_OPACITY1} ${constants.CSS_ACTIVE_FORM} [akid='ProtokollQueryGrid']`);
     this.detail = new ProtocollDetail();
     this.ursprungAndernPopup = new UrsprungAndernPopup();
   }
