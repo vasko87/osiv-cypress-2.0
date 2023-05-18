@@ -4,7 +4,7 @@ class PosteingangGridHeaderActivePanel {
   constructor() {
 
     this.elements = {
-      posteingangQueryGridDropdown: () => cy.get("[akid='panelHeaderDynSelect-PosteingangQueryGrid'] span[class='select2-selection__arrow']")
+      posteingangQueryGridDropdown: () => cy.get("[akid='panelHeaderDynSelect-PosteingangQueryGrid']")
     };
   }
 
