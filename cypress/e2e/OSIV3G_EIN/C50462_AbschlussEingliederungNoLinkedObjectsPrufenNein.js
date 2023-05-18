@@ -4,7 +4,7 @@ import constants from "../../support/helpers/Constants";
 import {c50462 as testData} from "../../support/helpers/DataManager";
 
 describe(`C50462: "Abschluss Eingliederung" _no linked objects (Prufen = Nein); 
-  TestRail: https://osiv.testrail.net/index.php?/cases/view/50462`, {failFast: {enabled: true}}, () => {
+  TestRail:https://osiv.testrail.net/index.php?/cases/view/50462`, {failFast: {enabled: true}}, () => {
 
   before(`Login as ${Cypress.env("username")};`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
@@ -16,7 +16,7 @@ describe(`C50462: "Abschluss Eingliederung" _no linked objects (Prufen = Nein);
   });
 
   it(`Step 2: Click Abschluss Eingliederung button`, () => {
-    pages.eingliederung.detail.ribbonMenu.clickAbschlussEingliederungBtn()
+    pages.eingliederung.detail.waitForLoaded().ribbonMenu.clickAbschlussEingliederungBtn()
          .waitForLoaded();
   });
 
@@ -25,6 +25,7 @@ describe(`C50462: "Abschluss Eingliederung" _no linked objects (Prufen = Nein);
       confirm warning`, () => {
     pages.eingliederung.abschlussEingliederungPopup.selectResultatDropdown(testData.resultat)
          .selectArtDropdown(testData.art)
+         .selectArtMassnahmeDropdown(testData.artMassnahme)
          .selectPensumDropdown(testData.pensum)
          .selectRentenfrageDropdown(testData.rentenfrage)
          .clickSpeichernBtn();
@@ -39,6 +40,7 @@ describe(`C50462: "Abschluss Eingliederung" _no linked objects (Prufen = Nein);
       --> additionaly check: if you close popup and reopen it again>> no data is lost`, () => {
     pages.eingliederung.abschlussEingliederungPopup.checkResultatDropdown(testData.resultat)
          .checkArtDropdown(testData.art)
+         .checkArtMassnahmeDropdown(testData.artMassnahme)
          .checkPensumDropdown(testData.pensum)
          .checkRentenfrageDropdown(testData.rentenfrage)
          .checkBearbeiterFolgeEntscheidDropdown(testData.benutzer);
@@ -86,6 +88,6 @@ describe(`C50462: "Abschluss Eingliederung" _no linked objects (Prufen = Nein);
   it(`Step 9:  Click Resultat anzeigen button
     --> no Rente secion is available`, () => {
     pages.eingliederung.detail.ribbonMenu.clickResultatAnzeigenBtn()
-      .checkRentenfrageFieldsSectionVisible(false);
+         .checkRentenfrageFieldsSectionVisible(false);
   });
 });

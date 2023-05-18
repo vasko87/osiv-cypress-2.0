@@ -1,4 +1,5 @@
 import EntscheidDetail from "../page_objects/entscheid/detail/EntscheidDetail";
+import VersicherteDetail from "../page_objects/versicherte/detail/VersicherteDetail";
 
 class GroupedTaskbar {
   constructor() {
@@ -40,7 +41,7 @@ class GroupedTaskbar {
 
   clickContainsVersichertendatenTab() {
     this.elements.versichertendatenTab().click();
-    return this;
+    return new VersicherteDetail();
   }
 
   clickContainsEingliederungTab() {

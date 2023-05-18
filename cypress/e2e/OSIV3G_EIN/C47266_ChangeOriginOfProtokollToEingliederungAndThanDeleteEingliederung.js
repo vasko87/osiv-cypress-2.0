@@ -39,7 +39,8 @@ describe(`C47266: Change origin of Protokoll to eingliederung (and than delete e
       pages.modalWindow.clickOkBtn();
       pages.notification.checkSuccessMessageVisible();
       pages.versicherte.detail.tabBar.protocoll.detail.checkUrsprungTxt(testData.ursprungTxt);
-      pages.groupedTaskbar.clickContainsVersichertendatenTab();
+      pages.groupedTaskbar.clickContainsVersichertendatenTab()
+           .waitForLoaded();
     }));
   });
 
@@ -48,7 +49,8 @@ describe(`C47266: Change origin of Protokoll to eingliederung (and than delete e
     pages.versicherte.detail.tabBar.navigateToEingliederungenTab()
          .grid.waitGridViewLoaded()
          .dblClickRowNumber(1);
-    pages.eingliederung.detail.ribbonMenu.clickLoschenBtn();
+    pages.eingliederung.detail.waitForLoaded()
+         .ribbonMenu.clickLoschenBtn();
     pages.confirmPopup.clickJaBtn();
     pages.notification.checkSuccessMessageVisible();
 

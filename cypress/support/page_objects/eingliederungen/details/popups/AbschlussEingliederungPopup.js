@@ -6,15 +6,16 @@ class AbschlussEingliederungPopup extends ModalWindowBase {
     super();
     super.elements = {
       ...this.elements,
-      abschliessenForm: () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm']"),
-      resultatDropdown: () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-resultatbez']"),
-      artDropdown: () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-resultatavbez']"),
-      pensumDropdown: () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-weivvollzeitteilzeitbez']"),
+      abschliessenForm                : () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm']"),
+      resultatDropdown                : () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-resultatbez']"),
+      artDropdown                     : () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-resultatavbez']"),
+      artMassnahmeDropdown            : () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-artmassnahmebez']"),
+      pensumDropdown                  : () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-weivvollzeitteilzeitbez']"),
       bearbeiterFolgeEntscheidDropdown: () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-sachbearbeiterbez']"),
-      benutzerDropdown: () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-rentenfragebez']"),
-      rentenfrageDropdown: () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-rentenfragepruefendynselect']"),
-      meldungFolgeEntscheidTextarea: () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-FolgeEntscheidMeldung'] textarea"),
-      rentenfrageFieldsSection: () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-rentenfragefieldset']")
+      benutzerDropdown                : () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-rentenfragebez']"),
+      rentenfrageDropdown             : () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-rentenfragepruefendynselect']"),
+      meldungFolgeEntscheidTextarea   : () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-FolgeEntscheidMeldung'] textarea"),
+      rentenfrageFieldsSection        : () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-rentenfragefieldset']")
     };
   }
 
@@ -46,6 +47,16 @@ class AbschlussEingliederungPopup extends ModalWindowBase {
 
   selectArtDropdownByIndex(index) {
     pageBase.selectDropdownValueByIndex(this.elements.artDropdown(), index);
+    return this;
+  }
+
+  selectArtMassnahmeDropdown(value) {
+    pageBase.selectInDropdownContains(this.elements.artMassnahmeDropdown(), value);
+    return this;
+  }
+
+  checkArtMassnahmeDropdown(value) {
+    pageBase.checkDropdownSelectedValue(this.elements.artMassnahmeDropdown(), value);
     return this;
   }
 

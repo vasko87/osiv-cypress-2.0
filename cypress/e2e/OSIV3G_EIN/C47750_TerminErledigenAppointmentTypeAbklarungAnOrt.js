@@ -29,8 +29,10 @@ describe(`C47750: Termin Erledigen (appointment type=Abklärung an Ort);
   "Kein Erstgespräch" button is disabled`, () => {
     flows.eingliederung.step_navigateEin_searchEin_openEin(testData.data1.einID);
 
-    pages.eingliederung.detail.tabBar.navigateToTermineTab()
-         .grid.clickRowWithTextToSelectIt(testData.data1.terminart);
+    pages.eingliederung.detail.waitForLoaded()
+         .tabBar.navigateToTermineTab()
+         .grid.waitGridViewLoaded()
+         .clickRowWithTextToSelectIt(testData.data1.terminart);
     pages.termine.detail.ribbonMenu.clickTerminErledigenBtn();
     pages.warningPopup.checkWarningContainsText(constants.MSG.TERMIN_44)
          .clickOkBtn();
