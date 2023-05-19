@@ -39,7 +39,7 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
            .checkArbeitslisteTxt(data.arbeitslisteSendungenCompleted);
 
       pages.groupedTaskbar.clickContainsGesuchTab();
-      pages.gesuche.detail.waitForLoaded();
+      pageBase.waitForLoadingDisappears();
       pages.gesuche.detail.tabBar.navigateToEntscheideTab()
            .grid.waitGridViewLoaded()
            .dblClickRowNumber(1);
@@ -59,6 +59,7 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
            .checkArbeitslisteTxt(data.arbeitslisteSendungenCompleted);
 
       pages.groupedTaskbar.clickContainsGesuchTab();
+      pageBase.waitForLoadingDisappears();
       pages.gesuche.detail.tabBar.navigateToEntscheideTab()
            .grid.dblClickRowNumber(1);
       pages.entscheid.detail.waitForLoaded();
