@@ -26,6 +26,7 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
       pages.entscheid.detail.waitForLoaded();
       pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(data.arbeitslisteEntInitial);
       pages.groupedTaskbar.clickContainsGesuchTab();
+      pageBase.waitForLoadingDisappears();
       pages.groupedTaskbar.closeContainsEntscheidTab();
 
       pages.gesuche.detail.tabBar.navigateToSendungenTab()
@@ -38,6 +39,7 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
            .checkArbeitslisteTxt(data.arbeitslisteSendungenCompleted);
 
       pages.groupedTaskbar.clickContainsGesuchTab();
+      pages.gesuche.detail.waitForLoaded();
       pages.gesuche.detail.tabBar.navigateToEntscheideTab()
            .grid.waitGridViewLoaded()
            .dblClickRowNumber(1);
@@ -119,8 +121,8 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
     pages.versicherte.detail.tabBar.navigateToEntscheideTab()
          .grid.waitGridViewLoaded()
          .dblClickRowNumber(1);
+    pages.entscheid.detail.waitForLoaded();
     pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(testData.scenario4.arbeitslisteEntInitial);
-    pageBase.waitForLoadingDisappears();
     pages.entscheid.detail.windowHeader.clickCloseBtn();
     pages.versicherte.detail.tabBar.navigateToSendungenTab()
          .grid.waitGridViewLoaded()
@@ -136,7 +138,8 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
     pages.sendungen.detail.windowHeader.clickCloseBtn();
 
     pages.groupedTaskbar.clickContainsVersichertendatenTab();
-    pages.versicherte.detail.sendungenTabBar.grid.dblClickRowWithText(testData.scenario4.arbeitslisteSendungenOpen);
+    pages.versicherte.detail.sendungenTabBar.grid.waitGridViewLoaded()
+         .dblClickRowWithText(testData.scenario4.arbeitslisteSendungenOpen);
     pages.sendungen.detail.ribbonMenu.clickKorrekturfunktionenBtn();
     pages.sendungen.detail.ribbonMenu.korrekturfunktionenSubMenu.clickAbklaerungEincheckenBtn();
     pages.confirmPopup.clickJaBtn();
@@ -153,6 +156,7 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
     flows.modalPopup.clickOkBtn_CheckSuccessMsg();
     pages.sendungen.detail.waitForLoaded()
          .checkArbeitslisteTxt(testData.scenario4.arbeitslisteSendungenCompleted);
+    pages.sendungen.detail.windowHeader.clickCloseBtn();
 
     pages.groupedTaskbar.clickContainsVersichertendatenTab();
     pages.versicherte.detail.sendungenTabBar.grid.waitGridViewLoaded()
@@ -162,6 +166,7 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
     flows.modalPopup.clickOkBtn_CheckSuccessMsg();
     pages.sendungen.detail.waitForLoaded()
          .checkArbeitslisteTxt(testData.scenario4.arbeitslisteSendungenCompleted);
+    pages.sendungen.detail.windowHeader.clickCloseBtn();
 
     pages.groupedTaskbar.clickContainsVersichertendatenTab();
     pages.versicherte.detail.tabBar.navigateToEntscheideTab()
