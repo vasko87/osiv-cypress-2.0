@@ -119,12 +119,14 @@ describe(`C50984: E2E (HE Entscheid);
   });
 
   it(`Step 8: Open Freitexte tab; add any test to begrundung and click Speichern -> text is saved`, () => {
-    pages.entscheid.detail.sideMenu.navigateToFreitexteTab();
+    pages.entscheid.detail.sideMenu.navigateToFreitexteTab()
+         .begrundungTab
+         .txtEditor.waitForLoaded()
+         .setValue(testData.step8.textForm);
+    pages.entscheid.detail.ribbonMenu.clickBegrundungSpeichernBtn();
+    pages.notification.checkSuccessMessageVisible();
     // TODO
-    //      .begrundungTab.setTextForm(testData.step8.textForm);
-    // pages.entscheid.detail.ribbonMenu.clickBegrundungSpeichernBtn();
-    // pages.notification.checkSuccessMessageVisible();
-    // pages.entscheid.detail.freitexteTab.begrundungTab.checkTextForm(testData.step8.textForm);
+    // pages.entscheid.detail.freitexteTab.begrundungTab.txtEditor.checkValue(testData.step8.textForm);
   });
 
   it(`Step 9: open verfugung/Beiblatt AK; click freitexte generiren; confirm warning (OSCIENT:154) ->
@@ -227,7 +229,6 @@ describe(`C50984: E2E (HE Entscheid);
   });
 
   afterEach(function() {
-    console.log(this.currentTest.state);
     if (this.currentTest.state === "pending") {
       Cypress.runner.stop();
     }

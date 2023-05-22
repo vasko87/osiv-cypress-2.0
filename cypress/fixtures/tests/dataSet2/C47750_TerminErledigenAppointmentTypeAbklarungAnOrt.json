@@ -1,0 +1,17 @@
+{
+  "data1": {
+    "einID"           : "3272",
+    "terminart"       : "Abklärung an Ort",
+    "confirmationText": "(OSCEIN:26)",
+    "al"              : "Warten",
+    "total"           : "1",
+    "info"            : "Abklärung SDS"
+  },
+  "data2": {
+    "einID"           : "3274",
+    "terminart"       : "Abklärung an Ort",
+    "confirmationText": "(OSCEIN:26)",
+    "al"              : "Bearbeiten",
+    "total"           : "0"
+  }
+}

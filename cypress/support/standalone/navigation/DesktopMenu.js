@@ -3,6 +3,7 @@ import AdressenGrid from "../../page_objects/addresen/grid/AdressenGrid";
 import PosteingangGrid from "../../page_objects/posteingang/grid/PosteingangGrid";
 import pageBase from "../../base/PageBase";
 import GesucheGrid from "../../page_objects/gesuche/detail/GesucheGrid";
+import EingliederungGrid from "../../page_objects/eingliederungen/grid/EingliederungGrid";
 
 class DesktopMenu {
   constructor() {
@@ -14,7 +15,7 @@ class DesktopMenu {
       posteingangTab    : () => cy.get("[class*='level-2'][menuname='Posteingang']"),
       entscheidMainTab  : () => cy.get("[class*='level-1'][menuname='Entscheid']"),
       entscheidTab      : () => cy.get("[class*='level-2'][menuname='Entscheid']"),
-      eingliederungTab  : () => cy.get("[class*='level-2'][menuname='Eingliederung']"),
+      eingliederungTab  : () => cy.get("[menuname='Eingliederung']"),
       gesucheMainTab    : () => cy.get("[class*='level-1'][menuname='Gesuche']"),
       gesucheTab        : () => cy.get("[class*='level-2'][menuname='Gesuche']")
     };
@@ -40,7 +41,7 @@ class DesktopMenu {
 
   navigateToEingliederungTab() {
     this.elements.eingliederungTab().should("be.visible").click();
-    return new Ein();
+    return new EingliederungGrid();
   }
 
   navigateToGesucheTab() {

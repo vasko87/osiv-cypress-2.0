@@ -22,7 +22,8 @@ class VersicherteGrid extends GridBase {
    */
   searchAndOpenVersicherteName(value) {
     this.filter.searchByVersicherteName(value);
-    super.dblClickRowValue(value);
+    super.waitGridViewLoaded()
+         .dblClickRowValue(value);
     pageBase.waitForLoadingDisappears();
     return this;
   }

@@ -1,6 +1,7 @@
 import GridBase from "../../../base/GridBase";
 import constants from "../../../helpers/Constants"
 import GesucheGridFilter from "./GesucheGridFilter";
+import pageBase from "../../../base/PageBase";
 
 class GesucheGrid extends GridBase {
   constructor() {
@@ -19,7 +20,9 @@ class GesucheGrid extends GridBase {
    */
   searchAndOpenGesuchID(value) {
     this.filter.searchByGesuchID(value);
-    super.dblClickRowNumber(1);
+    super.waitGridViewLoaded()
+         .dblClickRowNumber(1);
+    pageBase.waitForLoadingDisappears();
     return this;
   }
 }

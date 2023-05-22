@@ -4,12 +4,12 @@ import {c44194 as testData} from "../../../support/helpers/DataManager";
 
 describe(`C44194: Correct Supertext and Entscheidtyp; 
 TestRail:https://osiv.testrail.net/index.php?/cases/view/44194`, () => {
+
+  before("Login", () => {
+    cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
+  });
+
   [testData.data1, testData.data2].forEach((data) => {
-
-    before("Login", () => {
-      cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
-    });
-
     it(`Steps: Open ENT '${data.entId}', Click Korrekturenfunction button
         select "Supertext, Entscheidtyp ändern" option from dynselect 
         >>> warning message '${data.warningMsg}' is presented

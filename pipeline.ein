@@ -37,12 +37,18 @@ pipeline {
                            alwaysLinkToLastBuild: false,
                            keepAll: true,
                            reportDir: 'cypress/reports',
-                           reportFiles: '*/index.html',
+                           reportFiles: 'index.html',
                            reportName: 'HTML Report EIN',
                            reportTitles: 'Mocha Report'])
                        }
                     }
                 }
+            }
+        }
+
+        stage('Finishing testing'){
+            steps{
+                echo "Finishing testing"
             }
         }
     }

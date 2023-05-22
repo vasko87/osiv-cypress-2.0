@@ -1,4 +1,4 @@
-import RibbonBase from "./../../../base/RibbonBase";
+import RibbonBase from "../../../base/RibbonBase";
 import DruckUndVersandPopup from "./popups/DruckUndVersandPopup";
 import SendungenAbschliessenPopup from "./popups/SendungenAbschliessenPopup";
 import constants from "../../../helpers/Constants";
@@ -28,7 +28,12 @@ class EntscheidRibbon extends RibbonBase {
       notizenEditieren               : () => this.elements.subMenu().get(`[id*='SendungNotizenEdit']`),
       abklarungVollstandig           : () => this.elements.subMenu().get(`[id*='SendungAbklaerungVollstaendig']`),
       abklarungUnvollstandig         : () => this.elements.subMenu().get(`[id*='SendungAbklaerungUnvollstaendig']`),
-      korrekturSendungsdaten         : () => this.elements.subMenu().get(`[id*='SendungKorrektur']`)
+      korrekturSendungsdaten         : () => this.elements.subMenu().get(`[id*='SendungKorrektur']`),
+
+      clickAbklaerungEincheckenBtn() {
+        this.abklaerungEinchecken().should("be.visible").click();
+        return new SendungenAbschliessenPopup();
+      }
     };
   }
 
