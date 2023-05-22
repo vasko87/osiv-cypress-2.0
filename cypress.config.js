@@ -9,14 +9,16 @@ module.exports = defineConfig(
     viewportHeight : 1080,
     reporter       : "cypress-mochawesome-reporter",
     reporterOptions: {
-      reportDir          : "cypress/reports/mochawesome-report",
+      reportDir          : "cypress/reports",
       charts             : true,
+      overwrite          : true,
       html               : true,
       json               : true,
       embeddedScreenshots: true,
       inlineAssets       : true,
       showSkipped        : true,
       showPending        : true,
+      quite              : true,
       capture            : "runner" // capture: "fullPage",
     },
     // reporter       : "cypress-mochawesome-reporter",
@@ -65,26 +67,26 @@ module.exports = defineConfig(
         "**/2-advanced-examples/*"
       ],
       screenshotOnRunFailure: true,
-      screenshotsFolder     : "cypress/reports/mochawesome-report/assets",
-      videosFolder          : "cypress/reports/mochawesome-report/videos",
-      requestTimeout        : 50000,
+      screenshotsFolder     : "cypress/reports/assets",
+      videosFolder          : "cypress/reports/videos",
+      requestTimeout        : 40000,
       numTestsKeptInMemory  : 0,
-      responseTimeout       : 50000,
-      pageLoadTimeout       : 50000,
-      defaultCommandTimeout : 50000,
+      responseTimeout       : 40000,
+      pageLoadTimeout       : 40000,
+      defaultCommandTimeout : 40000,
       hideXHR               : true,
       chromeWebSecurity     : false,
       video                 : false,
       videoUploadOnPasses   : false,
       videoCompression      : 15,
       testIsolation         : false,
-      all_frames       : true,
-      retries          : {
+      all_frames            : true,
+      retries               : {
         runMode : 0,
         openMode: 0
       },
-      scrollBehavior   : "top",
-      slowTestThreshold: 500//Time, in milliseconds, to consider a test "slow" during cypress run
+      scrollBehavior        : "top",
+      slowTestThreshold     : 500//Time, in milliseconds, to consider a test "slow" during cypress run
     }
   }
 );

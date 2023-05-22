@@ -1,17 +1,18 @@
-import SendungenGrid from "../../sendungen/grid/SendungenGrid";
 import constants from "../../../helpers/Constants";
-import EntscheidGrid from "../../entscheid/grid/EntscheidGrid";
 import EntscheidTab_Versicherte from "./tabBarTabs/EntscheidTab_Versicherte";
 import SendungenTab_Versicherte from "./tabBarTabs/SendungenTab_Versicherte";
 import EingliederungenTab_Versicherte from "./tabBarTabs/EingliederungenTab_Versicherte";
+import ProtocollPageObject from "../../protocoll/ProtocollPageObject";
 
 class VersicherteTabBar {
   constructor() {
+    this.protocoll = new ProtocollPageObject();
     this.elements = {
       detailsTab        : () => cy.get(`${constants.CSS_ACTIVE_FORM} [class$='tab'][akid='SimpleSwatTabbar-Details der Versicherten Person'],[class$='tab_actv'][akid='SimpleSwatTabbar-Details der Versicherten Person']`),
       entscheideTab     : () => cy.get(`${constants.CSS_ACTIVE_FORM} [class$='tab'][akid='SimpleSwatTabbar-Entscheide'],[class$='tab_actv'][akid='SimpleSwatTabbar-Entscheide']`),
       eingliederungenTab: () => cy.get(`${constants.CSS_ACTIVE_FORM} [class$='tab'][akid='SimpleSwatTabbar-Eingliederungen'],[class$='tab_actv'][akid='SimpleSwatTabbar-Eingliederungen']`),
-      sendungenTab      : () => cy.get(`${constants.CSS_ACTIVE_FORM} [class$='tab'][akid='SimpleSwatTabbar-Sendungen'],[class$='tab_actv'][akid='SimpleSwatTabbar-Sendungen']`)
+      sendungenTab      : () => cy.get(`${constants.CSS_ACTIVE_FORM} [class$='tab'][akid='SimpleSwatTabbar-Sendungen'],[class$='tab_actv'][akid='SimpleSwatTabbar-Sendungen']`),
+      protocollTab      : () => cy.get(`${constants.CSS_ACTIVE_FORM} [class$='tab'][akid='SimpleSwatTabbar-Protokoll'],[class$='tab_actv'][akid='SimpleSwatTabbar-Protokoll']`)
     };
   }
 
@@ -33,6 +34,11 @@ class VersicherteTabBar {
   navigateToSendungenTab() {
     this.elements.sendungenTab().click();
     return new SendungenTab_Versicherte();
+  }
+
+  navigateToProtocollTab() {
+    this.elements.protocollTab().click();
+    return new ProtocollPageObject();
   }
 }
 

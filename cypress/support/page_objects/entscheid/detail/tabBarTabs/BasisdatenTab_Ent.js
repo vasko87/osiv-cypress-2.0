@@ -1,6 +1,7 @@
 import EntscheidPageBase from "../../EntscheidPageBase";
 import constants from "../../../../helpers/Constants";
 import helpers from "../../../../helpers/HelperObject";
+import ZustandigkeitenWechselnPopup from "../popups/ZustandigkeitenWechselnPopup";
 
 class BasisdatenTab_Ent extends EntscheidPageBase {
   constructor() {
@@ -8,7 +9,8 @@ class BasisdatenTab_Ent extends EntscheidPageBase {
     super(detailFormCSS);
     super.elements = {
       ...this.elements,
-      detailForm: () => cy.get(detailFormCSS)
+      detailForm    : () => cy.get(detailFormCSS),
+      meldungtextBtn: () => cy.get(detailFormCSS).find("[akid$='EntscheidDetailBasisDatenForm-meldungtextbutton']")
     };
   }
 
@@ -71,6 +73,11 @@ class BasisdatenTab_Ent extends EntscheidPageBase {
       this.setBeginnDate(helpers.date.getCurrentDate());
     }
     return this;
+  }
+
+  clickMeldungtextBtn(){
+    this.elements.meldungtextBtn().should("be.visible").click();
+    return new ZustandigkeitenWechselnPopup();
   }
 }
 

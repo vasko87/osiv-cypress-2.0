@@ -1,3 +1,5 @@
+import pageBase from "../../../base/PageBase";
+
 class EntscheidGridFilter {
   constructor() {
 
@@ -13,6 +15,7 @@ class EntscheidGridFilter {
    */
   searchEntscheidID(value) {
     this.elements.entscheidIDTxt().click().clear().type(`${value}{enter}`);
+    pageBase.waitForLoadingDisappears();
     return this;
   }
 

@@ -1,4 +1,5 @@
 import EntscheidDetail from "../page_objects/entscheid/detail/EntscheidDetail";
+import VersicherteDetail from "../page_objects/versicherte/detail/VersicherteDetail";
 
 class GroupedTaskbar {
   constructor() {
@@ -6,6 +7,7 @@ class GroupedTaskbar {
       groupedTaskbar  : () => cy.get("div[class='vue-taskbar-container']"),
       entscheidHEHETab: () => this.elements.groupedTaskbar().find("[title='Entscheid HE HE']"),
       entscheidTab: () => this.elements.groupedTaskbar().find("[title*='Entscheid']"),
+      protocollTab: () => this.elements.groupedTaskbar().find("[title*='Protocoll']"),
       eingliederungTab: () => this.elements.groupedTaskbar().find("[title*='Eingliederung']"),
       gesuchTab: () => this.elements.groupedTaskbar().find("[title*='Gesuch']"),
       versichertendatenTab: () => this.elements.groupedTaskbar().find("[title*='Versichertendaten']")
@@ -27,6 +29,11 @@ class GroupedTaskbar {
     return new EntscheidDetail();
   }
 
+  closeContainsProtocollTab() {
+    this.elements.protocollTab().parent("div[class*='vue-taskbar-item']").find(".vue-close-icon").click();
+    return new EntscheidDetail();
+  }
+
   clickContainsGesuchTab() {
     this.elements.gesuchTab().click();
     return this;
@@ -34,7 +41,7 @@ class GroupedTaskbar {
 
   clickContainsVersichertendatenTab() {
     this.elements.versichertendatenTab().click();
-    return this;
+    return new VersicherteDetail();
   }
 
   clickContainsEingliederungTab() {

@@ -1,3 +1,5 @@
+import pageBase from "../../../base/PageBase";
+
 class EingliederungGridFilter {
   constructor() {
 
@@ -13,6 +15,7 @@ class EingliederungGridFilter {
    */
   searchEingliederungID(value) {
     this.elements.eingliederungIDTxt().click().clear().type(`${value}{enter}`);
+    pageBase.waitForLoadingDisappears();
     return this;
   }
 

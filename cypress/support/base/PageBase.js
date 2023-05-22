@@ -9,8 +9,8 @@ class PageBase {
    * @returns {PageBase}
    */
   selectInDropdownContains(element, value) {
-    element.click("center")
-           .get("[class='select2-results__options']", {timeout: constants.DEFAULT_TIMEOUT})
+    element.find("[class='select2-selection__arrow']").click();
+    element.get("[class='select2-results__options']", {timeout: constants.DEFAULT_TIMEOUT})
            .contains(value)
            .click();
     return this;
@@ -23,8 +23,8 @@ class PageBase {
    * @returns {PageBase}
    */
   selectDropdownValueByIndex(element, index) {
-    element.click("top")
-           .get("[class='select2-results__options']", {timeout: constants.DEFAULT_TIMEOUT})
+    element.find("[class='select2-selection__arrow']").click();
+    element.get("[class='select2-results__options']", {timeout: constants.DEFAULT_TIMEOUT})
            .eq(index - 1)
            .click();
     return this;
@@ -38,7 +38,16 @@ class PageBase {
    * @returns {PageBase}
    */
   checkDropdownSelectedValue(element, selectedValue) {
-    element.find("option").should("have.text", selectedValue);
+    element.find("[class='select2-selection__rendered']").should("have.text", selectedValue);
+    return this;
+  }
+
+  checkDropdownSelectedValueContains(element, value, shouldContain) {
+    if (shouldContain) {
+      element.find("option").should("contain.text", value);
+    } else {
+      element.find("option").should("not.contain.text", value);
+    }
     return this;
   }
 
@@ -81,11 +90,27 @@ class PageBase {
     });
   }
 
+  checkElementMandatory(element, isMandatory) {
+    if (isMandatory) {
+      element.should("have.class", "akMandatory");
+    } else {
+      element.should("not.have.class", "akMandatory");
+    }
+  }
+
   checkElementVisible(element, isVisible) {
     if (isVisible === true) {
       element.should("be.visible");
     } else {
       element.should("not.be.visible");
+    }
+  }
+
+  checkElementExists(element, isExist) {
+    if (isExist === true) {
+      element.should("exist");
+    } else {
+      element.should("not.exist");
     }
   }
 
@@ -205,6 +230,13 @@ class PageBase {
 
   waitForLoadingDisappears() {
     cy.get("[class='dhx_cell_prcircle']", {timeout: constants.LONG_TIMEOUT}).should("not.exist");
+    return this;
+  }
+
+  executeJS(commandJS) {
+    cy.window().then((win) => {
+      win.eval(commandJS);
+    });
     return this;
   }
 }

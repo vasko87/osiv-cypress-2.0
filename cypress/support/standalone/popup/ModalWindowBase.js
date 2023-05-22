@@ -7,6 +7,8 @@ class ModalWindowBase {
     this.elements = {
       modalWindow : () => cy.get(ModalWindowBase.css, {timeout:constants.DEFAULT_TIMEOUT}),
       okBtn: () => this.elements.modalWindow().find('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]'),
+      abbrechenBtn: () => this.elements.modalWindow().find('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Abbrechen"]'),
+      speichernBtn: () => this.elements.modalWindow().find('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Speichern"]'),
       toolbar: () => cy.get(ModalWindowBase.css).find("[class='dhx_cell_toolbar_def']")
     };
   }
@@ -19,6 +21,18 @@ class ModalWindowBase {
   clickOkBtn() {
     this.waitForLoaded();
     this.elements.okBtn().should("be.visible").click();
+    return this;
+  }
+
+  clickAbbrechenBtn() {
+    this.waitForLoaded();
+    this.elements.abbrechenBtn().should("be.visible").click();
+    return this;
+  }
+
+  clickSpeichernBtn() {
+    this.waitForLoaded();
+    this.elements.speichernBtn().should("be.visible").click();
     return this;
   }
 

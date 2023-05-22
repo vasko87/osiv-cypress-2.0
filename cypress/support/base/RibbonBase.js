@@ -1,5 +1,4 @@
 import constants from "../helpers/Constants";
-import pageBase from "./PageBase";
 class RibbonBase {
   constructor() {
     this.elements = {
@@ -17,7 +16,7 @@ class RibbonBase {
   }
 
   checkSpeichernBtnDisabled(isDisabled) {
-    super.checkMenuItemDisable(this.elements.speichernBtn(), isDisabled);
+    this.checkMenuItemDisable(this.elements.speichernBtn(), isDisabled);
     return this;
   }
 

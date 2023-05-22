@@ -13,6 +13,7 @@ class BearbeitungEinleitenPopup extends ModalWindowBase {
   }
 
   waitForLoaded() {
+    super.waitForLoaded();
     this.elements.bearbeitungEinleitenForm().should("be.visible");
     return this;
   }

@@ -1,3 +1,5 @@
+import pageBase from "../../../base/PageBase";
+
 class VersicherteGridFilter {
   constructor() {
 
@@ -13,6 +15,7 @@ class VersicherteGridFilter {
    */
   searchByVersicherteName(value) {
     this.elements.versicherteNameTxt().click().type(`${value}{enter}`);
+    pageBase.waitForLoadingDisappears();
     return this;
   }
 
