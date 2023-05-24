@@ -13,6 +13,11 @@ class EingliederungGrid extends GridBase {
     };
   }
 
+  waitGridViewLoaded() {
+    super.waitGridViewLoaded();
+    return this;
+  }
+
   /**
    * Search @value in 'Eingliederung ID' field of Grid filter
    * open EingliederungID with dblclick()

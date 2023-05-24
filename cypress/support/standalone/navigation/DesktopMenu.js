@@ -4,6 +4,7 @@ import PosteingangGrid from "../../page_objects/posteingang/grid/PosteingangGrid
 import pageBase from "../../base/PageBase";
 import GesucheGrid from "../../page_objects/gesuche/detail/GesucheGrid";
 import EingliederungGrid from "../../page_objects/eingliederungen/grid/EingliederungGrid";
+import VersicherteGrid from "../../page_objects/versicherte/grid/VersicherteGrid";
 
 class DesktopMenu {
   constructor() {
@@ -25,6 +26,7 @@ class DesktopMenu {
     this.elements.versicherteMainTab().should("be.visible").click();
     this.elements.versicherteTab().click();
     this.elements.versicherteMainTab().click();
+    return new VersicherteGrid();
   }
 
   navigateToAdressenTab() {

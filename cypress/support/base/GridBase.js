@@ -3,8 +3,8 @@ import pageBase from "./PageBase";
 class GridBase {
   constructor(baseCSS) {
     this.elements = {
-      gridWrapper: () => cy.get(baseCSS),
-      rowSelected: () => this.elements.gridWrapper().find("tr[class*='_material rowselected']"),
+      gridWrapper    : () => cy.get(baseCSS),
+      rowSelected    : () => this.elements.gridWrapper().find("tr[class*='_material rowselected']"),
       rowElementsList: () => this.elements.gridWrapper().find("[class='objbox'] tr[class*=material]")
     };
   }
@@ -30,13 +30,30 @@ class GridBase {
                    columnsList.push(el.getAttribute("title"));
                  });
 
+      // gridWrapper.find("[class='objbox'] table tr[class*='material']")
+      //            .each((i, tr) => {
+      //              const row = {};
+      //              cy.$$(tr).find("td").each((i, td) => {
+      //                row[columnsList[i] || "unknown"] = td.textContent;
+      //              });
+      //
+      //              finalGridDataList.push(row);
+      //            });
+
       gridWrapper.find("[class='objbox'] table tr[class*='material']")
                  .each((i, tr) => {
                    const row = {};
                    cy.$$(tr).find("td").each((i, td) => {
-                     row[columnsList[i] || "unknown"] = td.textContent;
+                     if (td.hasAttribute("excell")) {
+                       if (td.chstate === "1") {
+                         row[columnsList[i] || "unknown"] = true;
+                       } else {
+                         row[columnsList[i] || "unknown"] = false;
+                       }
+                     } else {
+                       row[columnsList[i] || "unknown"] = td.textContent;
+                     }
                    });
-
                    finalGridDataList.push(row);
                  });
 

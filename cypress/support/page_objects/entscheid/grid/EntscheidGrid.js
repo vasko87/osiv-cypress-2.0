@@ -13,6 +13,11 @@ class EntscheidGrid extends GridBase {
     };
   }
 
+  waitGridViewLoaded() {
+    super.waitGridViewLoaded();
+    return this;
+  }
+
   /**
    * Search @value in 'Entscheid ID' field of Grid filter
    * open EntcheidID with dblclick()

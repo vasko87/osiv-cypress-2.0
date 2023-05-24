@@ -5,67 +5,67 @@
   "step3": {
     "gridData": [
       {
-        "Alternativ": "",
+        "Alternativ": false,
         "Bezeichnung": "Titel: Kostengutsprache für Leistungen bei Lebendorganspende",
         "Baustein-Nr.": "9517",
-        "Vorbescheid": "",
-        "Verfügung": ""
+        "Vorbescheid": false,
+        "Verfügung": false
       },
       {
-        "Alternativ": "",
+        "Alternativ": false,
         "Bezeichnung": "Anrede",
         "Baustein-Nr.": "1048",
-        "Vorbescheid": "",
-        "Verfügung": ""
+        "Vorbescheid": false,
+        "Verfügung": false
       },
       {
-        "Alternativ": "",
+        "Alternativ": false,
         "Bezeichnung": "Einleitung: Anspruch auf MM geprüft",
         "Baustein-Nr.": "5001",
-        "Vorbescheid": "",
-        "Verfügung": ""
+        "Vorbescheid": false,
+        "Verfügung": false
       },
       {
-        "Alternativ": "",
+        "Alternativ": false,
         "Bezeichnung": "Titel: Wir teilen Ihnen mit",
         "Baustein-Nr.": "1002",
-        "Vorbescheid": "",
-        "Verfügung": ""
+        "Vorbescheid": false,
+        "Verfügung": false
       },
       {
-        "Alternativ": "",
+        "Alternativ": false,
         "Bezeichnung": "Kosten für die medizinische Behandlung des Spenders",
         "Baustein-Nr.": "5099",
-        "Vorbescheid": "",
-        "Verfügung": ""
+        "Vorbescheid": false,
+        "Verfügung": false
       },
       {
-        "Alternativ": "",
+        "Alternativ": false,
         "Bezeichnung": "Kostenvergütung bei Hospitalisation",
         "Baustein-Nr.": "1007",
-        "Vorbescheid": "",
-        "Verfügung": ""
+        "Vorbescheid": false,
+        "Verfügung": false
       },
       {
-        "Alternativ": "",
+        "Alternativ": false,
         "Bezeichnung": "Entschädigung für Spender",
         "Baustein-Nr.": "5091",
-        "Vorbescheid": "",
-        "Verfügung": ""
+        "Vorbescheid": false,
+        "Verfügung": false
       },
       {
-        "Alternativ": "",
+        "Alternativ": false,
         "Bezeichnung": "Meldepflicht MM",
         "Baustein-Nr.": "5195",
-        "Vorbescheid": "",
-        "Verfügung": ""
+        "Vorbescheid": false,
+        "Verfügung": false
       },
       {
-        "Alternativ": "",
+        "Alternativ": false,
         "Bezeichnung": "Anbieter stellt Rechnung mit Kopie an vP",
         "Baustein-Nr.": "5096",
-        "Vorbescheid": "",
-        "Verfügung": ""
+        "Vorbescheid": false,
+        "Verfügung": false
       }
     ]
   },
@@ -75,25 +75,25 @@
   "step6": {
     "gridData": [
       {
-        "Alternativ": "",
+        "Alternativ": false,
         "Bezeichnung": "BNA Baustein für einen Vorbescheid",
         "Baustein-Nr.": "bna_VB",
-        "Vorbescheid": "",
-        "Verfügung": ""
+        "Vorbescheid": true,
+        "Verfügung": false
       },
       {
-        "Alternativ": "",
+        "Alternativ": false,
         "Bezeichnung": "BNA Baustein für eine Verfügung",
         "Baustein-Nr.": "bna_VM",
-        "Vorbescheid": "",
-        "Verfügung": ""
+        "Vorbescheid": false,
+        "Verfügung": true
       },
       {
-        "Alternativ": "",
+        "Alternativ": false,
         "Bezeichnung": "KESB Finanziell",
         "Baustein-Nr.": "KESB1",
-        "Vorbescheid": "",
-        "Verfügung": ""
+        "Vorbescheid": false,
+        "Verfügung": false
       }
     ]
   },

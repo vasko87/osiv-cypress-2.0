@@ -12,6 +12,11 @@ class GesucheGrid extends GridBase {
     };
   }
 
+  waitGridViewLoaded() {
+    super.waitGridViewLoaded();
+    return this;
+  }
+
   /**
    * Search @value 'Gesuch ID' field of Grid filter
    * open found Gesuch with dblclick()

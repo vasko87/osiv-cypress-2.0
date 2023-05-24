@@ -10,6 +10,11 @@ class AdressenGrid extends GridBase{
     };
   }
 
+  waitGridViewLoaded() {
+    super.waitGridViewLoaded();
+    return this;
+  }
+
   clickAdressenNewBtn() {
     this.elements.adresseNewBtn().click();
     return new AdressenAddDialog();
