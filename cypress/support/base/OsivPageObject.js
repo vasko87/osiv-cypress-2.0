@@ -18,6 +18,7 @@ import VirtualViewer from "../standalone/VirtualViewer";
 import ErrorPopup from "../standalone/popup/ErrorPopup";
 import EingliederungPageObject from "../page_objects/eingliederungen/EingliederungPageObject";
 import TerminePageObject from "../page_objects/termine/TerminePageObject";
+import TxtEditor from "../standalone/TxtEditor";
 
 class OsivPageObject {
   constructor() {
@@ -40,6 +41,7 @@ class OsivPageObject {
     this.adressen = new AdressenPageObject();
     this.sendungen = new SendungenPageObject();
     this.virtualViewer = new VirtualViewer();
+    this.txtEditor = new TxtEditor();
   }
 
   checkMsgOnThePage(msg, isExist) {

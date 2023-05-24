@@ -125,8 +125,7 @@ describe(`C50984: E2E (HE Entscheid);
          .setValue(testData.step8.textForm);
     pages.entscheid.detail.ribbonMenu.clickBegrundungSpeichernBtn();
     pages.notification.checkSuccessMessageVisible();
-    // TODO
-    // pages.entscheid.detail.freitexteTab.begrundungTab.txtEditor.checkValue(testData.step8.textForm);
+    pages.entscheid.detail.freitexteTab.begrundungTab.txtEditor.checkValue(testData.step8.textForm);
   });
 
   it(`Step 9: open verfugung/Beiblatt AK; click freitexte generiren; confirm warning (OSCIENT:154) ->

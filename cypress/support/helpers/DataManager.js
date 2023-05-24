@@ -30,6 +30,10 @@ import C47266_ds1 from "../../fixtures/tests/dataSet1/C47266_ChangeOriginOfProto
 import C47266_ds2 from "../../fixtures/tests/dataSet2/C47266_ChangeOriginOfProtokollToEingliederungAndThanDeleteEingliederung.json";
 import C47266_ds3 from "../../fixtures/tests/dataSet3/C47266_ChangeOriginOfProtokollToEingliederungAndThanDeleteEingliederung.json";
 
+import C54969_ds1 from "../../fixtures/tests/dataSet1/C54969_UpdatingTheListOfTheBausteinsAfterChangingEntscheidSupertext.json";
+import C54969_ds2 from "../../fixtures/tests/dataSet2/C54969_UpdatingTheListOfTheBausteinsAfterChangingEntscheidSupertext.json";
+import C54969_ds3 from "../../fixtures/tests/dataSet3/C54969_UpdatingTheListOfTheBausteinsAfterChangingEntscheidSupertext.json";
+
 import C001 from "../../fixtures/tests/C001_newAdressTest.json";
 import C44746 from "../../fixtures/tests/C44746_HEGradCalculationRules.json";
 import C47707 from "../../fixtures/tests/C47707_ShowNoShowDynamicBaustein.json";
@@ -51,6 +55,7 @@ const dataFiles = {
   c50464 : C50464_ds1,
   c50462 : C50462_ds1,
   c47266 : C47266_ds1,
+  c54969 : C54969_ds1,
   c001 : C001,
   c44746 : C44746,
   c47707 : C47707,
@@ -76,6 +81,7 @@ if (dataSet === "dataSet1") {
   dataFiles.c50464 = C50464_ds1;
   dataFiles.c50462 = C50462_ds1;
   dataFiles.c47266 = C47266_ds1;
+  dataFiles.c54969 = C54969_ds1;
 }
 if (dataSet === "dataSet2") {
   dataFiles.c44194 = C44194_ds2;
@@ -86,6 +92,7 @@ if (dataSet === "dataSet2") {
   dataFiles.c50464 = C50464_ds2;
   dataFiles.c50462 = C50462_ds2;
   dataFiles.c47266 = C47266_ds2;
+  dataFiles.c54969 = C54969_ds2;
 }
 if (dataSet === "dataSet3") {
   dataFiles.c44194 = C44194_ds3;
@@ -96,6 +103,7 @@ if (dataSet === "dataSet3") {
   dataFiles.c50464 = C50464_ds3;
   dataFiles.c50462 = C50462_ds3;
   dataFiles.c47266 = C47266_ds3;
+  dataFiles.c54969 = C54969_ds3;
 }
 
 module.exports = dataFiles;

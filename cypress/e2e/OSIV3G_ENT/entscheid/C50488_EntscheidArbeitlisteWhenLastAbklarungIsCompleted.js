@@ -2,12 +2,21 @@ import pages from "../../../support/base/OsivPageObject";
 import flows from "../../../support/base/OsivFlowsObject";
 import {c50488 as testData} from "../../../support/helpers/DataManager";
 import pageBase from "../../../support/base/PageBase";
+import helpers from "../../../support/helpers/HelperObject";
 
 describe(`C50488: Entscheid arbeitliste when last Abklärung is completed; 
-  TestRail:https://osiv.testrail.net/index.php?/cases/view/50488`, () => {
+  TestRail:https://osiv.testrail.net/index.php?/cases/view/50488; 
+  DEFECT(Scenario3, Scenario5):https://jiraosiv3g.atlassian.net/browse/PROD-1986`, () => {
 
   before(`Login as ${Cypress.env("username")};`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
+    helpers.jira.isJiraDone("PROD-1986").then((isDone) => {
+      console.log(isDone);
+      if (isDone === false) {
+        Cypress.env("isJira", true);
+        console.log(Cypress.env("isJira"));
+      }
+    });
   });
 
   [testData.scenario1, testData.scenario2].forEach((data) => {
@@ -76,6 +85,8 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
   Select second abklarung sendung
   Assign and Close it
   --> Verify: Ent ID = 23194 is in Bearbeiten state`, () => {
+    // TODO Defect
+    cy.skipOn(Cypress.env("isJira") === true);
     pages.loginPage.openUrl();
     flows.entscheid.step_navigateEnt_searchEnt_openEnt(testData.scenario3.entID);
     pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(testData.scenario3.arbeitslisteEntInitial);
@@ -186,6 +197,8 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
   Select second abklarung sendung
   Assign and Close it
   --> Verify: Ent ID = 23198 is in Neu state`, () => {
+    // TODO Defect
+    cy.skipOn(Cypress.env("isJira") === true);
     pages.loginPage.openUrl();
     flows.posteingang.step_navigatePOE_applyAllfilter_searchByVPNr(testData.scenario5.vpNr);
     pages.posteingang.grid.checkGridRowCount(2)

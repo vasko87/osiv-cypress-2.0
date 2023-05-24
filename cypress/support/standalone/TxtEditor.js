@@ -21,10 +21,23 @@ class TxtEditor {
 
   checkValue(value) {
     this.waitForLoaded();
-    const actualValue = pageBase.executeJS(`document.querySelector( ".txtEditor" ).__vueParentComponent.ctx.value`);
-    console.log(actualValue);
-    // expect(actualValue).to.be.eql(value);
+    this.getValue().then((actualValue) => {
+      expect(actualValue).to.be.eql(value);
+    });
+    return this;
   }
 
+  /**
+   *
+   * @returns {Cypress.Chainable<>}
+   */
+  getValue() {
+    return pageBase.executeJS(`document.querySelector( ".txtEditor" ).__vueParentComponent.ctx.getValue()`).then((val) => {
+      console.log(val);
+      val = val.split("fs20\\lang1031\\langnp1031\\langfe1031\\langfenp1031 ")[1].replaceAll("}", "");
+      console.log(val);
+      return val;
+    });
+  }
 }
 export default TxtEditor;

@@ -47,6 +47,15 @@ class FreitexteTab {
       txtEditor: new TxtEditor()
     };
 
+    this.vorbescheidTab = {
+      bausteinlisteIndiVorbescheidGrid: () => cy.get("[akid='BausteinlisteIndiVorbescheidGrid']"),
+      txtEditor: new TxtEditor(),
+
+      waitForVisible() {
+        this.bausteinlisteIndiVorbescheidGrid().should("be.visible");
+      }
+    };
+
     this.verfugungBeiblattAKTab = {
       docValidator     : () => new DocumentValidator("[akid='VerfuegungBeiblattHTMLtextForm']"),
       bausteinGrid     : () => new GridBase("[akid='BausteinlisteIndiVerfuegungBeiblattGrid']"),

@@ -61,6 +61,11 @@ class PageBase {
     return this;
   }
 
+  clearDropdown(element) {
+    element.find("[class='select2-selection__clear']").click();
+    return this;
+  }
+
   getDropdownSelectedValue(element) {
     return element.find("select").should("be.visible");
   }
@@ -234,10 +239,9 @@ class PageBase {
   }
 
   executeJS(commandJS) {
-    cy.window().then((win) => {
-      win.eval(commandJS);
+    return cy.window().then((win) => {
+      return win.eval(commandJS);
     });
-    return this;
   }
 }
 

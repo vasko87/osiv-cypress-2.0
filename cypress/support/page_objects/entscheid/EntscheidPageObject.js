@@ -5,6 +5,7 @@ import BearbeitungEinleitenPopup from "./detail/popups/BearbeitungEinleitenPopup
 import constants from "../../helpers/Constants";
 import EntscheidInDenPapierkorbVerschiebenPopup from "./detail/popups/EntscheidInDenPapierkorbVerschiebenPopup";
 import ZustandigkeitenWechselnPopup from "./detail/popups/ZustandigkeitenWechselnPopup";
+import SupertextFreidefinierbareVariablenPopup from "./detail/popups/SupertextFreidefinierbareVariablenPopup";
 
 class EntscheidPageObject {
   constructor() {
@@ -14,6 +15,7 @@ class EntscheidPageObject {
     this.inDenPapierkorbPopup = new EntscheidInDenPapierkorbVerschiebenPopup();
     this.bearbeitungEinleitenPopup = new BearbeitungEinleitenPopup();
     this.zustandigkeitenWechselnPopup = new ZustandigkeitenWechselnPopup();
+    this.supertextFreidefinierbareVariablenPopup = new SupertextFreidefinierbareVariablenPopup();
   }
 }
 

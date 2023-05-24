@@ -1,5 +1,3 @@
-import pageBase from "../base/PageBase";
-
 class Notifications {
   constructor() {
     this.elements = {

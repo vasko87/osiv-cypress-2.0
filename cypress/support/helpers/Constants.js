@@ -20,6 +20,7 @@ const MSG = {
   OSCIENT_77_PART1 : "Das angegebene Resultat und die Anstellungen werden gespeichert.",
   OSCIENT_77_PART2 : "Wollen Sie fortfahren? (OSCEIN:77)",
   OSCIENT_522: "Bitte die Bearbeitung einleiten. (OSCIENT:522)",
+  OSCIENT_713: "Wollen sie fortfahren? (OSCIENT:713)",
   TERMIN_44  : "Sie beenden einen fremden Termin. (Termin:44)",
   TERMIN_26  : "Die zugehörige Eingliederung bleibt aufgrund eines Termins im Warten. (Termin:26)",
   TERMIN_27  : "Die zugehörige Eingliederung wird aus dem Warten befreit. (Termin:27)"

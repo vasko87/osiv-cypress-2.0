@@ -1,7 +1,11 @@
 import pageBase from "../../base/PageBase";
+import ModalWindowBase from "../../standalone/popup/ModalWindowBase";
+import SupertextWahlenPopup from "./detail/popups/SupertextWahlenPopup";
+import supertextWahlenPopup from "./detail/popups/SupertextWahlenPopup";
 
 class EntscheidPageBase {
   constructor(baseCSS) {
+    this.supertextWahlenPopup = new SupertextWahlenPopup();
     this.elements = {
       leistungsgruppeDropdown: () => cy.get(baseCSS).find("[akid$='-leistungsgruppe']"),
       leistungscodeDropdown  : () => cy.get(baseCSS).find("[akid$='-leistungtext']"),
@@ -118,6 +122,17 @@ class EntscheidPageBase {
 
   selectSupertextDropdown(value) {
     pageBase.selectInDropdownContains(this.elements.supertextDropdown(), value);
+    return this;
+  }
+
+  lookupSupertextDropdown(value) {
+    this.elements.supertextDropdown().find("[class='select2-selection__lookup']").click();
+    this.supertextWahlenPopup.waitForLoaded()
+        .clearSpracheIDDropdown()
+        .clearEntscheidDropdown()
+        .clearLeistungsCodeAnzeigenDropdown()
+        .setSupertextNrTxt(value)
+        .clickBestatigenBtn();
     return this;
   }
 
