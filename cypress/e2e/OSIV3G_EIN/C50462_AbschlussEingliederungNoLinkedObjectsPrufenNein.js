@@ -16,7 +16,8 @@ describe(`C50462: "Abschluss Eingliederung" _no linked objects (Prufen = Nein);
   });
 
   it(`Step 2: Click Abschluss Eingliederung button`, () => {
-    pages.eingliederung.detail.waitForLoaded().ribbonMenu.clickAbschlussEingliederungBtn()
+    pages.eingliederung.detail.waitForLoaded()
+         .ribbonMenu.clickAbschlussEingliederungBtn()
          .waitForLoaded();
   });
 

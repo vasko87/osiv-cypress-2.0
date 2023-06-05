@@ -44,6 +44,7 @@ describe(`C45772: Create Eingliederung from vP Eingliederungen;
     pages.warningPopup.checkWarningContainsText(testData.warningPart1)
          .checkWarningContainsText(testData.warningPart2);
     pages.warningPopup.clickOkBtn();
+    pages.waitForLoadingDisappears();
     pages.notification.checkSuccessMessageVisible();
   });
 
@@ -59,6 +60,7 @@ describe(`C45772: Create Eingliederung from vP Eingliederungen;
 
   it(`Step 6: Delete EIN`, () => {
     pages.groupedTaskbar.clickContainsEingliederungTab();
+    pages.waitForLoadingDisappears();
     pages.eingliederung.detail.ribbonMenu.clickLoschenBtn();
     pages.confirmPopup.clickJaBtn();
     pages.notification.checkSuccessMessageVisible();

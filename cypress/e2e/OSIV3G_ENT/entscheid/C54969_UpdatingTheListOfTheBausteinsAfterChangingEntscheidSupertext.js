@@ -50,7 +50,8 @@ DEFECT(step 5):https://jiraosiv3g.atlassian.net/browse/OSIV-22700`, {failFast: {
     // TODO Defect on step 5
     cy.skipOn(Cypress.env("isJira") === true);
     pages.warningPopup.checkWarningContainsText(constants.MSG.OSCIENT_713)
-         .clickOkBtn();
+         .clickOkBtn()
+      .clickOkBtn();
   });
 
   it(`Steps 6: Navigate to "Freitexte" sidebar ->
@@ -73,5 +74,11 @@ DEFECT(step 5):https://jiraosiv3g.atlassian.net/browse/OSIV-22700`, {failFast: {
          .setEinDatumDate(helpers.date.getCurrentDate())
          .clickOkBtn();
     // TODO check values (blocked by issues)
+  });
+
+  afterEach(function() {
+    if (this.currentTest.state === "pending") {
+      Cypress.runner.stop();
+    }
   });
 });

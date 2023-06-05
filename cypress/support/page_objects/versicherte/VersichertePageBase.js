@@ -6,7 +6,8 @@ class VersichertePageBase {
       nameTxt: () => cy.get(baseCSS).find("[akid*='-stamm_nr_nachname'] input"),
       vornameTxt: () => cy.get(baseCSS).find("[akid*='-vorname'] input"),
       geburtsdatumDate: () => cy.get(baseCSS).find("[akid*='-geburtsdatum'] input"),
-      geschlechtDropdown: () => cy.get(baseCSS).find("[akid*='-sex_bez']")
+      geschlechtDropdown: () => cy.get(baseCSS).find("[akid*='-sex_bez']"),
+      statusTxt: () => cy.get(baseCSS).find("[akid*='-brs_status'] input")
     };
   }
 
@@ -27,6 +28,11 @@ class VersichertePageBase {
 
   selectGeschlechtDropdown(value) {
     pageBase.selectInDropdownContains(this.elements.geschlechtDropdown(), value);
+    return this;
+  }
+
+  checkStatusTxt(value) {
+    this.elements.statusTxt().should("be.visible").should("have.value", value);
     return this;
   }
 }

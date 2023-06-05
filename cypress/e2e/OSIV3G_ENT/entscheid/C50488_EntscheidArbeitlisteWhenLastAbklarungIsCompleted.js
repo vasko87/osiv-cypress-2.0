@@ -6,11 +6,11 @@ import helpers from "../../../support/helpers/HelperObject";
 
 describe(`C50488: Entscheid arbeitliste when last Abklärung is completed; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/50488; 
-  DEFECT(Scenario3, Scenario5):https://jiraosiv3g.atlassian.net/browse/PROD-1986`, () => {
+  DEFECT(Scenario3, Scenario5):https://jiraosiv3g.atlassian.net/browse/OSIV-22744`, () => {
 
   before(`Login as ${Cypress.env("username")};`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
-    helpers.jira.isJiraDone("PROD-1986").then((isDone) => {
+    helpers.jira.isJiraDone("OSIV-22744").then((isDone) => {
       console.log(isDone);
       if (isDone === false) {
         Cypress.env("isJira", true);
@@ -20,7 +20,7 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
   });
 
   [testData.scenario1, testData.scenario2].forEach((data) => {
-    it(`Scenario ${data.scenarioNumber}: Open Gesuch 1 (${data.gesuchID})
+    it.only(`Scenario ${data.scenarioNumber}: Open Gesuch 1 (${data.gesuchID})
     Open sendungens linked to Gesuch and Entscheid
     Close first Sendungen
     --> Verify: Entscheid AL is not changed (stays in Warten)

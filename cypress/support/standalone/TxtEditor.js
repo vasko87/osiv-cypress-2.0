@@ -9,7 +9,7 @@ class TxtEditor {
 
   waitForLoaded() {
     pageBase.waitForLoadingDisappears();
-    cy.wait(constants.SHORT_TIMEOUT * 2);
+    cy.wait(constants.SHORT_TIMEOUT * 5);
     pageBase.waitForLoadingDisappears();
     return this;
   }

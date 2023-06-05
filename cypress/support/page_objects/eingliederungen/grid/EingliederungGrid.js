@@ -13,6 +13,10 @@ class EingliederungGrid extends GridBase {
     };
   }
 
+  /**
+   *
+   * @returns {EingliederungGrid}
+   */
   waitGridViewLoaded() {
     super.waitGridViewLoaded();
     return this;
