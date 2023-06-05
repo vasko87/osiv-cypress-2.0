@@ -10,14 +10,6 @@ DEFECT(step 5):https://jiraosiv3g.atlassian.net/browse/OSIV-22700`, {failFast: {
 
   before("Login", () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
-
-    helpers.jira.isJiraDone("OSIV-22700").then((isDone) => {
-      console.log(isDone);
-      if (isDone === false) {
-        Cypress.env("isJira", true);
-        console.log(Cypress.env("isJira"));
-      }
-    });
   });
 
   it(`Steps: Open ENT '${testData.step1.entId}', Navigate to "Freitexte" sidebar`, () => {
@@ -47,8 +39,6 @@ DEFECT(step 5):https://jiraosiv3g.atlassian.net/browse/OSIV-22700`, {failFast: {
       Aus diesem Grund muss die Liste der Bausteine neu generiert werden und alle individuellen Änderungen gehen verloren.
       Auch muss der Freitext entsprechend neu generiert werden.
       Wollen sie fortfahren? (OSCIENT:713)"`, () => {
-    // TODO Defect on step 5
-    cy.skipOn(Cypress.env("isJira") === true);
     pages.warningPopup.checkWarningContainsText(constants.MSG.OSCIENT_713)
          .clickOkBtn()
       .clickOkBtn();
@@ -74,11 +64,5 @@ DEFECT(step 5):https://jiraosiv3g.atlassian.net/browse/OSIV-22700`, {failFast: {
          .setEinDatumDate(helpers.date.getCurrentDate())
          .clickOkBtn();
     // TODO check values (blocked by issues)
-  });
-
-  afterEach(function() {
-    if (this.currentTest.state === "pending") {
-      Cypress.runner.stop();
-    }
   });
 });

@@ -10,17 +10,10 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
 
   before(`Login as ${Cypress.env("username")};`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
-    helpers.jira.isJiraDone("OSIV-22744").then((isDone) => {
-      console.log(isDone);
-      if (isDone === false) {
-        Cypress.env("isJira", true);
-        console.log(Cypress.env("isJira"));
-      }
-    });
   });
 
   [testData.scenario1, testData.scenario2].forEach((data) => {
-    it.only(`Scenario ${data.scenarioNumber}: Open Gesuch 1 (${data.gesuchID})
+    it(`Scenario ${data.scenarioNumber}: Open Gesuch 1 (${data.gesuchID})
     Open sendungens linked to Gesuch and Entscheid
     Close first Sendungen
     --> Verify: Entscheid AL is not changed (stays in Warten)
@@ -85,8 +78,6 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
   Select second abklarung sendung
   Assign and Close it
   --> Verify: Ent ID = 23194 is in Bearbeiten state`, () => {
-    // TODO Defect
-    cy.skipOn(Cypress.env("isJira") === true);
     pages.loginPage.openUrl();
     flows.entscheid.step_navigateEnt_searchEnt_openEnt(testData.scenario3.entID);
     pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(testData.scenario3.arbeitslisteEntInitial);
@@ -121,7 +112,7 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
     pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(testData.scenario3.arbeitslisteEntChanged);
   });
 
-  it(`Scenario 4: Open VP Xalando Xaver
+  it.only(`Scenario 4: Open VP Xalando Xaver
   Open Sendungen list
   Open Both sendungs and do Abklarung Einchecken for both sendungs (Basisdtaen>Korrekturfunctionen dynselect)
   Go to Sendung Desktop
@@ -197,8 +188,6 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
   Select second abklarung sendung
   Assign and Close it
   --> Verify: Ent ID = 23198 is in Neu state`, () => {
-    // TODO Defect
-    cy.skipOn(Cypress.env("isJira") === true);
     pages.loginPage.openUrl();
     flows.posteingang.step_navigatePOE_applyAllfilter_searchByVPNr(testData.scenario5.vpNr);
     pages.posteingang.grid.checkGridRowCount(2)

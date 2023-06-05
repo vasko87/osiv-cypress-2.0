@@ -24,6 +24,7 @@ class PosteingangGrid extends GridBase{
    * @returns {EntscheidGrid}
    */
   searchAndOpenVersichertenNr(value) {
+    super.waitGridViewLoaded();
     this.filter.searchVersichertenNrTxt(value);
     super.dblClickRowValue(value);
     return this;

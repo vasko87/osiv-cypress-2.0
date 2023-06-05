@@ -127,12 +127,11 @@ class EntscheidPageBase {
 
   lookupSupertextDropdown(value) {
     this.elements.supertextDropdown().find("[class='select2-selection__lookup']").click();
-    this.supertextWahlenPopup.waitForLoaded()
-        .clearSpracheIDDropdown()
-        .clearEntscheidDropdown()
-        .clearLeistungsCodeAnzeigenDropdown()
-        .setSupertextNrTxt(value)
-        .clickBestatigenBtn();
+    this.supertextWahlenPopup.waitForLoaded();
+    this.supertextWahlenPopup.supertextQueryGrid.waitGridViewLoaded();
+    this.supertextWahlenPopup.setSupertextNrTxt(value);
+    this.supertextWahlenPopup.supertextQueryGrid.waitGridViewLoaded();
+    this.supertextWahlenPopup.clickBestatigenBtn();
     return this;
   }
 

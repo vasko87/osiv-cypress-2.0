@@ -1,9 +1,11 @@
 import ModalWindowBase from "../../../../standalone/popup/ModalWindowBase";
 import pageBase from "../../../../base/PageBase";
+import GridBase from "../../../../base/GridBase";
 
 class SupertextWahlenPopup extends ModalWindowBase {
   constructor() {
     super();
+    this.supertextQueryGrid = new GridBase("[akid='SupertextQueryGrid']");
     super.elements = {
       ...this.elements,
       supertextNrTxt: () => this.elements.modalWindow().find("[akid='SupertextQueryGrid-Supertext_Nr'] input"),
@@ -20,7 +22,7 @@ class SupertextWahlenPopup extends ModalWindowBase {
   }
 
   setSupertextNrTxt(value) {
-    this.elements.supertextNrTxt().should("be.visible").clear().type(`${value}{enter}`);
+    this.elements.supertextNrTxt().should("be.visible").click().clear().type(`${value}{enter}`);
     return this;
   }
 

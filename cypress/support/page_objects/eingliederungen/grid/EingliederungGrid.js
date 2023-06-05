@@ -29,6 +29,7 @@ class EingliederungGrid extends GridBase {
    * @returns {EingliederungGrid}
    */
   searchAndOpenEingliederungID(value) {
+    super.waitGridViewLoaded();
     this.filter.searchEingliederungID(value);
     super.waitGridViewLoaded()
          .dblClickRowNumber(1);
