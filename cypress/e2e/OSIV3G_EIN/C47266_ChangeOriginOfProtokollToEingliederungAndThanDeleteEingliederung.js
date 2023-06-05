@@ -47,13 +47,13 @@ describe(`C47266: Change origin of Protokoll to eingliederung (and than delete e
 
   it(`SCENARIO 2: Delete Eingliederung
       verify: ursprung for all protokolls changed from eingliederung to Gesuch `, () => {
-    // pages.versicherte.detail.tabBar.navigateToEingliederungenTab()
-    //      .grid.waitGridViewLoaded()
-    //      .dblClickRowNumber(1);
-    // pages.eingliederung.detail.waitForLoaded()
-    //      .ribbonMenu.clickLoschenBtn();
-    // pages.confirmPopup.clickJaBtn();
-    // pages.notification.checkSuccessMessageVisible();
+    pages.versicherte.detail.tabBar.navigateToEingliederungenTab()
+         .grid.waitGridViewLoaded()
+         .dblClickRowNumber(1);
+    pages.eingliederung.detail.waitForLoaded()
+         .ribbonMenu.clickLoschenBtn();
+    pages.confirmPopup.clickJaBtn();
+    pages.notification.checkSuccessMessageVisible();
 
     pages.versicherte.detail.tabBar.navigateToProtocollTab().grid.waitGridViewLoaded();
     pages.versicherte.detail.protocollTabBar.grid.headerActivePanel.clickRefreshBtn();

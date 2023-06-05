@@ -75,7 +75,7 @@ describe(`C50464: "Abschluss Eingliederung" _no linked objects (Prufen = Ja);
   });
 
   afterEach(function() {
-    if (this.currentTest.state === "pending") {
+    if (this.currentTest.state === "pending" || this.currentTest.state === "failed") {
       Cypress.runner.stop();
     }
   });

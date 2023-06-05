@@ -7,8 +7,7 @@ class EntscheidFlows {
   step_navigateEin_searchEin_openEin(einID) {
     pages.desktopMenu.navigateToEingliederungTab();
     pageBase.waitForLoadingDisappears();
-    pages.eingliederung.grid.waitGridViewLoaded()
-         .searchAndOpenEingliederungID(einID);
+    pages.eingliederung.grid.searchAndOpenEingliederungID(einID);
     pages.eingliederung.detail.waitForLoaded();
     cy.wait(constants.MIN_TIMEOUT);
   }

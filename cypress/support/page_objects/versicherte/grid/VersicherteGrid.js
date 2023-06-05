@@ -28,7 +28,6 @@ class VersicherteGrid extends GridBase {
    * @returns {VersicherteGrid}
    */
   searchAndOpenVersicherteName(value) {
-    super.waitGridViewLoaded();
     this.filter.searchByVersicherteName(value);
     super.waitGridViewLoaded()
          .dblClickRowValue(value);
