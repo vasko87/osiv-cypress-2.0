@@ -2,6 +2,7 @@ import pages from "../../support/base/OsivPageObject";
 import flows from "../../support/base/OsivFlowsObject";
 import {c47266 as testData} from "../../support/helpers/DataManager";
 import helpers from "../../support/helpers/HelperObject";
+import pageBase from "../../support/base/PageBase";
 
 describe(`C47266: Change origin of Protokoll to eingliederung (and than delete eingliederung); 
   TestRail: https://osiv.testrail.net/index.php?/cases/view/47266`, {failFast: {enabled: true}}, () => {
@@ -49,6 +50,7 @@ describe(`C47266: Change origin of Protokoll to eingliederung (and than delete e
     pages.versicherte.detail.tabBar.navigateToEingliederungenTab()
          .grid.waitGridViewLoaded()
          .dblClickRowNumber(1);
+    pageBase.waitForLoadingDisappears();
     pages.eingliederung.detail.waitForLoaded()
          .ribbonMenu.clickLoschenBtn();
     pages.confirmPopup.clickJaBtn();
