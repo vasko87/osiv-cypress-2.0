@@ -44,7 +44,6 @@ describe(`C45772: Create Eingliederung from vP Eingliederungen;
     pages.warningPopup.checkWarningContainsText(testData.warningPart1)
          .checkWarningContainsText(testData.warningPart2);
     pages.warningPopup.clickOkBtn();
-    pages.waitForLoadingDisappears();
     pages.notification.checkSuccessMessageVisible();
   });
 
