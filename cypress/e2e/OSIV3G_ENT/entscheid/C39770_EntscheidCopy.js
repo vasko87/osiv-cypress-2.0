@@ -10,8 +10,7 @@ describe(`C39770: Entscheid Copy;
   EntschediID = ${testData.entId} (contains Versicherungen and Df-stelle)`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
     pages.loginPage.openUrl();
-    pages.desktopMenu.navigateToVersicherteTab();
-    pages.versicherte.grid.searchAndOpenVersicherteName(testData.versicherteName);
+    flows.versicherte.step_navigateVP_searchByVPName_openVP(testData.versicherteName);
     pages.versicherte.detail.waitForLoaded();
     pages.versicherte.detail.tabBar.navigateToEntscheideTab();
   });
