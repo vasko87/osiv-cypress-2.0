@@ -14,7 +14,7 @@ class VersicherteGridFilter {
    * @returns {VersicherteGrid}
    */
   searchByVersicherteName(value) {
-    this.elements.versicherteNameTxt().click().type(`${value}{enter}`);
+    this.elements.versicherteNameTxt().should("be.visible").click().clear().type(`${value}{enter}`);
     pageBase.waitForLoadingDisappears();
     return this;
   }
