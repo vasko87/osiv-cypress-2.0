@@ -5,8 +5,7 @@ import constants from "../../../support/helpers/Constants";
 import helpers from "../../../support/helpers/HelperObject";
 
 describe(`C54969: Updating the list of the Bausteins after changing Entscheid supertext; 
-TestRail:https://osiv.testrail.net/index.php?/cases/view/54969; 
-DEFECT(step 5):https://jiraosiv3g.atlassian.net/browse/OSIV-22700`, {failFast: {enabled: true}}, () => {
+TestRail:https://osiv.testrail.net/index.php?/cases/view/54969`, {failFast: {enabled: true}}, () => {
 
   before("Login", () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
@@ -41,7 +40,7 @@ DEFECT(step 5):https://jiraosiv3g.atlassian.net/browse/OSIV-22700`, {failFast: {
       Wollen sie fortfahren? (OSCIENT:713)"`, () => {
     pages.warningPopup.checkWarningContainsText(constants.MSG.OSCIENT_713)
          .clickOkBtn()
-      .clickOkBtn();
+         .clickOkBtn();
   });
 
   it(`Steps 6: Navigate to "Freitexte" sidebar ->

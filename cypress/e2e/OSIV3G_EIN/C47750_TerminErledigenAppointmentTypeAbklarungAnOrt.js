@@ -3,13 +3,22 @@ import flows from "../../support/base/OsivFlowsObject";
 import constants from "../../support/helpers/Constants";
 import helperObject from "../../support/helpers/HelperObject";
 import {c47750 as testData} from "../../support/helpers/DataManager";
+import helpers from "../../support/helpers/HelperObject";
 
 describe(`C47750: Termin Erledigen (appointment type=Abklärung an Ort); 
-  TestRail: https://osiv.testrail.net/index.php?/cases/view/47750`, () => {
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/47750; 
+  DEFECT :https://jiraosiv3g.atlassian.net/browse/OSIV-23034`, () => {
 
   beforeEach(`Login as ${Cypress.env("username")};`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
     pages.loginPage.openUrl();
+    helpers.jira.isJiraDone("OSIV-23034").then((isDone) => {
+      console.log(isDone);
+      if (isDone === false) {
+        Cypress.env("isJira", true);
+        console.log(Cypress.env("isJira"));
+      }
+    });
   });
 
   it(`Scenario 1: 
@@ -27,6 +36,8 @@ describe(`C47750: Termin Erledigen (appointment type=Abklärung an Ort);
   Info panel message is changed (info about further appointment is presented)
   fields Erstgespräch (updated with current date) and Total (updated to 1) are updated
   "Kein Erstgespräch" button is disabled`, () => {
+    // TODO Defect
+    cy.skipOn(Cypress.env("isJira") === true);
     flows.eingliederung.step_navigateEin_searchEin_openEin(testData.data1.einID);
 
     pages.eingliederung.detail.waitForLoaded()
@@ -67,6 +78,8 @@ describe(`C47750: Termin Erledigen (appointment type=Abklärung an Ort);
   AL of Eingliederung becomes Bearbeiten
   fields Erstgespräch  and Total are not updated
   "Kein Erstgespräch" button is disabled`, () => {
+    // TODO Defect
+    cy.skipOn(Cypress.env("isJira") === true);
     flows.eingliederung.step_navigateEin_searchEin_openEin(testData.data2.einID);
 
     pages.eingliederung.detail.tabBar.navigateToTermineTab()

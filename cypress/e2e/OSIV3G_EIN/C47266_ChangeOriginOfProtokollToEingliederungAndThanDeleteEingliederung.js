@@ -41,6 +41,7 @@ describe(`C47266: Change origin of Protokoll to eingliederung (and than delete e
       pages.versicherte.detail.protocollTabBar.detail.waitForLoaded()
            .checkUrsprungTxt(testData.ursprungTxt);
       pages.groupedTaskbar.clickContainsVersichertendatenTab();
+      pages.groupedTaskbar.closeContainsProtokollTab();
       pages.waitForLoadingDisappears();
     }));
   });

@@ -4,6 +4,7 @@ import pageBase from "../../support/base/PageBase";
 
 const testData = {
   vpName      : "Crood Eep",
+  auftragVon  : "lwo",
   auftragAn   : "BatchSH",
   warningPart1: "Der Auftrag wird an BatchSH BatchSH erteilt.",
   warningPart2: "Wollen Sie fortfahren? (OSCEIN:3)",
@@ -34,6 +35,7 @@ describe(`C45772: Create Eingliederung from vP Eingliederungen;
          .selectGesuchDropdownByIndex(1)
          .selectEreignisDropdownByIndex(1)
          .selectAuftragDropdownByIndex(1)
+         .selectAuftragVonDropdown(testData.auftragVon)
          .selectAuftragAnDropdown(testData.auftragAn)
          .setMeldungTextarea("test");
   });
@@ -54,7 +56,7 @@ describe(`C45772: Create Eingliederung from vP Eingliederungen;
          .grid.dblClickRowWithText(testData.arbeitsliste);
     pages.entscheid.detail.waitForLoaded();
     pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(testData.arbeitsliste)
-      .checkLeistungscodeDropdownEmpty(true);
+         .checkLeistungscodeDropdownEmpty(true);
   });
 
   it(`Step 6: Delete EIN`, () => {

@@ -4,12 +4,12 @@ import VersicherteDetail from "../page_objects/versicherte/detail/VersicherteDet
 class GroupedTaskbar {
   constructor() {
     this.elements = {
-      groupedTaskbar  : () => cy.get("div[class='vue-taskbar-container']"),
-      entscheidHEHETab: () => this.elements.groupedTaskbar().find("[title='Entscheid HE HE']"),
-      entscheidTab: () => this.elements.groupedTaskbar().find("[title*='Entscheid']"),
-      protocollTab: () => this.elements.groupedTaskbar().find("[title*='Protocoll']"),
-      eingliederungTab: () => this.elements.groupedTaskbar().find("[title*='Eingliederung']"),
-      gesuchTab: () => this.elements.groupedTaskbar().find("[title*='Gesuch']"),
+      groupedTaskbar      : () => cy.get("div[class='vue-taskbar-container']"),
+      entscheidHEHETab    : () => this.elements.groupedTaskbar().find("[title='Entscheid HE HE']"),
+      entscheidTab        : () => this.elements.groupedTaskbar().find("[title*='Entscheid']"),
+      protokollTab        : () => this.elements.groupedTaskbar().find("[title*='Protokoll']"),
+      eingliederungTab    : () => this.elements.groupedTaskbar().find("[title*='Eingliederung']"),
+      gesuchTab           : () => this.elements.groupedTaskbar().find("[title*='Gesuch']"),
       versichertendatenTab: () => this.elements.groupedTaskbar().find("[title*='Versichertendaten']")
     };
   }
@@ -29,9 +29,9 @@ class GroupedTaskbar {
     return new EntscheidDetail();
   }
 
-  closeContainsProtocollTab() {
-    this.elements.protocollTab().parent("div[class*='vue-taskbar-item']").find(".vue-close-icon").click();
-    return new EntscheidDetail();
+  closeContainsProtokollTab() {
+    this.elements.protokollTab().parent("div[class*='vue-taskbar-item']").find(".vue-close-icon").click();
+    return this;
   }
 
   clickContainsGesuchTab() {

@@ -1,3 +1,6 @@
+import pageBase from "../base/PageBase";
+import Dashboard from "./Dashboard";
+
 class LoginPage {
   constructor() {
     this.elements = {

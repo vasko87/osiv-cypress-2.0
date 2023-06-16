@@ -1,10 +1,10 @@
 import EntscheidGrid from "../../page_objects/entscheid/grid/EntscheidGrid";
 import AdressenGrid from "../../page_objects/addresen/grid/AdressenGrid";
 import PosteingangGrid from "../../page_objects/posteingang/grid/PosteingangGrid";
-import pageBase from "../../base/PageBase";
 import GesucheGrid from "../../page_objects/gesuche/detail/GesucheGrid";
 import EingliederungGrid from "../../page_objects/eingliederungen/grid/EingliederungGrid";
 import VersicherteGrid from "../../page_objects/versicherte/grid/VersicherteGrid";
+import pageBase from "../../base/PageBase";
 
 class DesktopMenu {
   constructor() {
@@ -25,39 +25,43 @@ class DesktopMenu {
   navigateToVersicherteTab() {
     this.elements.versicherteMainTab().should("be.visible").click();
     this.elements.versicherteTab().click();
+    pageBase.waitForLoadingDisappears();
     this.elements.versicherteMainTab().click();
     return new VersicherteGrid();
   }
 
   navigateToAdressenTab() {
     this.elements.adressenTab().should("be.visible").click();
-    return new AdressenGrid();
+    return this;
   }
 
   navigateToEntscheidTab() {
     this.elements.entscheidMainTab().should("be.visible").click();
     this.elements.entscheidTab().click();
+    pageBase.waitForLoadingDisappears();
     this.elements.entscheidMainTab().click();
-    return new EntscheidGrid();
+    return this;
   }
 
   navigateToEingliederungTab() {
     this.elements.eingliederungTab().should("be.visible").click();
-    return new EingliederungGrid();
+    return this;
   }
 
   navigateToGesucheTab() {
     this.elements.gesucheMainTab().should("be.visible").click();
     this.elements.gesucheTab().click();
+    pageBase.waitForLoadingDisappears();
     this.elements.gesucheMainTab().click();
-    return new GesucheGrid();
+    return this;
   }
 
   navigateToPosteingangTab() {
     this.elements.posteingangMainTab().should("be.visible").click();
     this.elements.posteingangTab().click();
+    pageBase.waitForLoadingDisappears();
     this.elements.posteingangMainTab().click();
-    return new PosteingangGrid();
+    return this;
   }
 
 }

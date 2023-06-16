@@ -19,11 +19,13 @@ import ErrorPopup from "../standalone/popup/ErrorPopup";
 import EingliederungPageObject from "../page_objects/eingliederungen/EingliederungPageObject";
 import TerminePageObject from "../page_objects/termine/TerminePageObject";
 import TxtEditor from "../standalone/TxtEditor";
+import Dashboard from "../standalone/Dashboard";
 
 class OsivPageObject {
   constructor() {
     this.nav = new Navigation();
     this.loginPage = new LoginPage();
+    this.dashboard = new Dashboard();
     this.desktopMenu = new DesktopMenu();
     this.groupedTaskbar = new GroupedTaskbar();
     this.modalWindow = new ModalWindowBase();

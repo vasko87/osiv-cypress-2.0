@@ -90,6 +90,12 @@ class GridBase {
     return this;
   }
 
+  waitGridWrapperLoaded() {
+    pageBase.waitForLoadingDisappears();
+    this.elements.gridWrapper().should("be.visible");
+    return this;
+  }
+
   /**
    * dblclick() on the row @value
    * @param value

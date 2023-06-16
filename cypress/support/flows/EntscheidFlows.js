@@ -5,7 +5,7 @@ class EntscheidFlows {
 
   step_navigateEnt_searchEnt_openEnt(entId) {
     pages.desktopMenu.navigateToEntscheidTab();
-    pageBase.waitForLoadingDisappears();
+    pages.entscheid.grid.headerActivePanel.selectAllDropdown();
     pages.entscheid.grid.searchAndOpenEntscheidID(entId);
     pages.entscheid.detail.waitForLoaded();
   }
