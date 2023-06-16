@@ -1,7 +1,7 @@
 import pages from "../../support/base/OsivPageObject";
 import flows from "../../support/base/OsivFlowsObject";
 import constants from "../../support/helpers/Constants";
-import {C51299 as testData} from "../../support/helpers/DataManager";
+import {c51299 as testData} from "../../support/helpers/DataManager";
 
 describe(`C51299: Abgabe registrrieren _ no error/warning messages; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/51299`, {failFast: {enabled: true}}, () => {

@@ -1,6 +1,7 @@
 {
-  "vpNname": "Dossier AUT1",
+  "vpNname": "Dossier AUT2",
   "dosseirAbgabeAnDropdown": "IV-Stelle",
+  "dosseirAbgabeAnDropdownToCheck": "301 IV-Stelle ZH",
   "msg_part1": "Das Dossier ist bereits als Abgegeben registriert worden.",
   "msg_part2": "Sie können die Dossier-Abgabe jetzt durchführen.",
   "msg_part3": "Falls der Erhalt des Dossiers jedoch fälschlicherweise nicht registriert wurde, so müssen Sie diesen zuerst registrieren. (OSCSTAMM:152)",

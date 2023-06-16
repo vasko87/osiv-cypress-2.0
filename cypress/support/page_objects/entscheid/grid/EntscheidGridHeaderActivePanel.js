@@ -23,12 +23,14 @@ class EntscheidGridHeaderActivePanel {
   selectAllDropdown(){
     this.elements.entscheidQueryGridDropdown().should("be.visible");
     pageBase.selectInDropdownContains(this.elements.entscheidQueryGridDropdown(), "All");
+    pageBase.waitForLoadingDisappears();
     return this;
   }
 
   selectMeineEntscheideDropdown() {
     this.elements.entscheidQueryGridDropdown().should("be.visible");
     pageBase.selectInDropdownContains("Meine Entscheide");
+    pageBase.waitForLoadingDisappears();
     return this;
   }
 }
