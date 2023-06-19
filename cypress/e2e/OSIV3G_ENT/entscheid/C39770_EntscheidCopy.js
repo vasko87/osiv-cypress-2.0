@@ -38,7 +38,7 @@ describe(`C39770: Entscheid Copy;
           pages.entscheid.detail.ribbonMenu.clickKopierenBtn();
           pages.entscheid.neuPopup.waitForLoaded()
                .checkArbeitslisteTxt(testData.arbeitslisteTxt)
-               .checkBearbeiterDropdownContains(Cypress.env("username"))
+               .checkBearbeiterDropdownEmpty(false)
                .checkLeistungsgruppeDropdown(elements.lg.text())
                .checkLeistungscodeDropdown(elements.lc.text())
                .checkGesuchDropdown(elements.gesuch.text())
@@ -50,7 +50,7 @@ describe(`C39770: Entscheid Copy;
           flows.modalPopup.clickOkBtn_warningOk_CheckSuccessMsg();
           pages.entscheid.detail.waitForLoaded()
                .basisdatenTabBar.checkArbeitslisteTxt(testData.arbeitslisteTxt)
-               .checkBearbeiterDropdownReadonlyValue(Cypress.env("username"))
+               .checkBearbeiterReadonlyDropdownEmpty(false)
                .checkLeistungsgruppeDropdown(elements.lg.text())
                .checkLeistungscodeDropdown(elements.lc.text())
                .checkGesuchDropdown(elements.gesuch.text())

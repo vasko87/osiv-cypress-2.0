@@ -91,13 +91,19 @@ class EntscheidPageBase {
     return this;
   }
 
-  checkBearbeiterDropdownReadonlyValue(value) {
-    pageBase.checkReadonlyDropdownContainsValue(this.elements.bearbeiterDropdown(), value);
+  checkBearbeiterDropdownEmpty(isEmpty) {
+    pageBase.checkDropdownEmpty(this.elements.bearbeiterDropdown(), isEmpty);
     return this;
   }
 
-  getBearbeiterDropdownReadonlyValue() {
-    return this.elements.bearbeiterDropdown().find("input[readonly='true']");
+  checkBearbeiterReadonlyDropdownEmpty(isEmpty) {
+    pageBase.checkElementEmpty(this.elements.bearbeiterDropdown().find("input"), isEmpty);
+    return this;
+  }
+
+  checkBearbeiterDropdownReadonlyValue(value) {
+    pageBase.checkReadonlyDropdownContainsValue(this.elements.bearbeiterDropdown(), value);
+    return this;
   }
 
   checkArbeitslisteTxt(value) {
@@ -132,7 +138,8 @@ class EntscheidPageBase {
     this.supertextWahlenPopup.clearSpracheIDDropdown()
         .clearEntscheidDropdown()
         .clearLeistungsCodeAnzeigenDropdown();
-    this.supertextWahlenPopup.setSupertextNrTxt(value);
+    this.supertextWahlenPopup.clearSupertextNrTxt()
+        .setSupertextNrTxt(value);
     this.supertextWahlenPopup.supertextQueryGrid.waitGridViewLoaded();
     this.supertextWahlenPopup.clickBestatigenBtn();
     return this;

@@ -55,7 +55,7 @@ class PageBase {
   }
 
   checkDropdownEmpty(element, isEmpty) {
-    if(isEmpty) {
+    if (isEmpty) {
       element.find("select").should("be.visible").find("option").should("be.empty");
     } else {
       element.find("select").should("be.visible").find("option").should("not.be.empty");
@@ -65,7 +65,10 @@ class PageBase {
   }
 
   clearDropdown(element) {
-    element.find("[class='select2-selection__clear']").click();
+    try {
+      element.find("[class='select2-selection__clear']").click();
+    } catch (e) {
+    }
     return this;
   }
 

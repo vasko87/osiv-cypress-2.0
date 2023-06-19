@@ -22,21 +22,29 @@ class SupertextWahlenPopup extends ModalWindowBase {
   }
 
   setSupertextNrTxt(value) {
-    this.elements.supertextNrTxt().should("be.visible").click().clear().type(`${value}{enter}`);
+    this.elements.supertextNrTxt().should("be.visible").click().type(`${value}{enter}`);
+    return this;
+  }
+
+  clearSupertextNrTxt() {
+    this.elements.supertextNrTxt().should("be.visible").click().clear();
     return this;
   }
 
   clearSpracheIDDropdown() {
+    this.elements.spracheIDDropdown().should("be.visible");
     pageBase.clearDropdown(this.elements.spracheIDDropdown());
     return this;
   }
 
   clearEntscheidDropdown() {
+    this.elements.entscheidDropdown().should("be.visible");
     pageBase.clearDropdown(this.elements.entscheidDropdown());
     return this;
   }
 
   clearLeistungsCodeAnzeigenDropdown() {
+    this.elements.leistungsCodeAnzeigenDropdown().should("be.visible");
     pageBase.clearDropdown(this.elements.leistungsCodeAnzeigenDropdown());
     return this;
   }

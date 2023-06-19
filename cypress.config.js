@@ -5,8 +5,8 @@ const TestRailReporter = require("cypress-testrail");
 module.exports = defineConfig(
   {
     projectId      : "nnmsrw",
-    viewportWidth  : 1920,
-    viewportHeight : 1080,
+    viewportWidth  : 2560,
+    viewportHeight : 1440,
     reporter       : "cypress-mochawesome-reporter",
     reporterOptions: {
       reportDir          : "cypress/reports",
