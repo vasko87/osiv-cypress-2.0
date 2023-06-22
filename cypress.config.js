@@ -7,7 +7,7 @@ module.exports = defineConfig(
     projectId      : "nnmsrw",
     viewportWidth  : 1920,
     viewportHeight : 1080,
-    eporter        : "cypress-mochawesome-reporter",
+    reporter        : "cypress-mochawesome-reporter",
     reporterOptions: {
       reportDir          : "cypress/reports",
       charts             : true,

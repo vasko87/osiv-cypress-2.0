@@ -218,7 +218,6 @@ describe(`C50984: E2E (HE Entscheid);
     pages.sendungen.druckUndVersandPopup.druckVersandTab.selectDruckerBenutzerDropdown(testData.step17.druckerBenutzerDropdown)
          .setVersandDate(dateHelper.getCurrentDayPlusDays(helpers.random.randomIntFromInterval(1, 14)));
     pages.sendungen.druckUndVersandPopup.clickOkBtn();
-    pages.infoPopup.clickOkBtn();
     pages.confirmPopup.clickJaBtn();
     pages.waitForLoadingDisappears();
     pages.sendungen.detail.checkArbeitslisteTxt(testData.step17.arbeitslisteTxt);
