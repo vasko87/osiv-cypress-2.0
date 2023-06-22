@@ -25,7 +25,6 @@ class GridBase {
     const columnsList = [];
     const finalGridDataList = [];
 
-    cy.log("Get GRID data");
     return this.elements.gridWrapper().then((gridWrapper) => {
       gridWrapper.find("[class='xhdr'] table tr:nth-child(2) td")
                  .each((i, el) => {
@@ -76,7 +75,6 @@ class GridBase {
       gridData.forEach((row) => {
         colValues.push(row[`${columnName}`]);
       });
-      cy.log(`GET all values of Grid column [${columnName}]: [${colValues}]`);
       console.log(colValues);
       return colValues;
     });
@@ -113,7 +111,6 @@ class GridBase {
   }
 
   dblClickRowNumber(rowNumber) {
-    cy.log(`Double click on row number [${rowNumber}]`);
     this.elements.rowElementsList()
         .eq(rowNumber - 1).should("be.visible")
         .find("td").eq(0).dblclick();
@@ -121,20 +118,17 @@ class GridBase {
   }
 
   clickRowNumber(rowNumber) {
-    cy.log(`click on row number [${rowNumber}]`);
     this.elements.rowElementsList()
         .eq(rowNumber - 1).should("be.visible").click();
     return this;
   }
 
   clickRowWithTextToSelectIt(text) {
-    cy.log(`click on row with text [${text}] to select it`);
     this.elements.gridWrapper().find("tbody").contains("td", text).click();
     return this;
   }
 
   dblClickRowWithText(text) {
-    cy.log(`Double click on row with text [${text}]`);
     this.elements.gridWrapper().find("tbody").contains("td", text).dblclick();
     return this;
   }
@@ -147,10 +141,8 @@ class GridBase {
    */
   checkValueInGridExists(value, isExist) {
     if (isExist) {
-      cy.log(`Checking value [${value}] exists in Grid`);
       this.elements.gridWrapper().contains(value).should("exist");
     } else {
-      cy.log(`Checking value [${value}] not exists in Grid`);
       this.elements.gridWrapper().contains(value).should("not.exist");
     }
     return this;
@@ -175,7 +167,6 @@ class GridBase {
    * @returns {GridBase}
    */
   checkGridRowsCount(count) {
-    cy.log(`Checking Grid rows count is [${count}]`);
     if (count !== 0) {
       this.elements.gridWrapper().find("tr[class*='material']").should("have.length", count);
     } else {

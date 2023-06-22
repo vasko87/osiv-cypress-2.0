@@ -64,7 +64,7 @@ class EingliederungPageBase {
   }
 
   selectAuftragVonDropdown(value) {
-    pageBase.selectInDropdownContains(this.elements.auftragVonDropdown(), value);
+    pageBase.selectInDropdownByTyping(this.elements.auftragVonDropdown(), value);
     return this;
   }
 

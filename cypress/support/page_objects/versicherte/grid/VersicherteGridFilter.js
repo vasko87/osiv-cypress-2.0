@@ -17,8 +17,7 @@ class VersicherteGridFilter {
   searchByVersicherteName(value) {
     cy.log(`Search VP Name = ${value}`);
     cy.wait(1000);
-    this.elements.versicherteNameTxt().should("be.visible");
-    this.elements.versicherteNameTxt().click().clear().type(`${value}`);
+    this.elements.versicherteNameTxt().should("be.visible").click().clear().type(`${value}`);
     cy.wait(constants.MIN_TIMEOUT);
     this.elements.versicherteNameTxt().type(`{enter}`);
     pageBase.waitForLoadingDisappears();

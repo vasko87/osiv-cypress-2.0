@@ -7,7 +7,7 @@ class VersicherteRibbon extends RibbonBase {
     super.elements = {
       ...this.elements,
       agabeKontrollierenBtn : () => this.elements.ribbonBlock().find("[title='Abgabe kontrollieren']"),
-      abgabeRegistrierenBtn : () => this.elements.ribbonBlock().find("[title='Abgabe Registrieren']"),
+      abgabeRegistrierenBtn : () => this.elements.ribbonBlock().find("[title='Abgabe registrieren']"),
       abgabeDurchfuhrenBtn : () => this.elements.ribbonBlock().find("[title='Abgabe durchführen']")
     };
   }
