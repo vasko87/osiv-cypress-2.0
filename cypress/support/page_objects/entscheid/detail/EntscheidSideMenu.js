@@ -25,66 +25,79 @@ class EntscheidSideMenu {
   }
 
   navigateToBasisdatenTab() {
+    cy.log(`[ENT view]: Navigate to 'Basisdaten' side tab`);
     this.elements.basisdatenTab().should("be.visible").click();
     return new BasisdatenTab_Ent();
   }
 
   navigateToDurchfuhrungsstellenTab() {
+    cy.log(`[ENT view]: Navigate to 'Durchfuhrungsstellen' side tab`);
     this.elements.durchfuhrungsstellenTab().should("be.visible").click();
     return new DurchfuhrungsstellenTab();
   }
 
   navigateToVersicherungTab() {
+    cy.log(`[ENT view]: Navigate to 'Versicherung' side tab`);
     this.elements.versicherungTab().should("be.visible").click();
     return new VersicherungenTab();
   }
 
   navigateToFreitexteTab() {
+    cy.log(`[ENT view]: Navigate to 'Freitexte' side tab`);
     this.elements.freitexteTab().should("be.visible").click();
     return new FreitexteTab();
   }
 
   navigateToHilflosigkeitTab() {
+    cy.log(`[ENT view]: Navigate to 'Hilflosigkeit' side tab`);
     this.elements.hilflosigkeitTab().should("be.visible").click();
     return new HilflosigkeitTab();
   }
 
   navigateToEntscheidSendungenTab() {
+    cy.log(`[ENT view]: Navigate to 'EntscheidSendungen' side tab`);
     this.elements.entscheidSendungenTab().should("be.visible").click();
     return this;
   }
 
   navigateToVisierenTab() {
+    cy.log(`[ENT view]: Navigate to 'Visieren' side tab`);
     this.elements.visierenTab().should("be.visible").click();
     return new VisierenTab();
   }
 
   navigateToDiskutierenTab() {
+    cy.log(`[ENT view]: Navigate to 'Diskutieren' side tab`);
     this.elements.diskutierenTab().should("be.visible").click();
     return new DiskutierenTab();
   }
 
   navigateToRenteTab() {
+    cy.log(`[ENT view]: Navigate to 'Rente' side tab`);
     this.elements.renteTab().should("be.visible").click();
     return new RenteTab();
   }
 
   checkEntscheidSendungenTabVisible(isVisible) {
+    cy.log(`[ENT view]: Check 'Sendungen' side tab is visible[${isVisible}]`);
     pageBase.checkElementVisible(this.elements.entscheidSendungenTab(), isVisible);
     return this;
   }
 
   checkFreitexteTabVisible(isVisible) {
+    cy.log(`[ENT view]: Check 'Freitexte' side tab is visible[${isVisible}]`);
     pageBase.checkElementVisible(this.elements.freitexteTab(), isVisible);
     return this;
   }
 
   checkVisierenTabVisible(isVisible) {
+    cy.log(`[ENT view]: Check 'Visieren' side tab is visible[${isVisible}]`);
     pageBase.checkElementVisible(this.elements.visierenTab(), isVisible);
     return this;
   }
 
   checkDiskutierenTabVisible(isVisible) {
+    cy.log(`[ENT view]: Check 'Diskutieren' side tab is visible[${isVisible}]`);
     pageBase.checkElementVisible(this.elements.diskutierenTab(), isVisible);
     return this;
   }

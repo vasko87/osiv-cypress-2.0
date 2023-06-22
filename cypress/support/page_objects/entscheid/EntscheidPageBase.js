@@ -86,6 +86,11 @@ class EntscheidPageBase {
     return pageBase.getDropdownSelectedValue(this.elements.bereichDropdown());
   }
 
+  selectBearbeiterDropdown(value) {
+    pageBase.selectInDropdownContains(this.elements.bearbeiterDropdown(), value);
+    return this;
+  }
+
   checkBearbeiterDropdownContains(value) {
     pageBase.checkDropdownContainsValue(this.elements.bearbeiterDropdown(), value);
     return this;

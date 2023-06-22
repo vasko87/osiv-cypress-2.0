@@ -164,6 +164,7 @@ class PageBase {
    * @param isReadonly
    */
   checkDropdownReadonly(element, isReadonly) {
+    cy.log(`CHECK Dropdown[${element}] is readonly [${isReadonly}]`);
     if (isReadonly === true) {
       element.parent().should("have.class", "akReadOnlyDynselect");
     } else {

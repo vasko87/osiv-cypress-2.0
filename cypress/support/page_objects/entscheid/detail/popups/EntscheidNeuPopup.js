@@ -28,10 +28,8 @@ class EntscheidNeuPopup extends EntscheidPageBase {
     if(data.bereichDropdown) {
       this.checkBereichDropdown(data.bereichDropdown);
     }
-    if(data.bearbeiterDropdown === "username") {
-      this.checkBearbeiterDropdownContains(Cypress.env("username"));
-    } else if (data.bearbeiterDropdown) {
-      this.checkBearbeiterDropdownReadonlyValue(data.bearbeiterDropdown);
+    if(data.bearbeiterDropdown) {
+      this.checkBearbeiterDropdownContains(data.bearbeiterDropdown);
     }
     if(data.arbeitslisteTxt) {
       this.checkArbeitslisteTxt(data.arbeitslisteTxt);

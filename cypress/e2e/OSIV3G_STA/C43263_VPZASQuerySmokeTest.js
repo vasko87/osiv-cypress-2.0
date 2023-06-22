@@ -49,7 +49,7 @@ describe(`C43263: VP ZAS - Query - smoke test;
     // TODO Defect
     cy.skipOn(Cypress.env("isJira") === true);
     pages.versicherte.neuerVersicherterPopup.zasDatenAbfragenPopup
-         .grid.checkGridRowCount(3);
+         .grid.checkGridRowsCount(3);
     pages.versicherte.neuerVersicherterPopup.zasDatenAbfragenPopup
          .grid
          .filter.checkNachnameTxt(testData.name)

@@ -23,7 +23,7 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
       flows.gesuche.step_navigateGes_searchGes_openGes(data.gesuchID);
       pages.gesuche.detail.tabBar.navigateToEntscheideTab()
            .grid.waitGridViewLoaded()
-           .checkGridRowCount(1)
+           .checkGridRowsCount(1)
            .dblClickRowNumber(1);
       pages.entscheid.detail.waitForLoaded();
       pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(data.arbeitslisteEntInitial);
@@ -84,14 +84,14 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
     pages.groupedTaskbar.closeContainsEntscheidTab();
 
     flows.posteingang.step_navigatePOE_searchByVPNr(testData.scenario3.vpNr);
-    pages.posteingang.grid.checkGridRowCount(2)
+    pages.posteingang.grid.checkGridRowsCount(2)
          .clickRowNumber(1);
     pages.virtualViewer.waitVirtualViewerLoaded();
     pages.posteingang.zuordnung.checkVersichertenNrDropdownContains(testData.scenario3.vpNr)
          .selectAbklarungDropdownByIndex(1)
          .clickZuordnenUndAbschliessen();
     flows.modalPopup.clickOkBtn_CheckSuccessMsg();
-    pages.posteingang.grid.checkGridRowCount(1);
+    pages.posteingang.grid.checkGridRowsCount(1);
 
     flows.entscheid.step_navigateEnt_searchEnt_openEnt(testData.scenario3.entID);
     pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(testData.scenario3.arbeitslisteEntInitial);
@@ -99,14 +99,14 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
 
     pages.nav.leftMenu.navigateToPosteingangTab();
     pages.virtualViewer.waitVirtualViewerLoaded();
-    pages.posteingang.grid.checkGridRowCount(1)
+    pages.posteingang.grid.checkGridRowsCount(1)
          .clickRowNumber(1);
     pages.virtualViewer.waitVirtualViewerLoaded();
     pages.posteingang.zuordnung.checkVersichertenNrDropdownContains(testData.scenario3.vpNr)
          .selectAbklarungDropdownByIndex(1)
          .clickZuordnenUndAbschliessen();
     flows.modalPopup.clickOkBtn_CheckSuccessMsg();
-    pages.posteingang.grid.checkGridRowCount(0);
+    pages.posteingang.grid.checkGridRowsCount(0);
 
     flows.entscheid.step_navigateEnt_searchEnt_openEnt(testData.scenario3.entID);
     pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(testData.scenario3.arbeitslisteEntChanged);
@@ -129,7 +129,7 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
     pages.entscheid.detail.windowHeader.clickCloseBtn();
     pages.versicherte.detail.tabBar.navigateToSendungenTab()
          .grid.waitGridViewLoaded()
-         .checkGridRowCount(2)
+         .checkGridRowsCount(2)
          .dblClickRowNumber(1);
     pages.sendungen.detail.waitForLoaded();
     pages.sendungen.detail.ribbonMenu.clickKorrekturfunktionenBtn();
@@ -190,14 +190,14 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
   --> Verify: Ent ID = 23198 is in Neu state`, () => {
     pages.loginPage.openUrl();
     flows.posteingang.step_navigatePOE_applyAllfilter_searchByVPNr(testData.scenario5.vpNr);
-    pages.posteingang.grid.checkGridRowCount(2)
+    pages.posteingang.grid.checkGridRowsCount(2)
          .clickRowNumber(1);
     pages.virtualViewer.waitVirtualViewerLoaded();
     pages.posteingang.zuordnung.checkVersichertenNrDropdownContains(testData.scenario5.vpNr)
          .selectAbklarungDropdownByIndex(1)
          .clickZuordnenUndAbschliessen();
     flows.modalPopup.clickOkBtn_CheckSuccessMsg();
-    pages.posteingang.grid.checkGridRowCount(1);
+    pages.posteingang.grid.checkGridRowsCount(1);
 
     pages.nav.elements.homeBtn().click();
     flows.entscheid.step_navigateEnt_searchEnt_openEnt(testData.scenario5.entID);
@@ -205,14 +205,14 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
     pages.entscheid.detail.windowHeader.clickCloseBtn();
 
     flows.posteingang.step_navigatePOE_applyAllfilter_searchByVPNr(testData.scenario5.vpNr);
-    pages.posteingang.grid.checkGridRowCount(1)
+    pages.posteingang.grid.checkGridRowsCount(1)
          .clickRowNumber(1);
     pages.virtualViewer.waitVirtualViewerLoaded();
     pages.posteingang.zuordnung.checkVersichertenNrDropdownContains(testData.scenario5.vpNr)
          .selectAbklarungDropdownByIndex(1)
          .clickZuordnenUndAbschliessen();
     flows.modalPopup.clickOkBtn_CheckSuccessMsg();
-    pages.posteingang.grid.checkGridRowCount(0);
+    pages.posteingang.grid.checkGridRowsCount(0);
 
     flows.entscheid.step_navigateEnt_searchEnt_openEnt(testData.scenario5.entID);
     pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(testData.scenario5.arbeitslisteEntChanged);

@@ -43,7 +43,7 @@ class OsivPageObject {
     this.adressen = new AdressenPageObject();
     this.sendungen = new SendungenPageObject();
     this.virtualViewer = new VirtualViewer();
-    this.txtEditor = new TxtEditor();
+    this.txtEditor = new TxtEditor("");
   }
 
   checkMsgOnThePage(msg, isExist) {

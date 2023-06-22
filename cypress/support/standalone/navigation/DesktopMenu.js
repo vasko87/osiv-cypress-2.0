@@ -1,8 +1,3 @@
-import EntscheidGrid from "../../page_objects/entscheid/grid/EntscheidGrid";
-import AdressenGrid from "../../page_objects/addresen/grid/AdressenGrid";
-import PosteingangGrid from "../../page_objects/posteingang/grid/PosteingangGrid";
-import GesucheGrid from "../../page_objects/gesuche/detail/GesucheGrid";
-import EingliederungGrid from "../../page_objects/eingliederungen/grid/EingliederungGrid";
 import VersicherteGrid from "../../page_objects/versicherte/grid/VersicherteGrid";
 import pageBase from "../../base/PageBase";
 
@@ -23,6 +18,7 @@ class DesktopMenu {
   }
 
   navigateToVersicherteTab() {
+    cy.log("Navigate To 'Versicherte' tab");
     this.elements.versicherteMainTab().should("be.visible").click();
     this.elements.versicherteTab().click();
     pageBase.waitForLoadingDisappears();
@@ -31,11 +27,13 @@ class DesktopMenu {
   }
 
   navigateToAdressenTab() {
+    cy.log("Navigate To 'Adressen' tab");
     this.elements.adressenTab().should("be.visible").click();
     return this;
   }
 
   navigateToEntscheidTab() {
+    cy.log("Navigate To 'Entscheid' tab");
     this.elements.entscheidMainTab().should("be.visible").click();
     this.elements.entscheidTab().click();
     pageBase.waitForLoadingDisappears();
@@ -44,11 +42,13 @@ class DesktopMenu {
   }
 
   navigateToEingliederungTab() {
+    cy.log("Navigate To 'Eingliederung' tab");
     this.elements.eingliederungTab().should("be.visible").click();
     return this;
   }
 
   navigateToGesucheTab() {
+    cy.log("Navigate To 'Gesuche' tab");
     this.elements.gesucheMainTab().should("be.visible").click();
     this.elements.gesucheTab().click();
     pageBase.waitForLoadingDisappears();
@@ -57,6 +57,7 @@ class DesktopMenu {
   }
 
   navigateToPosteingangTab() {
+    cy.log("Navigate To 'Posteingang' tab");
     this.elements.posteingangMainTab().should("be.visible").click();
     this.elements.posteingangTab().click();
     pageBase.waitForLoadingDisappears();

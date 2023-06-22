@@ -21,21 +21,25 @@ class VersicherteTabBar {
   }
 
   navigateToEntscheideTab() {
+    cy.log(`[Versicherte View]: navigate to 'Entscheide tab'`);
     this.elements.entscheideTab().click();
     return new EntscheidTab_Versicherte();
   }
 
   navigateToEingliederungenTab() {
+    cy.log(`[Versicherte View]: navigate to 'Eingliederungen tab'`);
     this.elements.eingliederungenTab().click();
     return new EingliederungenTab_Versicherte();
   }
 
   navigateToSendungenTab() {
+    cy.log(`[Versicherte View]: navigate to 'Sendungen tab'`);
     this.elements.sendungenTab().click();
     return new SendungenTab_Versicherte();
   }
 
   navigateToProtocollTab() {
+    cy.log(`[Versicherte View]: navigate to 'Protocoll tab'`);
     this.elements.protocollTab().click();
     return new ProtocollPageObject();
   }

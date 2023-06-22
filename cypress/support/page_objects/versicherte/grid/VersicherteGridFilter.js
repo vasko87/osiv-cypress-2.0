@@ -1,4 +1,5 @@
 import pageBase from "../../../base/PageBase";
+import constants from "../../../helpers/Constants";
 
 class VersicherteGridFilter {
   constructor() {
@@ -14,7 +15,12 @@ class VersicherteGridFilter {
    * @returns {VersicherteGrid}
    */
   searchByVersicherteName(value) {
-    this.elements.versicherteNameTxt().should("be.visible").click().clear().type(`${value}{enter}`);
+    cy.log(`Search VP Name = ${value}`);
+    cy.wait(1000);
+    this.elements.versicherteNameTxt().should("be.visible");
+    this.elements.versicherteNameTxt().click().clear().type(`${value}`);
+    cy.wait(constants.MIN_TIMEOUT);
+    this.elements.versicherteNameTxt().type(`{enter}`);
     pageBase.waitForLoadingDisappears();
     return this;
   }

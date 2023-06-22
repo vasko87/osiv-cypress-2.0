@@ -5,9 +5,9 @@ const TestRailReporter = require("cypress-testrail");
 module.exports = defineConfig(
   {
     projectId      : "nnmsrw",
-    viewportWidth  : 2560,
-    viewportHeight : 1440,
-    reporter       : "cypress-mochawesome-reporter",
+    viewportWidth  : 1920,
+    viewportHeight : 1080,
+    eporter        : "cypress-mochawesome-reporter",
     reporterOptions: {
       reportDir          : "cypress/reports",
       charts             : true,
@@ -49,15 +49,16 @@ module.exports = defineConfig(
         config.env.FAIL_FAST_ENABLED = false;
 
         on("before:browser:launch", (browser = {}, launchOptions) => {
-          // console.log(config, browser, launchOptions);
-          // if (browser.name === "chrome") {
-          //   launchOptions.args.push("--disable-features=CrossSiteDocumentBlockingIfIsolating," +
-          //     "CrossSiteDocumentBlockingAlways,IsolateOrigins,site-per-process");
-          //   const ignoreXFrameHeadersExtension = path.join(__dirname, "../extensions/ignore-x-frame-headers");
-          //   launchOptions.args.push(`--load-extension=${ignoreXFrameHeadersExtension}`);
-          // }
-          // return launchOptions;
+          console.log(config, browser, launchOptions);
+          if (browser.name === "chrome") {
+            launchOptions.args.push("--disable-features=CrossSiteDocumentBlockingIfIsolating," +
+              "CrossSiteDocumentBlockingAlways,IsolateOrigins,site-per-process");
+            const ignoreXFrameHeadersExtension = path.join(__dirname, "../extensions/ignore-x-frame-headers");
+            launchOptions.args.push(`--load-extension=${ignoreXFrameHeadersExtension}`);
+          }
+          return launchOptions;
         });
+
         return config;
       },
 

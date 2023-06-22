@@ -27,7 +27,7 @@ describe(`C51300: Abgabe registrieren _ with warning messages;
   it(`Step 3: check --> Abgabe registrieren button is enabled
       --> warning messages are presented in the list`, () => {
     pages.versicherte.detail.ribbonMenu.checkAbgabeRegistrierenBtnDisabled(false);
-    pages.versicherte.detail.dossierChronikTab.elements.dossierAbgabeGrid().checkGridRowCount(3)
+    pages.versicherte.detail.dossierChronikTab.elements.dossierAbgabeGrid().checkGridRowsCount(3)
          .checkValueInGridExists(constants.MSG.OSCSTAMM_277, true)
          .checkValueInGridExists(constants.MSG.OSCSTAMM_275, true)
          .checkValueInGridExists(constants.MSG.OSCSTAMM_273, true);
@@ -75,7 +75,7 @@ describe(`C51300: Abgabe registrieren _ with warning messages;
 
   it(`Expected result: 
       - entry is added to Dossier-Chronik`, () => {
-    pages.versicherte.detail.dossierChronikTab.elements.dossierHistoryGrid().checkGridRowCount(1)
+    pages.versicherte.detail.dossierChronikTab.elements.dossierHistoryGrid().checkGridRowsCount(1)
          .checkValueInGridExists(testData.dosseirAbgabeAnDropdown, true)
          .checkValueInGridExists(testData.status, true);
   });

@@ -27,6 +27,7 @@ describe(`C39770: Entscheid Copy;
       pages.entscheid.detail.sideMenu.navigateToVersicherungTab().waitForLoaded();
       pages.entscheid.detail.versicherungenTab.versicherungGrid.getGridData().then((versicherungGridData) => {
         pages.entscheid.detail.sideMenu.navigateToBasisdatenTab();
+        cy.log("Get Basisdaten tab data");
         Utility.gatherElements({
           lg      : pages.entscheid.detail.basisdatenTabBar.getLeistungsgruppeDropdownSelectedValue(),
           lc      : pages.entscheid.detail.basisdatenTabBar.getLeistungscodeDropdownSelectedValue(),
@@ -35,6 +36,7 @@ describe(`C39770: Entscheid Copy;
           bereich : pages.entscheid.detail.basisdatenTabBar.getBereichDropdownSelectedValue(),
           notizen : pages.entscheid.detail.basisdatenTabBar.getNotizenTextarea()
         }).then((elements) => {
+          cy.log("Expected: check data in NEW popup is copied from initial entscheid");
           pages.entscheid.detail.ribbonMenu.clickKopierenBtn();
           pages.entscheid.neuPopup.waitForLoaded()
                .checkArbeitslisteTxt(testData.arbeitslisteTxt)
@@ -48,6 +50,7 @@ describe(`C39770: Entscheid Copy;
                .clearNotizenTextarea()
                .setNotizenTextarea("Copied");
           flows.modalPopup.clickOkBtn_warningOk_CheckSuccessMsg();
+          cy.log("EXPECTED: new entscheid is created, data is copied from initial ENT");
           pages.entscheid.detail.waitForLoaded()
                .basisdatenTabBar.checkArbeitslisteTxt(testData.arbeitslisteTxt)
                .checkBearbeiterReadonlyDropdownEmpty(false)
@@ -59,11 +62,13 @@ describe(`C39770: Entscheid Copy;
                .checkNotizenTextarea("Copied");
         });
         pages.entscheid.detail.sideMenu.navigateToVersicherungTab().waitForLoaded();
+        cy.log("EXPECTED: all Versicherungen are copied from the initial entscheid");
         pages.entscheid.detail.versicherungenTab.versicherungGrid.getGridData().then((copiedVersicherungGridData) => {
           expect(JSON.stringify(copiedVersicherungGridData)).to.be.eq(JSON.stringify(versicherungGridData));
         });
       });
       pages.entscheid.detail.sideMenu.navigateToDurchfuhrungsstellenTab().waitForLoaded();
+      cy.log("EXPECTED: all df-stelle are copied from the initial entscheid");
       pages.entscheid.detail.durchfuhrungsstellenTab.durchfuehrungGrid.getGridData().then((durchfuehrungCopiedGridData) => {
         expect(JSON.stringify(durchfuehrungCopiedGridData)).to.be.eq(JSON.stringify(durchfuehrungGridData));
       });
