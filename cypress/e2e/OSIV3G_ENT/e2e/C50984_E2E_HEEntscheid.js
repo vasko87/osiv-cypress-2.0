@@ -132,7 +132,7 @@ describe(`C50984: E2E (HE Entscheid);
   it(`Step 8: Open Freitexte tab; add any test to begrundung and click Speichern -> text is saved`, () => {
     pages.entscheid.detail.sideMenu.navigateToFreitexteTab()
          .begrundungTab
-         .txtEditor.waitForFirstLoad()
+         .txtEditor.waitForLoadedHard()
          .setValue(testData.step8.textForm);
     pages.entscheid.detail.ribbonMenu.clickBegrundungSpeichernBtn();
     pages.notification.checkSuccessMessageVisible();

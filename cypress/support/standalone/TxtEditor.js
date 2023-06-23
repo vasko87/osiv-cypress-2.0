@@ -24,6 +24,12 @@ class TxtEditor {
     return this;
   }
 
+  waitForLoadedHard() {
+    cy.wait(constants.SHORT_TIMEOUT * 2);
+    pageBase.waitForLoadingDisappears();
+    return this;
+  }
+
   setValue(value) {
     pageBase.executeJS(`document.querySelector("${this.baseCSS}").__vueParentComponent.ctx.setValue("${value}")`);
     cy.wait(constants.MIN_TIMEOUT);
