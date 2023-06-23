@@ -5,6 +5,7 @@ import helpers from "../../../support/helpers/HelperObject";
 import {c50984 as testData} from "../../../support/helpers/DataManager";
 import dateHelper from "../../../support/helpers/DateHelper";
 import pageBase from "../../../support/base/PageBase";
+import helperObject from "../../../support/helpers/HelperObject";
 
 describe(`C50984: E2E (HE Entscheid);
   TestRail: https://osiv.testrail.net/index.php?/cases/view/50984;`, {failFast: {enabled: true}}, () => {
@@ -14,11 +15,22 @@ describe(`C50984: E2E (HE Entscheid);
   });
 
   it("Step 1: Open VP; Open Entscheide tab, Click Neu button -> Form for new ENT creation opens", () => {
+    helperObject.performance.collectUsedJSHeapSize();
+
     pages.loginPage.openUrl();
+
+    helperObject.performance.collectUsedJSHeapSize();
+
     flows.versicherte.step_navigateVP_searchByVPName_openVP(testData.step1.versicherteName);
+    helperObject.performance.collectUsedJSHeapSize();
     pages.versicherte.detail.tabBar.navigateToEntscheideTab();
+
+    helperObject.performance.collectUsedJSHeapSize();
+
     pageBase.waitForLoadingDisappears();
     pages.entscheid.detail.ribbonMenu.clickNeuBtn();
+
+    helperObject.performance.collectUsedJSHeapSize();
   });
 
   it(`Step 2: Select Leistunggruppe and Leistungscode = HE; fill in mandatory data and click OK ->
@@ -40,6 +52,7 @@ describe(`C50984: E2E (HE Entscheid);
          .checkMsgOnThePage(testData.step3.msg_523_code, true)
          .checkMsgOnThePage(testData.step3.msg_523_text, true);
     pages.entscheid.detail.basisdatenTabBar.verifyValuesBulk(testData.step2.verifyEntDetail);
+    helperObject.performance.collectUsedJSHeapSize();
   });
 
   it(`Step 3: Fill in the data on Basisdaten tab -> data is filled in as on screenshot;
@@ -54,12 +67,14 @@ describe(`C50984: E2E (HE Entscheid);
     pages.checkMsgOnThePage(constants.MSG.OSCIENT_522, true)
          .checkMsgOnThePage(testData.step3.msg_523_code, false)
          .checkMsgOnThePage(testData.step3.msg_523_text, false);
+    helperObject.performance.collectUsedJSHeapSize();
   });
 
   it(`Step 4: Click Bearbeitung Einleiten button -> berabeitung einleiten popup dialog is presented`, () => {
     pages.entscheid.detail.ribbonMenu.clickBearbeitungEinleitenBtn()
          .waitForLoaded()
          .checkBearbeiterDropdownContains(testData.step4.bearbeiterDropdown);
+    helperObject.performance.collectUsedJSHeapSize();
   });
 
   it(`Step 5: Click OK button -> ENT arbeitliste = Bearbeiten, no info panel messages;
@@ -72,6 +87,7 @@ describe(`C50984: E2E (HE Entscheid);
     pages.entscheid.detail.sideMenu
          .checkFreitexteTabVisible(true)
          .checkDiskutierenTabVisible(true);
+    helperObject.performance.collectUsedJSHeapSize();
   });
 
   it(`Step 6: Open Hilflosigkeit tab; Fill in the data as on attachment `, () => {
@@ -85,6 +101,7 @@ describe(`C50984: E2E (HE Entscheid);
          .setAnAuskleidenDate(helpers.date.getCurrentDate())
          .setAufstehenAbsitzenDate(helpers.date.getCurrentDate())
          .setEssenDate(helpers.date.getCurrentDate());
+    helperObject.performance.collectUsedJSHeapSize();
   });
 
   it(`Step 7: click Speichern button; confirm warning (OSCIENT:465)`, () => {
@@ -109,6 +126,7 @@ describe(`C50984: E2E (HE Entscheid);
          .checkHEGradTxt(testData.step7.hEGradTxt)
          .checkHEAbTxt(helpers.date.getFirstDayOfSameMonthNextYear())
          .checkHEGradAbTxt(helpers.date.getFirstDayOfSameMonthNextYear());
+    helperObject.performance.collectUsedJSHeapSize();
   });
 
   it(`Step 8: Open Freitexte tab; add any test to begrundung and click Speichern -> text is saved`, () => {
@@ -120,6 +138,7 @@ describe(`C50984: E2E (HE Entscheid);
     pages.notification.checkSuccessMessageVisible();
     pageBase.waitForLoadingDisappears();
     pages.entscheid.detail.freitexteTab.begrundungTab.txtEditor.checkValue(testData.step8.textForm);
+    helperObject.performance.collectUsedJSHeapSize();
   });
 
   it(`Step 9: open verfugung/Beiblatt AK; click freitexte generiren; confirm warning (OSCIENT:154) ->
@@ -133,6 +152,7 @@ describe(`C50984: E2E (HE Entscheid);
     pages.entscheid.detail.freitexteTab.verfugungBeiblattAKTab
          .txtEditor.waitForValueVisible()
          .checkTextHighlightedBulk(testData.step9.generatedValues, true);
+    helperObject.performance.collectUsedJSHeapSize();
   });
 
   it(`Step 10: click freietext speichern -> text is saved`, () => {
@@ -142,6 +162,7 @@ describe(`C50984: E2E (HE Entscheid);
     pages.entscheid.detail.freitexteTab.verfugungBeiblattAKTab
          .txtEditor.waitForValueVisible()
          .checkTextHighlightedBulk(testData.step10.textValues, false);
+    helperObject.performance.collectUsedJSHeapSize();
   });
 
   it(`Step 11: open Gesetzliche Grundlagen and click Freitexte generiren; confirm warning (OSCIENT:154)
@@ -158,6 +179,7 @@ describe(`C50984: E2E (HE Entscheid);
     pages.waitForLoadingDisappears();
     pages.entscheid.detail.sideMenu.checkFreitexteTabColor(constants.COLOR.orange, false)
          .checkEntscheidSendungenTabColor(constants.COLOR.orange, true);
+    helperObject.performance.collectUsedJSHeapSize();
   });
 
   it(`Step 12: Open Entscheid-Sendungen tab; click Entscheid-Sendungen generieren button ->
@@ -170,6 +192,7 @@ describe(`C50984: E2E (HE Entscheid);
          .checkVisierenTabColor(constants.COLOR.orange, true);
     pages.entscheid.detail.sendungenTabBar.grid.checkGridRowsCount(1);
     pageBase.waitForLoadingDisappears();
+    helperObject.performance.collectUsedJSHeapSize();
   });
 
   it(`Step 13: Open Visieren tab; make a visa by clicking Visum speichern button
@@ -183,6 +206,7 @@ describe(`C50984: E2E (HE Entscheid);
     pageBase.waitForLoadingDisappears();
     pages.entscheid.detail.sideMenu.checkVisierenTabColor(constants.COLOR.orange, false)
          .checkEntscheidSendungenTabColor(constants.COLOR.orange, true);
+    helperObject.performance.collectUsedJSHeapSize();
   });
 
   it(`Step 14: Click Entscheid-Sendungen verschicken button -> Sendungen details page opens`, () => {
@@ -191,6 +215,7 @@ describe(`C50984: E2E (HE Entscheid);
     pages.entscheid.detail.ribbonMenu.clickEntscheidSendungVerschickenBtn();
     pages.sendungen.detail.waitForLoaded();
     pageBase.waitForLoadingDisappears();
+    helperObject.performance.collectUsedJSHeapSize();
   });
 
   it(`Step 15: Open Formular variablen tab, add Formular variabl and click Variablen speichern button
@@ -200,6 +225,7 @@ describe(`C50984: E2E (HE Entscheid);
     pages.sendungen.detail.ribbonMenu.clickVariablenSpeichernBtn();
     pages.notification.checkSuccessMessageVisible();
     pages.waitForLoadingDisappears();
+    helperObject.performance.collectUsedJSHeapSize();
   });
 
   it(`Step 16: Clic Druck/versand button; open Druck-Vorschau ->
@@ -209,6 +235,7 @@ describe(`C50984: E2E (HE Entscheid);
     pages.sendungen.druckUndVersandPopup.waitForLoaded();
     pages.sendungen.druckUndVersandPopup.druckVorschauTab.virtualViewer().waitVirtualViewerLoaded();
     pages.waitForLoadingDisappears();
+    helperObject.performance.collectUsedJSHeapSize();
   });
 
   it(`Step 17: Go back on druck-versand, select test printer and click ok; click ja for frage ->
@@ -224,5 +251,6 @@ describe(`C50984: E2E (HE Entscheid);
     pages.groupedTaskbar.clickEntscheidHEHETab();
     pages.entscheid.detail.sideMenu.navigateToBasisdatenTab()
          .checkArbeitslisteTxt(testData.step17.arbeitslisteTxt);
+    helperObject.performance.collectUsedJSHeapSize();
   });
 });

@@ -180,6 +180,7 @@ class HilflosigkeitTab {
         if (valueList.persUebvondatDate) {
           this.setPersUebvondatDate(dateHelper.getCurrentDate());
         }
+        cy.wait(constants.MIN_TIMEOUT /2);
       },
 
       clearFields(valueList) {
@@ -403,6 +404,13 @@ class HilflosigkeitTab {
         }
       }
     };
+  }
+
+  waitForLoaded() {
+    pageBase.waitForLoadingDisappears();
+    cy.get(`[akid='EntscheidHilflosigkeitForm']`).should("be.visible", 10000);
+    pageBase.waitForLoadingDisappears();
+    return this;
   }
 }
 

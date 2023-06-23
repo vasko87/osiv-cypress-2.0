@@ -4,7 +4,7 @@ import {c54969 as testData} from "../../../support/helpers/DataManager";
 import constants from "../../../support/helpers/Constants";
 import helpers from "../../../support/helpers/HelperObject";
 //TODO skipped, Anton clarifying the wrong behaviour
-describe.skip(`C54969: Updating the list of the Bausteins after changing Entscheid supertext; 
+describe.skip(`SKIPPED: WAITING FOR UPDATE FROM Anton(regarding column name change, and msgs); C54969: Updating the list of the Bausteins after changing Entscheid supertext; 
 TestRail:https://osiv.testrail.net/index.php?/cases/view/54969`, {failFast: {enabled: true}}, () => {
 
   before("Login", () => {

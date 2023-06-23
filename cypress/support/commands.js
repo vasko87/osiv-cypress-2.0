@@ -19,6 +19,7 @@ const navigation = new Navigation();
 before( function() {
   window.logCalls = 1;
   window.testFlow = [];
+  window.usedJSHeapSize = [];
 });
 
 Cypress.Commands.overwrite("log", (originalFn, message) => {

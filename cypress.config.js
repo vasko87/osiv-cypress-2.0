@@ -55,6 +55,7 @@ module.exports = defineConfig(
               "CrossSiteDocumentBlockingAlways,IsolateOrigins,site-per-process");
             const ignoreXFrameHeadersExtension = path.join(__dirname, "../extensions/ignore-x-frame-headers");
             launchOptions.args.push(`--load-extension=${ignoreXFrameHeadersExtension}`);
+            launchOptions.args.push("--enable-precise-memory-info");
           }
           return launchOptions;
         });

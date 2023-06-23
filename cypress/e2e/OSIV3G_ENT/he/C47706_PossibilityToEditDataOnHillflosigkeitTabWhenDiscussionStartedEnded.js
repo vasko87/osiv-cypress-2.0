@@ -2,7 +2,8 @@ import pages from "../../../support/base/OsivPageObject";
 import flows from "../../../support/base/OsivFlowsObject";
 import {c47706 as testData} from "../../../support/helpers/DataManager";
 
-describe(`C47706: Possibility to edit data on Hillflosigkeit tab when discussion started/ended; 
+//TODO skipped, Evgeniya should add aut1 to the list
+describe.skip(`SKIPPED: WAITING FOR UPDATE FROM Evegiya(FOR aut1 user);; C47706: Possibility to edit data on Hillflosigkeit tab when discussion started/ended; 
   TestRail: https://osiv.testrail.net/index.php?/cases/view/47706`, {failFast: {enabled: true}}, () => {
 
   before(`Login as ${Cypress.env("username")}`, () => {
