@@ -20,28 +20,24 @@ class ModalWindowBase {
   }
 
   clickOkBtn() {
-    cy.log("[Modal window]: click OK");
     this.waitForLoaded();
     this.elements.okBtn().should("be.visible").click();
     return this;
   }
 
   clickBestatigenBtn() {
-    cy.log("[Modal window]: click Bestatigen");
     this.waitForLoaded();
     this.elements.bestatigenBtn().should("be.visible").click();
     return this;
   }
 
   clickAbbrechenBtn() {
-    cy.log("[Modal window]: click Abbrechen");
     this.waitForLoaded();
     this.elements.abbrechenBtn().should("be.visible").click();
     return this;
   }
 
   clickSpeichernBtn() {
-    cy.log("[Modal window]: click Speichern");
     this.waitForLoaded();
     this.elements.speichernBtn().should("be.visible").click();
     return this;

@@ -34,6 +34,11 @@ class GroupedTaskbar {
     return this;
   }
 
+  closeContainsVersichertendatenTab() {
+    this.elements.versichertendatenTab().parent("div[class*='vue-taskbar-item']").find(".vue-close-icon").click();
+    return this;
+  }
+
   clickContainsGesuchTab() {
     this.elements.gesuchTab().click();
     return this;

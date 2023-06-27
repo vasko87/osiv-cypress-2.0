@@ -25,7 +25,7 @@ class TxtEditor {
   }
 
   waitForLoadedHard() {
-    cy.wait(constants.SHORT_TIMEOUT * 2);
+    cy.wait(constants.DEFAULT_TIMEOUT);
     pageBase.waitForLoadingDisappears();
     return this;
   }
@@ -78,7 +78,6 @@ class TxtEditor {
 
   checkTextHighlighted(text, isHighlighted) {
     pageBase.executeJS(`document.querySelector("${this.baseCSS}").__vueParentComponent.ctx.getValue()`).then((val) => {
-      cy.log(`[TxtEditor]: Check text [${text}] hightighted`);
       const highlightedTextExists = val.indexOf(`chcbpat2 ${text}`) !== -1;
       if (isHighlighted) {
         expect(highlightedTextExists).to.be.eql(true);

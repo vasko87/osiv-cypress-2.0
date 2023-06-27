@@ -33,7 +33,6 @@ class LoginPage {
    * Opens default URL from 'cypress.env.json' file
    */
   openUrl() {
-    cy.log(`Open ${Cypress.env("baseUrl")}`);
     this.open(Cypress.env("baseUrl"));
   }
 

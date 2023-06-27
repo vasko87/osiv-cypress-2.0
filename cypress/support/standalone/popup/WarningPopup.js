@@ -23,14 +23,12 @@ class WarningPopup {
   }
 
   clickOkBtn() {
-    cy.log("[Warning popup]: click OK");
     this.waitForLoaded();
     this.elements.okBtn().click();
     return this;
   }
 
   checkWarningContainsText(value) {
-    cy.log(`[Warning popup]: contains text [${value}]`);
     this.waitForLoaded();
     this.elements.warningPopup().find("[class='swal-content']").should("contain.text", value);
     return this;

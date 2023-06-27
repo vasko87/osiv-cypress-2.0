@@ -15,7 +15,6 @@ class VersicherteGridFilter {
    * @returns {VersicherteGrid}
    */
   searchByVersicherteName(value) {
-    cy.log(`Search VP Name = ${value}`);
     cy.wait(1000);
     this.elements.versicherteNameTxt().should("be.visible").click().clear().type(`${value}`);
     cy.wait(constants.MIN_TIMEOUT);

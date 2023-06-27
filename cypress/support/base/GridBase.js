@@ -102,7 +102,6 @@ class GridBase {
    * @returns {GridBase}
    */
   dblClickRowValue(value) {
-    cy.log(`Double click on row with name [${value}]`);
     this.elements.rowElementsList()
         .contains(value)
         .should("be.visible")
