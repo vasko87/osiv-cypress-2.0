@@ -16,7 +16,18 @@ class PageBase {
     return this;
   }
 
+  selectInDropdownByTyping(element, value) {
+    element.find("[class='select2-selection__arrow']").click();
+    cy.get("[class='select2-search select2-search--dropdown'] input[class='select2-search__field']").type(value);
+    element.get("[class='select2-results__options']", {timeout: constants.DEFAULT_TIMEOUT})
+           .contains(value)
+           .click();
+    return this;
+  }
+
   /**
+   * Clicks on @element dropdown;
+   * Selects value whith specified @index parameter
    *
    * @param element
    * @param {int} index
@@ -52,12 +63,20 @@ class PageBase {
   }
 
   checkDropdownEmpty(element, isEmpty) {
-    if(isEmpty) {
+    if (isEmpty) {
       element.find("select").should("be.visible").find("option").should("be.empty");
     } else {
       element.find("select").should("be.visible").find("option").should("not.be.empty");
     }
 
+    return this;
+  }
+
+  clearDropdown(element) {
+    try {
+      element.find("[class='select2-selection__clear']").click();
+    } catch (e) {
+    }
     return this;
   }
 
@@ -234,10 +253,9 @@ class PageBase {
   }
 
   executeJS(commandJS) {
-    cy.window().then((win) => {
-      win.eval(commandJS);
+    return cy.window().then((win) => {
+      return win.eval(commandJS);
     });
-    return this;
   }
 }
 

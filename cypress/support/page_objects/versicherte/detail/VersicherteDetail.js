@@ -9,6 +9,10 @@ import DetailWindowHeader from "../../../base/DetailWindowHeader";
 import EntscheidTab_Versicherte from "./tabBarTabs/EntscheidTab_Versicherte";
 import SendungenTab_Versicherte from "./tabBarTabs/SendungenTab_Versicherte";
 import pageBase from "../../../base/PageBase";
+import FreitexteTab from "../../entscheid/detail/sideMenuTabs/FreitexteTab";
+import BasisdatenTab_VR from "./sideMenuTabs/BasisdatenTab_VR";
+import DossierChronikTab from "./sideMenuTabs/DossierChronikTab";
+import ProtocollPageObject from "../../protocoll/ProtocollPageObject";
 
 class VersicherteDetail extends VersichertePageBase {
   constructor() {
@@ -18,8 +22,11 @@ class VersicherteDetail extends VersichertePageBase {
     this.sideMenu = new VersicherteSideMenu();
     this.tabBar = new VersicherteTabBar();
     this.ribbonMenu = new VersicherteRibbon();
+    this.basisdatenTab = new BasisdatenTab_VR();
+    this.dossierChronikTab = new DossierChronikTab();
     this.entscheidTabBar = new EntscheidTab_Versicherte();
     this.sendungenTabBar = new SendungenTab_Versicherte();
+    this.protocollTabBar = new ProtocollPageObject();
     super.elements = {
       ...this.elements,
       detailForm : () => cy.get(detailFormCSS)

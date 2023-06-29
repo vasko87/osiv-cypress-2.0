@@ -14,6 +14,15 @@ class EingliederungGrid extends GridBase {
   }
 
   /**
+   *
+   * @returns {EingliederungGrid}
+   */
+  waitGridViewLoaded() {
+    super.waitGridViewLoaded();
+    return this;
+  }
+
+  /**
    * Search @value in 'Eingliederung ID' field of Grid filter
    * open EingliederungID with dblclick()
    * @param value

@@ -1,0 +1,108 @@
+{
+  "step1": {
+    "entId": "23490"
+  },
+  "step3": {
+    "gridData": [
+      {
+        "Alternativ": false,
+        "Bezeichnung": "Titel: Kostengutsprache für Leistungen bei Lebendorganspende",
+        "Baustein-Nr.": "9517",
+        "Vorbescheid": false,
+        "Verfügung": false
+      },
+      {
+        "Alternativ": false,
+        "Bezeichnung": "Anrede",
+        "Baustein-Nr.": "1048",
+        "Vorbescheid": false,
+        "Verfügung": false
+      },
+      {
+        "Alternativ": false,
+        "Bezeichnung": "Einleitung: Anspruch auf MM geprüft",
+        "Baustein-Nr.": "5001",
+        "Vorbescheid": false,
+        "Verfügung": false
+      },
+      {
+        "Alternativ": false,
+        "Bezeichnung": "Titel: Wir teilen Ihnen mit",
+        "Baustein-Nr.": "1002",
+        "Vorbescheid": false,
+        "Verfügung": false
+      },
+      {
+        "Alternativ": false,
+        "Bezeichnung": "Kosten für die medizinische Behandlung des Spenders",
+        "Baustein-Nr.": "5099",
+        "Vorbescheid": false,
+        "Verfügung": false
+      },
+      {
+        "Alternativ": false,
+        "Bezeichnung": "Kostenvergütung bei Hospitalisation",
+        "Baustein-Nr.": "1007",
+        "Vorbescheid": false,
+        "Verfügung": false
+      },
+      {
+        "Alternativ": false,
+        "Bezeichnung": "Entschädigung für Spender",
+        "Baustein-Nr.": "5091",
+        "Vorbescheid": false,
+        "Verfügung": false
+      },
+      {
+        "Alternativ": false,
+        "Bezeichnung": "Meldepflicht MM",
+        "Baustein-Nr.": "5195",
+        "Vorbescheid": false,
+        "Verfügung": false
+      },
+      {
+        "Alternativ": false,
+        "Bezeichnung": "Anbieter stellt Rechnung mit Kopie an vP",
+        "Baustein-Nr.": "5096",
+        "Vorbescheid": false,
+        "Verfügung": false
+      }
+    ]
+  },
+  "step4": {
+    "supertext": "Bna_EntMM"
+  },
+  "step6": {
+    "gridData": [
+      {
+        "Alternativ": false,
+        "Bezeichnung": "BNA Baustein für einen Vorbescheid",
+        "Baustein-Nr.": "bna_VB",
+        "Vorbescheid": true,
+        "Verfügung": false
+      },
+      {
+        "Alternativ": false,
+        "Bezeichnung": "BNA Baustein für eine Verfügung",
+        "Baustein-Nr.": "bna_VM",
+        "Vorbescheid": false,
+        "Verfügung": true
+      },
+      {
+        "Alternativ": false,
+        "Bezeichnung": "KESB Finanziell",
+        "Baustein-Nr.": "KESB1",
+        "Vorbescheid": false,
+        "Verfügung": false
+      }
+    ]
+  },
+  "step7": {
+    "textPart1": "Vorbescheid FREITEXT",
+    "textPart2": "Das ist ein Eing Test aus Lausanne 14 (Systemvariablen) erstellt in der IV-STELLE BASEL-STADT (Systemkonstante) und hat am",
+    "textPart3": "(Freidefinierbare Variable) Geburtstag (ist also am "
+  },
+  "after": {
+    "supertext": "5220"
+  }
+}

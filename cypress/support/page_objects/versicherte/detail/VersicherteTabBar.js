@@ -6,7 +6,6 @@ import ProtocollPageObject from "../../protocoll/ProtocollPageObject";
 
 class VersicherteTabBar {
   constructor() {
-    this.protocoll = new ProtocollPageObject();
     this.elements = {
       detailsTab        : () => cy.get(`${constants.CSS_ACTIVE_FORM} [class$='tab'][akid='SimpleSwatTabbar-Details der Versicherten Person'],[class$='tab_actv'][akid='SimpleSwatTabbar-Details der Versicherten Person']`),
       entscheideTab     : () => cy.get(`${constants.CSS_ACTIVE_FORM} [class$='tab'][akid='SimpleSwatTabbar-Entscheide'],[class$='tab_actv'][akid='SimpleSwatTabbar-Entscheide']`),

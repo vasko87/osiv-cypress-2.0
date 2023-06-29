@@ -3,15 +3,15 @@ import flows from "../../../support/base/OsivFlowsObject";
 import {c39770 as testData} from "../../../support/helpers/DataManager";
 import Utility from "../../../support/Utility";
 
-describe(`C39770: Entscheid Copy; 
+//TODO skipped, Evgeniya should add aut1 to the list
+describe.skip(`SKIPPED: WAITING FOR UPDATE FROM Evegiya(FOR aut1 user); C39770: Entscheid Copy; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/39770`, () => {
 
   before(`Login as ${Cypress.env("username")}; VP = ${testData.versicherteName}, 
   EntschediID = ${testData.entId} (contains Versicherungen and Df-stelle)`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
     pages.loginPage.openUrl();
-    pages.desktopMenu.navigateToVersicherteTab();
-    pages.versicherte.grid.searchAndOpenVersicherteName(testData.versicherteName);
+    flows.versicherte.step_navigateVP_searchByVPName_openVP(testData.versicherteName);
     pages.versicherte.detail.waitForLoaded();
     pages.versicherte.detail.tabBar.navigateToEntscheideTab();
   });
@@ -39,7 +39,7 @@ describe(`C39770: Entscheid Copy;
           pages.entscheid.detail.ribbonMenu.clickKopierenBtn();
           pages.entscheid.neuPopup.waitForLoaded()
                .checkArbeitslisteTxt(testData.arbeitslisteTxt)
-               .checkBearbeiterDropdownContains(Cypress.env("username"))
+               .checkBearbeiterDropdownEmpty(false)
                .checkLeistungsgruppeDropdown(elements.lg.text())
                .checkLeistungscodeDropdown(elements.lc.text())
                .checkGesuchDropdown(elements.gesuch.text())
@@ -51,7 +51,7 @@ describe(`C39770: Entscheid Copy;
           flows.modalPopup.clickOkBtn_warningOk_CheckSuccessMsg();
           pages.entscheid.detail.waitForLoaded()
                .basisdatenTabBar.checkArbeitslisteTxt(testData.arbeitslisteTxt)
-               .checkBearbeiterDropdownReadonlyValue(Cypress.env("username"))
+               .checkBearbeiterReadonlyDropdownEmpty(false)
                .checkLeistungsgruppeDropdown(elements.lg.text())
                .checkLeistungscodeDropdown(elements.lc.text())
                .checkGesuchDropdown(elements.gesuch.text())

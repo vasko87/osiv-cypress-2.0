@@ -14,7 +14,7 @@ class DiskutierenTab {
   }
 
   selectArztDropdown(value) {
-    pageBase.selectInDropdownContains(this.elements.arztDropdown(), value);
+    pageBase.selectInDropdownByTyping(this.elements.arztDropdown(), value);
     return this;
   }
 

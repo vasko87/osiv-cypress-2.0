@@ -7,18 +7,9 @@ import dateHelper from "../../../support/helpers/DateHelper";
 import pageBase from "../../../support/base/PageBase";
 
 describe(`C50984: E2E (HE Entscheid);
-  TestRail: https://osiv.testrail.net/index.php?/cases/view/50984; 
-  DEFECT (step 9): https://jiraosiv3g.atlassian.net/browse/OSIV-22145`, {failFast: {enabled: true}}, () => {
-
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/50984;`, {failFast: {enabled: true}}, () => {
   before("Login", () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
-    helpers.jira.isJiraDone("OSIV-22145").then((isDone) => {
-      console.log(isDone);
-      if (isDone === false) {
-        Cypress.env("isJira", true);
-        console.log(Cypress.env("isJira"));
-      }
-    });
   });
 
   it("Step 1: Open VP; Open Entscheide tab, Click Neu button -> Form for new ENT creation opens", () => {
@@ -36,6 +27,7 @@ describe(`C50984: E2E (HE Entscheid);
     pages.entscheid.neuPopup
          .selectLeistungsgruppeDropdown("Hilflosenentschädigung")
          .selectLeistungscodeDropdown("Hilflosenentschädigung")
+         .selectBearbeiterDropdown(testData.step2.verifyEntNew.bearbeiterDropdown)
          .verifyValuesBulk(testData.step2.verifyEntNew);
     flows.modalPopup.clickOkBtn_warningOk_CheckSuccessMsg();
     pages.entscheid.detail.sideMenu
@@ -66,7 +58,7 @@ describe(`C50984: E2E (HE Entscheid);
   it(`Step 4: Click Bearbeitung Einleiten button -> berabeitung einleiten popup dialog is presented`, () => {
     pages.entscheid.detail.ribbonMenu.clickBearbeitungEinleitenBtn()
          .waitForLoaded()
-         .checkBearbeiterDropdownContains(Cypress.env("username"));
+         .checkBearbeiterDropdownContains(testData.step4.bearbeiterDropdown);
   });
 
   it(`Step 5: Click OK button -> ENT arbeitliste = Bearbeiten, no info panel messages;
@@ -121,36 +113,35 @@ describe(`C50984: E2E (HE Entscheid);
   it(`Step 8: Open Freitexte tab; add any test to begrundung and click Speichern -> text is saved`, () => {
     pages.entscheid.detail.sideMenu.navigateToFreitexteTab()
          .begrundungTab
-         .txtEditor.waitForLoaded()
+         .txtEditor.waitForLoadedHard()
          .setValue(testData.step8.textForm);
     pages.entscheid.detail.ribbonMenu.clickBegrundungSpeichernBtn();
     pages.notification.checkSuccessMessageVisible();
-    // TODO
-    // pages.entscheid.detail.freitexteTab.begrundungTab.txtEditor.checkValue(testData.step8.textForm);
+    pageBase.waitForLoadingDisappears();
+    pages.entscheid.detail.freitexteTab.begrundungTab.txtEditor.checkValue(testData.step8.textForm);
+    cy.pause();
   });
 
   it(`Step 9: open verfugung/Beiblatt AK; click freitexte generiren; confirm warning (OSCIENT:154) ->
   text is generated; var marked in yellow aut generated`, () => {
-    // TODO Defect on step 9
-    cy.skipOn(Cypress.env("isJira") === true);
     pages.entscheid.detail.freitexteTab.navigation.navigateToVerfugungBeiblattAKTab();
     pageBase.waitForLoadingDisappears();
     pages.entscheid.detail.ribbonMenu.clickFreitextGenerierenBtn();
     pages.warningPopup.checkWarningContainsText(testData.step9.warningMsg)
          .clickOkBtn();
-    pages.entscheid.detail.freitexteTab.verfugungBeiblattAKTab.docValidator()
-         .checkTagTextAndBackgroundColorBulk("span", testData.step9.generatedValues.span, constants.COLOR.yellow, true)
-         .checkTagTextAndBackgroundColor("span", helpers.date.getFirstDayOfSameMonthNextYear(), constants.COLOR.yellow, true);
+    pageBase.waitForLoadingDisappears();
+    pages.entscheid.detail.freitexteTab.verfugungBeiblattAKTab
+         .txtEditor.waitForValueVisible()
+         .checkTextHighlightedBulk(testData.step9.generatedValues, true);
   });
 
   it(`Step 10: click freietext speichern -> text is saved`, () => {
     pages.entscheid.detail.ribbonMenu.clickFreitextSpeichernBtn();
     pages.notification.checkSuccessMessageVisible();
-    pages.entscheid.detail.freitexteTab.verfugungBeiblattAKTab.docValidator()
-         .checkTagTextAndBackgroundColorBulk("p", testData.step10.textValues.p, constants.COLOR.yellow, false)
-         .checkTagTextAndBackgroundColorBulk("span", testData.step10.textValues.span, constants.COLOR.yellow, false)
-         .checkTagTextAndBackgroundColorBulk("b", testData.step10.textValues.b, constants.COLOR.yellow, false)
-         .checkTagTextAndBackgroundColor("b", helpers.date.getFirstDayOfSameMonthNextYear(), constants.COLOR.yellow, false);
+    pageBase.waitForLoadingDisappears();
+    pages.entscheid.detail.freitexteTab.verfugungBeiblattAKTab
+         .txtEditor.waitForValueVisible()
+         .checkTextHighlightedBulk(testData.step10.textValues, false);
   });
 
   it(`Step 11: open Gesetzliche Grundlagen and click Freitexte generiren; confirm warning (OSCIENT:154)
@@ -160,7 +151,10 @@ describe(`C50984: E2E (HE Entscheid);
     pages.entscheid.detail.ribbonMenu.clickFreitextGenerierenBtn();
     pages.warningPopup.checkWarningContainsText(testData.step10.warningMsg)
          .clickOkBtn();
-    pages.entscheid.detail.freitexteTab.gesetzlicheGrundlagenTab.docValidator().checkTextBlockNotEmpty(false);
+    pageBase.waitForLoadingDisappears();
+    pages.entscheid.detail.freitexteTab.gesetzlicheGrundlagenTab
+         .txtEditor.waitForValueVisible()
+         .checkTextHighlighted(testData.step11.txtEditorValue, false);
     pages.waitForLoadingDisappears();
     pages.entscheid.detail.sideMenu.checkFreitexteTabColor(constants.COLOR.orange, false)
          .checkEntscheidSendungenTabColor(constants.COLOR.orange, true);
@@ -171,9 +165,10 @@ describe(`C50984: E2E (HE Entscheid);
     pages.entscheid.detail.sideMenu.navigateToEntscheidSendungenTab();
     pageBase.waitForLoadingDisappears();
     pages.entscheid.detail.ribbonMenu.clickEntscheidSendungenGenerierenBtn();
+    pageBase.waitForLoadingDisappears();
     pages.entscheid.detail.sideMenu.checkEntscheidSendungenTabColor(constants.COLOR.orange, false)
          .checkVisierenTabColor(constants.COLOR.orange, true);
-    pages.entscheid.detail.sendungenTabBar.grid.checkGridRowCount(1);
+    pages.entscheid.detail.sendungenTabBar.grid.checkGridRowsCount(1);
     pageBase.waitForLoadingDisappears();
   });
 
@@ -182,8 +177,10 @@ describe(`C50984: E2E (HE Entscheid);
     pages.entscheid.detail.sideMenu.navigateToVisierenTab()
          .waitForLoaded();
     pages.entscheid.detail.ribbonMenu.clickVisumSpeichernBtn();
-    pages.warningPopup.clickOkBtn();
+    pages.warningPopup.clickOkBtn()
+         .clickOkBtn();
     pages.notification.checkSuccessMessageVisible();
+    pageBase.waitForLoadingDisappears();
     pages.entscheid.detail.sideMenu.checkVisierenTabColor(constants.COLOR.orange, false)
          .checkEntscheidSendungenTabColor(constants.COLOR.orange, true);
   });
@@ -193,6 +190,7 @@ describe(`C50984: E2E (HE Entscheid);
     pages.waitForLoadingDisappears();
     pages.entscheid.detail.ribbonMenu.clickEntscheidSendungVerschickenBtn();
     pages.sendungen.detail.waitForLoaded();
+    pageBase.waitForLoadingDisappears();
   });
 
   it(`Step 15: Open Formular variablen tab, add Formular variabl and click Variablen speichern button
@@ -226,11 +224,5 @@ describe(`C50984: E2E (HE Entscheid);
     pages.groupedTaskbar.clickEntscheidHEHETab();
     pages.entscheid.detail.sideMenu.navigateToBasisdatenTab()
          .checkArbeitslisteTxt(testData.step17.arbeitslisteTxt);
-  });
-
-  afterEach(function() {
-    if (this.currentTest.state === "pending") {
-      Cypress.runner.stop();
-    }
   });
 });

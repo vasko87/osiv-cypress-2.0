@@ -1,4 +1,3 @@
-import DocumentValidator from "../../../../standalone/DocumentValidator";
 import pageBase from "../../../../base/PageBase";
 import GridBase from "../../../../base/GridBase";
 import TxtEditor from "../../../../standalone/TxtEditor";
@@ -44,11 +43,20 @@ class FreitexteTab {
     };
 
     this.begrundungTab = {
-      txtEditor: new TxtEditor()
+      txtEditor: new TxtEditor("[akid='BegruendungTextTXTForm']")
+    };
+
+    this.vorbescheidTab = {
+      bausteinlisteIndiVorbescheidGrid: () => cy.get("[akid='BausteinlisteIndiVorbescheidGrid']"),
+      txtEditor: new TxtEditor(""),
+
+      waitForVisible() {
+        this.bausteinlisteIndiVorbescheidGrid().should("be.visible");
+      }
     };
 
     this.verfugungBeiblattAKTab = {
-      docValidator     : () => new DocumentValidator("[akid='VerfuegungBeiblattHTMLtextForm']"),
+      txtEditor: new TxtEditor("[akid='VerfuegungBeiblattRTFTextForm']"),
       bausteinGrid     : () => new GridBase("[akid='BausteinlisteIndiVerfuegungBeiblattGrid']"),
       generatedTextForm: () => cy.get("[id='cke_3_contents']"),
 
@@ -70,7 +78,7 @@ class FreitexteTab {
     };
 
     this.gesetzlicheGrundlagenTab = {
-      docValidator: () => new DocumentValidator("[akid='GesetzlicheGrundlagenHTMLTextForm']")
+      txtEditor: new TxtEditor("[akid='GesetzlicheGrundlagenRTFTextForm']")
     };
   }
 }

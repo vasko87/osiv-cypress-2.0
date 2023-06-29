@@ -3,6 +3,7 @@ import VersicherteGridHeaderActivePanel from "./VersicherteGridHeaderActivePanel
 import GridBase from "../../../base/GridBase";
 import constants from "../../../helpers/Constants"
 import pageBase from "../../../base/PageBase";
+import NeuerVersicherterPopup from "../detail/popups/NeuerVersicherterPopup";
 
 class VersicherteGrid extends GridBase {
   constructor() {
@@ -10,8 +11,14 @@ class VersicherteGrid extends GridBase {
     this.filter = new VersicherteGridFilter();
     this.headerActivePanel = new VersicherteGridHeaderActivePanel();
     super.elements = {
-      ...this.elements
+      ...this.elements,
+      plusBtn: () => cy.get("[akid='sStammQueryB-StammCreateDialog']")
     };
+  }
+
+  waitGridViewLoaded() {
+    super.waitGridViewLoaded();
+    return this;
   }
 
   /**
@@ -26,6 +33,11 @@ class VersicherteGrid extends GridBase {
          .dblClickRowValue(value);
     pageBase.waitForLoadingDisappears();
     return this;
+  }
+
+  clickPlusBtn() {
+    this.elements.plusBtn().click();
+    return new NeuerVersicherterPopup();
   }
 }
 

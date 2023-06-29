@@ -3,8 +3,9 @@ import pageBase from "./PageBase";
 class GridBase {
   constructor(baseCSS) {
     this.elements = {
-      gridWrapper: () => cy.get(baseCSS),
-      rowSelected: () => this.elements.gridWrapper().find("tr[class*='_material rowselected']"),
+      gridWrapper    : () => cy.get(baseCSS),
+      rowSelected    : () => this.elements.gridWrapper().find("tr[class*='_material rowselected']"),
+      table    : () => this.elements.gridWrapper().find("table"),
       rowElementsList: () => this.elements.gridWrapper().find("[class='objbox'] tr[class*=material]")
     };
   }
@@ -30,13 +31,30 @@ class GridBase {
                    columnsList.push(el.getAttribute("title"));
                  });
 
+      // gridWrapper.find("[class='objbox'] table tr[class*='material']")
+      //            .each((i, tr) => {
+      //              const row = {};
+      //              cy.$$(tr).find("td").each((i, td) => {
+      //                row[columnsList[i] || "unknown"] = td.textContent;
+      //              });
+      //
+      //              finalGridDataList.push(row);
+      //            });
+
       gridWrapper.find("[class='objbox'] table tr[class*='material']")
                  .each((i, tr) => {
                    const row = {};
                    cy.$$(tr).find("td").each((i, td) => {
-                     row[columnsList[i] || "unknown"] = td.textContent;
+                     if (td.hasAttribute("excell")) {
+                       if (td.chstate === "1") {
+                         row[columnsList[i] || "unknown"] = true;
+                       } else {
+                         row[columnsList[i] || "unknown"] = false;
+                       }
+                     } else {
+                       row[columnsList[i] || "unknown"] = td.textContent;
+                     }
                    });
-
                    finalGridDataList.push(row);
                  });
 
@@ -69,6 +87,12 @@ class GridBase {
   waitGridViewLoaded() {
     pageBase.waitForLoadingDisappears();
     this.elements.rowSelected().should("be.visible");
+    return this;
+  }
+
+  waitGridWrapperLoaded() {
+    pageBase.waitForLoadingDisappears();
+    this.elements.gridWrapper().should("be.visible");
     return this;
   }
 
@@ -141,7 +165,7 @@ class GridBase {
    * @param {int} count
    * @returns {GridBase}
    */
-  checkGridRowCount(count) {
+  checkGridRowsCount(count) {
     if (count !== 0) {
       this.elements.gridWrapper().find("tr[class*='material']").should("have.length", count);
     } else {

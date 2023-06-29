@@ -18,9 +18,7 @@ class BasisdatenTab_Ent extends EntscheidPageBase {
     if (data.arbeitslisteTxt) {
       this.checkArbeitslisteTxt(data.arbeitslisteTxt);
     }
-    if (data.bearbeiterDropdown === "username") {
-      this.checkBearbeiterDropdownReadonlyValue(Cypress.env("username"));
-    } else if (data.bearbeiterDropdown) {
+    if (data.bearbeiterDropdown) {
       this.checkBearbeiterDropdownReadonlyValue(data.bearbeiterDropdown);
     }
     if (data.leistungsgruppeDropdown) {

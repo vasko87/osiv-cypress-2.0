@@ -28,7 +28,8 @@ describe(`C47750: Delegation process;
       --> Verify GUI (as on attachment)
       --> verify mandatory fields are Delegation an, Sprache and Formular
       --> verify formular 470 is selected by default (as it is the only one with systemfunction = BB Delagation an)`, () => {
-    pages.eingliederung.detail.ribbonMenu.clickDelegationAnBtn()
+    pages.eingliederung.detail.waitForLoaded()
+         .ribbonMenu.clickDelegationAnBtn()
          .waitForLoaded()
          .checkDelegationAnDropdownIsMandatory(true)
          .checkFormularDropdownIsMandatory(true)

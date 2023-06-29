@@ -3,7 +3,7 @@ import pageBase from "../../base/PageBase";
 class ProtocollPageBase {
   constructor(baseCSS) {
     this.elements = {
-      typDropdown: () => cy.get(baseCSS).find("[akid$='-protokolltyptext']"),
+      typDropdown: () => cy.get(baseCSS).find("[akid$='-protokolltypbez']"),
       ursprungDropdown  : () => cy.get(baseCSS).find("[akid$='-ursprungbez']"),
       ursprungTxt  : () => cy.get(baseCSS).find("[akid$='-ursprung'] input"),
       eingliederungDropdown  : () => cy.get(baseCSS).find("[akid$='-eingliederungbez']"),
@@ -19,7 +19,7 @@ class ProtocollPageBase {
     return this;
   }
 
-  checkTypDropdownn(value) {
+  checkTypDropdown(value) {
     pageBase.checkDropdownSelectedValue(this.elements.typDropdown(), value);
     return this;
   }

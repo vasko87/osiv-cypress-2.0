@@ -4,8 +4,9 @@ import constants from "../../support/helpers/Constants";
 import helperObject from "../../support/helpers/HelperObject";
 import {c47750 as testData} from "../../support/helpers/DataManager";
 
+// @Bugs: OSIV-23034
 describe(`C47750: Termin Erledigen (appointment type=Abklärung an Ort); 
-  TestRail: https://osiv.testrail.net/index.php?/cases/view/47750`, () => {
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/47750;`, () => {
 
   beforeEach(`Login as ${Cypress.env("username")};`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
@@ -38,7 +39,8 @@ describe(`C47750: Termin Erledigen (appointment type=Abklärung an Ort);
          .clickOkBtn();
 
     pages.termine.detail.termineErledigenPopup.waitForLoaded()
-         .setTerminTextValue("TEST");
+         .txtEditor.waitForFirstLoad()
+         .setValue("TEST");
     pages.termine.detail.termineErledigenPopup.clickOkBtn();
     pages.confirmPopup.ckeckConfirmationContainsText(testData.data1.confirmationText)
          .clickJaBtn();
@@ -76,14 +78,15 @@ describe(`C47750: Termin Erledigen (appointment type=Abklärung an Ort);
          .clickOkBtn();
 
     pages.termine.detail.termineErledigenPopup.waitForLoaded()
-         .setTerminTextValue("TEST");
+         .txtEditor.waitForFirstLoad()
+         .setValue("TEST");
     pages.termine.detail.termineErledigenPopup.clickOkBtn();
     pages.confirmPopup.ckeckConfirmationContainsText(testData.data2.confirmationText)
          .clickNeinBtn();
     pages.infoPopup.ckeckInformationContainsText(constants.MSG.TERMIN_27)
          .clickOkBtn();
 
-    pages.eingliederung.detail.termineTabBar.grid.checkGridRowCount(0);
+    pages.eingliederung.detail.termineTabBar.grid.checkGridRowsCount(0);
     pages.eingliederung.detail.tabBar.navigateToDetailsTab()
          .checkArbeitslisteTxt(testData.data2.al)
          .checkErstgesprachTxtEmpty(true)

@@ -9,12 +9,12 @@
       "gesuchDropdown": "vom 01.02.2022",
       "ereignisDropdown": "Basis vom 22.11.2022",
       "bereichDropdown": "IV Erwachsene",
-      "bearbeiterDropdown": "username",
+      "bearbeiterDropdown": "Hulk1",
       "arbeitslisteTxt": "Neu"
     },
     "verifyEntDetail": {
       "arbeitslisteTxt": "Neu",
-      "bearbeiterDropdown": "username",
+      "bearbeiterDropdown": "Hulk1",
       "leistungsgruppeDropdown": "HE",
       "leistungtextDropdown": "HE - Hilflosenentschädigung",
       "gesuchDropdown": "vom 01.02.2022",
@@ -25,7 +25,7 @@
   "step3": {
     "fillInEntDetail": {
       "entscheidDropdown": "Zusprache",
-      "supertextDropdown": "3205",
+      "supertextDropdown": "HE IV",
       "entscheidtypDropdown": "Mitteilung der IV-Stelle (IV Allgemein)",
       "gebrechenDropdown": "101",
       "funktausfallDropdown": "01",
@@ -34,12 +34,15 @@
     "msg_523_text": "Es müssen noch folgende Felder ausgefüllt werden: Entscheid, Supertext, Entscheidtyp",
     "msg_523_code": "(OSCIENT:523)"
   },
+  "step4": {
+    "bearbeiterDropdown": "Hulk1"
+  },
   "step5": {
     "arbeitslisteTxt": "Bearbeiten"
   },
   "step6": {
     "artderInvaliditatDropdown": "Langdauernde Erwerbsunfähigkeit",
-    "ausgleichskasseDropdown": "10 - Ausgleichskasse des Kantons Freiburg",
+    "ausgleichskasseDropdown": "10",
     "aufenthaltDropdown": "Zu Hause"
   },
   "step7": {
@@ -50,35 +53,28 @@
     "hEGradTxt": "Leicht"
   },
   "step8": {
-    "textForm": "text"
+    "textForm": "text test 2"
   },
   "step9": {
     "warningMsg": "(OSCIENT:154)",
-    "generatedValues": {
-      "span": [
-        "Sehr geehrte Frau ",
-        "Wait",
-        "Grad der Hilflosigkeit",
-        "leichten Grades",
-        "Anspruchsbeginn ab"
-      ]
-    }
+    "generatedValues": [
+      "Sehr geehrte Frau Wait",
+      "Grad der Hilflosigkeit",
+      "leichten Grades",
+      "Anspruchsbeginn ab"
+    ]
   },
   "step10": {
     "warningMsg": "(OSCIENT:154)",
-    "textValues": {
-      "span": [
-        "Wait"
-      ],
-      "p": [
-        "Sehr geehrte Frau "
-      ],
-      "b": [
-        "Grad der Hilflosigkeit",
-        "leichten Grades",
-        "Anspruchsbeginn ab"
-      ]
-    }
+    "textValues": [
+      "Sehr geehrte Frau Wait",
+      "Grad der Hilflosigkeit",
+      "leichten Grades",
+      "Anspruchsbeginn ab"
+    ]
+  },
+  "step11": {
+    "txtEditorValue": "Hilflosenentschädigung"
   },
   "step17": {
     "druckerBenutzerDropdown": "Testdrucker",

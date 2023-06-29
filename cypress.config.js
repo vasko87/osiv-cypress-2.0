@@ -7,7 +7,7 @@ module.exports = defineConfig(
     projectId      : "nnmsrw",
     viewportWidth  : 1920,
     viewportHeight : 1080,
-    reporter       : "cypress-mochawesome-reporter",
+    reporter        : "cypress-mochawesome-reporter",
     reporterOptions: {
       reportDir          : "cypress/reports",
       charts             : true,
@@ -49,15 +49,17 @@ module.exports = defineConfig(
         config.env.FAIL_FAST_ENABLED = false;
 
         on("before:browser:launch", (browser = {}, launchOptions) => {
-          // console.log(config, browser, launchOptions);
-          // if (browser.name === "chrome") {
-          //   launchOptions.args.push("--disable-features=CrossSiteDocumentBlockingIfIsolating," +
-          //     "CrossSiteDocumentBlockingAlways,IsolateOrigins,site-per-process");
-          //   const ignoreXFrameHeadersExtension = path.join(__dirname, "../extensions/ignore-x-frame-headers");
-          //   launchOptions.args.push(`--load-extension=${ignoreXFrameHeadersExtension}`);
-          // }
-          // return launchOptions;
+          console.log(config, browser, launchOptions);
+          if (browser.name === "chrome") {
+            launchOptions.args.push("--disable-features=CrossSiteDocumentBlockingIfIsolating," +
+              "CrossSiteDocumentBlockingAlways,IsolateOrigins,site-per-process");
+            const ignoreXFrameHeadersExtension = path.join(__dirname, "../extensions/ignore-x-frame-headers");
+            launchOptions.args.push(`--load-extension=${ignoreXFrameHeadersExtension}`);
+            launchOptions.args.push("--enable-precise-memory-info");
+          }
+          return launchOptions;
         });
+
         return config;
       },
 
@@ -69,11 +71,11 @@ module.exports = defineConfig(
       screenshotOnRunFailure: true,
       screenshotsFolder     : "cypress/reports/assets",
       videosFolder          : "cypress/reports/videos",
-      requestTimeout        : 40000,
+      requestTimeout        : 50000,
       numTestsKeptInMemory  : 0,
-      responseTimeout       : 40000,
-      pageLoadTimeout       : 40000,
-      defaultCommandTimeout : 40000,
+      responseTimeout       : 50000,
+      pageLoadTimeout       : 50000,
+      defaultCommandTimeout : 50000,
       hideXHR               : true,
       chromeWebSecurity     : false,
       video                 : false,

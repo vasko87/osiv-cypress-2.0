@@ -1,6 +1,8 @@
 import pages from "../../support/base/OsivPageObject";
 import flows from "../../support/base/OsivFlowsObject";
 import {c47266 as testData} from "../../support/helpers/DataManager";
+import helpers from "../../support/helpers/HelperObject";
+import pageBase from "../../support/base/PageBase";
 
 describe(`C47266: Change origin of Protokoll to eingliederung (and than delete eingliederung); 
   TestRail: https://osiv.testrail.net/index.php?/cases/view/47266`, {failFast: {enabled: true}}, () => {
@@ -26,9 +28,9 @@ describe(`C47266: Change origin of Protokoll to eingliederung (and than delete e
       Change Ursprung to Eingliederung and Save;
       Verify: Ursprung is changed to Eingliederung`, () => {
     let i = 1;
-    pages.versicherte.detail.tabBar.protocoll.grid.getAllColumnValues("Ursprung").then((val) => val.forEach(() => {
-      pages.versicherte.detail.tabBar.protocoll.grid.dblClickRowNumber(i++);
-      pages.versicherte.detail.tabBar.protocoll.detail.waitForLoaded()
+    pages.versicherte.detail.protocollTabBar.grid.getAllColumnValues("Ursprung").then((val) => val.forEach(() => {
+      pages.versicherte.detail.protocollTabBar.grid.dblClickRowNumber(i++);
+      pages.versicherte.detail.protocollTabBar.detail.waitForLoaded()
            .ribbonMenu.clickUrsprungAndernBtn()
            .waitForLoaded()
            .selectUrsprungDropdown(testData.ursprungDropdown)
@@ -36,8 +38,11 @@ describe(`C47266: Change origin of Protokoll to eingliederung (and than delete e
            .checkEingliederungDropdownContains(testData.ursprungDropdown);
       pages.modalWindow.clickOkBtn();
       pages.notification.checkSuccessMessageVisible();
-      pages.versicherte.detail.tabBar.protocoll.detail.checkUrsprungTxt(testData.ursprungTxt);
+      pages.versicherte.detail.protocollTabBar.detail.waitForLoaded()
+           .checkUrsprungTxt(testData.ursprungTxt);
       pages.groupedTaskbar.clickContainsVersichertendatenTab();
+      pages.groupedTaskbar.closeContainsProtokollTab();
+      pages.waitForLoadingDisappears();
     }));
   });
 
@@ -46,13 +51,14 @@ describe(`C47266: Change origin of Protokoll to eingliederung (and than delete e
     pages.versicherte.detail.tabBar.navigateToEingliederungenTab()
          .grid.waitGridViewLoaded()
          .dblClickRowNumber(1);
+    pageBase.waitForLoadingDisappears();
     pages.eingliederung.detail.waitForLoaded()
          .ribbonMenu.clickLoschenBtn();
     pages.confirmPopup.clickJaBtn();
     pages.notification.checkSuccessMessageVisible();
 
     pages.versicherte.detail.tabBar.navigateToProtocollTab().grid.waitGridViewLoaded();
-    pages.versicherte.detail.tabBar.protocoll.grid.headerActivePanel.clickRefreshBtn();
+    pages.versicherte.detail.protocollTabBar.grid.headerActivePanel.clickRefreshBtn();
     pages.versicherte.detail.tabBar.navigateToProtocollTab().grid.getAllColumnValues("Ursprung").then((valList) => {
       valList.forEach((v) => {
         console.log(v);

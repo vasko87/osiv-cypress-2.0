@@ -12,6 +12,11 @@ class PosteingangGrid extends GridBase{
     };
   }
 
+  waitGridViewLoaded() {
+    super.waitGridViewLoaded();
+    return this;
+  }
+
   /**
    * Search @value in 'Versicherten-Nr.' field of Grid filter
    * open 'Versicherten-Nr' with dblclick()
@@ -19,6 +24,7 @@ class PosteingangGrid extends GridBase{
    * @returns {EntscheidGrid}
    */
   searchAndOpenVersichertenNr(value) {
+    super.waitGridViewLoaded();
     this.filter.searchVersichertenNrTxt(value);
     super.dblClickRowValue(value);
     return this;

@@ -30,6 +30,18 @@ import C47266_ds1 from "../../fixtures/tests/dataSet1/C47266_ChangeOriginOfProto
 import C47266_ds2 from "../../fixtures/tests/dataSet2/C47266_ChangeOriginOfProtokollToEingliederungAndThanDeleteEingliederung.json";
 import C47266_ds3 from "../../fixtures/tests/dataSet3/C47266_ChangeOriginOfProtokollToEingliederungAndThanDeleteEingliederung.json";
 
+import C54969_ds1 from "../../fixtures/tests/dataSet1/C54969_UpdatingTheListOfTheBausteinsAfterChangingEntscheidSupertext.json";
+import C54969_ds2 from "../../fixtures/tests/dataSet2/C54969_UpdatingTheListOfTheBausteinsAfterChangingEntscheidSupertext.json";
+import C54969_ds3 from "../../fixtures/tests/dataSet3/C54969_UpdatingTheListOfTheBausteinsAfterChangingEntscheidSupertext.json";
+
+import C51299_ds1 from "../../fixtures/tests/dataSet1/C51299_AbgabeRegistrrierenNoErrorWarningMessages.json";
+import C51299_ds2 from "../../fixtures/tests/dataSet2/C51299_AbgabeRegistrrierenNoErrorWarningMessages.json";
+import C51299_ds3 from "../../fixtures/tests/dataSet3/C51299_AbgabeRegistrrierenNoErrorWarningMessages.json";
+
+import C51300_ds1 from "../../fixtures/tests/dataSet1/C51300_AbgabeRegistrierenWithWarningMessages.json";
+import C51300_ds2 from "../../fixtures/tests/dataSet2/C51300_AbgabeRegistrierenWithWarningMessages.json";
+import C51300_ds3 from "../../fixtures/tests/dataSet3/C51300_AbgabeRegistrierenWithWarningMessages.json";
+
 import C001 from "../../fixtures/tests/C001_newAdressTest.json";
 import C44746 from "../../fixtures/tests/C44746_HEGradCalculationRules.json";
 import C47707 from "../../fixtures/tests/C47707_ShowNoShowDynamicBaustein.json";
@@ -41,6 +53,7 @@ import C50507 from "../../fixtures/tests/C50507_PresenceAndVisibilityConditionsO
 import C50511 from "../../fixtures/tests/C50511_TheCalculatedFieldsOfTheNeueGemischteMethodeModalWindow.json";
 import C50497 from "../../fixtures/tests/C50497_ValidationOfInvalideneinkommenFieldsDuringEditingPart1.json";
 import C51287 from "../../fixtures/tests/C51287_CalculationsFromTheInvalideneinkommenFieldsetForTheFruhinvaliditatEntityPart3.json";
+import C51300 from "../../fixtures/tests/C51300_AbgabeRegistrierenWithWarningMessages.json";
 
 const dataFiles = {
   c44194 : C44194_ds1,
@@ -51,6 +64,8 @@ const dataFiles = {
   c50464 : C50464_ds1,
   c50462 : C50462_ds1,
   c47266 : C47266_ds1,
+  c54969 : C54969_ds1,
+  C51299 : C51299_ds1,
   c001 : C001,
   c44746 : C44746,
   c47707 : C47707,
@@ -61,7 +76,8 @@ const dataFiles = {
   c50507 : C50507,
   c50511 : C50511,
   c50497 : C50497,
-  c51287 : C51287
+  c51287 : C51287,
+  c51300 : C51300
 };
 
 const dataSet = Cypress.env("dataSet");
@@ -76,6 +92,9 @@ if (dataSet === "dataSet1") {
   dataFiles.c50464 = C50464_ds1;
   dataFiles.c50462 = C50462_ds1;
   dataFiles.c47266 = C47266_ds1;
+  dataFiles.c54969 = C54969_ds1;
+  dataFiles.c51299 = C51299_ds1;
+  dataFiles.c51300 = C51300_ds1;
 }
 if (dataSet === "dataSet2") {
   dataFiles.c44194 = C44194_ds2;
@@ -86,6 +105,9 @@ if (dataSet === "dataSet2") {
   dataFiles.c50464 = C50464_ds2;
   dataFiles.c50462 = C50462_ds2;
   dataFiles.c47266 = C47266_ds2;
+  dataFiles.c54969 = C54969_ds2;
+  dataFiles.c51299 = C51299_ds2;
+  dataFiles.c51300 = C51300_ds2;
 }
 if (dataSet === "dataSet3") {
   dataFiles.c44194 = C44194_ds3;
@@ -96,6 +118,9 @@ if (dataSet === "dataSet3") {
   dataFiles.c50464 = C50464_ds3;
   dataFiles.c50462 = C50462_ds3;
   dataFiles.c47266 = C47266_ds3;
+  dataFiles.c54969 = C54969_ds3;
+  dataFiles.c51299 = C51299_ds3;
+  dataFiles.c51300 = C51300_ds3;
 }
 
 module.exports = dataFiles;

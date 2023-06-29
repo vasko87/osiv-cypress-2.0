@@ -7,6 +7,7 @@ class EingliederungPageBase {
       erstgesprachTxt: () => cy.get(baseCSS).find("[akid$='-erstgespraech_dat'] input"),
       ereignisTxt: () => cy.get(baseCSS).find("[akid$='-ereignistext']"),
       ereignisDropdown: () => cy.get(baseCSS).find("[akid$='-ereignisdynselect']"),
+      auftragVonDropdown  : () => cy.get(baseCSS).find("[akid$='-sachbearbeiter']"),
       auftragDropdown  : () => cy.get(baseCSS).find("[akid$='-auftragsart']"),
       auftragAnDropdown        : () => cy.get(baseCSS).find("[akid$='-berufberaterdynselect']"),
       meldungTextarea     : () => cy.get(baseCSS).find("[akid$='-MeldungText']"),
@@ -60,6 +61,11 @@ class EingliederungPageBase {
 
   getEreignisDropdownSelectedValue() {
     return pageBase.getDropdownSelectedValue(this.elements.ereignisDropdown());
+  }
+
+  selectAuftragVonDropdown(value) {
+    pageBase.selectInDropdownByTyping(this.elements.auftragVonDropdown(), value);
+    return this;
   }
 
   selectAuftragDropdown(value) {

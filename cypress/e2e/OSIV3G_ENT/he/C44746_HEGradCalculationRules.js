@@ -1,6 +1,7 @@
 import pages from "../../../support/base/OsivPageObject";
 import flows from "../../../support/base/OsivFlowsObject";
 import {c44746 as testData} from "../../../support/helpers/DataManager";
+import helperObject from "../../../support/helpers/HelperObject";
 
 describe(`C44746: HE-Grad is calculation rules; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/44746`, () => {
@@ -15,7 +16,7 @@ describe(`C44746: HE-Grad is calculation rules;
       pages.loginPage.openUrl();
       flows.entscheid.step_navigateEnt_searchEnt_openEnt_navigateToHilflosigkeitTab(data.entId);
       pages.entscheid
-           .detail.hilflosigkeitTab
+           .detail.hilflosigkeitTab.waitForLoaded()
            .alltaglicheLebensverrichtungBlock
            .fillInFieldsBulk(data.alltaglicheLebensverrichtungBlock);
       step_clickSave_warningOK_checkHEGrad(testData.leicht);
@@ -34,7 +35,7 @@ describe(`C44746: HE-Grad is calculation rules;
     it(`ENT ${data.entId}: ${data.testCondition}`, () => {
       pages.loginPage.openUrl();
       flows.entscheid.step_navigateEnt_searchEnt_openEnt_navigateToHilflosigkeitTab(data.entId);
-      pages.entscheid.detail.hilflosigkeitTab
+      pages.entscheid.detail.hilflosigkeitTab.waitForLoaded()
            .lebenspraktischeBegleitungBlock
            .fillInFieldsBulk(data.lebenspraktischeBegleitungBlock);
       step_clickSave_warningOK_checkHEGrad(testData.leicht);
@@ -53,7 +54,7 @@ describe(`C44746: HE-Grad is calculation rules;
     it(`ENT ${data.entId}: ${data.testCondition}`, () => {
       pages.loginPage.openUrl();
       flows.entscheid.step_navigateEnt_searchEnt_openEnt_navigateToHilflosigkeitTab(data.entId);
-      pages.entscheid.detail.hilflosigkeitTab
+      pages.entscheid.detail.hilflosigkeitTab.waitForLoaded()
            .alltaglicheLebensverrichtungBlock
            .fillInFieldsBulk(data.alltaglicheLebensverrichtungBlock);
       step_clickSave_warningOK_checkHEGrad(testData.mittel);
@@ -73,15 +74,14 @@ describe(`C44746: HE-Grad is calculation rules;
       pages.loginPage.openUrl();
       flows.entscheid.step_navigateEnt_searchEnt_openEnt_navigateToHilflosigkeitTab(data.entId);
       pages.entscheid.detail.hilflosigkeitTab
-           .alltaglicheLebensverrichtungBlock.fillInFieldsBulk(data.alltaglicheLebensverrichtungBlock);
+           .waitForLoaded().alltaglicheLebensverrichtungBlock.fillInFieldsBulk(data.alltaglicheLebensverrichtungBlock);
       pages.entscheid.detail.hilflosigkeitTab
            .lebenspraktischeBegleitungBlock.fillInFieldsBulk(data.lebenspraktischeBegleitungBlock);
       step_clickSave_warningOK_checkHEGrad(testData.mittel);
-      pages.waitForLoadingDisappears();
     });
 
     it(`ENT ${data.entId}: Cleaning fields`, () => {
-      pages.entscheid.detail.hilflosigkeitTab
+      pages.entscheid.detail.hilflosigkeitTab.waitForLoaded()
            .alltaglicheLebensverrichtungBlock.clearFields(data.alltaglicheLebensverrichtungBlock);
       pages.entscheid.detail.hilflosigkeitTab
            .lebenspraktischeBegleitungBlock.clearFields(data.lebenspraktischeBegleitungBlock);
@@ -92,7 +92,7 @@ describe(`C44746: HE-Grad is calculation rules;
   it(`ENT ${testData.schwer.entId}: ${testData.schwer.testCondition}`, () => {
     pages.loginPage.openUrl();
     flows.entscheid.step_navigateEnt_searchEnt_openEnt_navigateToHilflosigkeitTab(testData.schwer.entId);
-    pages.entscheid.detail.hilflosigkeitTab
+    pages.entscheid.detail.hilflosigkeitTab.waitForLoaded()
          .alltaglicheLebensverrichtungBlock
          .fillInFieldsBulk(testData.schwer.alltaglicheLebensverrichtungBlock);
     step_clickSave_warningOK_checkHEGrad(testData.schwer);
@@ -108,8 +108,8 @@ describe(`C44746: HE-Grad is calculation rules;
 
 function step_clickSave_warningOK_checkHEGrad(data) {
   flows.entscheid.step_clickRibbonSave_warningOK_checkSuccessMsg();
-  pages.entscheid.detail.hilflosigkeitTab
-       .hEGradBlock.checkHEGradDropdown(data.hEGradDropdown)
+  pages.entscheid.detail.hilflosigkeitTab.waitForLoaded()
+       .hEGradBlock.checkHEGradDropdown(data.hEGradDropdown);
   pages.entscheid.detail.hilflosigkeitTab
        .hEGradVerlaufBlock.checkHEGradTxt(data.hEGradTxt);
 }

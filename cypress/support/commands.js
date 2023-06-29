@@ -16,6 +16,40 @@ import addContext from "mochawesome/addContext"
 const loginPage = new LoginPage();
 const navigation = new Navigation();
 
+before( function() {
+  // window.logCalls = 1;
+  window.testFlow = [];
+  window.usedJSHeapSize = {};
+});
+
+// after( function() {
+//   cy.clearAllCookies();
+//   cy.clearAllLocalStorage();
+//   cy.clearAllSessionStorage();
+// });
+
+Cypress.Commands.overwrite("log", (originalFn, message) => {
+  // Code for using step numbers in the log
+  // Cypress.log({
+  //   displayName: `--- ${window.logCalls}. ${message} ---`,
+  //   name: `--- ${window.logCalls}. ${message} ---`,
+  //   message: ""
+  // });
+  // window.testFlow.push(`${window.logCalls}. ${message}`);
+  // window.logCalls++;
+  Cypress.log({
+    displayName: `--- ${message} ---`,
+    name: `--- ${message} ---`,
+    message: ""
+  });
+  window.testFlow.push(`${message}`);
+});
+
+Cypress.on("fail", (error) => {
+  error.message = error.message + "\n\nTest flow:\n" + window.testFlow.join("\n");
+  throw error;
+});
+
 Cypress.Commands.add("loginWithSession", (username, password) => {
   cy.session([username, password], () => {
     loginPage.openUrl();

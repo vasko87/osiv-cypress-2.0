@@ -1,7 +1,11 @@
 import pageBase from "../../base/PageBase";
+import ModalWindowBase from "../../standalone/popup/ModalWindowBase";
+import SupertextWahlenPopup from "./detail/popups/SupertextWahlenPopup";
+import supertextWahlenPopup from "./detail/popups/SupertextWahlenPopup";
 
 class EntscheidPageBase {
   constructor(baseCSS) {
+    this.supertextWahlenPopup = new SupertextWahlenPopup();
     this.elements = {
       leistungsgruppeDropdown: () => cy.get(baseCSS).find("[akid$='-leistungsgruppe']"),
       leistungscodeDropdown  : () => cy.get(baseCSS).find("[akid$='-leistungtext']"),
@@ -82,18 +86,29 @@ class EntscheidPageBase {
     return pageBase.getDropdownSelectedValue(this.elements.bereichDropdown());
   }
 
+  selectBearbeiterDropdown(value) {
+    pageBase.selectInDropdownContains(this.elements.bearbeiterDropdown(), value);
+    return this;
+  }
+
   checkBearbeiterDropdownContains(value) {
     pageBase.checkDropdownContainsValue(this.elements.bearbeiterDropdown(), value);
+    return this;
+  }
+
+  checkBearbeiterDropdownEmpty(isEmpty) {
+    pageBase.checkDropdownEmpty(this.elements.bearbeiterDropdown(), isEmpty);
+    return this;
+  }
+
+  checkBearbeiterReadonlyDropdownEmpty(isEmpty) {
+    pageBase.checkElementEmpty(this.elements.bearbeiterDropdown().find("input"), isEmpty);
     return this;
   }
 
   checkBearbeiterDropdownReadonlyValue(value) {
     pageBase.checkReadonlyDropdownContainsValue(this.elements.bearbeiterDropdown(), value);
     return this;
-  }
-
-  getBearbeiterDropdownReadonlyValue() {
-    return this.elements.bearbeiterDropdown().find("input[readonly='true']");
   }
 
   checkArbeitslisteTxt(value) {
@@ -118,6 +133,20 @@ class EntscheidPageBase {
 
   selectSupertextDropdown(value) {
     pageBase.selectInDropdownContains(this.elements.supertextDropdown(), value);
+    return this;
+  }
+
+  lookupSupertextDropdown(value) {
+    this.elements.supertextDropdown().find("[class='select2-selection__lookup']").click();
+    this.supertextWahlenPopup.waitForLoaded()
+        .supertextQueryGrid.waitGridViewLoaded();
+    this.supertextWahlenPopup.clearSpracheIDDropdown()
+        .clearEntscheidDropdown()
+        .clearLeistungsCodeAnzeigenDropdown();
+    this.supertextWahlenPopup.clearSupertextNrTxt()
+        .setSupertextNrTxt(value);
+    this.supertextWahlenPopup.supertextQueryGrid.waitGridViewLoaded();
+    this.supertextWahlenPopup.clickBestatigenBtn();
     return this;
   }
 

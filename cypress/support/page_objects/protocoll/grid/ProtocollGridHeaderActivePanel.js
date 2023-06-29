@@ -3,7 +3,7 @@ class ProtocollGridHeaderActivePanel {
   constructor() {
     this.elements = {
       listeDerProtokolleintrageTxt : () => cy.get("[class='dhx_cell_hdr_text dhx_cell_hdr_text_chrome']").contains("Liste der Protokolleinträge"),
-      refreshBtn: () => this.elements.listeDerProtokolleintrageTxt().parent().find("[title='Refresh']")
+      refreshBtn: () => this.elements.listeDerProtokolleintrageTxt().should("be.visible").parent().find("[title='Refresh']")
     };
   }
 
