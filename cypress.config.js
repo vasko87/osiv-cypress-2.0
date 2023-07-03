@@ -55,7 +55,10 @@ module.exports = defineConfig(
               "CrossSiteDocumentBlockingAlways,IsolateOrigins,site-per-process");
             const ignoreXFrameHeadersExtension = path.join(__dirname, "../extensions/ignore-x-frame-headers");
             launchOptions.args.push(`--load-extension=${ignoreXFrameHeadersExtension}`);
+            launchOptions.args.push("--disable-dev-shm-usage");
             launchOptions.args.push("--enable-precise-memory-info");
+            launchOptions.args.push("--enable-blink-features='ForceEagerMeasureMemory'");
+            launchOptions.args.push("--js-flags='--expose-gc'");
           }
           return launchOptions;
         });
