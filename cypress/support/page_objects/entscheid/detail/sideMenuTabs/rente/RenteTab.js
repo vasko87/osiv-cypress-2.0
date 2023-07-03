@@ -8,7 +8,7 @@ class RenteTab {
   constructor() {
     this.gemischtePopup = new GemischtePopup();
     this.fruhinvaliditatPopup = new FruhinvaliditatPopup();
-    this.grid = new InvGradBerechnungenGrid(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidInvGradBerechnungenGrid']`);
+    this.grid = new InvGradBerechnungenGrid(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailBasisFrame'] [akid='EntscheidInvGradBerechnungenGrid']`);
     this.elements = {
       renteForm: () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidRenteDetailForm']`),
       lohnInFrTxt: () => this.elements.renteForm().find("[akid$='ve_lohn']")
