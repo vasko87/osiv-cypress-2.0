@@ -27,7 +27,7 @@ class EntscheidGrid extends GridBase {
   searchAndOpenEntscheidID(value) {
     super.waitGridWrapperLoaded();
     this.filter.searchEntscheidID(value);
-    super.waitGridViewLoaded()
+    super.waitGridViewLoaded().scrollRight()
          .dblClickRowValue(value);
     pageBase.waitForLoadingDisappears();
     return this;
