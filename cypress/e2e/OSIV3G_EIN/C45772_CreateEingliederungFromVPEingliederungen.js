@@ -32,6 +32,8 @@ describe(`C45772: Create Eingliederung from vP Eingliederungen;
 
   it(`Step 3: Fill in mandatory fields; Add Meldung`, () => {
     pages.eingliederung.eingliederungsauftragErteilenPopup
+         .selectGesuchDropdownByIndex(1)
+         .selectEreignisDropdownByIndex(1)
          .selectAuftragDropdownByIndex(1)
          .selectAuftragVonDropdown(testData.auftragVon)
          .selectAuftragAnDropdown(testData.auftragAn)

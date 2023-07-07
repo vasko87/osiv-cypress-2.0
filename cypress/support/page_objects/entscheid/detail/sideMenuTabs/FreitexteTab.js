@@ -2,6 +2,7 @@ import pageBase from "../../../../base/PageBase";
 import GridBase from "../../../../base/GridBase";
 import TxtEditor from "../../../../standalone/TxtEditor";
 import constants from "../../../../helpers/Constants";
+import DocumentValidator from "../../../../standalone/DocumentValidator";
 
 class FreitexteTab {
   constructor() {
@@ -57,8 +58,8 @@ class FreitexteTab {
     };
 
     this.verfugungBeiblattAKTab = {
-      txtEditor: new TxtEditor("[akid='VerfuegungBeiblattRTFTextForm']"),
-      bausteinGrid     : () => new GridBase(`${constants.CSS_ACTIVE_FORM} [akid='BausteinlisteIndiVerfuegungBeiblattGrid']`),
+      docValidator     : () => new DocumentValidator("[akid='VerfuegungBeiblattHTMLtextForm']"),
+      bausteinGrid     : () => new GridBase("[akid='BausteinlisteIndiVerfuegungBeiblattGrid']"),
       generatedTextForm: () => cy.get("[id='cke_3_contents']"),
 
       /**
@@ -79,7 +80,7 @@ class FreitexteTab {
     };
 
     this.gesetzlicheGrundlagenTab = {
-      txtEditor: new TxtEditor("[akid='GesetzlicheGrundlagenRTFTextForm']")
+      docValidator: () => new DocumentValidator("[akid='GesetzlicheGrundlagenHTMLTextForm']")
     };
   }
 }

@@ -14,6 +14,7 @@ class EingliederungsauftragErteilenPopup extends EingliederungPageBase {
   waitForLoaded() {
     this.modalWindow.waitForLoaded();
     this.elements.createForm().should("be.visible");
+    cy.wait(1000);
     return this;
   }
 }

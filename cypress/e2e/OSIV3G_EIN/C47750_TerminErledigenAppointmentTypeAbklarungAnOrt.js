@@ -39,8 +39,7 @@ describe(`C47750: Termin Erledigen (appointment type=Abklärung an Ort);
          .clickOkBtn();
 
     pages.termine.detail.termineErledigenPopup.waitForLoaded()
-         .txtEditor.waitForFirstLoad()
-         .setValue("TEST");
+         .setTerminTextValue("TEST");
     pages.termine.detail.termineErledigenPopup.clickOkBtn();
     pages.confirmPopup.ckeckConfirmationContainsText(testData.data1.confirmationText)
          .clickJaBtn();
@@ -78,8 +77,7 @@ describe(`C47750: Termin Erledigen (appointment type=Abklärung an Ort);
          .clickOkBtn();
 
     pages.termine.detail.termineErledigenPopup.waitForLoaded()
-         .txtEditor.waitForFirstLoad()
-         .setValue("TEST");
+         .setTerminTextValue("TEST");
     pages.termine.detail.termineErledigenPopup.clickOkBtn();
     pages.confirmPopup.ckeckConfirmationContainsText(testData.data2.confirmationText)
          .clickNeinBtn();
