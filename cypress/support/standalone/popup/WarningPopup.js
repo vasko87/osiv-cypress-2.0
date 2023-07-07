@@ -4,7 +4,7 @@ class WarningPopup {
   constructor() {
     this.elements = {
       warningPopup : () => cy.get("div [class='swal-modal warningModal']", {timeout:constants.DEFAULT_TIMEOUT}),
-      okBtn        : () => cy.get("[class*='swal-button swal-button'][class*='ok']")
+      okBtn        : () => cy.get("[class*='swal-button swal-button'][class*='ok'],[class='swal-button swal-button--confirm']")
     };
   }
 

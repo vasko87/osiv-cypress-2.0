@@ -5,6 +5,8 @@ import constants from "../../../helpers/Constants";
 import SendungenPageBase from "../SendungenPageBase";
 import pageBase from "../../../base/PageBase";
 import DetailWindowHeader from "../../../base/DetailWindowHeader";
+import FormularVariablenTab from "../../sendungen/detail/sideMenuTabs/FormularVariablenTab";
+import DossierBeilagenTab from "../../sendungen/detail/sideMenuTabs/dossierBeilagenTab/DossierBeilagenTab";
 
 class SendungenDetail extends SendungenPageBase {
   constructor() {
@@ -13,6 +15,8 @@ class SendungenDetail extends SendungenPageBase {
     this.windowHeader = new DetailWindowHeader();
     this.ribbonMenu = new SendungenRibbon();
     this.sideMenu = new SendungenSideMenu();
+    this.formularVariablenTab = new FormularVariablenTab();
+    this.dossierBeilagenTab = new DossierBeilagenTab();
     this.sendungenAbschliessenPopup = new SendungenAbschliessenPopup();
     this.elements = {
       ...this.elements,

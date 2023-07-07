@@ -2,6 +2,7 @@ import pageBase from "./PageBase";
 
 class GridBase {
   constructor(baseCSS) {
+    this.gridWrapperXpath = `//*[@class='dhxwin_active']//*[@akid='${baseCSS.split("akid='").pop()?.split("']")[0]}']`;
     this.elements = {
       gridWrapper    : () => cy.get(baseCSS),
       rowSelected    : () => this.elements.gridWrapper().find("tr[class*='_material rowselected']"),
@@ -80,6 +81,46 @@ class GridBase {
     });
   }
 
+  setAllRowsCheckboxesSelected(isChecked) {
+    cy.xpath(`${this.gridWrapperXpath}//td[@excell='ch']`).each(($td) => {
+      if (isChecked === true) {
+        if ($td.prop("chstate") === "0") {
+          $td.find("div").click();
+        }
+      }
+      if (isChecked === false) {
+        if ($td.prop("chstate") === "1") {
+          $td.find("div").click();
+        }
+      }
+    });
+  }
+
+  setCheckboxOfRowWithValueSelected(value, isChecked) {
+    cy.xpath(`${this.gridWrapperXpath}//td[contains(text(),'${value}')]/../td[@excell='ch']`).each(($td) => {
+      if (isChecked === true) {
+        if ($td.prop("chstate") === "0") {
+          $td.find("div").click();
+        }
+      }
+      if (isChecked === false) {
+        if ($td.prop("chstate") === "1") {
+          $td.find("div").click();
+        }
+      }
+    });
+  }
+
+  chexkCheckboxOfRowWithValueSelected(value, isChecked) {
+    cy.xpath(`${this.gridWrapperXpath}//td[contains(text(),'${value}')]/../td[@excell='ch']`).each(($td) => {
+      if (isChecked === true) {
+        expect($td.prop("chstate")).to.be.eq("1");
+      } else {
+        expect($td.prop("chstate")).to.be.eq("0");
+      }
+    });
+  }
+
   /**
    * Waits for the Grid view is loaded, by checkin the grid selected row is visible
    * @returns {GridBase}
@@ -87,6 +128,11 @@ class GridBase {
   waitGridViewLoaded() {
     pageBase.waitForLoadingDisappears();
     this.elements.rowSelected().should("be.visible");
+    return this;
+  }
+
+  scrollRight() {
+    this.elements.gridWrapper().find("[class='objbox']").scrollTo("right");
     return this;
   }
 
@@ -125,6 +171,10 @@ class GridBase {
   clickRowWithTextToSelectIt(text) {
     this.elements.gridWrapper().find("tbody").contains("td", text).click();
     return this;
+  }
+
+  clickRowWithTextsToSelectIt(text1, text2) {
+    this.elements.gridWrapper.xpath(`//td[contains(text(),'${text1}')]/../td[contains(text(),'${text2}')]`).click();
   }
 
   dblClickRowWithText(text) {

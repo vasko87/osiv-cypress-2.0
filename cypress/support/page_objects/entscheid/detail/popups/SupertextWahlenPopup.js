@@ -1,11 +1,12 @@
 import ModalWindowBase from "../../../../standalone/popup/ModalWindowBase";
 import pageBase from "../../../../base/PageBase";
 import GridBase from "../../../../base/GridBase";
+import constants from "../../../../helpers/Constants";
 
 class SupertextWahlenPopup extends ModalWindowBase {
   constructor() {
     super();
-    this.supertextQueryGrid = new GridBase("[akid='SupertextQueryGrid']");
+    this.supertextQueryGrid = new GridBase(`${constants.CSS_ACTIVE_FORM} [akid='SupertextQueryGrid']`);
     super.elements = {
       ...this.elements,
       supertextNrTxt: () => this.elements.modalWindow().find("[akid='SupertextQueryGrid-Supertext_Nr'] input"),

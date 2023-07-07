@@ -6,6 +6,8 @@ class DesktopMenu {
     this.elements = {
       versicherteMainTab: () => cy.get("[class*='level-1'][menuname='Versicherte']"),
       versicherteTab    : () => cy.get("[class*='level-2'][menuname='Versicherte']"),
+      sendungenMainTab: () => cy.get("[class*='level-1'][menuname='Sendungen']"),
+      sendungenTab    : () => cy.get("[class*='level-2'][menuname='Sendungen']"),
       adressenTab       : () => cy.get("[menuname='Adressen']"),
       posteingangMainTab: () => cy.get("[class*='level-1'][menuname='Posteingang']"),
       posteingangTab    : () => cy.get("[class*='level-2'][menuname='Posteingang']"),
@@ -23,6 +25,14 @@ class DesktopMenu {
     pageBase.waitForLoadingDisappears();
     this.elements.versicherteMainTab().click();
     return new VersicherteGrid();
+  }
+
+  navigateToSendungenTab() {
+    this.elements.sendungenMainTab().should("be.visible").click();
+    this.elements.sendungenTab().click();
+    pageBase.waitForLoadingDisappears();
+    this.elements.sendungenMainTab().click();
+    return this;
   }
 
   navigateToAdressenTab() {

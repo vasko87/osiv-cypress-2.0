@@ -1,6 +1,7 @@
 import pageBase from "../../../../base/PageBase";
 import GridBase from "../../../../base/GridBase";
 import TxtEditor from "../../../../standalone/TxtEditor";
+import constants from "../../../../helpers/Constants";
 
 class FreitexteTab {
   constructor() {
@@ -57,7 +58,7 @@ class FreitexteTab {
 
     this.verfugungBeiblattAKTab = {
       txtEditor: new TxtEditor("[akid='VerfuegungBeiblattRTFTextForm']"),
-      bausteinGrid     : () => new GridBase("[akid='BausteinlisteIndiVerfuegungBeiblattGrid']"),
+      bausteinGrid     : () => new GridBase(`${constants.CSS_ACTIVE_FORM} [akid='BausteinlisteIndiVerfuegungBeiblattGrid']`),
       generatedTextForm: () => cy.get("[id='cke_3_contents']"),
 
       /**
