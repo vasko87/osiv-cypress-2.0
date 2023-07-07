@@ -7,7 +7,7 @@ import NeuerVersicherterPopup from "../detail/popups/NeuerVersicherterPopup";
 
 class VersicherteGrid extends GridBase {
   constructor() {
-    super(constants.CSS_OPACITY1);
+    super(`${constants.CSS_ACTIVE_FORM} [akid='sStammQueryB']`);
     this.filter = new VersicherteGridFilter();
     this.headerActivePanel = new VersicherteGridHeaderActivePanel();
     super.elements = {

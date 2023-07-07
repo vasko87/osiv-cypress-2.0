@@ -5,7 +5,7 @@ import pageBase from "../../../base/PageBase";
 
 class GesucheGrid extends GridBase {
   constructor() {
-    super(constants.CSS_OPACITY1);
+    super(`${constants.CSS_ACTIVE_FORM} [akid='GesuchQueryGrid']`);
     this.filter = new GesucheGridFilter();
     super.elements = {
       ...this.elements

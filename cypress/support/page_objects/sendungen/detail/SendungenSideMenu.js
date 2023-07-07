@@ -1,5 +1,6 @@
 import constants from "../../../helpers/Constants";
 import FormularVariablenTab from "./sideMenuTabs/FormularVariablenTab";
+import DossierBeilagenTab from "./sideMenuTabs/dossierBeilagenTab/DossierBeilagenTab";
 class SendungenSideMenu {
   constructor() {
     this.elements = {
@@ -23,7 +24,7 @@ class SendungenSideMenu {
 
   navigateToDossierBeilagenTab() {
     this.elements.dossierBeilagenTab().should("be.visible").click();
-    return this;
+    return new DossierBeilagenTab();
   }
 
   navigateToFormularVariablenTab() {

@@ -1,7 +1,11 @@
+import constants from "../helpers/Constants";
+import pageBase from "../base/PageBase";
+
 class Notifications {
   constructor() {
     this.elements = {
       successMessage : () => cy.get("[class='dhtmlx-info dhtmlx-success']", {timeout : 20000}),
+      notificationMessage : () => cy.get("[class='vue-notification-message dhtmlx-info dhtmlx-info']", {timeout : 20000}),
       errorMessage : () => cy.get("[class='dhtmlx-info dhtmlx-error']", {timeout : 20000})
     };
   }
@@ -12,6 +16,30 @@ class Notifications {
    */
   checkSuccessMessageVisible() {
     this.elements.successMessage().should("be.visible");
+    return this;
+  }
+
+  /**
+   * Waiting for Notification(Blue) info message appears
+   * @returns {Notifications}
+   */
+  checkNotificatiomMessageVisible() {
+    this.elements.notificationMessage().should("be.visible");
+    return this;
+  }
+
+  checkNotificationMessageContainsText(text) {
+    this.elements.notificationMessage().should("contain.text", text);
+    return this;
+  }
+
+  waitForNotificationMessageContainsText(text) {
+    this.elements.notificationMessage().find(`p:contains('${text}')`, {timeout: constants.LONG_TIMEOUT}).should("exist");
+    return this;
+  }
+
+  waitForNotificationMessageDisappears() {
+    cy.get("[class='vue-notification-message dhtmlx-info dhtmlx-info']", {timeout: constants.LONG_TIMEOUT}).should("not.exist");
     return this;
   }
 

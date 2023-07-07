@@ -1,9 +1,10 @@
 import GridBase from "../../../../../base/GridBase";
 import ZASDatenAbfragenGridFilter from "./ZASDatenAbfragenGridFilter";
+import constants from "../../../../../helpers/Constants";
 
 class ZASDatenAbfragenGrid extends GridBase {
   constructor() {
-    super("[akid='ZasQueryGrid']");
+    super(`${constants.CSS_ACTIVE_FORM} [akid='ZasQueryGrid']`);
     this.filter = new ZASDatenAbfragenGridFilter();
     super.elements = {
       ...this.elements

@@ -2,21 +2,18 @@ import VersicherteSideMenu from "./VersicherteSideMenu";
 import VersicherteRibbon from "./VersicherteRibbon";
 import VersicherteTabBar from "./VersicherteTabBar";
 import VersichertePageBase from "../VersichertePageBase";
-import SendungenGrid from "../../sendungen/grid/SendungenGrid";
-import EntscheidGrid from "../../entscheid/grid/EntscheidGrid";
-import constants from "../../../helpers/Constants";
 import DetailWindowHeader from "../../../base/DetailWindowHeader";
 import EntscheidTab_Versicherte from "./tabBarTabs/EntscheidTab_Versicherte";
 import SendungenTab_Versicherte from "./tabBarTabs/SendungenTab_Versicherte";
 import pageBase from "../../../base/PageBase";
-import FreitexteTab from "../../entscheid/detail/sideMenuTabs/FreitexteTab";
 import BasisdatenTab_VR from "./sideMenuTabs/BasisdatenTab_VR";
 import DossierChronikTab from "./sideMenuTabs/DossierChronikTab";
 import ProtocollPageObject from "../../protocoll/ProtocollPageObject";
+import constants from "../../../helpers/Constants";
 
 class VersicherteDetail extends VersichertePageBase {
   constructor() {
-    const detailFormCSS = "[akid='sStammDetailBasisdatenForm']";
+    const detailFormCSS = `${constants.CSS_OPACITY1} [akid='sStammDetailBasisdatenForm'],${constants.CSS_OPACITY1} [akid='sStammDetailOverviewForm']`;
     super(detailFormCSS);
     this.windowHeader = new DetailWindowHeader();
     this.sideMenu = new VersicherteSideMenu();

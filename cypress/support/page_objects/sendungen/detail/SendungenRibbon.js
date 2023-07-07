@@ -12,7 +12,9 @@ class EntscheidRibbon extends RibbonBase {
       adressatOffnenBtn     : () => this.elements.ribbonBlock().find("[title='Adressat öffnen']"),
       variablenSpeichernBtn : () => this.elements.ribbonBlock().find("[title='Variablen speichern']"),
       druckVersandBtn       : () => this.elements.ribbonBlock().find("[title='Druck/Versand']"),
-      korrekturfunktionenBtn: () => this.elements.ribbonBlock().contains("Korrekturfunktionen")
+      korrekturfunktionenBtn: () => this.elements.ribbonBlock().contains("Korrekturfunktionen"),
+      beilagenSpeichernBtn: () => this.elements.ribbonBlock().contains("Beilagen speichern"),
+      beilagenAusgebenBtn: () => this.elements.ribbonBlock().contains("Beilagen ausgeben")
     };
 
     this.korrekturfunktionenSubMenu = {
@@ -61,6 +63,16 @@ class EntscheidRibbon extends RibbonBase {
   clickKorrekturfunktionenBtn() {
     this.elements.korrekturfunktionenBtn().click();
     return new DruckUndVersandPopup();
+  }
+
+  clickBeilagenSpeichernBtn() {
+    this.elements.beilagenSpeichernBtn().click();
+    return this;
+  }
+
+  clickBeilagenAusgebenBtn() {
+    this.elements.beilagenAusgebenBtn().click();
+    return this;
   }
 }
 

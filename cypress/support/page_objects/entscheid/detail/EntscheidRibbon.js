@@ -84,14 +84,14 @@ class EntscheidRibbon extends RibbonBase {
     return this;
   }
 
-  clickBearbeitungEinleitenBtn() {
-    this.elements.bearbeitungEinleitenBtn().click();
-    return new BearbeitungEinleitenPopup();
-  }
-
   clickBegrundungSpeichernBtn() {
     this.elements.begrundungSpeichernBtn().click();
     return this;
+  }
+
+  clickBearbeitungEinleitenBtn() {
+    this.elements.bearbeitungEinleitenBtn().click();
+    return new BearbeitungEinleitenPopup();
   }
 
   clickFreitextGenerierenBtn() {
