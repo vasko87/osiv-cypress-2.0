@@ -7,7 +7,7 @@ pipeline {
 
      parameters{
         string(name: 'SPEC', defaultValue: "cypress/e2e/**/**/**", description: "Enter the script path you want to execute")
-        choice(name: 'ENV', choices: ['FRTEST','NRTEST','FWTEST', 'FWTEST2'], description: "Select the test environment\n FRTEST = 'https://osiv-frtest.ivnet.ch'\n NRTESR = 'https://osiv-nrtest.ivnet.ch' \n FWTEST = 'https://fw-test.ivnet.ch' \n FWTEST2 = 'https://fw-test2.ivnet.ch'")
+        choice(name: 'ENV', choices: ['FRTEST','NRTEST','CRTEST', 'FWTEST', 'FWTEST2'], description: "Select the test environment\n FRTEST = 'https://osiv-frtest.ivnet.ch'\n NRTESR = 'https://osiv-nrtest.ivnet.ch' \n CRTESR = 'https://osiv-crtest.ivnet.ch' \n FWTEST = 'https://fw-test.ivnet.ch' \n FWTEST2 = 'https://fw-test2.ivnet.ch'")
         string(name: 'CUSTOM_ENV', defaultValue: "", description: "Enter the custom url")
         choice(name: 'DATA_SET', choices: ['dataSet1','dataSet2','dataSet3'], description: "Data set")
         string(name: 'USERNAME', defaultValue: "default", description: "Set username if not default")
@@ -57,6 +57,9 @@ def composeArgs() {
     }
     if (ENV == "NRTEST") {
         ENV_URL = "https://osiv-nrtest.ivnet.ch"
+    }
+    if (ENV == "CRTEST") {
+        ENV_URL = "https://osiv-crtest.ivnet.ch"
     }
     if (ENV == "FWTEST") {
         ENV_URL = "https://fw-test.ivnet.ch"
