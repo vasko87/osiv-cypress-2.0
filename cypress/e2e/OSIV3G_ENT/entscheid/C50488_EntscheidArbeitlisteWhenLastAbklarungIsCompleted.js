@@ -112,7 +112,7 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
     pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(testData.scenario3.arbeitslisteEntChanged);
   });
 
-  it.only(`Scenario 4: Open VP Xalando Xaver
+  it(`Scenario 4: Open VP Xalando Xaver
   Open Sendungen list
   Open Both sendungs and do Abklarung Einchecken for both sendungs (Basisdtaen>Korrekturfunctionen dynselect)
   Go to Sendung Desktop
