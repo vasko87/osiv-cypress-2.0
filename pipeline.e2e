@@ -27,44 +27,10 @@ pipeline {
 
         stage('Testing') {
             stages {
-                stage('ENT') {
-                    steps{
-                       catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                          bat "npx cypress run " + TEST_ENV_ENT
-                       }
-                       script {
-                           publishHTML([
-                           allowMissing: false,
-                           alwaysLinkToLastBuild: false,
-                           keepAll: true,
-                           reportDir: 'cypress/reports',
-                           reportFiles: 'index.html',
-                           reportName: 'HTML Report ENT',
-                           reportTitles: 'Mocha Report'])
-                       }
-                    }
-                }
-                stage('HE') {
-                    steps{
-                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                            bat "npx cypress run " + TEST_ENV_HE
-                        }
-                        script {
-                            publishHTML([
-                            allowMissing: false,
-                            alwaysLinkToLastBuild: false,
-                            keepAll: true,
-                            reportDir: 'cypress/reports',
-                            reportFiles: 'index.html',
-                            reportName: 'HTML Report HE',
-                            reportTitles: 'Mocha Report'])
-                        }
-                    }
-                }
-                stage('RENTE') {
+                stage('ENT E2E') {
                     steps {
                         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                            bat "npx cypress run " + TEST_ENV_RENTE
+                            bat "npx cypress run " + TEST_ENV_E2E
                         }
                         script {
                             publishHTML([
@@ -73,7 +39,7 @@ pipeline {
                             keepAll: true,
                             reportDir: 'cypress/reports',
                             reportFiles: 'index.html',
-                            reportName: 'HTML Report RENTE',
+                            reportName: 'HTML Report E2E',
                             reportTitles: 'Mocha Report'])
                         }
                     }
@@ -116,9 +82,7 @@ def composeArgs() {
     } else {
         UNCAUGHT_EXCEPTION_FAIL = ",uncaughtExceptionFailure=true"
     }
-    TEST_ENV_ENT = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/entscheid/**" + " --browser chrome"
-    TEST_ENV_HE = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/he/**" + " --browser chrome"
-    TEST_ENV_RENTE = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/rente/**" + " --browser chrome"
+    TEST_ENV_E2E = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/e2e/**" + " --browser chrome"
 }
 
 def setJobName(){
