@@ -71,7 +71,7 @@ class TxtEditor {
    */
   getSingleValue() {
     return pageBase.executeJS(`document.querySelector("${this.baseCSS}").__vueParentComponent.ctx.getValue()`).then((val) => {
-      val = val.split("fs20\\lang1031\\langnp1031\\langfe1031\\langfenp1031 ")[1].replaceAll("}", "");
+      val = val.split("fs20\\lang2055\\langnp2055\\langfe2055\\langfenp2055 ")[1].replaceAll("\\par }", "");
       return val;
     });
   }
