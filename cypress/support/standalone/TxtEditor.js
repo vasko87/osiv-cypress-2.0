@@ -54,7 +54,7 @@ class TxtEditor {
     //
     // pageBase.executeJS(`document.querySelector("${this.baseCSS}").__vueParentComponent.ctx.getValue()`)
     // return this;
-    cy.wait(constants.SHORT_TIMEOUT * 2);
+    cy.wait(constants.DEFAULT_TIMEOUT);
     return this;
   }
 
