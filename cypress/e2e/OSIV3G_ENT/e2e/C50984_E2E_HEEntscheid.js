@@ -170,8 +170,7 @@ describe(`C50984: E2E (HE Entscheid);
     pages.entscheid.detail.sideMenu.navigateToVisierenTab()
          .waitForLoaded();
     pages.entscheid.detail.ribbonMenu.clickVisumSpeichernBtn();
-    pages.warningPopup.clickOkBtn()
-         .clickOkBtn();
+    pages.warningPopup.clickOkBtn();
     pages.notification.checkSuccessMessageVisible();
     pageBase.waitForLoadingDisappears();
     pages.entscheid.detail.sideMenu.checkVisierenTabColor(constants.COLOR.orange, false)
