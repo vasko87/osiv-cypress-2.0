@@ -45,7 +45,18 @@ class FreitexteTab {
     };
 
     this.begrundungTab = {
-      txtEditor: new TxtEditor("[akid='BegruendungTextTXTForm']")
+      textForm: () => cy.get("[akid='BegruendungHTMLTextForm'] [role='textbox']"),
+      txtEditor: new TxtEditor("[akid='BegruendungTextTXTForm']"),
+
+      setTextForm(value) {
+        this.textForm().should("be.visible").type(value);
+        return this;
+      },
+
+      checkTextForm(value) {
+        this.textForm().should("have.text", value);
+        return this;
+      }
     };
 
     this.vorbescheidTab = {

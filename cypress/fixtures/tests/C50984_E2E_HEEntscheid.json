@@ -57,21 +57,31 @@
   },
   "step9": {
     "warningMsg": "(OSCIENT:154)",
-    "generatedValues": [
-      "Sehr geehrte Frau Wait",
-      "Grad der Hilflosigkeit",
-      "leichten Grades",
-      "Anspruchsbeginn ab"
-    ]
+    "generatedValues": {
+      "span": [
+        "Sehr geehrte Frau ",
+        "Wait",
+        "Grad der Hilflosigkeit",
+        "leichten Grades",
+        "Anspruchsbeginn ab"
+      ]
+    }
   },
   "step10": {
     "warningMsg": "(OSCIENT:154)",
-    "textValues": [
-      "Sehr geehrte Frau Wait",
-      "Grad der Hilflosigkeit",
-      "leichten Grades",
-      "Anspruchsbeginn ab"
-    ]
+    "textValues": {
+      "span": [
+        "Wait"
+      ],
+      "p": [
+        "Sehr geehrte Frau "
+      ],
+      "b": [
+        "Grad der Hilflosigkeit",
+        "leichten Grades",
+        "Anspruchsbeginn ab"
+      ]
+    }
   },
   "step11": {
     "txtEditorValue": "Hilflosenentschädigung"

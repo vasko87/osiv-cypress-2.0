@@ -112,13 +112,10 @@ describe(`C50984: E2E (HE Entscheid);
 
   it(`Step 8: Open Freitexte tab; add any test to begrundung and click Speichern -> text is saved`, () => {
     pages.entscheid.detail.sideMenu.navigateToFreitexteTab()
-         .begrundungTab
-         .txtEditor.waitForLoadedHard()
-         .setValue(testData.step8.textForm);
+         .begrundungTab.setTextForm(testData.step8.textForm);
     pages.entscheid.detail.ribbonMenu.clickBegrundungSpeichernBtn();
     pages.notification.checkSuccessMessageVisible();
-    pageBase.waitForLoadingDisappears();
-    pages.entscheid.detail.freitexteTab.begrundungTab.txtEditor.checkValue(testData.step8.textForm);
+    pages.entscheid.detail.freitexteTab.begrundungTab.checkTextForm(testData.step8.textForm);
   });
 
   it(`Step 9: open verfugung/Beiblatt AK; click freitexte generiren; confirm warning (OSCIENT:154) ->
@@ -128,19 +125,19 @@ describe(`C50984: E2E (HE Entscheid);
     pages.entscheid.detail.ribbonMenu.clickFreitextGenerierenBtn();
     pages.warningPopup.checkWarningContainsText(testData.step9.warningMsg)
          .clickOkBtn();
-    pageBase.waitForLoadingDisappears();
-    pages.entscheid.detail.freitexteTab.verfugungBeiblattAKTab
-         .txtEditor.waitForValueVisible()
-         .checkTextHighlightedBulk(testData.step9.generatedValues, true);
+    pages.entscheid.detail.freitexteTab.verfugungBeiblattAKTab.docValidator()
+         .checkTagTextAndBackgroundColorBulk("span", testData.step9.generatedValues.span, constants.COLOR.yellow, true)
+         .checkTagTextAndBackgroundColor("span", helpers.date.getFirstDayOfSameMonthNextYear(), constants.COLOR.yellow, true);
   });
 
   it(`Step 10: click freietext speichern -> text is saved`, () => {
     pages.entscheid.detail.ribbonMenu.clickFreitextSpeichernBtn();
     pages.notification.checkSuccessMessageVisible();
-    pageBase.waitForLoadingDisappears();
-    pages.entscheid.detail.freitexteTab.verfugungBeiblattAKTab
-         .txtEditor.waitForValueVisible()
-         .checkTextHighlightedBulk(testData.step10.textValues, false);
+    pages.entscheid.detail.freitexteTab.verfugungBeiblattAKTab.docValidator()
+         .checkTagTextAndBackgroundColorBulk("p", testData.step10.textValues.p, constants.COLOR.yellow, false)
+         .checkTagTextAndBackgroundColorBulk("span", testData.step10.textValues.span, constants.COLOR.yellow, false)
+         .checkTagTextAndBackgroundColorBulk("b", testData.step10.textValues.b, constants.COLOR.yellow, false)
+         .checkTagTextAndBackgroundColor("b", helpers.date.getFirstDayOfSameMonthNextYear(), constants.COLOR.yellow, false);
   });
 
   it(`Step 11: open Gesetzliche Grundlagen and click Freitexte generiren; confirm warning (OSCIENT:154)
@@ -150,10 +147,7 @@ describe(`C50984: E2E (HE Entscheid);
     pages.entscheid.detail.ribbonMenu.clickFreitextGenerierenBtn();
     pages.warningPopup.checkWarningContainsText(testData.step10.warningMsg)
          .clickOkBtn();
-    pageBase.waitForLoadingDisappears();
-    pages.entscheid.detail.freitexteTab.gesetzlicheGrundlagenTab
-         .txtEditor.waitForValueVisible()
-         .checkTextHighlighted(testData.step11.txtEditorValue, false);
+    pages.entscheid.detail.freitexteTab.gesetzlicheGrundlagenTab.docValidator().checkTextBlockNotEmpty(false);
     pages.waitForLoadingDisappears();
     pages.entscheid.detail.sideMenu.checkFreitexteTabColor(constants.COLOR.orange, false)
          .checkEntscheidSendungenTabColor(constants.COLOR.orange, true);
