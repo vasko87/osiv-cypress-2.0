@@ -1,7 +1,6 @@
 import pages from "../../support/base/OsivPageObject";
 import flows from "../../support/base/OsivFlowsObject";
 import {c47266 as testData} from "../../support/helpers/DataManager";
-import helpers from "../../support/helpers/HelperObject";
 import pageBase from "../../support/base/PageBase";
 
 describe(`C47266: Change origin of Protokoll to eingliederung (and than delete eingliederung); 
