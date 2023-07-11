@@ -55,6 +55,15 @@ class OsivPageObject {
     return this;
   }
 
+  checkMsgWarningContainsText(msg, containsText) {
+    if (containsText) {
+      cy.get("[class='msg-warning']").contains(msg).should("exist");
+    } else {
+      cy.get("[class='msg-warning']").contains(msg).should("not.exist");
+    }
+    return this;
+  }
+
   waitForLoadingDisappears() {
     pageBase.waitForLoadingDisappears();
     return this;

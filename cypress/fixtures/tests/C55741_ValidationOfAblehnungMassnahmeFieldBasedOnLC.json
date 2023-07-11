@@ -1,0 +1,23 @@
+{
+  "step1": {
+    "vpName": "Wait Will",
+    "lg": "Rente",
+    "lc": "Rente",
+    "bearbeiter": "User1",
+    "entscheid": "Ablehnung",
+    "ablehnungMassnahme": "M07"
+  },
+  "step2": {
+    "lc": "010",
+    "ablehnungMassnahme": "M06"
+  },
+  "step3": {
+    "lc": "BNA"
+  },
+
+  "step4": {
+    "lc": "571",
+    "ablehnungMassnahme": "M05",
+    "msg": "Ablehnung Massnahme"
+  }
+}
