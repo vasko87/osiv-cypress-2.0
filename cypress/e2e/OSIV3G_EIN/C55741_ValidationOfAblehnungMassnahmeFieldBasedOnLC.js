@@ -28,6 +28,7 @@ describe(`C55741: Validation of 'Ablehnung Massnahme' field based on LC;
          .checkAblehnungMassnahmeDropdownContains(testData.step1.ablehnungMassnahme);
     pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
     pages.warningPopup.clickOkBtn();
+    pages.notification.checkSuccessMessageVisible();
     pageBase.waitForLoadingDisappears();
   });
 
@@ -45,14 +46,13 @@ describe(`C55741: Validation of 'Ablehnung Massnahme' field based on LC;
       Select LC=bna -> "Ablehnung Massnahme" is empty
       Save changes -> Changes are saved and "Ablehnung Massnahme" is empty`, () => {
     pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
-    pages.warningPopup.clickOkBtn();
+    pages.notification.checkSuccessMessageVisible();
     pageBase.waitForLoadingDisappears();
     pages.entscheid.detail.basisdatenTabBar.checkAblehnungMassnahmeDropdownContains(testData.step2.ablehnungMassnahme)
          .clearLeistungsgruppeDropdown()
          .selectLeistungscodeDropdownByTyping(testData.step3.lc)
          .checkAblehnungMassnahmeDropdownEmpty(true);
     pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
-    pages.warningPopup.clickOkBtn();
     pageBase.waitForLoadingDisappears();
     pages.entscheid.detail.basisdatenTabBar.checkLeistungscodeDropdownContains(testData.step3.lc)
          .checkAblehnungMassnahmeDropdownEmpty(true);
@@ -66,10 +66,12 @@ describe(`C55741: Validation of 'Ablehnung Massnahme' field based on LC;
          .checkAblehnungMassnahmeDropdownContains(testData.step4.ablehnungMassnahme);
     pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
     pages.warningPopup.clickOkBtn();
+    pages.notification.checkSuccessMessageVisible();
     pages.checkMsgWarningContainsText(testData.step4.msg, false);
     pages.entscheid.detail.basisdatenTabBar.clearAblehnungMassnahmeDropdown();
     pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
     pages.warningPopup.clickOkBtn();
+    pages.notification.checkSuccessMessageVisible();
     pages.checkMsgWarningContainsText(testData.step4.msg, true);
 
   });
