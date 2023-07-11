@@ -19,6 +19,7 @@ class PageBase {
   selectInDropdownByTyping(element, value) {
     element.find("[class='select2-selection__arrow']").click();
     cy.get("[class='select2-search select2-search--dropdown'] input[class='select2-search__field']").type(value);
+    cy.wait(constants.MIN_TIMEOUT / 2);
     element.get("[class='select2-results__options']", {timeout: constants.DEFAULT_TIMEOUT})
            .contains(value)
            .click();
