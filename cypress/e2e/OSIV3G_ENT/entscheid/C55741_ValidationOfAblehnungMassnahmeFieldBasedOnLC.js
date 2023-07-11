@@ -1,7 +1,7 @@
-import pages from "../../support/base/OsivPageObject";
-import flows from "../../support/base/OsivFlowsObject";
-import {c55741 as testData} from "../../support/helpers/DataManager";
-import pageBase from "../../support/base/PageBase";
+import pages from "../../../support/base/OsivPageObject";
+import flows from "../../../support/base/OsivFlowsObject";
+import {c55741 as testData} from "../../../support/helpers/DataManager";
+import pageBase from "../../../support/base/PageBase";
 
 describe(`C55741: Validation of 'Ablehnung Massnahme' field based on LC; 
   TestRail: https://osiv.testrail.net/index.php?/cases/view/55741`, {failFast: {enabled: true}}, () => {
@@ -73,7 +73,5 @@ describe(`C55741: Validation of 'Ablehnung Massnahme' field based on LC;
     pages.warningPopup.clickOkBtn();
     pages.notification.checkSuccessMessageVisible();
     pages.checkMsgWarningContainsText(testData.step4.msg, true);
-
   });
-
 });
