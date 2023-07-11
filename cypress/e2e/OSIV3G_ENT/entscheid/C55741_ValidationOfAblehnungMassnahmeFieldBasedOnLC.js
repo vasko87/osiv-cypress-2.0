@@ -51,6 +51,7 @@ describe(`C55741: Validation of 'Ablehnung Massnahme' field based on LC;
     pageBase.waitForLoadingDisappears();
     pages.entscheid.detail.basisdatenTabBar.checkAblehnungMassnahmeDropdownContains(testData.step2.ablehnungMassnahme)
          .clearLeistungsgruppeDropdown()
+         .clearLeistungscodeDropdown()
          .selectLeistungscodeDropdownByTyping(testData.step3.lc)
          .checkAblehnungMassnahmeDropdownEmpty(true);
     pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
@@ -64,6 +65,7 @@ describe(`C55741: Validation of 'Ablehnung Massnahme' field based on LC;
       Set LC=571 and Save changes -> "Ablehnung Massnahme" set as M05 and User doesn't see in panel message anything about this field
       Delete value from the dynselect pressing on x and Save -> "Ablehnung Massnahme" set as empty and in panel message User sees an info about "Ablehnung Massnahme"`, () => {
     pages.entscheid.detail.basisdatenTabBar.clearLeistungsgruppeDropdown()
+         .clearLeistungscodeDropdown()
          .selectLeistungscodeDropdownByTyping(testData.step4.lc)
          .checkAblehnungMassnahmeDropdownContains(testData.step4.ablehnungMassnahme);
     pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
