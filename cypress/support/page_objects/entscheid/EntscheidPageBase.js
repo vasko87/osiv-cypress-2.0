@@ -15,12 +15,13 @@ class EntscheidPageBase {
       bearbeiterDropdown     : () => cy.get(baseCSS).find("[akid$='-bearbeiter']"),
       arbeitslisteTxt        : () => cy.get(baseCSS).find("[akid$='-arbeitslistevalue'] input"),
 
-      entscheidDropdown   : () => cy.get(baseCSS).find("[akid$='-entscheidvalue']"),
-      supertextDropdown   : () => cy.get(baseCSS).find("[akid$='-supertextbez']"),
-      entscheidtypDropdown: () => cy.get(baseCSS).find("[akid$='-entscheidtypbez']"),
-      gebrechenDropdown   : () => cy.get(baseCSS).find("[akid$='-gebrechen']"),
-      funktausfallDropdown: () => cy.get(baseCSS).find("[akid$='-funktausfall']"),
-      beginnDate          : () => cy.get(baseCSS).find("[akid$='-beginn_dat'] input"),
+      entscheidDropdown         : () => cy.get(baseCSS).find("[akid$='-entscheidvalue']"),
+      ablehnungMassnahmeDropdown: () => cy.get(baseCSS).find("[akid$='-ablehnungmassnahmebez']"),
+      supertextDropdown         : () => cy.get(baseCSS).find("[akid$='-supertextbez']"),
+      entscheidtypDropdown      : () => cy.get(baseCSS).find("[akid$='-entscheidtypbez']"),
+      gebrechenDropdown         : () => cy.get(baseCSS).find("[akid$='-gebrechen']"),
+      funktausfallDropdown      : () => cy.get(baseCSS).find("[akid$='-funktausfall']"),
+      beginnDate                : () => cy.get(baseCSS).find("[akid$='-beginn_dat'] input"),
 
       notizenTextarea: () => cy.get(baseCSS).find("[akid$='-bem'] textarea")
     };
@@ -35,6 +36,10 @@ class EntscheidPageBase {
     pageBase.checkDropdownSelectedValue(this.elements.leistungsgruppeDropdown(), value);
     return this;
   }
+  clearLeistungsgruppeDropdown() {
+    pageBase.clearDropdown(this.elements.leistungsgruppeDropdown());
+    return this;
+  }
 
   getLeistungsgruppeDropdownSelectedValue() {
     return pageBase.getDropdownSelectedValue(this.elements.leistungsgruppeDropdown());
@@ -45,8 +50,23 @@ class EntscheidPageBase {
     return this;
   }
 
+  selectLeistungscodeDropdownByTyping(value) {
+    pageBase.selectInDropdownByTyping(this.elements.leistungscodeDropdown(), value);
+    return this;
+  }
+
   checkLeistungscodeDropdown(value) {
     pageBase.checkDropdownSelectedValue(this.elements.leistungscodeDropdown(), value);
+    return this;
+  }
+
+  checkLeistungscodeDropdownContains(value) {
+    pageBase.checkDropdownContainsValue(this.elements.leistungscodeDropdown(), value);
+    return this;
+  }
+
+  clearLeistungscodeDropdown() {
+    pageBase.clearDropdown(this.elements.leistungscodeDropdown());
     return this;
   }
 
@@ -91,6 +111,11 @@ class EntscheidPageBase {
     return this;
   }
 
+  selectBearbeiterDropdownByTyping(value) {
+    pageBase.selectInDropdownByTyping(this.elements.bearbeiterDropdown(), value);
+    return this;
+  }
+
   checkBearbeiterDropdownContains(value) {
     pageBase.checkDropdownContainsValue(this.elements.bearbeiterDropdown(), value);
     return this;
@@ -123,6 +148,31 @@ class EntscheidPageBase {
 
   checkEntscheidDropdown(value) {
     pageBase.checkDropdownSelectedValue(this.elements.entscheidDropdown(), value);
+    return this;
+  }
+
+  selectAblehnungMassnahmeDropdown(value) {
+    pageBase.selectInDropdownContains(this.elements.ablehnungMassnahmeDropdown(), value);
+    return this;
+  }
+
+  checkAblehnungMassnahmeDropdown(value) {
+    pageBase.checkDropdownSelectedValue(this.elements.ablehnungMassnahmeDropdown(), value);
+    return this;
+  }
+
+  checkAblehnungMassnahmeDropdownContains(value) {
+    pageBase.checkDropdownContainsValue(this.elements.ablehnungMassnahmeDropdown(), value);
+    return this;
+  }
+
+  checkAblehnungMassnahmeDropdownEmpty(isEmpty) {
+    pageBase.checkDropdownEmpty(this.elements.ablehnungMassnahmeDropdown(), isEmpty);
+    return this;
+  }
+
+  clearAblehnungMassnahmeDropdown() {
+    pageBase.clearDropdown(this.elements.ablehnungMassnahmeDropdown());
     return this;
   }
 
