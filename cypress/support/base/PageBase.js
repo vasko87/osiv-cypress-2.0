@@ -109,6 +109,16 @@ class PageBase {
     });
   }
 
+  isElementExists(element) {
+    return element.then(el => {
+      if (el.is(":exist")) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+  }
+
   checkElementMandatory(element, isMandatory) {
     if (isMandatory) {
       element.should("have.class", "akMandatory");
