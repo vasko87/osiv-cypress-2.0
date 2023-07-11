@@ -2,7 +2,6 @@ import pages from "../../../support/base/OsivPageObject";
 import flows from "../../../support/base/OsivFlowsObject";
 import {c50488 as testData} from "../../../support/helpers/DataManager";
 import pageBase from "../../../support/base/PageBase";
-import helpers from "../../../support/helpers/HelperObject";
 
 describe(`C50488: Entscheid arbeitliste when last Abklärung is completed; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/50488; 
