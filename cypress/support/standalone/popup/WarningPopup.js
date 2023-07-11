@@ -1,4 +1,5 @@
 import constants from "../../helpers/Constants";
+import pageBase from "../../base/PageBase";
 
 class WarningPopup {
   constructor() {
@@ -25,6 +26,13 @@ class WarningPopup {
   clickOkBtn() {
     this.waitForLoaded();
     this.elements.okBtn().click();
+    return this;
+  }
+
+  clickOkBtnIfVisible() {
+    if (pageBase.isElementVisible(this.elements.okBtn())) {
+      this.elements.okBtn().click();
+    }
     return this;
   }
 
