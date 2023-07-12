@@ -23,7 +23,7 @@ describe(`C55741: Validation of 'Ablehnung Massnahme' field based on LC;
          .selectLeistungsgruppeDropdown(testData.step1.lg)
          .selectLeistungscodeDropdown(testData.step1.lc)
          .selectBearbeiterDropdownByTyping(testData.step1.bearbeiter);
-    flows.modalPopup.clickOkBtn_warningOk_CheckSuccessMsg();
+    flows.modalPopup.clickOkBtn_warningOkIfVisible_CheckSuccessMsg();
     pages.entscheid.detail.basisdatenTabBar.selectEntscheidDropdown(testData.step1.entscheid)
          .checkAblehnungMassnahmeDropdownContains(testData.step1.ablehnungMassnahme);
     pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();

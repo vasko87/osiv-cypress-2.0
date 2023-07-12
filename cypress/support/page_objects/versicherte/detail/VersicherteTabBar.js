@@ -3,6 +3,7 @@ import EntscheidTab_Versicherte from "./tabBarTabs/EntscheidTab_Versicherte";
 import SendungenTab_Versicherte from "./tabBarTabs/SendungenTab_Versicherte";
 import EingliederungenTab_Versicherte from "./tabBarTabs/EingliederungenTab_Versicherte";
 import ProtocollPageObject from "../../protocoll/ProtocollPageObject";
+import pageBase from "../../../base/PageBase";
 
 class VersicherteTabBar {
   constructor() {
@@ -37,6 +38,7 @@ class VersicherteTabBar {
 
   navigateToProtocollTab() {
     this.elements.protocollTab().click();
+    pageBase.waitForLoadingDisappears();
     return new ProtocollPageObject();
   }
 }

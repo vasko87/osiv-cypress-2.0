@@ -13,6 +13,13 @@ class ModalPopupFlows {
     pages.notification.checkSuccessMessageVisible();
     pages.waitForLoadingDisappears();
   }
+
+  clickOkBtn_warningOkIfVisible_CheckSuccessMsg(){
+    pages.modalWindow.clickOkBtn();
+    pages.warningPopup.clickOkBtnIfVisible();
+    pages.notification.checkSuccessMessageVisible();
+    pages.waitForLoadingDisappears();
+  }
 }
 export default ModalPopupFlows;
 
