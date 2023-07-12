@@ -2,6 +2,7 @@ import pages from "../../../support/base/OsivPageObject";
 import flows from "../../../support/base/OsivFlowsObject";
 import {c44746 as testData} from "../../../support/helpers/DataManager";
 import helperObject from "../../../support/helpers/HelperObject";
+import pageBase from "../../../support/base/PageBase";
 
 describe(`C44746: HE-Grad is calculation rules; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/44746`, () => {
@@ -19,6 +20,7 @@ describe(`C44746: HE-Grad is calculation rules;
            .detail.hilflosigkeitTab.waitForLoaded()
            .alltaglicheLebensverrichtungBlock
            .fillInFieldsBulk(data.alltaglicheLebensverrichtungBlock);
+      pageBase.waitForLoadingDisappears();
       step_clickSave_warningOK_checkHEGrad(testData.leicht);
       pages.waitForLoadingDisappears();
     });
@@ -38,6 +40,7 @@ describe(`C44746: HE-Grad is calculation rules;
       pages.entscheid.detail.hilflosigkeitTab.waitForLoaded()
            .lebenspraktischeBegleitungBlock
            .fillInFieldsBulk(data.lebenspraktischeBegleitungBlock);
+      pageBase.waitForLoadingDisappears();
       step_clickSave_warningOK_checkHEGrad(testData.leicht);
       pages.waitForLoadingDisappears();
     });
@@ -57,6 +60,7 @@ describe(`C44746: HE-Grad is calculation rules;
       pages.entscheid.detail.hilflosigkeitTab.waitForLoaded()
            .alltaglicheLebensverrichtungBlock
            .fillInFieldsBulk(data.alltaglicheLebensverrichtungBlock);
+      pageBase.waitForLoadingDisappears();
       step_clickSave_warningOK_checkHEGrad(testData.mittel);
       pages.waitForLoadingDisappears();
     });
@@ -77,6 +81,7 @@ describe(`C44746: HE-Grad is calculation rules;
            .waitForLoaded().alltaglicheLebensverrichtungBlock.fillInFieldsBulk(data.alltaglicheLebensverrichtungBlock);
       pages.entscheid.detail.hilflosigkeitTab
            .lebenspraktischeBegleitungBlock.fillInFieldsBulk(data.lebenspraktischeBegleitungBlock);
+      pageBase.waitForLoadingDisappears();
       step_clickSave_warningOK_checkHEGrad(testData.mittel);
     });
 
@@ -95,6 +100,7 @@ describe(`C44746: HE-Grad is calculation rules;
     pages.entscheid.detail.hilflosigkeitTab.waitForLoaded()
          .alltaglicheLebensverrichtungBlock
          .fillInFieldsBulk(testData.schwer.alltaglicheLebensverrichtungBlock);
+    pageBase.waitForLoadingDisappears();
     step_clickSave_warningOK_checkHEGrad(testData.schwer);
     pages.waitForLoadingDisappears();
   });
