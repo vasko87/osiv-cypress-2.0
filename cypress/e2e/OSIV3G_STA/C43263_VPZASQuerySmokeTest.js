@@ -1,5 +1,4 @@
 import pages from "../../support/base/OsivPageObject";
-import helpers from "../../support/helpers/HelperObject";
 
 const testData = {
   name     : "Trovato",
@@ -8,20 +7,13 @@ const testData = {
   gender   : "Männlich"
 };
 
+// @Bugs: OSIV-22863(Step 5)
 describe(`C43263: VP ZAS - Query - smoke test; 
-  TestRail:https://osiv.testrail.net/index.php?/cases/view/43263; 
-  DEFECT(step 5): https://jiraosiv3g.atlassian.net/browse/OSIV-22863`, {failFast: {enabled: true}}, () => {
+  TestRail:https://osiv.testrail.net/index.php?/cases/view/43263;`, {failFast: {enabled: true}}, () => {
 
   before(`Login as ${Cypress.env("username")};`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
     pages.loginPage.openUrl();
-    helpers.jira.isJiraDone("OSIV-22863").then((isDone) => {
-      console.log(isDone);
-      if (isDone === false) {
-        Cypress.env("isJira", true);
-        console.log(Cypress.env("isJira"));
-      }
-    });
   });
 
   it(`Step 1: login as hulk1 and navigate to desktop VP`, () => {
@@ -46,8 +38,6 @@ describe(`C43263: VP ZAS - Query - smoke test;
   });
 
   it(`Step 5: VERIFY you get a valid response with 3 records where only the top most is set to active`, () => {
-    // TODO Defect
-    cy.skipOn(Cypress.env("isJira") === true);
     pages.versicherte.neuerVersicherterPopup.zasDatenAbfragenPopup
          .grid.checkGridRowsCount(3);
     pages.versicherte.neuerVersicherterPopup.zasDatenAbfragenPopup
