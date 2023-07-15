@@ -6,6 +6,7 @@ import {c50984 as testData} from "../../../support/helpers/DataManager";
 import dateHelper from "../../../support/helpers/DateHelper";
 import pageBase from "../../../support/base/PageBase";
 
+// @Bugs: OSIV-22145(step 9)
 describe(`C50984: E2E (HE Entscheid);
   TestRail: https://osiv.testrail.net/index.php?/cases/view/50984;`, {failFast: {enabled: true}}, () => {
   before("Login", () => {
@@ -114,7 +115,8 @@ describe(`C50984: E2E (HE Entscheid);
     pages.entscheid.detail.sideMenu.navigateToFreitexteTab()
          .begrundungTab
          .txtEditor.waitForLoadedHard()
-         .setValue(testData.step8.textForm);
+         .setValue(testData.step8.textForm)
+         .waitForLoadedHard();
     pages.entscheid.detail.ribbonMenu.clickBegrundungSpeichernBtn();
     pages.notification.checkSuccessMessageVisible();
     pageBase.waitForLoadingDisappears();
