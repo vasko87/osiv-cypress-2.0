@@ -128,6 +128,7 @@ class GridBase {
   waitGridViewLoaded() {
     pageBase.waitForLoadingDisappears();
     this.elements.rowSelected().should("be.visible");
+    pageBase.waitForLoadingDisappears();
     return this;
   }
 

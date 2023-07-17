@@ -20,6 +20,7 @@ describe(`C47266: Change origin of Protokoll to eingliederung (and than delete e
   it(`Step 2: Switch to the tab Protokoll;`, () => {
     pages.versicherte.detail.tabBar.navigateToProtocollTab()
          .grid.waitGridViewLoaded();
+    pageBase.waitForLoadingDisappears();
   });
 
   it(`Step 3: Open Protokol
