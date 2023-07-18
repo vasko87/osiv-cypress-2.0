@@ -1,5 +1,4 @@
 import constants from "../helpers/Constants";
-import pageBase from "../base/PageBase";
 
 class Notifications {
   constructor() {
@@ -16,6 +15,17 @@ class Notifications {
    */
   checkSuccessMessageVisible() {
     this.elements.successMessage().should("be.visible");
+    return this;
+  }
+
+  waitForSuccessMessageDisappears() {
+    cy.get("[class='dhtmlx-info dhtmlx-success']", {timeout : constants.LONG_TIMEOUT}).should("not.exist");
+    return this;
+  }
+
+  checkSuccessMessageVisibleAndWaitForDisappeared() {
+    this.checkSuccessMessageVisible();
+    this.waitForSuccessMessageDisappears();
     return this;
   }
 

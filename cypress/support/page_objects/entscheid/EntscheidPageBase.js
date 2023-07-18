@@ -38,6 +38,7 @@ class EntscheidPageBase {
   }
   clearLeistungsgruppeDropdown() {
     pageBase.clearDropdown(this.elements.leistungsgruppeDropdown());
+    pageBase.waitForLoadingDisappears();
     return this;
   }
 
@@ -67,6 +68,7 @@ class EntscheidPageBase {
 
   clearLeistungscodeDropdown() {
     pageBase.clearDropdown(this.elements.leistungscodeDropdown());
+    pageBase.waitForLoadingDisappears();
     return this;
   }
 
