@@ -23,6 +23,12 @@ class Notifications {
     return this;
   }
 
+  checkSuccessMessageVisibleAndWaitForDisappeared() {
+    this.checkSuccessMessageVisible();
+    this.waitForSuccessMessageDisappears();
+    return this;
+  }
+
   /**
    * Waiting for Notification(Blue) info message appears
    * @returns {Notifications}
