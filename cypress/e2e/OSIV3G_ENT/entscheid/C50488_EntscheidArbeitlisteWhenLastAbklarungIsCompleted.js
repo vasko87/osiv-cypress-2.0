@@ -68,7 +68,7 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
     });
   });
 
-  it.only(`Scenario 3: Open POE list
+  it(`Scenario 3: Open POE list
   Select any item and VP:Zacharias Zwemmer in Versicherter dynselect (POE = 728 - For Zacharias Zwemmer (0395.5119.85))
   Select first abklarung sendung
   Assign and Close it
