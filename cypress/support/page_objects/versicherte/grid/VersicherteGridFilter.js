@@ -5,7 +5,8 @@ class VersicherteGridFilter {
   constructor() {
 
     this.elements = {
-      versicherteNameTxt : () => cy.get("[akid='sStammQueryB-BRS_Versicherten_Name'] input")
+      versicherteNameTxt : () => cy.get("[akid='sStammQueryB-BRS_Versicherten_Name'] input"),
+      versicherteNrTxt : () => cy.get("[akid='sStammQueryB-Stamm_Nr'] input")
     };
   }
 
@@ -16,6 +17,12 @@ class VersicherteGridFilter {
    */
   searchByVersicherteName(value) {
     this.elements.versicherteNameTxt().should("be.visible").click().clear().type(`${value}{enter}`);
+    pageBase.waitForLoadingDisappears();
+    return this;
+  }
+
+  searchByVersicherteNr(value) {
+    this.elements.versicherteNrTxt().should("be.visible").click().clear().type(`${value}{enter}`);
     pageBase.waitForLoadingDisappears();
     return this;
   }

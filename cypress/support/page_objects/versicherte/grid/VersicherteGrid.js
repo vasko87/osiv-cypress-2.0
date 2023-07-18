@@ -35,6 +35,14 @@ class VersicherteGrid extends GridBase {
     return this;
   }
 
+  searchAndOpenVersicherteNr(value) {
+    this.filter.searchByVersicherteNr(value);
+    super.waitGridViewLoaded()
+         .dblClickRowValue(value);
+    pageBase.waitForLoadingDisappears();
+    return this;
+  }
+
   clickPlusBtn() {
     this.elements.plusBtn().click();
     return new NeuerVersicherterPopup();

@@ -70,6 +70,7 @@ import C50511 from "../../fixtures/tests/C50511_TheCalculatedFieldsOfTheNeueGemi
 import C50497 from "../../fixtures/tests/C50497_ValidationOfInvalideneinkommenFieldsDuringEditingPart1.json";
 import C51287 from "../../fixtures/tests/C51287_CalculationsFromTheInvalideneinkommenFieldsetForTheFruhinvaliditatEntityPart3.json";
 import C55741 from "../../fixtures/tests/C55741_ValidationOfAblehnungMassnahmeFieldBasedOnLC.json";
+import C50982 from "../../fixtures/tests/C50982_DossierErhaltRegistrierenForm.json";
 
 const dataFiles = {
   c44194 : C44194_ds1,
@@ -98,7 +99,8 @@ const dataFiles = {
   c50511 : C50511,
   c50497 : C50497,
   c51287 : C51287,
-  c55741 : C55741
+  c55741 : C55741,
+  c50982 : C50982
 };
 
 const dataSet = Cypress.env("dataSet");
