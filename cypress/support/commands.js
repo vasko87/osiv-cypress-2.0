@@ -1,6 +1,6 @@
 import LoginPage from "./standalone/LoginPage";
 import Navigation from "./standalone/navigation/Navigation";
-import addContext from "mochawesome/addContext"
+import addContext from "mochawesome/addContext";
 
 // ***********************************************
 // This example commands.js shows you how to
@@ -17,7 +17,7 @@ const loginPage = new LoginPage();
 const navigation = new Navigation();
 
 before( function() {
-  // window.logCalls = 1;
+  window.logCalls = 1;
   window.testFlow = [];
   window.usedJSHeapSize = {};
 });
@@ -30,19 +30,19 @@ before( function() {
 
 Cypress.Commands.overwrite("log", (originalFn, message) => {
   // Code for using step numbers in the log
-  // Cypress.log({
-  //   displayName: `--- ${window.logCalls}. ${message} ---`,
-  //   name: `--- ${window.logCalls}. ${message} ---`,
-  //   message: ""
-  // });
-  // window.testFlow.push(`${window.logCalls}. ${message}`);
-  // window.logCalls++;
   Cypress.log({
-    displayName: `--- ${message} ---`,
-    name: `--- ${message} ---`,
+    displayName: `--- ${window.logCalls}. ${message} ---`,
+    name: `--- ${window.logCalls}. ${message} ---`,
     message: ""
   });
-  window.testFlow.push(`${message}`);
+  window.testFlow.push(`${window.logCalls}. ${message}`);
+  window.logCalls++;
+  // Cypress.log({
+  //   displayName: `--- ${message} ---`,
+  //   name: `--- ${message} ---`,
+  //   message: ""
+  // });
+  // window.testFlow.push(`${message}`);
 });
 
 Cypress.on("fail", (error) => {
