@@ -23,12 +23,12 @@ describe(`C55741: Validation of 'Ablehnung Massnahme' field based on LC;
          .selectLeistungsgruppeDropdown(testData.step1.lg)
          .selectLeistungscodeDropdown(testData.step1.lc)
          .selectBearbeiterDropdownByTyping(testData.step1.bearbeiter);
-    flows.modalPopup.clickOkBtn_warningOk_CheckSuccessMsg();
+    flows.modalPopup.clickOkBtn_CheckSuccessMsg();
     pages.entscheid.detail.basisdatenTabBar.selectEntscheidDropdown(testData.step1.entscheid)
          .checkAblehnungMassnahmeDropdownContains(testData.step1.ablehnungMassnahme);
     pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
-    pages.warningPopup.clickOkBtnIfVisible();
-    pages.notification.checkSuccessMessageVisible();
+    pages.notification.checkSuccessMessageVisible()
+         .waitForSuccessMessageDisappears();
     pageBase.waitForLoadingDisappears();
   });
 
@@ -46,7 +46,6 @@ describe(`C55741: Validation of 'Ablehnung Massnahme' field based on LC;
       Select LC=bna -> "Ablehnung Massnahme" is empty
       Save changes -> Changes are saved and "Ablehnung Massnahme" is empty`, () => {
     pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
-    pages.warningPopup.clickOkBtnIfVisible();
     pages.notification.checkSuccessMessageVisible();
     pageBase.waitForLoadingDisappears();
     pages.entscheid.detail.basisdatenTabBar.checkAblehnungMassnahmeDropdownContains(testData.step2.ablehnungMassnahme)
@@ -54,7 +53,6 @@ describe(`C55741: Validation of 'Ablehnung Massnahme' field based on LC;
          .selectLeistungscodeDropdownByTyping(testData.step3.lc)
          .checkAblehnungMassnahmeDropdownEmpty(true);
     pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
-    pages.warningPopup.clickOkBtnIfVisible();
     pageBase.waitForLoadingDisappears();
     pages.entscheid.detail.basisdatenTabBar.checkLeistungscodeDropdownContains(testData.step3.lc)
          .checkAblehnungMassnahmeDropdownEmpty(true);
@@ -67,13 +65,18 @@ describe(`C55741: Validation of 'Ablehnung Massnahme' field based on LC;
          .selectLeistungscodeDropdownByTyping(testData.step4.lc)
          .checkAblehnungMassnahmeDropdownContains(testData.step4.ablehnungMassnahme);
     pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
-    pages.warningPopup.clickOkBtnIfVisible();
     pages.notification.checkSuccessMessageVisible();
     pages.checkMsgWarningContainsText(testData.step4.msg, false);
     pages.entscheid.detail.basisdatenTabBar.clearAblehnungMassnahmeDropdown();
     pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
-    pages.warningPopup.clickOkBtnIfVisible();
     pages.notification.checkSuccessMessageVisible();
     pages.checkMsgWarningContainsText(testData.step4.msg, true);
+  });
+
+  after(function() {
+    pages.entscheid.detail.ribbonMenu.clickLoschenBtn();
+    pages.confirmPopup.clickJaBtn();
+    pages.warningPopup.clickOkBtn();
+    pages.notification.checkSuccessMessageVisible();
   });
 });
