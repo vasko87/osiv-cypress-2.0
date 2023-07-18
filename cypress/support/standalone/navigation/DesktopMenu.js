@@ -9,8 +9,7 @@ class DesktopMenu {
       sendungenMainTab: () => cy.get("[class*='level-1'][menuname='Sendungen']"),
       sendungenTab    : () => cy.get("[class*='level-2'][menuname='Sendungen']"),
       adressenTab       : () => cy.get("[menuname='Adressen']"),
-      posteingangMainTab: () => cy.get("[class*='level-1'][menuname='Posteingang']"),
-      posteingangTab    : () => cy.get("[class*='level-2'][menuname='Posteingang']"),
+      posteingangTab    : () => cy.get("[class*='level-1'][menuname='Posteingang']"),
       entscheidMainTab  : () => cy.get("[class*='level-1'][menuname='Entscheid']"),
       entscheidTab      : () => cy.get("[class*='level-2'][menuname='Entscheid']"),
       eingliederungTab  : () => cy.get("[menuname='Eingliederung']"),
@@ -62,10 +61,8 @@ class DesktopMenu {
   }
 
   navigateToPosteingangTab() {
-    this.elements.posteingangMainTab().should("be.visible").click();
-    this.elements.posteingangTab().click();
+    this.elements.posteingangTab().should("be.visible").click();
     pageBase.waitForLoadingDisappears();
-    this.elements.posteingangMainTab().click();
     return this;
   }
 
