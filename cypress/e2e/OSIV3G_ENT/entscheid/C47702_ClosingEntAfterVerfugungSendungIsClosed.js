@@ -26,7 +26,7 @@ describe(`C47702: (ENT ${testData.data1.entId}) Closing ENT after Verfugung send
       pages.entscheid.detail.sendungenTabBar.detail
            .sendungenAbschliessenPopup.waitForLoaded()
            .setVmdatumDate(helpers.date.getCurrentDate());
-      flows.modalPopup.clickOkBtn_warningOk_CheckSuccessMsg();
+      flows.modalPopup.clickOkBtn_warningOk_warningOk_CheckSuccessMsg();
       pages.groupedTaskbar.clickContainsEntscheidTab();
       pages.entscheid.detail.tabBar.navigateToDetailsTab();
       pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(data.arbeitsliste);
