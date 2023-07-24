@@ -60,7 +60,8 @@ describe(`C45772: Create Eingliederung from vP Eingliederungen;
   it(`Step 6: Delete EIN`, () => {
     pages.groupedTaskbar.clickContainsEingliederungTab();
     pages.waitForLoadingDisappears();
-    pages.eingliederung.detail.ribbonMenu.clickLoschenBtn();
+    pages.eingliederung.detail.waitForLoaded()
+         .ribbonMenu.clickLoschenBtn();
     pages.confirmPopup.clickJaBtn();
     pages.notification.checkSuccessMessageVisible();
   });
