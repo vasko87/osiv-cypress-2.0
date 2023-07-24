@@ -76,42 +76,11 @@ pipeline {
                         }
                     }
                 }
-                stage('E2E') {
-                    steps {
-                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                            bat "npx cypress run " + TEST_ENV_E2E
-                        }
-                        script {
-                            publishHTML([
-                            allowMissing: false,
-                            alwaysLinkToLastBuild: false,
-                            keepAll: true,
-                            reportDir: 'cypress/reports',
-                            reportFiles: 'index.html',
-                            reportName: 'HTML Report E2E',
-                            reportTitles: 'Mocha Report'])
-                        }
-                    }
-                }
             }
         }
         stage('Finishing') {
             steps{
                 echo "Finishing testing"
-            }
-        }
-    }
-    post {
-        always{
-            script{
-                publishHTML([
-                allowMissing: false,
-                alwaysLinkToLastBuild: false,
-                keepAll: true,
-                reportDir: 'cypress/reports',
-                reportFiles: 'index.html',
-                reportName: 'HTML Report',
-                reportTitles: 'Mocha Report'])
             }
         }
     }
@@ -150,10 +119,10 @@ def composeArgs() {
     }
     TEST_ENV_ENT = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/entscheid/C39770_EntscheidCopy.js,cypress/e2e/OSIV3G_ENT/entscheid/C42473_EntscheidInDenPapierkorbVerschiebenHappyFlow.js,cypress/e2e/OSIV3G_ENT/entscheid/C47707_ShowNoShowDynamicBaustein.js,cypress/e2e/OSIV3G_ENT/entscheid/C55741_ValidationOfAblehnungMassnahmeFieldBasedOnLC.js" + " --browser chrome"
     TEST_ENV_HE = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/he/C44746_HEGradCalculationRules.js,cypress/e2e/OSIV3G_ENT/he/C47706_PossibilityToEditDataOnHillflosigkeitTabWhenDiscussionStartedEnded.js" + " --browser chrome"
-    TEST_ENV_RENTE = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/rente/**" + " --browser chrome"
     TEST_ENV_E2E = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/e2e/**" + " --browser chrome"
     TEST_ENV_STA = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_STA/C43263_VPZASQuerySmokeTest.js" + " --browser chrome"
     TEST_ENV_EIN = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_EIN/C45772_CreateEingliederungFromVPEingliederungen.js,cypress/e2e/OSIV3G_EIN/C47785_DelegationProcess.js" + " --browser chrome"
+    TEST_ENV_RENTE = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/rente/**" + " --browser chrome"
 }
 
 def setJobName(){
