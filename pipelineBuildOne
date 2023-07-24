@@ -88,7 +88,7 @@ pipeline {
                             keepAll: true,
                             reportDir: 'cypress/reports',
                             reportFiles: 'index.html',
-                            reportName: 'HTML Report ENT HE',
+                            reportName: 'HTML Report HE',
                             reportTitles: 'Mocha Report'])
                         }
                     }
@@ -105,7 +105,7 @@ pipeline {
                             keepAll: true,
                             reportDir: 'cypress/reports',
                             reportFiles: 'index.html',
-                            reportName: 'HTML Report ENT RENTE',
+                            reportName: 'HTML Report RENTE',
                             reportTitles: 'Mocha Report'])
                         }
                     }
@@ -122,7 +122,7 @@ pipeline {
                             keepAll: true,
                             reportDir: 'cypress/reports',
                             reportFiles: 'index.html',
-                            reportName: 'HTML Report ENT E2E',
+                            reportName: 'HTML Report E2E',
                             reportTitles: 'Mocha Report'])
                         }
                     }
