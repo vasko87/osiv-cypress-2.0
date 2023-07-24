@@ -59,10 +59,10 @@ pipeline {
                         }
                     }
                 }
-                stage('RENTE') {
+                stage('E2E') {
                     steps {
                         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                            bat "npx cypress run " + TEST_ENV_RENTE
+                            bat "npx cypress run " + TEST_ENV_E2E
                         }
                         script {
                             publishHTML([
@@ -71,7 +71,7 @@ pipeline {
                             keepAll: true,
                             reportDir: 'cypress/reports',
                             reportFiles: 'index.html',
-                            reportName: 'HTML Report RENTE',
+                            reportName: 'HTML Report E2E',
                             reportTitles: 'Mocha Report'])
                         }
                     }
