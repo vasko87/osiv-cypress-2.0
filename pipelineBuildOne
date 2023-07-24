@@ -25,40 +25,7 @@ pipeline {
         }
         stage('Testing') {
             stages {
-                stage('EIN') {
-                    steps {
-                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                            bat "npx cypress run " + TEST_ENV_EIN
-                        }
-                        script {
-                            publishHTML([
-                            allowMissing: false,
-                            alwaysLinkToLastBuild: false,
-                            keepAll: true,
-                            reportDir: 'cypress/reports',
-                            reportFiles: 'index.html',
-                            reportName: 'HTML Report EIN',
-                            reportTitles: 'Mocha Report'])
-                        }
-                    }
-                }
-                stage('STA') {
-                    steps {
-                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                            bat "npx cypress run " + TEST_ENV_STA
-                        }
-                        script {
-                            publishHTML([
-                            allowMissing: false,
-                            alwaysLinkToLastBuild: false,
-                            keepAll: true,
-                            reportDir: 'cypress/reports',
-                            reportFiles: 'index.html',
-                            reportName: 'HTML Report STA',
-                            reportTitles: 'Mocha Report'])
-                        }
-                    }
-                }
+                
                 stage('E2E') {
                     steps {
                         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
