@@ -22,11 +22,11 @@ before( function() {
   window.usedJSHeapSize = {};
 });
 
-// after( function() {
-//   cy.clearAllCookies();
-//   cy.clearAllLocalStorage();
-//   cy.clearAllSessionStorage();
-// });
+after( function() {
+  cy.clearAllCookies();
+  cy.clearAllLocalStorage();
+  cy.clearAllSessionStorage();
+});
 
 Cypress.Commands.overwrite("log", (originalFn, message) => {
   // Code for using step numbers in the log
