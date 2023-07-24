@@ -49,7 +49,7 @@ module.exports = defineConfig(
         config.env.FAIL_FAST_ENABLED = false;
 
         on("before:browser:launch", (browser = {}, launchOptions) => {
-          console.log(config, browser, launchOptions);
+          // console.log(config, browser, launchOptions);
           if (browser.name === "chrome") {
             launchOptions.args.push("--disable-features=CrossSiteDocumentBlockingIfIsolating," +
               "CrossSiteDocumentBlockingAlways,IsolateOrigins,site-per-process");

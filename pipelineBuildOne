@@ -59,27 +59,10 @@ pipeline {
                         }
                     }
                 }
-                stage('ENT') {
-                    steps{
-                       catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                          bat "npx cypress run " + TEST_ENV_ENT
-                       }
-                       script {
-                           publishHTML([
-                           allowMissing: false,
-                           alwaysLinkToLastBuild: false,
-                           keepAll: true,
-                           reportDir: 'cypress/reports',
-                           reportFiles: 'index.html',
-                           reportName: 'HTML Report ENT',
-                           reportTitles: 'Mocha Report'])
-                       }
-                    }
-                }
-                stage('HE') {
-                    steps{
+                stage('E2E') {
+                    steps {
                         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                            bat "npx cypress run " + TEST_ENV_HE
+                            bat "npx cypress run " + TEST_ENV_E2E
                         }
                         script {
                             publishHTML([
@@ -88,7 +71,7 @@ pipeline {
                             keepAll: true,
                             reportDir: 'cypress/reports',
                             reportFiles: 'index.html',
-                            reportName: 'HTML Report ENT HE',
+                            reportName: 'HTML Report E2E',
                             reportTitles: 'Mocha Report'])
                         }
                     }
@@ -105,15 +88,15 @@ pipeline {
                             keepAll: true,
                             reportDir: 'cypress/reports',
                             reportFiles: 'index.html',
-                            reportName: 'HTML Report ENT RENTE',
+                            reportName: 'HTML Report RENTE',
                             reportTitles: 'Mocha Report'])
                         }
                     }
                 }
-                stage('E2E') {
+                stage('ENT') {
                     steps {
                         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                            bat "npx cypress run " + TEST_ENV_E2E
+                            bat "npx cypress run " + TEST_ENV_ENT
                         }
                         script {
                             publishHTML([
@@ -122,7 +105,24 @@ pipeline {
                             keepAll: true,
                             reportDir: 'cypress/reports',
                             reportFiles: 'index.html',
-                            reportName: 'HTML Report ENT E2E',
+                            reportName: 'HTML Report ENT',
+                            reportTitles: 'Mocha Report'])
+                        }
+                    }
+                }
+                stage('HE') {
+                    steps {
+                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                            bat "npx cypress run " + TEST_ENV_HE
+                        }
+                        script {
+                            publishHTML([
+                            allowMissing: false,
+                            alwaysLinkToLastBuild: false,
+                            keepAll: true,
+                            reportDir: 'cypress/reports',
+                            reportFiles: 'index.html',
+                            reportName: 'HTML Report HE',
                             reportTitles: 'Mocha Report'])
                         }
                     }
@@ -132,20 +132,6 @@ pipeline {
         stage('Finishing') {
             steps{
                 echo "Finishing testing"
-            }
-        }
-    }
-    post {
-        always{
-            script{
-                publishHTML([
-                allowMissing: false,
-                alwaysLinkToLastBuild: false,
-                keepAll: true,
-                reportDir: 'cypress/reports',
-                reportFiles: 'index.html',
-                reportName: 'HTML Report',
-                reportTitles: 'Mocha Report'])
             }
         }
     }
@@ -182,20 +168,15 @@ def composeArgs() {
     } else {
         UNCAUGHT_EXCEPTION_FAIL = ",uncaughtExceptionFailure=true"
     }
-    TEST_ENV_ENT = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/entscheid/C39770_EntscheidCopy.js,
-                                                                                                                                          cypress/e2e/OSIV3G_ENT/entscheid/C42473_EntscheidInDenPapierkorbVerschiebenHappyFlow.js,
-                                                                                                                                          cypress/e2e/OSIV3G_ENT/entscheid/C47707_ShowNoShowDynamicBaustein.js,
-                                                                                                                                          cypress/e2e/OSIV3G_ENT/entscheid/C55741_ValidationOfAblehnungMassnahmeFieldBasedOnLC.js" + " --browser chrome"
-    TEST_ENV_HE = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/he/C44746_HEGradCalculationRules.js,
-                                                                                                                                         cypress/e2e/OSIV3G_ENT/he/C47706_PossibilityToEditDataOnHillflosigkeitTabWhenDiscussionStartedEnded.js" + " --browser chrome"
-    TEST_ENV_RENTE = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/rente/**" + " --browser chrome"
-    TEST_ENV_E2E = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/e2e/**" + " --browser chrome"
-    TEST_ENV_STA = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_STA/C43263_VPZASQuerySmokeTest.js" + " --browser chrome"
-    TEST_ENV_EIN = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_EIN/C45772_CreateEingliederungFromVPEingliederungen.js,
-                                                                                                                                          cypress/e2e/OSIV3G_EIN/C47785_DelegationProcess.js" + " --browser chrome"
+    TEST_ENV_ENT = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/entscheid/C39770_EntscheidCopy.js,cypress/e2e/OSIV3G_ENT/entscheid/C42473_EntscheidInDenPapierkorbVerschiebenHappyFlow.js,cypress/e2e/OSIV3G_ENT/entscheid/C47707_ShowNoShowDynamicBaustein.js" + " --browser chrome"
+    TEST_ENV_HE = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/he/C44746_HEGradCalculationRules.js,cypress/e2e/OSIV3G_ENT/he/C47706_PossibilityToEditDataOnHillflosigkeitTabWhenDiscussionStartedEnded.js" + " --browser chrome"
+    TEST_ENV_E2E = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/e2e/**" + " --browser chrome"
+    TEST_ENV_STA = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_STA/C43263_VPZASQuerySmokeTest.js" + " --browser chrome"
+    TEST_ENV_EIN = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_EIN/C45772_CreateEingliederungFromVPEingliederungen.js,cypress/e2e/OSIV3G_EIN/C47785_DelegationProcess.js" + " --browser chrome"
+    TEST_ENV_RENTE = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/rente/**" + " --browser chrome"
 }
 
 def setJobName(){
-    echo "ENV = [" + ENV_URL + "], dataSet = [" + DATA_SET + "]"
-    currentBuild.displayName = ENV + "_" + DATA_SET
+    echo "ENV = [" + ENV_URL + "]"
+    currentBuild.displayName = ENV
 }
