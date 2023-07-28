@@ -28,8 +28,7 @@ after( function() {
   cy.clearAllSessionStorage();
 });
 
-Cypress.Commands.overwrite("log", (originalFn, message) => {
-  // Code for using step numbers in the log
+Cypress.Commands.add("logWithSteps", (originalFn, message) => {
   Cypress.log({
     displayName: `--- ${window.logCalls}. ${message} ---`,
     name: `--- ${window.logCalls}. ${message} ---`,
@@ -37,16 +36,22 @@ Cypress.Commands.overwrite("log", (originalFn, message) => {
   });
   window.testFlow.push(`${window.logCalls}. ${message}`);
   window.logCalls++;
-  // Cypress.log({
-  //   displayName: `--- ${message} ---`,
-  //   name: `--- ${message} ---`,
-  //   message: ""
-  // });
-  // window.testFlow.push(`${message}`);
+});
+
+Cypress.Commands.overwrite("log", (originalFn, message) => {
+  Cypress.log({
+    displayName: `--- ${message} ---`,
+    name: `--- ${message} ---`,
+    message: ""
+  });
+  window.testFlow.push(`${message}`);
 });
 
 Cypress.on("fail", (error) => {
   error.message = error.message + "\n\nTest flow:\n" + window.testFlow.join("\n");
+  cy.clearAllCookies();
+  cy.clearAllLocalStorage();
+  cy.clearAllSessionStorage();
   throw error;
 });
 
@@ -85,5 +90,11 @@ if (Cypress.config("hideXHR")) {
 
     app.document.head.appendChild(style);
   }
+
+  Cypress.Commands.add("GETrequest", (link) => {
+    cy.log(link);
+    cy.request("GET", `${Cypress.env("baseUrl") + link}`);
+  });
+
 }
 
