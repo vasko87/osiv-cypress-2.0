@@ -1,4 +1,4 @@
-import pages from "../../support/base/OsivPageObject";
+import pages from "../../../support/base/OsivPageObject";
 
 const testData = {
   name     : "Trovato",

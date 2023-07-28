@@ -1,17 +1,17 @@
-import pages from "../../../support/base/OsivPageObject";
-import flows from "../../../support/base/OsivFlowsObject";
+import pages from "../../../../support/base/OsivPageObject";
+import flows from "../../../../support/base/OsivFlowsObject";
 
 const testData = {
   entId            : "23153",
   methode          : "Fruehinvaliditaet",
-  lohnart          : "Jahreslohn",
-  fr               : "50'000",
+  lohnart          : "Monatslohn",
+  fr               : "4000",
   anzahlMonathLohne: "13",
-  monatslohnInFr   : "3’846.15"
+  inFrProJahr      : "52'000"
 };
 
-describe(`C50503: Test calculations - using Yearly income (Jahreslohn)
-  TestRail: https://osiv.testrail.net/index.php?/cases/view/50503`, {failFast: {enabled: true}}, () => {
+describe(`C50502: Test calculations - using monthly pay (Monatslohn) 
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/50502`, {failFast: {enabled: true}}, () => {
 
   before(`Login`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
@@ -27,14 +27,14 @@ describe(`C50503: Test calculations - using Yearly income (Jahreslohn)
   });
 
   it(`Step 2: 
-  “Lohnart” = Jahreslohn, 
-  “in Fr” = 50’000 (yearly income ), 
+  “Lohnart” = Monatslohn , 
+  “in Fr” = 4000 (monthly salary ), 
   "Anzahl Monatslöhne" = 13; 
-  Expected: calc field “Monatslohn in Fr. ” = 3’846`, () => {
+  Expected: calc field “in Fr. pro Jahr” = 52’000 (Yearly salary)`, () => {
     pages.entscheid.detail.renteTab.fruhinvaliditatPopup.invalideneinkommenBlock
          .selectLohnartDropdown(testData.lohnart)
          .setFrInvalideneinkommenTxt(testData.fr)
          .setAnzahlMonathLohneTxt(testData.anzahlMonathLohne)
-         .checkMonatslohnInFrTxt(testData.monatslohnInFr);
+         .checkInFrProJahrTxt(testData.inFrProJahr);
   });
 });

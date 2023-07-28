@@ -1,10 +1,10 @@
-import pages from "../../../support/base/OsivPageObject";
-import flows from "../../../support/base/OsivFlowsObject";
-import constants from "../../../support/helpers/Constants";
-import helpers from "../../../support/helpers/HelperObject";
-import {c50984 as testData} from "../../../support/helpers/DataManager";
-import dateHelper from "../../../support/helpers/DateHelper";
-import pageBase from "../../../support/base/PageBase";
+import pages from "../../../../support/base/OsivPageObject";
+import flows from "../../../../support/base/OsivFlowsObject";
+import constants from "../../../../support/helpers/Constants";
+import helpers from "../../../../support/helpers/HelperObject";
+import {c50984 as testData} from "../../../../support/helpers/DataManager";
+import dateHelper from "../../../../support/helpers/DateHelper";
+import pageBase from "../../../../support/base/PageBase";
 
 // @Bugs: OSIV-22145(step 9)
 describe(`C50984: E2E (HE Entscheid);

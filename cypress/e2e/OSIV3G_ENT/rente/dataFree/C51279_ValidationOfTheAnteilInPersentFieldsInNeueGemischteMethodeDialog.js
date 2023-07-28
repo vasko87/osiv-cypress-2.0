@@ -1,6 +1,6 @@
-import pages from "../../../support/base/OsivPageObject";
-import flows from "../../../support/base/OsivFlowsObject";
-import helpers from "../../../support/helpers/HelperObject";
+import pages from "../../../../support/base/OsivPageObject";
+import flows from "../../../../support/base/OsivFlowsObject";
+import helpers from "../../../../support/helpers/HelperObject";
 
 const testData = {
   entId              : "23178",

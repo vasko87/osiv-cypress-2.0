@@ -1,5 +1,5 @@
-import pages from "../../../support/base/OsivPageObject";
-import flows from "../../../support/base/OsivFlowsObject";
+import pages from "../../../../support/base/OsivPageObject";
+import flows from "../../../../support/base/OsivFlowsObject";
 
 const testData = {
   entId            : "23153",

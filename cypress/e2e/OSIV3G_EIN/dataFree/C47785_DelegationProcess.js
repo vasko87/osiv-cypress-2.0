@@ -1,7 +1,7 @@
-import pages from "../../support/base/OsivPageObject";
-import flows from "../../support/base/OsivFlowsObject";
-import constants from "../../support/helpers/Constants";
-import helperObject from "../../support/helpers/HelperObject";
+import pages from "../../../support/base/OsivPageObject";
+import flows from "../../../support/base/OsivFlowsObject";
+import constants from "../../../support/helpers/Constants";
+import helperObject from "../../../support/helpers/HelperObject";
 
 const testData = {
   einID            : "3221",

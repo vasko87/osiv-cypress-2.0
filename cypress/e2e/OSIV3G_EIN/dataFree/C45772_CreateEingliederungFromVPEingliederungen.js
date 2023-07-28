@@ -1,6 +1,6 @@
-import pages from "../../support/base/OsivPageObject";
-import flows from "../../support/base/OsivFlowsObject";
-import pageBase from "../../support/base/PageBase";
+import pages from "../../../support/base/OsivPageObject";
+import flows from "../../../support/base/OsivFlowsObject";
+import pageBase from "../../../support/base/PageBase";
 
 const testData = {
   vpName      : "Crood Eep",
@@ -51,7 +51,8 @@ describe(`C45772: Create Eingliederung from vP Eingliederungen;
     pages.eingliederung.detail.waitForLoaded();
     pages.groupedTaskbar.clickContainsVersichertendatenTab();
     pages.versicherte.detail.tabBar.navigateToEntscheideTab()
-         .grid.dblClickRowWithText(testData.arbeitsliste);
+         .grid.waitGridViewLoaded()
+         .dblClickRowWithText(testData.arbeitsliste);
     pages.entscheid.detail.waitForLoaded();
     pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(testData.arbeitsliste)
          .checkLeistungscodeDropdownEmpty(true);
