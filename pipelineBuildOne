@@ -58,40 +58,6 @@ pipeline {
                         }
                     }
                 }
-                stage('E2E') {
-                    steps {
-                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                            bat "npx cypress run " + TEST_ENV_E2E
-                        }
-                        script {
-                            publishHTML([
-                            allowMissing: false,
-                            alwaysLinkToLastBuild: false,
-                            keepAll: true,
-                            reportDir: 'cypress/reports',
-                            reportFiles: 'index.html',
-                            reportName: 'HTML Report E2E',
-                            reportTitles: 'Mocha Report'])
-                        }
-                    }
-                }
-                stage('HE') {
-                    steps {
-                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                            bat "npx cypress run " + TEST_ENV_HE
-                        }
-                        script {
-                            publishHTML([
-                            allowMissing: false,
-                            alwaysLinkToLastBuild: false,
-                            keepAll: true,
-                            reportDir: 'cypress/reports',
-                            reportFiles: 'index.html',
-                            reportName: 'HTML Report HE',
-                            reportTitles: 'Mocha Report'])
-                        }
-                    }
-                }
                 stage('RENTE') {
                     steps {
                         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -165,11 +131,9 @@ def composeArgs() {
     if (PASSWORD != "default") {
         PASSWORD_ENV = ",password=" + PASSWORD
     }
-    TEST_ENV_ENT = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + " --spec cypress/e2e/OSIV3G_ENT/entscheid/dataFree/**" + " --browser chrome"
-    TEST_ENV_HE = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + " --spec cypress/e2e/OSIV3G_ENT/he/dataFree/**" + " --browser chrome"
-    TEST_ENV_E2E = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + " --spec cypress/e2e/OSIV3G_ENT/e2e/dataFree/**" + " --browser chrome"
     TEST_ENV_STA = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + " --spec cypress/e2e/OSIV3G_STA/dataFree/**" + " --browser chrome"
     TEST_ENV_EIN = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + " --spec cypress/e2e/OSIV3G_EIN/dataFree/**" + " --browser chrome"
+    TEST_ENV_ENT = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + " --spec cypress/e2e/OSIV3G_ENT/entscheid/dataFree/**,cypress/e2e/OSIV3G_ENT/he/dataFree/**,cypress/e2e/OSIV3G_ENT/e2e/dataFree/**" + " --browser chrome"
     TEST_ENV_RENTE = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + " --spec cypress/e2e/OSIV3G_ENT/rente/dataFree/**" + " --browser chrome"
 }
 
