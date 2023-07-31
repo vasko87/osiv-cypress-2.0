@@ -63,7 +63,6 @@ describe(`C45772: Create Eingliederung from vP Eingliederungen;
     pages.waitForLoadingDisappears();
     pages.eingliederung.detail.waitForLoaded()
          .ribbonMenu.clickLoschenBtn();
-    pages.confirmPopup.clickJaBtn();
-    pages.notification.checkSuccessMessageVisible();
+    pages.warningPopup.clickOkBtn();
   });
 });
