@@ -24,6 +24,40 @@ pipeline {
         }
         stage('Testing') {
             stages {
+                stage('ENT') {
+                    steps {
+                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                            bat "npx cypress run " + TEST_ENV_ENT
+                        }
+                        script {
+                            publishHTML([
+                            allowMissing: false,
+                            alwaysLinkToLastBuild: false,
+                            keepAll: true,
+                            reportDir: 'cypress/reports',
+                            reportFiles: 'index.html',
+                            reportName: 'HTML Report ENT',
+                            reportTitles: 'Mocha Report'])
+                        }
+                    }
+                }
+                stage('RENTE') {
+                    steps {
+                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                            bat "npx cypress run " + TEST_ENV_RENTE
+                        }
+                        script {
+                            publishHTML([
+                            allowMissing: false,
+                            alwaysLinkToLastBuild: false,
+                            keepAll: true,
+                            reportDir: 'cypress/reports',
+                            reportFiles: 'index.html',
+                            reportName: 'HTML Report RENTE',
+                            reportTitles: 'Mocha Report'])
+                        }
+                    }
+                }
                 stage('EIN') {
                     steps {
                         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -54,40 +88,6 @@ pipeline {
                             reportDir: 'cypress/reports',
                             reportFiles: 'index.html',
                             reportName: 'HTML Report STA',
-                            reportTitles: 'Mocha Report'])
-                        }
-                    }
-                }
-                stage('RENTE') {
-                    steps {
-                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                            bat "npx cypress run " + TEST_ENV_RENTE
-                        }
-                        script {
-                            publishHTML([
-                            allowMissing: false,
-                            alwaysLinkToLastBuild: false,
-                            keepAll: true,
-                            reportDir: 'cypress/reports',
-                            reportFiles: 'index.html',
-                            reportName: 'HTML Report RENTE',
-                            reportTitles: 'Mocha Report'])
-                        }
-                    }
-                }
-                stage('ENT') {
-                    steps {
-                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                            bat "npx cypress run " + TEST_ENV_ENT
-                        }
-                        script {
-                            publishHTML([
-                            allowMissing: false,
-                            alwaysLinkToLastBuild: false,
-                            keepAll: true,
-                            reportDir: 'cypress/reports',
-                            reportFiles: 'index.html',
-                            reportName: 'HTML Report ENT',
                             reportTitles: 'Mocha Report'])
                         }
                     }
