@@ -7,7 +7,8 @@ class MetaInfoTab_Ent {
       imPapierkorbCheckbox: () => cy.get("[akid='EntscheidMetaInfoForm-geloescht']"),
       loeschtgrundTxt     : () => cy.get("[akid='EntscheidMetaInfoForm-geloeschtgrundbez'] input"),
       geandertAmDate      : () => cy.get("[akid='EntscheidMetaInfoForm-mut_dat'] input"),
-      umTime              : () => cy.get("[akid='EntscheidMetaInfoForm-mutzeit'] input")
+      umTime              : () => cy.get("[akid='EntscheidMetaInfoForm-mutzeit'] input"),
+      entscheidIdTxt      : () => cy.get("[akid='EntscheidMetaInfoForm-entscheid_id'] input")
     };
   }
 
@@ -33,6 +34,11 @@ class MetaInfoTab_Ent {
 
   checkUmTimeContains(value) {
     this.elements.umTime().should("contain.value", value);
+    return this;
+  }
+
+  getEntscheidIdTxt() {
+    this.elements.entscheidIdTxt();
     return this;
   }
 }
