@@ -49,9 +49,6 @@ Cypress.Commands.overwrite("log", (originalFn, message) => {
 
 Cypress.on("fail", (error) => {
   error.message = error.message + "\n\nTest flow:\n" + window.testFlow.join("\n");
-  cy.clearAllCookies();
-  cy.clearAllLocalStorage();
-  cy.clearAllSessionStorage();
   throw error;
 });
 

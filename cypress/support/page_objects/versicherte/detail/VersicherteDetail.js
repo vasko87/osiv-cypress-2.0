@@ -10,6 +10,7 @@ import BasisdatenTab_VR from "./sideMenuTabs/BasisdatenTab_VR";
 import DossierChronikTab from "./sideMenuTabs/DossierChronikTab";
 import ProtocollPageObject from "../../protocoll/ProtocollPageObject";
 import constants from "../../../helpers/Constants";
+import EingliederungenTab_Versicherte from "./tabBarTabs/EingliederungenTab_Versicherte";
 
 class VersicherteDetail extends VersichertePageBase {
   constructor() {
@@ -22,6 +23,7 @@ class VersicherteDetail extends VersichertePageBase {
     this.basisdatenTab = new BasisdatenTab_VR();
     this.dossierChronikTab = new DossierChronikTab();
     this.entscheidTabBar = new EntscheidTab_Versicherte();
+    this.eingliederungenTabBar = new EingliederungenTab_Versicherte();
     this.sendungenTabBar = new SendungenTab_Versicherte();
     this.protocollTabBar = new ProtocollPageObject();
     super.elements = {

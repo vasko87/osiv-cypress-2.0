@@ -3,6 +3,7 @@ import AbschlussEingliederungPopup from "./popups/AbschlussEingliederungPopup";
 import DelegationanIVStellePopup from "./popups/DelegationanIVStellePopup";
 import pageBase from "../../../base/PageBase";
 import EntscheidDetail from "../../entscheid/detail/EntscheidDetail";
+import VersicherteDetail from "../../versicherte/detail/VersicherteDetail";
 
 class EingliederungRibbon extends RibbonBase {
   constructor() {
@@ -15,7 +16,8 @@ class EingliederungRibbon extends RibbonBase {
       delegationAufhebenBtn : () => this.elements.ribbonBlock().find("[title='Delegation aufheben']"),
       abschlussEingliederungBtn : () => this.elements.ribbonBlock().find("[title='Abschluss Eingliederung']"),
       folgeentscheidOffnenBtn : () => this.elements.ribbonBlock().find("[title='Folgeentscheid öffnen']"),
-      resultatAnzeigenBtn : () => this.elements.ribbonBlock().find("[title='Resultat anzeigen']")
+      resultatAnzeigenBtn : () => this.elements.ribbonBlock().find("[title='Resultat anzeigen']"),
+      vPOffnenBtn : () => this.elements.ribbonBlock().find("[title='vP öffnen']")
     };
   }
 
@@ -59,6 +61,11 @@ class EingliederungRibbon extends RibbonBase {
     return new AbschlussEingliederungPopup();
   }
 
+  clickVPOffnenBtn() {
+    this.elements.vPOffnenBtn().should("be.visible").click();
+    return new VersicherteDetail();
+  }
+
   checkAbschlussEingliederungBtnDisabled(isDisabled) {
     super.checkMenuItemDisable(this.elements.abschlussEingliederungBtn(), isDisabled);
     return this;
@@ -67,6 +74,11 @@ class EingliederungRibbon extends RibbonBase {
   clickFolgeentscheidOffnenBtn() {
     this.elements.folgeentscheidOffnenBtn().should("be.visible").click();
     return new EntscheidDetail();
+  }
+
+  checkFolgeentscheidOffnenBtnDisabled(isDisabled) {
+    super.checkMenuItemDisable(this.elements.folgeentscheidOffnenBtn(), isDisabled);
+    return this;
   }
 
   clickResultatAnzeigenBtn() {
