@@ -6,6 +6,7 @@ class ProtocollPageBase {
       typDropdown: () => cy.get(baseCSS).find("[akid$='-protokolltypbez']"),
       ursprungDropdown  : () => cy.get(baseCSS).find("[akid$='-ursprungbez']"),
       ursprungTxt  : () => cy.get(baseCSS).find("[akid$='-ursprung'] input"),
+      ursprungTextTxt  : () => cy.get(baseCSS).find("[akid$='-ursprungtext'] input"),
       eingliederungDropdown  : () => cy.get(baseCSS).find("[akid$='-eingliederungbez']"),
       entscheidDropdown  : () => cy.get(baseCSS).find("[akid$='-entscheidbez']"),
       ereignisDropdown  : () => cy.get(baseCSS).find("[akid$='-ereignisbez']"),
@@ -71,6 +72,11 @@ class ProtocollPageBase {
 
   checkUrsprungTxt(value) {
     this.elements.ursprungTxt().should("be.visible").should("have.value", value);
+    return this;
+  }
+
+  checkUrsprungTextTxt(value) {
+    this.elements.ursprungTextTxt().should("be.visible").should("have.value", value);
     return this;
   }
 }

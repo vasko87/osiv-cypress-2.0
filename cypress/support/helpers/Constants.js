@@ -24,6 +24,13 @@ const MSG = {
   OSCIENT_522: "Bitte die Bearbeitung einleiten. (OSCIENT:522)",
   OSCIENT_713: "Wollen sie fortfahren? (OSCIENT:713)",
 
+  OSCEIN_65_PART1: "Es existieren noch Sendungen oder Abklärungen zur Eingliederung.",
+  OSCEIN_65_PART2: "Alle Sendungen und Abklärungen werden dem Stamm zugeordnet.",
+  OSCEIN_65_PART3: "Wollen Sie die Eingliederung wirklich löschen? (OSCEIN:65)",
+  OSCEIN_67_PART1: "Es existieren noch Protokolleinträge zur Eingliederung.",
+  OSCEIN_67_PART2: "Alle Protokolleinträge werden dem Stamm zugeordnet.",
+  OSCEIN_67_PART3: "Wollen Sie die Eingliederung wirklich löschen? (OSCEIN:67)",
+
   TERMIN_44  : "Sie beenden einen fremden Termin. (Termin:44)",
   TERMIN_26  : "Die zugehörige Eingliederung bleibt aufgrund eines Termins im Warten. (Termin:26)",
   TERMIN_27  : "Die zugehörige Eingliederung wird aus dem Warten befreit. (Termin:27)",
