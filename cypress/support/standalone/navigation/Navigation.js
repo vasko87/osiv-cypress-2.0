@@ -7,9 +7,13 @@ class Navigation {
     this.groupedTaskbar = new GroupedTaskbar();
     this.elements = {
       taskbarPanel : () => cy.get("[class*='taskbar-hdr-panel-container']"),
-      homeBtn : () => this.elements.taskbarPanel().find("[class*='dhx_toolbar_btn dhxtoolbar_btn']"),
+      homeBtn : () => this.elements.taskbarPanel().find("[class='dhx_cell_toolbar_def']"),
       userInfoTxt : () => cy.get("[class='akUserInfo']")
-    }
+    };
+  }
+
+  clickHomeBtn() {
+    this.elements.homeBtn().should("be.visible").click();
   }
 }
 export default Navigation;

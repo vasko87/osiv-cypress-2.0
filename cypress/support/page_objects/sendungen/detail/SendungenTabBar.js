@@ -5,10 +5,10 @@ import ProtocollTab_Sen from "./tabBarTabs/ProtocollTab_Sen";
 class SendungenTabBar {
   constructor() {
     this.elements = {
-      detailsTab  : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='SendungDetailsTabbar-Details']`),
-      protokollTab: () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='SendungDetailsTabbar-Protokoll']`),
-      termineTab   : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='SendungDetailsTabbar-Termin']`),
-      metaInfoTab : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='SendungDetailsTabbar-Meta-Info']`)
+      detailsTab  : () => cy.get(`${constants.CSS_OPACITY1_ACTIVE} [akid='SendungDetailsTabbar-Details']`),
+      protokollTab: () => cy.get(`${constants.CSS_OPACITY1_ACTIVE} [akid='SendungDetailsTabbar-Protokoll']`),
+      termineTab   : () => cy.get(`${constants.CSS_OPACITY1_ACTIVE} [akid='SendungDetailsTabbar-Termin']`),
+      metaInfoTab : () => cy.get(`${constants.CSS_OPACITY1_ACTIVE} [akid='SendungDetailsTabbar-Meta-Info']`)
     };
   }
 
