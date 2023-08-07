@@ -3,19 +3,20 @@ import pageBase from "../../base/PageBase";
 class EingliederungPageBase {
   constructor(baseCSS) {
     this.elements = {
-      gesuchDropdown: () => cy.get(baseCSS).find("[akid$='-gesuchdynselect']"),
-      erstgesprachTxt: () => cy.get(baseCSS).find("[akid$='-erstgespraech_dat'] input"),
-      ereignisTxt: () => cy.get(baseCSS).find("[akid$='-ereignistext']"),
-      ereignisDropdown: () => cy.get(baseCSS).find("[akid$='-ereignisdynselect']"),
+      gesuchDropdown      : () => cy.get(baseCSS).find("[akid$='-gesuchdynselect']"),
+      erstgesprachTxt     : () => cy.get(baseCSS).find("[akid$='-erstgespraech_dat'] input"),
+      ereignisTxt         : () => cy.get(baseCSS).find("[akid$='-ereignistext']"),
+      ereignisDropdown    : () => cy.get(baseCSS).find("[akid$='-ereignisdynselect']"),
       auftragVonDropdown  : () => cy.get(baseCSS).find("[akid$='-sachbearbeiter']"),
-      auftragDropdown  : () => cy.get(baseCSS).find("[akid$='-auftragsart']"),
-      auftragAnDropdown        : () => cy.get(baseCSS).find("[akid$='-berufberaterdynselect']"),
+      auftragDropdown     : () => cy.get(baseCSS).find("[akid$='-auftragsart']"),
+      auftragAnDropdown   : () => cy.get(baseCSS).find("[akid$='-berufberaterdynselect']"),
+      auftragstextTextarea: () => cy.get(baseCSS).find("[akid$='-auftragstext'] textarea"),
       meldungTextarea     : () => cy.get(baseCSS).find("[akid$='-MeldungText']"),
       arbeitslisteTxt     : () => cy.get(baseCSS).find("[akid$='-arbeitslistebez'] input"),
-      totalTxt     : () => cy.get(baseCSS).find("[akid$='-total_gespraeche'] input"),
+      totalTxt            : () => cy.get(baseCSS).find("[akid$='-total_gespraeche'] input"),
       delegationAnTxt     : () => cy.get(baseCSS).find("[akid$='-delegationanbez'] input"),
-      ansprechpartnerTxt     : () => cy.get(baseCSS).find("[akid$='-ansprech_delegation'] input"),
-      tetlefonnumberTxt     : () => cy.get(baseCSS).find("[akid$='-telefon'] input"),
+      ansprechpartnerTxt  : () => cy.get(baseCSS).find("[akid$='-ansprech_delegation'] input"),
+      tetlefonnumberTxt   : () => cy.get(baseCSS).find("[akid$='-telefon'] input"),
       notizenTextarea     : () => cy.get(baseCSS).find("[akid$='-bem'] textarea")
     };
   }
@@ -123,6 +124,30 @@ class EingliederungPageBase {
 
   getMeldungTextarea() {
     return this.elements.meldungTextarea();
+  }
+
+  setAuftragstextTextarea(value) {
+    this.elements.auftragstextTextarea().type(value);
+    return this;
+  }
+
+  clearAuftragstextTextarea() {
+    this.elements.auftragstextTextarea().clear();
+    return this;
+  }
+
+  checkAuftragstextTextarea(value) {
+    this.elements.auftragstextTextarea().should("have.value", value);
+    return this;
+  }
+
+  checkAuftragstextTextareaContains(value) {
+    this.elements.auftragstextTextarea().should("contain.value", value);
+    return this;
+  }
+
+  getAuftragstextTextarea() {
+    return this.elements.auftragstextTextarea();
   }
 
   checkArbeitslisteTxt(value) {

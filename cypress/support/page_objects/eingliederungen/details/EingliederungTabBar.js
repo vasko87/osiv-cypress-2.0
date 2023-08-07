@@ -1,17 +1,19 @@
-import EingliederungDetail from "./EingliederungDetail";
 import TermineTab_Ein from "./tabBarTabs/TermineTab_Ein";
 import DetailTab_Ein from "./tabBarTabs/DetailTab_Ein";
 import EntscheideTab_Ein from "./tabBarTabs/EntscheideTab_Ein";
+import SendungenTab_Ein from "./tabBarTabs/SendungenTab_Ein";
+import MetaInfoTab_Ein from "./tabBarTabs/MetaInfoTab_Ein";
+import constants from "../../../helpers/Constants";
 
 class EingliederungTabBar {
   constructor() {
     this.elements = {
-      detailsTab : () => cy.get("[akid='SimpleSwatTabbar-Details']"),
-      termineTab : () => cy.get("[akid='SimpleSwatTabbar-Termine']"),
-      sendungenTab : () => cy.get("[akid='SimpleSwatTabbar-Sendungen']"),
-      entscheideTab : () => cy.get("[akid='SimpleSwatTabbar-Entscheide']"),
-      protokollTab : () => cy.get("[akid='SimpleSwatTabbar-Protokoll']"),
-      metaInfoTab : () => cy.get("[akid='SimpleSwatTabbar-Meta-Info']")
+      detailsTab : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='SimpleSwatTabbar-Details']`),
+      termineTab : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='SimpleSwatTabbar-Termine']`),
+      sendungenTab : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='SimpleSwatTabbar-Sendungen']`),
+      entscheideTab : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='SimpleSwatTabbar-Entscheide']`),
+      protokollTab : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='SimpleSwatTabbar-Protokoll']`),
+      metaInfoTab : () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='SimpleSwatTabbar-Meta-Info']`)
     };
   }
 
@@ -27,7 +29,7 @@ class EingliederungTabBar {
 
   navigateToSendungenTab(){
     this.elements.sendungenTab().should("be.visible").click();
-    return this;
+    return new SendungenTab_Ein();
   }
 
   navigateToEntscheideTab(){
@@ -42,7 +44,7 @@ class EingliederungTabBar {
 
   navigateToMetaInfoTab(){
     this.elements.metaInfoTab().should("be.visible").click();
-    return this;
+    return new MetaInfoTab_Ein();
   }
 }
 export default EingliederungTabBar;

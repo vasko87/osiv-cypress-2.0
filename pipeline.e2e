@@ -85,7 +85,7 @@ def composeArgs() {
     } else {
         UNCAUGHT_EXCEPTION_FAIL = ",uncaughtExceptionFailure=true"
     }
-    TEST_ENV_E2E = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/e2e/**" + " --browser chrome"
+    TEST_ENV_E2E = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/e2e/**/**" + " --browser chrome"
 }
 
 def setJobName(){

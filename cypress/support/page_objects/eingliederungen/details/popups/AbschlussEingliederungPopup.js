@@ -15,7 +15,9 @@ class AbschlussEingliederungPopup extends ModalWindowBase {
       benutzerDropdown                : () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-rentenfragebez']"),
       rentenfrageDropdown             : () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-rentenfragepruefendynselect']"),
       meldungFolgeEntscheidTextarea   : () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-FolgeEntscheidMeldung'] textarea"),
-      rentenfrageFieldsSection        : () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-rentenfragefieldset']")
+      auftragsText   : () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-folgeauftragstext'] input"),
+      rentenfrageFieldsSection        : () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-rentenfragefieldset']"),
+      folgeAuftragAnDropdown                  : () => this.elements.modalWindow().find("[akid='EingliederungAbschliessenForm-folgeauftragbearbeiterbez']")
     };
   }
 
@@ -27,6 +29,11 @@ class AbschlussEingliederungPopup extends ModalWindowBase {
 
   selectResultatDropdown(value) {
     pageBase.selectInDropdownContains(this.elements.resultatDropdown(), value);
+    return this;
+  }
+
+  selectResultatDropdownByIndex(index) {
+    pageBase.selectDropdownValueByIndex(this.elements.resultatDropdown(), index);
     return this;
   }
 
@@ -75,6 +82,16 @@ class AbschlussEingliederungPopup extends ModalWindowBase {
     return this;
   }
 
+  selectFolgeAuftragAnDropdown(value) {
+    pageBase.selectInDropdownContains(this.elements.folgeAuftragAnDropdown(), value);
+    return this;
+  }
+
+  selectFolgeAuftragAnDropdownByIndex(index) {
+    pageBase.selectDropdownValueByIndex(this.elements.folgeAuftragAnDropdown(), index);
+    return this;
+  }
+
   selectBearbeiterFolgeEntscheidDropdown(value) {
     pageBase.selectInDropdownContains(this.elements.bearbeiterFolgeEntscheidDropdown(), value);
     return this;
@@ -112,6 +129,11 @@ class AbschlussEingliederungPopup extends ModalWindowBase {
 
   setMeldungFolgeEntscheidTextarea(value) {
     this.elements.meldungFolgeEntscheidTextarea().should("be.visible").type(value);
+    return this;
+  }
+
+  setAuftragsText(value) {
+    this.elements.auftragsText().should("be.visible").type(value);
     return this;
   }
 

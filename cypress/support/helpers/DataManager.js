@@ -46,6 +46,18 @@ import C55714_ds1 from "../../fixtures/tests/dataSet1/C55714_DossierBeilagenDoss
 import C55714_ds2 from "../../fixtures/tests/dataSet2/C55714_DossierBeilagenDossierAusgabeExportSENWithFoldersAsSEDEX.json";
 import C55714_ds3 from "../../fixtures/tests/dataSet3/C55714_DossierBeilagenDossierAusgabeExportSENWithFoldersAsSEDEX.json";
 
+import C55733_ds1 from "../../fixtures/tests/dataSet1/C55733_AbschlussEingliederungHasOpenSendungAndTermin.json";
+import C55733_ds2 from "../../fixtures/tests/dataSet2/C55733_AbschlussEingliederungHasOpenSendungAndTermin.json";
+import C55733_ds3 from "../../fixtures/tests/dataSet3/C55733_AbschlussEingliederungHasOpenSendungAndTermin.json";
+
+import C50473_ds1 from "../../fixtures/tests/dataSet1/C50473_EingliederungLoschenWithSEndungAndProtokollNoEingliederungGesuchId.json";
+import C50473_ds2 from "../../fixtures/tests/dataSet2/C50473_EingliederungLoschenWithSEndungAndProtokollNoEingliederungGesuchId.json";
+import C50473_ds3 from "../../fixtures/tests/dataSet3/C50473_EingliederungLoschenWithSEndungAndProtokollNoEingliederungGesuchId.json";
+
+import C50474_ds1 from "../../fixtures/tests/dataSet1/C50474_EingliederungLoschenWithSEndungAndProtokollWithEingliederungGesuchId.json";
+import C50474_ds2 from "../../fixtures/tests/dataSet2/C50474_EingliederungLoschenWithSEndungAndProtokollWithEingliederungGesuchId.json";
+import C50474_ds3 from "../../fixtures/tests/dataSet3/C50474_EingliederungLoschenWithSEndungAndProtokollWithEingliederungGesuchId.json";
+
 import C001 from "../../fixtures/tests/C001_newAdressTest.json";
 import C44746 from "../../fixtures/tests/C44746_HEGradCalculationRules.json";
 import C47707 from "../../fixtures/tests/C47707_ShowNoShowDynamicBaustein.json";
@@ -72,6 +84,9 @@ const dataFiles = {
   c51299 : C51299_ds1,
   c51300 : C51300_ds1,
   c55714 : C55714_ds1,
+  c55733 : C55733_ds1,
+  c50473 : C50473_ds1,
+  c50474 : C50474_ds1,
   c001 : C001,
   c44746 : C44746,
   c47707 : C47707,
@@ -102,6 +117,9 @@ if (dataSet === "dataSet1") {
   dataFiles.c51299 = C51299_ds1;
   dataFiles.c51300 = C51300_ds1;
   dataFiles.c55714 = C55714_ds1;
+  dataFiles.c55733 = C55733_ds1;
+  dataFiles.c50473 = C50473_ds1;
+  dataFiles.c50474 = C50474_ds1;
 }
 if (dataSet === "dataSet2") {
   dataFiles.c44194 = C44194_ds2;
@@ -116,6 +134,9 @@ if (dataSet === "dataSet2") {
   dataFiles.c51299 = C51299_ds2;
   dataFiles.c51300 = C51300_ds2;
   dataFiles.c55714 = C55714_ds2;
+  dataFiles.c55733 = C55733_ds2;
+  dataFiles.c50473 = C50473_ds2;
+  dataFiles.c50474 = C50474_ds2;
 }
 if (dataSet === "dataSet3") {
   dataFiles.c44194 = C44194_ds3;
@@ -130,6 +151,9 @@ if (dataSet === "dataSet3") {
   dataFiles.c51299 = C51299_ds3;
   dataFiles.c51300 = C51300_ds3;
   dataFiles.c55714 = C55714_ds3;
+  dataFiles.c55733 = C55733_ds3;
+  dataFiles.c50473 = C50473_ds3;
+  dataFiles.c50474 = C50474_ds3;
 }
 
 module.exports = dataFiles;

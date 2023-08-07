@@ -7,6 +7,10 @@ import pageBase from "../../../base/PageBase";
 import DetailWindowHeader from "../../../base/DetailWindowHeader";
 import FormularVariablenTab from "../../sendungen/detail/sideMenuTabs/FormularVariablenTab";
 import DossierBeilagenTab from "../../sendungen/detail/sideMenuTabs/dossierBeilagenTab/DossierBeilagenTab";
+import DetailTab_Sen from "./tabBarTabs/DetailTab_Sen";
+import ProtocollTab_Sen from "./tabBarTabs/ProtocollTab_Sen";
+import EingliederungTabBar from "../../eingliederungen/details/EingliederungTabBar";
+import SendungenTabBar from "./SendungenTabBar";
 
 class SendungenDetail extends SendungenPageBase {
   constructor() {
@@ -14,6 +18,9 @@ class SendungenDetail extends SendungenPageBase {
     super(detailFormCSS);
     this.windowHeader = new DetailWindowHeader();
     this.ribbonMenu = new SendungenRibbon();
+    this.tabBar = new SendungenTabBar();
+    this.detailTabBar = new DetailTab_Sen();
+    this.protocollTabBar = new ProtocollTab_Sen();
     this.sideMenu = new SendungenSideMenu();
     this.formularVariablenTab = new FormularVariablenTab();
     this.dossierBeilagenTab = new DossierBeilagenTab();

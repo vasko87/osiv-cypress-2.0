@@ -6,12 +6,11 @@ pipeline {
     agent any
 
      parameters{
-        choice(name: 'ENV', choices: ['FRTEST','NRTEST','CRTEST', 'FWTEST', 'FWTEST2'], description: "Select the test environment\n FRTEST = 'https://osiv-frtest.ivnet.ch'\n NRTESR = 'https://osiv-nrtest.ivnet.ch' \n CRTESR = 'https://osiv-crtest.ivnet.ch' \n FWTEST = 'https://fw-test.ivnet.ch' \n FWTEST2 = 'https://fw-test2.ivnet.ch'")
+        choice(name: 'ENV', choices: ['FWBETA', 'FWTEST', 'FWTEST2', 'FRTEST','NRTEST','CRTEST'], description: "Select the test environment\n FWBETA = 'https://fw-beta.ivnet.ch'\n FRTEST = 'https://osiv-frtest.ivnet.ch'\n NRTESR = 'https://osiv-nrtest.ivnet.ch' \n CRTESR = 'https://osiv-crtest.ivnet.ch' \n FWTEST = 'https://fw-test.ivnet.ch' \n FWTEST2 = 'https://fw-test2.ivnet.ch'")
         string(name: 'CUSTOM_ENV', defaultValue: "", description: "Enter the custom url")
         string(name: 'USERNAME', defaultValue: "default", description: "Set username if not default")
         string(name: 'PASSWORD', defaultValue: "default", description: "Set password if not default")
         choice(name: 'BRANCH', choices: ['V52x','V51x'], description: "git branches:\nV51x - for V5.1.x;\nV52x - for V5.2.x;")
-        choice(name: 'UNCAUGHT_EXCEPTION_FAIL', choices: ['NO', "YES"], description: "Fail tests due to 'uncaught:exception' or not")
      }
 
     stages {
@@ -25,6 +24,40 @@ pipeline {
         }
         stage('Testing') {
             stages {
+                stage('ENT') {
+                    steps {
+                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                            bat "npx cypress run " + TEST_ENV_ENT
+                        }
+                        script {
+                            publishHTML([
+                            allowMissing: false,
+                            alwaysLinkToLastBuild: false,
+                            keepAll: true,
+                            reportDir: 'cypress/reports',
+                            reportFiles: 'index.html',
+                            reportName: 'HTML Report ENT',
+                            reportTitles: 'Mocha Report'])
+                        }
+                    }
+                }
+                stage('RENTE') {
+                    steps {
+                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                            bat "npx cypress run " + TEST_ENV_RENTE
+                        }
+                        script {
+                            publishHTML([
+                            allowMissing: false,
+                            alwaysLinkToLastBuild: false,
+                            keepAll: true,
+                            reportDir: 'cypress/reports',
+                            reportFiles: 'index.html',
+                            reportName: 'HTML Report RENTE',
+                            reportTitles: 'Mocha Report'])
+                        }
+                    }
+                }
                 stage('EIN') {
                     steps {
                         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -59,74 +92,6 @@ pipeline {
                         }
                     }
                 }
-                stage('E2E') {
-                    steps {
-                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                            bat "npx cypress run " + TEST_ENV_E2E
-                        }
-                        script {
-                            publishHTML([
-                            allowMissing: false,
-                            alwaysLinkToLastBuild: false,
-                            keepAll: true,
-                            reportDir: 'cypress/reports',
-                            reportFiles: 'index.html',
-                            reportName: 'HTML Report E2E',
-                            reportTitles: 'Mocha Report'])
-                        }
-                    }
-                }
-                stage('RENTE') {
-                    steps {
-                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                            bat "npx cypress run " + TEST_ENV_RENTE
-                        }
-                        script {
-                            publishHTML([
-                            allowMissing: false,
-                            alwaysLinkToLastBuild: false,
-                            keepAll: true,
-                            reportDir: 'cypress/reports',
-                            reportFiles: 'index.html',
-                            reportName: 'HTML Report RENTE',
-                            reportTitles: 'Mocha Report'])
-                        }
-                    }
-                }
-                stage('ENT') {
-                    steps {
-                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                            bat "npx cypress run " + TEST_ENV_ENT
-                        }
-                        script {
-                            publishHTML([
-                            allowMissing: false,
-                            alwaysLinkToLastBuild: false,
-                            keepAll: true,
-                            reportDir: 'cypress/reports',
-                            reportFiles: 'index.html',
-                            reportName: 'HTML Report ENT',
-                            reportTitles: 'Mocha Report'])
-                        }
-                    }
-                }
-                stage('HE') {
-                    steps {
-                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                            bat "npx cypress run " + TEST_ENV_HE
-                        }
-                        script {
-                            publishHTML([
-                            allowMissing: false,
-                            alwaysLinkToLastBuild: false,
-                            keepAll: true,
-                            reportDir: 'cypress/reports',
-                            reportFiles: 'index.html',
-                            reportName: 'HTML Report HE',
-                            reportTitles: 'Mocha Report'])
-                        }
-                    }
-                }
             }
         }
         stage('Finishing') {
@@ -138,6 +103,9 @@ pipeline {
 }
 
 def composeArgs() {
+    if (ENV == "FWBETA") {
+        ENV_URL = "https://fw-beta.ivnet.ch"
+    }
     if (ENV == "FRTEST") {
         ENV_URL = "https://osiv-frtest.ivnet.ch"
     }
@@ -163,17 +131,10 @@ def composeArgs() {
     if (PASSWORD != "default") {
         PASSWORD_ENV = ",password=" + PASSWORD
     }
-    if (UNCAUGHT_EXCEPTION_FAIL == "NO") {
-        UNCAUGHT_EXCEPTION_FAIL = ",uncaughtExceptionFailure=false"
-    } else {
-        UNCAUGHT_EXCEPTION_FAIL = ",uncaughtExceptionFailure=true"
-    }
-    TEST_ENV_ENT = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/entscheid/C39770_EntscheidCopy.js,cypress/e2e/OSIV3G_ENT/entscheid/C42473_EntscheidInDenPapierkorbVerschiebenHappyFlow.js,cypress/e2e/OSIV3G_ENT/entscheid/C47707_ShowNoShowDynamicBaustein.js" + " --browser chrome"
-    TEST_ENV_HE = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/he/C44746_HEGradCalculationRules.js,cypress/e2e/OSIV3G_ENT/he/C47706_PossibilityToEditDataOnHillflosigkeitTabWhenDiscussionStartedEnded.js" + " --browser chrome"
-    TEST_ENV_E2E = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/e2e/**" + " --browser chrome"
-    TEST_ENV_STA = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_STA/C43263_VPZASQuerySmokeTest.js" + " --browser chrome"
-    TEST_ENV_EIN = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_EIN/C45772_CreateEingliederungFromVPEingliederungen.js,cypress/e2e/OSIV3G_EIN/C47785_DelegationProcess.js" + " --browser chrome"
-    TEST_ENV_RENTE = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/rente/**" + " --browser chrome"
+    TEST_ENV_STA = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + " --spec cypress/e2e/OSIV3G_STA/dataFree/**" + " --browser chrome"
+    TEST_ENV_EIN = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + " --spec cypress/e2e/OSIV3G_EIN/dataFree/**" + " --browser chrome"
+    TEST_ENV_ENT = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + " --spec cypress/e2e/OSIV3G_ENT/entscheid/dataFree/**,cypress/e2e/OSIV3G_ENT/he/dataFree/**,cypress/e2e/OSIV3G_ENT/e2e/dataFree/**" + " --browser chrome"
+    TEST_ENV_RENTE = "--env baseUrl=" + ENV_URL + USERNAME_ENV + PASSWORD_ENV + " --spec cypress/e2e/OSIV3G_ENT/rente/dataFree/**" + " --browser chrome"
 }
 
 def setJobName(){
