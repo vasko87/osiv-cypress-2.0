@@ -79,6 +79,11 @@ class ProtocollPageBase {
     this.elements.ursprungTextTxt().should("be.visible").should("have.value", value);
     return this;
   }
+
+  checkUrsprungTextContains(value) {
+    this.elements.ursprungTextTxt().should("be.visible").should("contain.value", value);
+    return this;
+  }
 }
 
 export default ProtocollPageBase;

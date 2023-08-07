@@ -15,7 +15,7 @@ class SendingenGridFilter {
    */
   searchBySendundenNr(value) {
     pageBase.waitForLoadingDisappears();
-    this.elements.sendundenNrTxt().click().type(`${value}{enter}`);
+    this.elements.sendundenNrTxt().click().clear().type(`${value}{enter}`);
     pageBase.waitForLoadingDisappears();
     return this;
   }

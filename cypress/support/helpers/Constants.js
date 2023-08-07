@@ -1,5 +1,6 @@
 const CSS_ACTIVE_FORM = "[class='dhxwin_active']";
 const CSS_OPACITY1 = "[style*='opacity: 1']";
+const CSS_OPACITY1_ACTIVE = CSS_OPACITY1 + " " + CSS_ACTIVE_FORM;
 const MIN_TIMEOUT = 1000;
 const SHORT_TIMEOUT = 5000;
 const DEFAULT_TIMEOUT = 20000;
@@ -27,9 +28,15 @@ const MSG = {
   OSCEIN_65_PART1: "Es existieren noch Sendungen oder Abklärungen zur Eingliederung.",
   OSCEIN_65_PART2: "Alle Sendungen und Abklärungen werden dem Stamm zugeordnet.",
   OSCEIN_65_PART3: "Wollen Sie die Eingliederung wirklich löschen? (OSCEIN:65)",
+  OSCEIN_66_PART1: "Es existieren noch Sendungen oder Abklärungen zur Eingliederung.",
+  OSCEIN_66_PART2: "Alle Sendungen und Abklärungen werden dem Gesuch zugeordnet.",
+  OSCEIN_66_PART3: "Wollen Sie die Eingliederung wirklich löschen? (OSCEIN:66)",
   OSCEIN_67_PART1: "Es existieren noch Protokolleinträge zur Eingliederung.",
   OSCEIN_67_PART2: "Alle Protokolleinträge werden dem Stamm zugeordnet.",
   OSCEIN_67_PART3: "Wollen Sie die Eingliederung wirklich löschen? (OSCEIN:67)",
+  OSCEIN_68_PART1: "Es existieren noch Protokolleinträge zur Eingliederung.",
+  OSCEIN_68_PART2: "Alle Protokolleinträge werden dem Gesuch zugeordnet.",
+  OSCEIN_68_PART3: "Wollen Sie die Eingliederung wirklich löschen? (OSCEIN:68)",
 
   TERMIN_44  : "Sie beenden einen fremden Termin. (Termin:44)",
   TERMIN_26  : "Die zugehörige Eingliederung bleibt aufgrund eines Termins im Warten. (Termin:26)",
@@ -40,5 +47,5 @@ const MSG = {
   OSCSTAMM_273: "Der Regress auf dem Ereignis vom 01.02.2021 ist in Prüfung. (OSCSTAMM:273)"
 };
 
-module.exports = {CSS_ACTIVE_FORM, CSS_OPACITY1, MIN_TIMEOUT, SHORT_TIMEOUT, LONG_TIMEOUT, DEFAULT_TIMEOUT, COLOR, MSG};
+module.exports = {CSS_ACTIVE_FORM, CSS_OPACITY1, CSS_OPACITY1_ACTIVE, MIN_TIMEOUT, SHORT_TIMEOUT, LONG_TIMEOUT, DEFAULT_TIMEOUT, COLOR, MSG};
 

@@ -16,6 +16,11 @@ class SendungenPageBase {
     return this;
   }
 
+  checkUrsprungTxtContains(value) {
+    this.elements.ursprungTxt().should("contain.value", value);
+    return this;
+  }
+
   checkArbeitslisteTxt(value) {
     this.elements.arbeitslisteTxt().should("have.value", value);
     return this;
