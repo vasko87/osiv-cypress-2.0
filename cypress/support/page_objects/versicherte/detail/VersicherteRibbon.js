@@ -1,5 +1,6 @@
 import RibbonBase from "../../../base/RibbonBase";
 import AbgabeRegistrierenPopup from "./popups/AbgabeRegistrierenPopup";
+import DossierErhaltRegistrierenPopup from "./popups/DossierErhaltRegistrierenPopup";
 
 class VersicherteRibbon extends RibbonBase {
   constructor() {
@@ -8,7 +9,8 @@ class VersicherteRibbon extends RibbonBase {
       ...this.elements,
       agabeKontrollierenBtn : () => this.elements.ribbonBlock().find("[title='Abgabe kontrollieren']"),
       abgabeRegistrierenBtn : () => this.elements.ribbonBlock().find("[title='Abgabe registrieren']"),
-      abgabeDurchfuhrenBtn : () => this.elements.ribbonBlock().find("[title='Abgabe durchführen']")
+      abgabeDurchfuhrenBtn : () => this.elements.ribbonBlock().find("[title='Abgabe durchführen']"),
+      erhaltRegistrierenBtn : () => this.elements.ribbonBlock().find("[title='Erhalt registrieren']")
     };
   }
 
@@ -20,6 +22,11 @@ class VersicherteRibbon extends RibbonBase {
   checkAgabeKontrollierenBtnDisabled(isDisabled) {
     this.checkMenuItemDisable(this.elements.agabeKontrollierenBtn(), isDisabled);
     return this;
+  }
+
+  clickErhaltRegistrierenBtn() {
+    this.elements.erhaltRegistrierenBtn().should("be.visible").click();
+    return new DossierErhaltRegistrierenPopup();
   }
 
   clickAbgabeRegistrierenBtn() {

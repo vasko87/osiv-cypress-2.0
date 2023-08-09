@@ -1,5 +1,6 @@
 import GridBase from "../../../../base/GridBase";
 import constants from "../../../../helpers/Constants";
+import pageBase from "../../../../base/PageBase";
 
 class DossierChronikTab {
   constructor() {
@@ -9,6 +10,11 @@ class DossierChronikTab {
       dossierHistoryGrid: () => new GridBase(`${constants.CSS_ACTIVE_FORM} [akid='sStamm_Doss_HistGrid']`),
       dossierAbgabeGrid : () => new GridBase(`${constants.CSS_ACTIVE_FORM} [akid='DossierAbgabeGrid']`)
     };
+  }
+
+  waitForLoaded() {
+    pageBase.waitForLoadingDisappears();
+    return this;
   }
 
   clickDossierChronikTab() {

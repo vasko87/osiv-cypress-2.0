@@ -8,6 +8,13 @@ class VersicherteFlows {
     pages.versicherte.grid.searchAndOpenVersicherteName(versicherteName);
     pages.versicherte.detail.waitForLoaded();
   }
+
+  step_navigateVP_searchByVPNr_openVP(versicherteNr) {
+    pages.nav.leftMenu.navigateToVersicherteTab();
+    pages.versicherte.detail.waitForLoaded();
+    pages.versicherte.grid.searchAndOpenVersicherteNr(versicherteNr);
+    pages.versicherte.detail.waitForLoaded();
+  }
 }
 
 export default VersicherteFlows;
