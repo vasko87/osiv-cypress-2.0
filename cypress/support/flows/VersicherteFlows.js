@@ -15,6 +15,12 @@ class VersicherteFlows {
     pages.versicherte.grid.searchAndOpenVersicherteNr(versicherteNr);
     pages.versicherte.detail.waitForLoaded();
   }
+
+  step_navigateVP_searchByVPNr_openVP_navigateToDossierChronikTab(versicherteNr) {
+    this.step_navigateVP_searchByVPNr_openVP(versicherteNr);
+    pages.versicherte.detail.sideMenu.navigateToDossierChronikTab()
+         .waitForLoaded();
+  }
 }
 
 export default VersicherteFlows;
