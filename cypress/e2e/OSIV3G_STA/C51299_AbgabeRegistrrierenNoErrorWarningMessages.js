@@ -55,7 +55,7 @@ describe(`C51299: Abgabe registrrieren _ no error/warning messages;
   it(`Expected results: 
       - entry is added to Dossier-Chronik`, () => {
     pages.versicherte.detail.sideMenu.navigateToDossierChronikTab().clickDossierChronikTab();
-    pages.versicherte.detail.dossierChronikTab.elements.dossierHistoryGrid().checkGridRowsCount(1)
+    pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.checkGridRowsCount(1)
          .checkValueInGridExists(testData.dosseirAbgabeAnDropdownToCheck, true)
          .checkValueInGridExists(testData.status, true);
   });
