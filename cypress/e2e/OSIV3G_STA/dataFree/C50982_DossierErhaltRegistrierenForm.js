@@ -1,6 +1,6 @@
-import pages from "../../support/base/OsivPageObject";
-import flows from "../../support/base/OsivFlowsObject";
-import {c50982 as testData} from "../../support/helpers/DataManager";
+import pages from "../../../support/base/OsivPageObject";
+import flows from "../../../support/base/OsivFlowsObject";
+import {c50982 as testData} from "../../../support/helpers/DataManager";
 
 describe(`C50982: Dossier-Erhalt registrieren (Form); 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/50982`, {failFast: {enabled: true}}, () => {
