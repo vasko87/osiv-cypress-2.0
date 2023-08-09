@@ -185,11 +185,17 @@ class PageBase {
     });
   }
 
+  /**
+   *
+   * @param {Cypress.Chainable<JQuery<HTMLElement>>} element
+   * @param {string} validationError
+   * @param {boolean} isVisible
+   */
   checkElementValidationError(element, validationError, isVisible) {
     if (isVisible) {
-      element.get("[class='validation-error-smartmessage']").contains(validationError).should("be.visible");
+      element.find("[class='validation-error-smartmessage']").should("contain.text", validationError);
     } else {
-      element.get("[class='validation-error-smartmessage']").contains(validationError).should("not.be.visible");
+      element.find("[class='validation-error-smartmessage']").should("not.contain.text", validationError);
     }
   }
 

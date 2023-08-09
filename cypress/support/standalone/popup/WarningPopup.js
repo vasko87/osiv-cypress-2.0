@@ -5,7 +5,8 @@ class WarningPopup {
   constructor() {
     this.elements = {
       warningPopup : () => cy.get("div [class='swal-modal warningModal']", {timeout:constants.DEFAULT_TIMEOUT}),
-      okBtn        : () => cy.get("[class*='swal-button swal-button'][class*='ok'],[class='swal-button swal-button--confirm']")
+      okBtn        : () => cy.get("[class*='swal-button swal-button'][class*='ok'],[class='swal-button swal-button--confirm']"),
+      abbrechenBtn        : () => cy.get("[class='swal-button swal-button--cancelreply'],[class='swal-button swal-button--replycancel']")
     };
   }
 
@@ -26,6 +27,12 @@ class WarningPopup {
   clickOkBtn() {
     this.waitForLoaded();
     this.elements.okBtn().click();
+    return this;
+  }
+
+  clickAbbrechenBtn() {
+    this.waitForLoaded();
+    this.elements.abbrechenBtn().click();
     return this;
   }
 

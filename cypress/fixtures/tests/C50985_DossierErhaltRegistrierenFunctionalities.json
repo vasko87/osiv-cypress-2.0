@@ -1,0 +1,26 @@
+{
+  "step1": {
+    "vp": "2564.2422.32"
+  },
+  "step3": {
+    "vp": "4781.1883.00",
+    "dossierEreignisDropdown": "RAD Abklärung von"
+  },
+  "step4": {
+    "vp": "4781.1883.00"
+  },
+  "step5": {
+    "vp": "2457.4089.50",
+    "dossierEreignisDropdown": "Erhalten von"
+  },
+  "step6": {
+    "vp": "0258.9806.51",
+    "dossierEreignisGrid": "Wiedererhalten von"
+  },
+  "step7": {
+    "vp": "5648.3846.68",
+    "errorMsg": "Ein oder mehrere Felder haben Validierungsfehler. Bitte korrigieren Sie die markierten Felder und speichern Sie dann erneut.",
+    "validationError_Ereignis": "Bitte Daten für Dossier-Ereignis eingeben. (OSCVAL:22)",
+    "validationError_Erhalt": "Bitte Daten für Dossier-Erhalt von eingeben. (OSCVAL:22)"
+  }
+}

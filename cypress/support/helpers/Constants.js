@@ -44,7 +44,11 @@ const MSG = {
 
   OSCSTAMM_277  : "Der Regress auf dem Ereignis vom 07.08.2022 ist in Erledigung. (OSCSTAMM:277)",
   OSCSTAMM_275  : "Der Regress auf dem Ereignis vom 05.05.2022 ist in Durchführung. (OSCSTAMM:275)",
-  OSCSTAMM_273: "Der Regress auf dem Ereignis vom 01.02.2021 ist in Prüfung. (OSCSTAMM:273)"
+  OSCSTAMM_273: "Der Regress auf dem Ereignis vom 01.02.2021 ist in Prüfung. (OSCSTAMM:273)",
+  OSCSTAMM_206: "Pro Tag kann maximal ein Dossier-Ereignis registriert werden. Es wurde heute bereits ein Dossier-Ereignis registriert. (OSCSTAMM:206)",
+  OSCSTAMM_208: "Es ist bereits ein offenes Gesuch vorhanden. Soll der Dossier-Erhalt trotzdem registriert werden? (OSCSTAMM:208)",
+  OSCSTAMM_209: "Es ist bereits ein offener Entscheid vorhanden! Soll der Dossier-Erhalt trotzdem registriert werden? (OSCSTAMM:209)",
+  OSCSTAMM_210: "Beim Erhalt eines Dossiers sollten üblicherweise die erhaltenen Gesuche und Entscheide nacherfasst werden, falls solche vorhanden sind. Vergessen Sie nicht diese Daten nachträglich noch zu erfassen. (OSCSTAMM:210)",
 };
 
 module.exports = {CSS_ACTIVE_FORM, CSS_OPACITY1, CSS_OPACITY1_ACTIVE, MIN_TIMEOUT, SHORT_TIMEOUT, LONG_TIMEOUT, DEFAULT_TIMEOUT, COLOR, MSG};

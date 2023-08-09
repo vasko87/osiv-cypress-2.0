@@ -32,6 +32,11 @@ class DossierErhaltRegistrierenPopup extends ModalWindowBase {
     return this;
   }
 
+  checkDosseirErhaltVonDropdownValidationErrorVisible(error, isVisible) {
+    pageBase.checkElementValidationError(this.elements.dosseirErhaltVonDropdown(), error, isVisible);
+    return this;
+  }
+
   selectDossierEreignisDropdown(value) {
     pageBase.selectInDropdownContains(this.elements.dossierEreignisDropdown(), value);
     return this;
@@ -44,6 +49,11 @@ class DossierErhaltRegistrierenPopup extends ModalWindowBase {
 
   selectDosseirErhaltVonDropdown(value) {
     pageBase.selectInDropdownContains(this.elements.dosseirErhaltVonDropdown(), value);
+    return this;
+  }
+
+  selectDosseirErhaltVonDropdownByIndex(index) {
+    pageBase.selectDropdownValueByIndex(this.elements.dosseirErhaltVonDropdown(), index);
     return this;
   }
 

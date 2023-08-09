@@ -4,11 +4,11 @@ import pageBase from "../../../../base/PageBase";
 
 class DossierChronikTab {
   constructor() {
+    this.dossierHistoryGrid = new GridBase(`${constants.CSS_ACTIVE_FORM} [akid='sStamm_Doss_HistGrid']`);
+    this.dossierAbgabeGrid = new GridBase(`${constants.CSS_ACTIVE_FORM} [akid='DossierAbgabeGrid']`);
     this.elements = {
       dossierChronikTab : () => cy.get("[akid='StammDossierChronikTabbar-Dossier-Chronik']"),
-      dossierAbgabeTab  : () => cy.get("[akid='StammDossierChronikTabbar-Dossier-Abgabe']"),
-      dossierHistoryGrid: () => new GridBase(`${constants.CSS_ACTIVE_FORM} [akid='sStamm_Doss_HistGrid']`),
-      dossierAbgabeGrid : () => new GridBase(`${constants.CSS_ACTIVE_FORM} [akid='DossierAbgabeGrid']`)
+      dossierAbgabeTab  : () => cy.get("[akid='StammDossierChronikTabbar-Dossier-Abgabe']")
     };
   }
 

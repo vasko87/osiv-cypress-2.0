@@ -17,9 +17,7 @@ describe(`C50982: Dossier-Erhalt registrieren (Form);
       Dossier-Erhalt von - type dynselect,
       Erhalten am - type date
       An info icon near the 'Dossier-Ereignis' dynselect:`, () => {
-    flows.versicherte.step_navigateVP_searchByVPNr_openVP(testData.vp);
-    pages.versicherte.detail.sideMenu.navigateToDossierChronikTab()
-         .waitForLoaded();
+    flows.versicherte.step_navigateVP_searchByVPNr_openVP_navigateToDossierChronikTab(testData.vp);
     pages.versicherte.detail.ribbonMenu.clickErhaltRegistrierenBtn()
          .waitForLoaded()
          .clickMinMaxBtn()
