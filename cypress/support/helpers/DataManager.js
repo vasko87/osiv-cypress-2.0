@@ -72,6 +72,7 @@ import C51287 from "../../fixtures/tests/C51287_CalculationsFromTheInvalideneink
 import C55741 from "../../fixtures/tests/C55741_ValidationOfAblehnungMassnahmeFieldBasedOnLC.json";
 import C50982 from "../../fixtures/tests/C50982_DossierErhaltRegistrierenForm.json";
 import C50985 from "../../fixtures/tests/C50985_DossierErhaltRegistrierenFunctionalities.json";
+import C50987 from "../../fixtures/tests/C50987_DossierChronikEintrageVerwaltenEditAndSave.json";
 
 const dataFiles = {
   c44194 : C44194_ds1,
@@ -102,7 +103,8 @@ const dataFiles = {
   c51287 : C51287,
   c55741 : C55741,
   c50982 : C50982,
-  c50985 : C50985
+  c50985 : C50985,
+  c50987 : C50987
 };
 
 const dataSet = Cypress.env("dataSet");
