@@ -81,6 +81,71 @@ class PageBase {
     return this;
   }
 
+  getDropdownCodesList(element) {
+    element.find("[class='select2-selection__arrow']").click();
+    return cy.get("[class='select2-results__options']").should("be.visible").then((el) => {
+      const actualValues = [];
+      cy.$$(el).find("[class='searchItem'] [class='grid2Search1']").each((i, elVal) => {
+        actualValues.push(elVal.innerText);
+      });
+
+      return actualValues;
+    });
+  }
+
+  getDropdownValuesList(element) {
+    element.find("[class='select2-selection__arrow']").click();
+    return cy.get("[class='select2-results__options']").should("be.visible").then((el) => {
+      const actualValues = [];
+      cy.$$(el).find("[class='searchItem'] [class='grid2Search2']").each((i, elVal) => {
+        actualValues.push(elVal.innerText);
+      });
+
+      return actualValues;
+    });
+  }
+
+  getDropdownCodeValuesList(element) {
+    element.find("[class='select2-selection__arrow']").click();
+    return cy.get("[class='select2-results__options']").should("be.visible").then((el) => {
+      const map = {};
+      const actualCodes = [];
+      const actualValues = [];
+      cy.$$(el).find("[class='searchItem'] [class='grid2Search1']").each((i, elCode) => {
+        actualCodes.push(elCode.innerText);
+      });
+      cy.$$(el).find("[class='searchItem'] [class='grid2Search2']").each((i, elVal) => {
+        actualValues.push(elVal.innerText);
+      });
+      map.codes = actualCodes;
+      map.values = actualValues;
+
+      return map;
+    });
+  }
+
+  checkDropdownValuesList(element, expectedValues) {
+    this.getDropdownValuesList(element).then((actualValues) => {
+      expect(JSON.stringify(actualValues)).to.be.eql(JSON.stringify(expectedValues));
+    });
+    return this;
+  }
+
+  checkDropdownCodeList(element, expectedValues) {
+    this.getDropdownCodesList(element).then((actualValues) => {
+      expect(JSON.stringify(actualValues)).to.be.eql(JSON.stringify(expectedValues));
+    });
+    return this;
+  }
+
+  checkDropdownCodeValueList(element, expectedCodes, expectedValues) {
+    this.getDropdownCodeValuesList(element).then((actual) => {
+      expect(JSON.stringify(actual.codes)).to.be.eql(JSON.stringify(expectedCodes));
+      expect(JSON.stringify(actual.values)).to.be.eql(JSON.stringify(expectedValues));
+    });
+    return this;
+  }
+
   getDropdownSelectedValue(element) {
     return element.find("select").should("be.visible");
   }
@@ -118,6 +183,20 @@ class PageBase {
         return false;
       }
     });
+  }
+
+  /**
+   *
+   * @param {Cypress.Chainable<JQuery<HTMLElement>>} element
+   * @param {string} validationError
+   * @param {boolean} isVisible
+   */
+  checkElementValidationError(element, validationError, isVisible) {
+    if (isVisible) {
+      element.find("[class='validation-error-smartmessage']").should("contain.text", validationError);
+    } else {
+      element.find("[class='validation-error-smartmessage']").should("not.contain.text", validationError);
+    }
   }
 
   checkElementMandatory(element, isMandatory) {

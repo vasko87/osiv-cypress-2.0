@@ -1,0 +1,7 @@
+{
+  "vp": "1626.2032.35",
+  "validationError": "Bitte Daten für Dossier-Ereignis eingeben. (OSCVAL:22)",
+  "dosseirEreignisDropdownValueList": ["Erhalten von", "Delegation von", "Externe Abklärung von", "RAD Abklärung von"],
+  "dosseirErhaltVonDropdownValueList": ["IV-Stelle ZH","IV-Stelle BE","IV-Stelle LU","IV-Stelle UR","IV-Stelle SZ","IV-Stelle OW","IV-Stelle NW","IV-Stelle GL","IV-Stelle ZG","IV-Stelle FR","IV-Stelle SO","IV-Stelle BS","IV-Stelle BL","IV-Stelle SH","IV-Stelle AR","IV-Stelle AI","IV-Stelle SG","IV-Stelle GR","IV-Stelle AG","IV-Stelle TG","IV-Stelle TI","IV-Stelle VD","IV-Stelle VS","IV-Stelle NE","IV-Stelle GE","IV-Stelle JU","IV-Stelle für Versicherte im Ausland","Liechtensteinische IV-Anstalt","OSC"],
+  "dosseirErhaltVonDropdownCodeList": ["301","302","303","304","305","306","307","308","309","310","311","312","313","314","315","316","317","318","319","320","321","322","323","324","325","350","327","328","OSC"]
+}
