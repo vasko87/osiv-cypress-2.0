@@ -9,7 +9,6 @@ describe(`C50985: Dossier-Erhalt registrieren (Functionalities);
 
   before(`Login as ${Cypress.env("username")};`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
-    pages.loginPage.openUrl();
   });
 
   it(`Step 1 - 2: open vP = 2564.2422.32
@@ -20,6 +19,7 @@ describe(`C50985: Dossier-Erhalt registrieren (Functionalities);
       Step 2: Press OK on the warning -> Warning message 'Es ist bereits ein offener Entscheid vorhanden!
       Soll der Dossier-Erhalt trotzdem registriert werden?' appears;
       Pressing ‘Abbrechen’  warning is closed and User is on the same page`, () => {
+    pages.loginPage.openUrl();
     flows.versicherte.step_navigateVP_searchByVPNr_openVP_navigateToDossierChronikTab(testData.step1.vp);
     pages.versicherte.detail.ribbonMenu.clickErhaltRegistrierenBtn();
     pages.warningPopup.checkWarningContainsText(constants.MSG.OSCSTAMM_208);
@@ -36,7 +36,7 @@ describe(`C50985: Dossier-Erhalt registrieren (Functionalities);
       Step 4: press on 'Erhalt registrieren' ribbon button ->
       Error is shown: Pro Tag kann maximal ein Dossier-Ereignis registriert werden.
       Es wurde heute bereits ein Dossier-Ereignis registriert.  AND "Dossier-Erhalt registrieren" dialog is not opened`, () => {
-    pages.nav.clickHomeBtn();
+    pages.loginPage.openUrl();
     flows.versicherte.step_navigateVP_searchByVPNr_openVP_navigateToDossierChronikTab(testData.step3.vp);
     pages.versicherte.detail.ribbonMenu.clickErhaltRegistrierenBtn()
          .waitForLoaded()
@@ -61,7 +61,7 @@ describe(`C50985: Dossier-Erhalt registrieren (Functionalities);
       press OK (OK on the appeared warnings) -> Warning is shown:
       "Beim Erhalt eines Dossiers sollten üblicherweise die erhaltenen Gesuche und Entscheide nacherfasst werden,
       falls solche vorhanden sind. Vergessen Sie nicht diese Daten nachträglich noch zu erfassen."`, () => {
-    pages.nav.clickHomeBtn();
+    pages.loginPage.openUrl();
     flows.versicherte.step_navigateVP_searchByVPNr_openVP_navigateToDossierChronikTab(testData.step5.vp);
     pages.versicherte.detail.ribbonMenu.clickErhaltRegistrierenBtn();
     pages.warningPopup.clickOkBtn()
@@ -87,7 +87,7 @@ describe(`C50985: Dossier-Erhalt registrieren (Functionalities);
       press OK -> Warning is shown: "Beim Erhalt eines Dossiers sollten üblicherweise die erhaltenen Gesuche und Entscheide nacherfasst werden,
       falls solche vorhanden sind. Vergessen Sie nicht diese Daten nachträglich noch zu erfassen."
       New DossierErhalt is created and ereignis is changed from ‘Erhalten von’ to ‘Wiedererhalten von’"`, () => {
-    pages.nav.clickHomeBtn();
+    pages.loginPage.openUrl();
     flows.versicherte.step_navigateVP_searchByVPNr_openVP_navigateToDossierChronikTab(testData.step6.vp);
     pages.versicherte.detail.ribbonMenu.clickErhaltRegistrierenBtn()
          .waitForLoaded()
@@ -113,7 +113,7 @@ describe(`C50985: Dossier-Erhalt registrieren (Functionalities);
       press on 'Erhalt registrieren' ribbon button
       in the opened "Dossier-Erhalt registrieren" window press OK
       set one of the field empty and press OK -> All the time User sees an error on the top right and mandatory field is in red"`, () => {
-    pages.nav.clickHomeBtn();
+    pages.loginPage.openUrl();
     flows.versicherte.step_navigateVP_searchByVPNr_openVP_navigateToDossierChronikTab(testData.step7.vp);
     pages.versicherte.detail.ribbonMenu.clickErhaltRegistrierenBtn()
          .waitForLoaded()
