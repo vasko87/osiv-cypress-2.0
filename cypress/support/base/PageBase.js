@@ -285,11 +285,19 @@ class PageBase {
    * @param element
    * @param isReadonly
    */
+  checkReadonlyDropdownEmpty(element, isEmpty) {
+    if (isEmpty === true) {
+      element.find("span[class='select2-selection__placeholder']").should("be.empty");
+    } else {
+      element.find("span[class='select2-selection__placeholder']").should("not.be.empty");
+    }
+  }
+
   checkElementEmpty(element, isEmpty) {
     if (isEmpty === true) {
-      element.parent().should("be.empty");
+      element.should("be.empty");
     } else {
-      element.parent().should("not.be.empty");
+      element.should("not.be.empty");
     }
   }
 

@@ -1,0 +1,36 @@
+{
+  "step1": {
+    "vp": "2564.2422.32"
+  },
+  "step2": {
+    "vp": "8260.4754.62"
+  },
+  "step3": {
+    "vp": "8260.4754.62",
+    "ereignis": "Wiedererhalten von",
+    "date": "12.01.2019",
+    "ereignis_diff": "RAD Abklärung von"
+  },
+  "step4": {
+    "vp": "8260.4754.62",
+    "ereignis": "RAD Abklärung von",
+    "date": "20.12.2019",
+    "ereignis_diff": "Wiedererhalten von"
+  },
+  "step5": {
+    "vp": "8260.4754.62",
+    "ereignis": "Wiedererhalten von",
+    "ereignis_diff": "RAD Abklärung von"
+  },
+  "step6": {
+    "vp": "7538.9057.00",
+    "ereignis": "Externe Abklärung von",
+    "ereignis_diff": "Erhalten von"
+  },
+  "step7": {
+    "vp": "1820.7324.94",
+    "ereignis": "Abgegeben an",
+    "date": "20.01.2022",
+    "ereignis_diff": "Wiedererhalten von"
+  }
+}
