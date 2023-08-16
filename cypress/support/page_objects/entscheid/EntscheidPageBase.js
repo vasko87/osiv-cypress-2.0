@@ -129,7 +129,7 @@ class EntscheidPageBase {
   }
 
   checkBearbeiterReadonlyDropdownEmpty(isEmpty) {
-    pageBase.checkElementEmpty(this.elements.bearbeiterDropdown().find("input"), isEmpty);
+    pageBase.checkElementEmpty(this.elements.bearbeiterDropdown(), isEmpty);
     return this;
   }
 
