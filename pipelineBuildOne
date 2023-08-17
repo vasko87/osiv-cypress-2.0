@@ -10,8 +10,7 @@ pipeline {
         string(name: 'CUSTOM_ENV', defaultValue: "", description: "Enter the custom url")
         string(name: 'USERNAME', defaultValue: "default", description: "Set username if not default")
         string(name: 'PASSWORD', defaultValue: "default", description: "Set password if not default")
-        choice(name: 'BRANCH', choices: ['V52x','V51x'], description: "git branches:\nV51x - for V5.1.x;\nV52x - for V5.2.x;")
-        choice(name: 'UNCAUGHT_EXCEPTION_FAIL', choices: ['NO', "YES"], description: "Fail tests due to 'uncaught:exception' or not")
+        choice(name: 'BRANCH', choices: ['develop', ''V52x','V51x'], description: "git branches:\ndevelop - for develop version;\nV51x - for V5.1.x;\nV52x - for V5.2.x;")
      }
 
     stages {
