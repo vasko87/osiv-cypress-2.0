@@ -79,7 +79,7 @@ describe(`C51260: vP Delegation-Abschluss;
          .checkValueInGridExists(helperObject.date.getCurrentDate(), true)
          .clickRowWithTextToSelectIt(testData.step2.dossierEreignis);
     pages.versicherte.detail.ribbonMenu.clickLoschenBtn();
-    pages.confirmPopup.clickJaBtn();
+    pages.warningPopup.clickOkBtn();
     pages.warningPopup.clickOkBtn();
   });
 
