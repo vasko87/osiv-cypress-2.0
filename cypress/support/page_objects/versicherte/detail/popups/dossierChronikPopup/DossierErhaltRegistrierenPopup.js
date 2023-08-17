@@ -1,8 +1,6 @@
-import ModalWindowBase from "../../../../standalone/popup/ModalWindowBase";
-import pageBase from "../../../../base/PageBase";
-import GridBase from "../../../../base/GridBase";
-import constants from "../../../../helpers/Constants";
-import IvStellenWahlenPopup from "./ivStellenWahlenPopup/IvStellenWahlenPopup";
+import ModalWindowBase from "../../../../../standalone/popup/ModalWindowBase";
+import pageBase from "../../../../../base/PageBase";
+import IvStellenWahlenPopup from "../ivStellenWahlenPopup/IvStellenWahlenPopup";
 
 class DossierErhaltRegistrierenPopup extends ModalWindowBase {
   constructor() {
@@ -19,6 +17,16 @@ class DossierErhaltRegistrierenPopup extends ModalWindowBase {
   waitForLoaded() {
     super.waitForLoaded();
     this.elements.dossierEreignisDropdown().should("be.visible");
+    return this;
+  }
+
+  checkDossierEreignisDropdownReadonlyValue(value) {
+    pageBase.checkReadonlyDropdownContainsValue(this.elements.dossierEreignisDropdown(), value);
+    return this;
+  }
+
+  checkDossierEreignisDropdownReadonly(isReadonly) {
+    pageBase.checkDropdownReadonly(this.elements.dossierEreignisDropdown(), isReadonly);
     return this;
   }
 

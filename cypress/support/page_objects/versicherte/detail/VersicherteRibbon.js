@@ -1,6 +1,8 @@
 import RibbonBase from "../../../base/RibbonBase";
 import AbgabeRegistrierenPopup from "./popups/AbgabeRegistrierenPopup";
-import DossierErhaltRegistrierenPopup from "./popups/DossierErhaltRegistrierenPopup";
+import DossierErhaltRegistrierenPopup from "./popups/dossierChronikPopup/DossierErhaltRegistrierenPopup";
+import pageBase from "../../../base/PageBase";
+import DelegationAbschlussRegistrierenPopup from "./popups/dossierChronikPopup/DelegationAbschlussRegistrierenPopup";
 
 class VersicherteRibbon extends RibbonBase {
   constructor() {
@@ -10,7 +12,8 @@ class VersicherteRibbon extends RibbonBase {
       agabeKontrollierenBtn : () => this.elements.ribbonBlock().find("[title='Abgabe kontrollieren']"),
       abgabeRegistrierenBtn : () => this.elements.ribbonBlock().find("[title='Abgabe registrieren']"),
       abgabeDurchfuhrenBtn : () => this.elements.ribbonBlock().find("[title='Abgabe durchführen']"),
-      erhaltRegistrierenBtn : () => this.elements.ribbonBlock().find("[title='Erhalt registrieren']")
+      erhaltRegistrierenBtn : () => this.elements.ribbonBlock().find("[title='Erhalt registrieren']"),
+      delegationAbschlussBtn : () => this.elements.ribbonBlock().find("[title='Delegation Abschluss']")
     };
   }
 
@@ -46,6 +49,20 @@ class VersicherteRibbon extends RibbonBase {
 
   checkAbgabeDurchfuhrenBtnDisabled(isDisabled) {
     this.checkMenuItemDisable(this.elements.abgabeDurchfuhrenBtn(), isDisabled);
+    return this;
+  }
+
+  clickDelegationAbschlussBtn() {
+    this.elements.delegationAbschlussBtn().should("be.visible").click();
+    return new DelegationAbschlussRegistrierenPopup();
+  }
+
+  checkDelegationAbschlussBtnVisible(isVisible) {
+    pageBase.checkElementVisible(this.elements.delegationAbschlussBtn(), isVisible);
+    return this;
+  }
+  checkDelegationAbschlussBtnDisabled(isDisabled) {
+    this.checkMenuItemDisable(this.elements.delegationAbschlussBtn(), isDisabled);
     return this;
   }
 }

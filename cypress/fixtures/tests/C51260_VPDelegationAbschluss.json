@@ -1,0 +1,21 @@
+{
+  "step1": {
+    "vp": "2564.2422.32"
+  },
+  "step2": {
+    "vp": "2469.8286.92",
+    "dossierEreignis": "Delegation Abschluss"
+  },
+  "step3": {
+    "validationError": "Ein oder mehrere Felder haben Validierungsfehler. Bitte korrigieren Sie die markierten Felder und speichern Sie dann erneut."
+  },
+  "step6": {
+    "vp": "8260.4754.62",
+    "date": "01.01.2020"
+  },
+  "step7": {
+    "vp": "2099.0012.67",
+    "date": "02.03.2022",
+    "newDate": "01.01.2021"
+  }
+}
