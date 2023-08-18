@@ -76,8 +76,8 @@ describe(`C55741: Validation of 'Ablehnung Massnahme' field based on LC;
 
   after(function() {
     pages.entscheid.detail.ribbonMenu.clickLoschenBtn();
-    pages.confirmPopup.clickJaBtn();
-    pages.warningPopup.clickOkBtn();
+    pages.warningPopup.clickOkBtn()
+         .clickOkBtn();
     pages.notification.checkSuccessMessageVisible();
   });
 });
