@@ -19,7 +19,7 @@ describe(`C50474: Eingliederung löschen_with SEndung and Protokoll (with Eingli
       1. Es existieren noch Sendungen oder Abklärungen zur Eingliederung. Alle Sendungen und Abklärungen werden dem Gesuch zugeordnet. Wollen Sie die Eingliederung wirklich löschen? (OSCEIN:66)
       2. Es existieren noch Protokolleinträge zur Eingliederung. Alle Protokolleinträge werden dem Gesuch zugeordnet. Wollen Sie die Eingliederung wirklich löschen? (OSCEIN:68)`, () => {
     pages.eingliederung.detail.ribbonMenu.clickLoschenBtn();
-    pages.warningPopup.clickOkBtn();
+    pages.confirmPopup.clickJaBtn();
     pages.warningPopup.checkWarningContainsText(constants.MSG.OSCEIN_66_PART1)
          .checkWarningContainsText(constants.MSG.OSCEIN_66_PART2)
          .checkWarningContainsText(constants.MSG.OSCEIN_66_PART3);

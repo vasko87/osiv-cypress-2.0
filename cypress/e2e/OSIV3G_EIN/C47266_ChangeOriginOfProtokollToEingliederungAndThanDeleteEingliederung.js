@@ -53,7 +53,7 @@ describe(`C47266: Change origin of Protokoll to eingliederung (and than delete e
     pageBase.waitForLoadingDisappears();
     pages.eingliederung.detail.waitForLoaded()
          .ribbonMenu.clickLoschenBtn();
-    pages.warningPopup.clickOkBtn();
+    pages.confirmPopup.clickJaBtn();
     pages.notification.checkSuccessMessageVisible();
 
     pages.versicherte.detail.tabBar.navigateToProtocollTab().grid.waitGridViewLoaded();
