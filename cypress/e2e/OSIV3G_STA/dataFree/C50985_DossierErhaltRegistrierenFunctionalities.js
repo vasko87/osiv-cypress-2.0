@@ -50,7 +50,7 @@ describe(`C50985: Dossier-Erhalt registrieren (Functionalities);
     pages.errorPopup.ckeckErrorContainsText(constants.MSG.OSCSTAMM_206)
          .clickOkBtn();
     pages.versicherte.detail.ribbonMenu.clickLoschenBtn();
-    pages.warningPopup.clickOkBtn();
+    pages.confirmPopup.clickJaBtn();
     pageBase.waitForLoadingDisappears();
   });
 
@@ -76,7 +76,7 @@ describe(`C50985: Dossier-Erhalt registrieren (Functionalities);
          .waitForSuccessMessageDisappears();
     pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.checkGridRowsCount(1);
     pages.versicherte.detail.ribbonMenu.clickLoschenBtn();
-    pages.warningPopup.clickOkBtn();
+    pages.confirmPopup.clickJaBtn();
     pageBase.waitForLoadingDisappears();
   });
 
@@ -101,8 +101,8 @@ describe(`C50985: Dossier-Erhalt registrieren (Functionalities);
     pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid
          .clickRowWithTextToSelectIt(testData.step6.dossierEreignisGrid);
     pages.versicherte.detail.ribbonMenu.clickLoschenBtn();
-    pages.warningPopup.clickOkBtn()
-         .clickOkBtn();
+    pages.confirmPopup.clickJaBtn();
+    pages.warningPopup.clickOkBtn();
     pageBase.waitForLoadingDisappears();
     pages.nav.clickHomeBtn();
   });
