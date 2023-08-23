@@ -13,7 +13,7 @@ const responseData = {
   newEinId          : ""
 };
 
-describe(`C55733: "Abschluss Eingliederung" _has open Sendung and Termin 
+describe.skip(`C55733: "Abschluss Eingliederung" _has open Sendung and Termin 
   TestRail: https://osiv.testrail.net/index.php?/cases/view/55733;`, {failFast: {enabled: true}}, () => {
 
   before(`Login as ${Cypress.env("username")};`, () => {

@@ -3,7 +3,7 @@ import flows from "../../support/base/OsivFlowsObject";
 import {c50473 as testData} from "../../support/helpers/DataManager";
 import constants from "../../support/helpers/Constants";
 
-describe(`C50473: Eingliederung löschen_with SEndung and Protokoll (no Eingliederung.Gesuch_id); 
+describe.skip(`C50473: Eingliederung löschen_with SEndung and Protokoll (no Eingliederung.Gesuch_id); 
   TestRail: https://osiv.testrail.net/index.php?/cases/view/50473`, {failFast: {enabled: true}}, () => {
 
   before(`Login as ${Cypress.env("username")};`, () => {

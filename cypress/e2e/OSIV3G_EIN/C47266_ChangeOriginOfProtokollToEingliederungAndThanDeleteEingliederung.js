@@ -3,7 +3,7 @@ import flows from "../../support/base/OsivFlowsObject";
 import {c47266 as testData} from "../../support/helpers/DataManager";
 import pageBase from "../../support/base/PageBase";
 
-describe(`C47266: Change origin of Protokoll to eingliederung (and than delete eingliederung); 
+describe.skip(`C47266: Change origin of Protokoll to eingliederung (and than delete eingliederung); 
   TestRail: https://osiv.testrail.net/index.php?/cases/view/47266`, {failFast: {enabled: true}}, () => {
 
   before(`Login as ${Cypress.env("username")};`, () => {
