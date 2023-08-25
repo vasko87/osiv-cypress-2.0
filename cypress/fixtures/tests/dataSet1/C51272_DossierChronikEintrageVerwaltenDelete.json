@@ -9,5 +9,11 @@
   },
   "step3": {
     "ereignis": "Erhalten von"
+  },
+  "step4": {
+    "ereignis1": "Delegation Abschluss",
+    "ereignis2": "Delegation von",
+    "ereignis3": "Externe Abklärung von",
+    "ereignis4": "RAD Abklärung von"
   }
 }
