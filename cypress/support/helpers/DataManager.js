@@ -58,9 +58,9 @@ import C50474_ds1 from "../../fixtures/tests/dataSet1/C50474_EingliederungLosche
 import C50474_ds2 from "../../fixtures/tests/dataSet2/C50474_EingliederungLoschenWithSEndungAndProtokollWithEingliederungGesuchId.json";
 import C50474_ds3 from "../../fixtures/tests/dataSet3/C50474_EingliederungLoschenWithSEndungAndProtokollWithEingliederungGesuchId.json";
 
-import C51272_ds1 from "../../fixtures/tests/dataSet1/C51272_DossierChronikEinträgeVerwaltenDelete.json";
-import C51272_ds2 from "../../fixtures/tests/dataSet2/C51272_DossierChronikEinträgeVerwaltenDelete.json";
-import C51272_ds3 from "../../fixtures/tests/dataSet3/C51272_DossierChronikEinträgeVerwaltenDelete.json";
+import C51272_ds1 from "../../fixtures/tests/dataSet1/C51272_DossierChronikEintrageVerwaltenDelete.json";
+import C51272_ds2 from "../../fixtures/tests/dataSet2/C51272_DossierChronikEintrageVerwaltenDelete.json";
+import C51272_ds3 from "../../fixtures/tests/dataSet3/C51272_DossierChronikEintrageVerwaltenDelete.json";
 
 import C001 from "../../fixtures/tests/C001_newAdressTest.json";
 import C44746 from "../../fixtures/tests/C44746_HEGradCalculationRules.json";
