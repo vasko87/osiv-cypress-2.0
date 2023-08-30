@@ -2,6 +2,7 @@ import pages from "../../support/base/OsivPageObject";
 import flows from "../../support/base/OsivFlowsObject";
 import constants from "../../support/helpers/Constants";
 import {c51300 as testData} from "../../support/helpers/DataManager";
+import pageBase from "../../support/base/PageBase";
 
 describe(`C51300: Abgabe registrieren _ with warning messages; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/51300`, {failFast: {enabled: true}}, () => {
@@ -75,7 +76,8 @@ describe(`C51300: Abgabe registrieren _ with warning messages;
 
   it(`Expected result: 
       - entry is added to Dossier-Chronik`, () => {
-    pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.checkGridRowsCount(1)
+    pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.waitGridViewLoaded()
+         .checkGridRowsCount(1)
          .checkValueInGridExists(testData.dosseirAbgabeAnDropdown, true)
          .checkValueInGridExists(testData.status, true);
   });
@@ -85,6 +87,7 @@ describe(`C51300: Abgabe registrieren _ with warning messages;
     pages.versicherte.detail.tabBar.navigateToProtocollTab()
          .grid.waitGridViewLoaded()
          .clickRowNumber(1);
+    pageBase.waitForLoadingDisappears();
     pages.versicherte.detail.protocollTabBar.detail.checkTypDropdown(testData.type);
   });
 
@@ -95,6 +98,7 @@ describe(`C51300: Abgabe registrieren _ with warning messages;
     pages.versicherte.detail.tabBar.navigateToProtocollTab()
          .grid.waitGridViewLoaded()
          .clickRowNumber(1);
+    pageBase.waitForLoadingDisappears();
     pages.versicherte.detail.protocollTabBar.detail.checkTypDropdown(testData.type);
   });
 });

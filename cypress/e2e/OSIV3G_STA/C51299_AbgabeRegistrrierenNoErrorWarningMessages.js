@@ -2,6 +2,7 @@ import pages from "../../support/base/OsivPageObject";
 import flows from "../../support/base/OsivFlowsObject";
 import constants from "../../support/helpers/Constants";
 import {c51299 as testData} from "../../support/helpers/DataManager";
+import pageBase from "../../support/base/PageBase";
 
 describe(`C51299: Abgabe registrrieren _ no error/warning messages; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/51299`, {failFast: {enabled: true}}, () => {
@@ -55,7 +56,8 @@ describe(`C51299: Abgabe registrrieren _ no error/warning messages;
   it(`Expected results: 
       - entry is added to Dossier-Chronik`, () => {
     pages.versicherte.detail.sideMenu.navigateToDossierChronikTab().clickDossierChronikTab();
-    pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.checkGridRowsCount(1)
+    pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.waitGridViewLoaded()
+         .checkGridRowsCount(1)
          .checkValueInGridExists(testData.dosseirAbgabeAnDropdownToCheck, true)
          .checkValueInGridExists(testData.status, true);
   });
@@ -65,6 +67,7 @@ describe(`C51299: Abgabe registrrieren _ no error/warning messages;
     pages.versicherte.detail.tabBar.navigateToProtocollTab()
          .grid.waitGridViewLoaded()
          .clickRowNumber(1);
+    pageBase.waitForLoadingDisappears();
     pages.versicherte.detail.protocollTabBar.detail.checkTypDropdown(testData.type);
   });
 });
