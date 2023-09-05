@@ -20,6 +20,7 @@ import EingliederungPageObject from "../page_objects/eingliederungen/Eingliederu
 import TerminePageObject from "../page_objects/termine/TerminePageObject";
 import TxtEditor from "../standalone/TxtEditor";
 import Dashboard from "../standalone/Dashboard";
+import PopupUniversal from "../standalone/popup/PopupUniversal";
 
 class OsivPageObject {
   constructor() {
@@ -33,6 +34,7 @@ class OsivPageObject {
     this.errorPopup = new ErrorPopup();
     this.infoPopup = new InformationPopup();
     this.confirmPopup = new ConfirmPopup();
+    this.popupUniversal = new PopupUniversal();
     this.notification = new Notifications();
     this.versicherte = new VersichertePageObject();
     this.gesuche = new GesuchePageObject();
