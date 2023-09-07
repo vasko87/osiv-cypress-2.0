@@ -82,7 +82,8 @@ describe(`C50987: Dossier-Chronik-Einträge verwalten (edit and save);
       No changes have to be saved"`, () => {
     pages.loginPage.openUrl();
     flows.versicherte.step_navigateVP_searchByVPNr_openVP_navigateToDossierChronikTab(testData.step4.vp);
-    pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.clickRowWithTextToSelectIt(testData.step4.ereignis);
+    pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.waitGridViewLoaded()
+         .clickRowWithTextToSelectIt(testData.step4.ereignis);
     pages.versicherte.detail.dossierChronikTab.dossierChronikDetailForm.waitForLoaded()
          .setDatumnAmDate(testData.step4.date);
     pages.versicherte.detail.ribbonMenu.clickSpeichernBtn();
@@ -128,7 +129,8 @@ describe(`C50987: Dossier-Chronik-Einträge verwalten (edit and save);
       No changes have to be saved`, () => {
     pages.loginPage.openUrl();
     flows.versicherte.step_navigateVP_searchByVPNr_openVP_navigateToDossierChronikTab(testData.step6.vp);
-    pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.clickRowWithTextToSelectIt(testData.step6.ereignis);
+    pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.waitGridViewLoaded()
+         .clickRowWithTextToSelectIt(testData.step6.ereignis);
     pages.versicherte.detail.dossierChronikTab.dossierChronikDetailForm.waitForLoaded()
          .setDatumnAmDate(helperObject.date.getCurrentDate());
     pages.versicherte.detail.ribbonMenu.clickSpeichernBtn();
@@ -151,7 +153,8 @@ describe(`C50987: Dossier-Chronik-Einträge verwalten (edit and save);
       No changes have to be saved`, () => {
     pages.loginPage.openUrl();
     flows.versicherte.step_navigateVP_searchByVPNr_openVP_navigateToDossierChronikTab(testData.step7.vp);
-    pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.clickRowWithTextToSelectIt(testData.step7.ereignis);
+    pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.waitGridViewLoaded()
+         .clickRowWithTextToSelectIt(testData.step7.ereignis);
     pages.versicherte.detail.dossierChronikTab.dossierChronikDetailForm.waitForLoaded()
          .setDatumnAmDate(testData.step7.date);
     pages.versicherte.detail.ribbonMenu.clickSpeichernBtn();
