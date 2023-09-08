@@ -23,7 +23,7 @@ describe(`C51272: Dossier-Chronik: Einträge verwalten (delete);
     flows.versicherte.step_navigateVP_searchByVPNr_openVP_navigateToDossierChronikTab(testData.vp);
     pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.clickRowWithTextToSelectIt(testData.step1.ereignis);
     pages.versicherte.detail.ribbonMenu.clickLoschenBtn();
-    pages.confirmPopup.clickJaBtn();
+    pages.warningPopup.clickOkBtn();
     pages.warningPopup.checkWarningContainsText(constants.MSG.OSCSTAMM_211)
          .clickAbbrechenBtn();
     pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.checkValueInGridExists(testData.step1.ereignis, true);
@@ -34,7 +34,7 @@ describe(`C51272: Dossier-Chronik: Einträge verwalten (delete);
         ‘Wiedererhalten von’ record is changed to ‘Erhalten von’`, () => {
     pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.clickRowWithTextToSelectIt(testData.step2.ereignis);
     pages.versicherte.detail.ribbonMenu.clickLoschenBtn();
-    pages.confirmPopup.clickJaBtn();
+    pages.warningPopup.clickOkBtn();
     pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.checkValueInGridExists(testData.step2.ereignis, false);
     pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.checkValueInGridExists(testData.step1.ereignis, false);
     pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.checkValueInGridExists(testData.step2.ereignisNew, true);
@@ -51,33 +51,36 @@ describe(`C51272: Dossier-Chronik: Einträge verwalten (delete);
         The first record from the list is selected."`, () => {
     pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.clickRowWithTextToSelectIt(testData.step3.ereignis);
     pages.versicherte.detail.ribbonMenu.clickLoschenBtn();
-    pages.confirmPopup.clickJaBtn();
+    pages.warningPopup.clickOkBtn();
     pages.warningPopup.checkWarningContainsText(constants.MSG.OSCSTAMM_211)
          .clickOkBtn();
-    pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.checkValueInGridExists(testData.step3.ereignis, false);
+    pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.waitGridViewLoaded()
+         .checkValueInGridExists(testData.step3.ereignis, false);
   });
 
   it(`Step 4: Delete all records in the list; -> All records are deleted
   'Speichern' and 'Loschen' ribbon buttons are visible but disabled"`, () => {
     pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.clickRowWithTextToSelectIt(testData.step4.ereignis1);
     pages.versicherte.detail.ribbonMenu.clickLoschenBtn();
-    pages.confirmPopup.clickJaBtn();
+    pages.warningPopup.clickOkBtn();
     pages.warningPopup.clickOkBtnIfVisible();
     pageBase.waitForLoadingDisappears();
-    pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.clickRowWithTextToSelectIt(testData.step4.ereignis2);
+    pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.waitGridViewLoaded()
+         .clickRowWithTextToSelectIt(testData.step4.ereignis2);
     pages.versicherte.detail.ribbonMenu.clickLoschenBtn();
-    pages.confirmPopup.clickJaBtn();
+    pages.warningPopup.clickOkBtn();
     pages.warningPopup.clickOkBtnIfVisible();
     pageBase.waitForLoadingDisappears();
-    pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.clickRowWithTextToSelectIt(testData.step4.ereignis3);
+    pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.waitGridViewLoaded()
+         .clickRowWithTextToSelectIt(testData.step4.ereignis3);
     pages.versicherte.detail.ribbonMenu.clickLoschenBtn();
-    pages.confirmPopup.clickJaBtn();
+    pages.warningPopup.clickOkBtn();
     pages.warningPopup.clickOkBtnIfVisible();
     pageBase.waitForLoadingDisappears();
-    pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.clickRowWithTextToSelectIt(testData.step4.ereignis4);
+    pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.waitGridViewLoaded()
+         .clickRowWithTextToSelectIt(testData.step4.ereignis4);
     pages.versicherte.detail.ribbonMenu.clickLoschenBtn();
-    pages.confirmPopup.clickJaBtn();
-    pages.warningPopup.clickOkBtnIfVisible();
-    pageBase.waitForLoadingDisappears();
+    pages.warningPopup.clickOkBtn();
+    pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.checkGridRowsCount(0)
   });
 });
