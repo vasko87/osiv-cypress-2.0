@@ -77,7 +77,6 @@ describe(`C51272: Dossier-Chronik: Einträge verwalten (delete);
     pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.clickRowWithTextToSelectIt(testData.step4.ereignis4);
     pages.versicherte.detail.ribbonMenu.clickLoschenBtn();
     pages.confirmPopup.clickJaBtn();
-    pages.warningPopup.clickOkBtnIfVisible();
-    pageBase.waitForLoadingDisappears();
+    pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.checkGridRowsCount(0);
   });
 });
