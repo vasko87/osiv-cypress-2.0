@@ -58,6 +58,10 @@ import C50474_ds1 from "../../fixtures/tests/dataSet1/C50474_EingliederungLosche
 import C50474_ds2 from "../../fixtures/tests/dataSet2/C50474_EingliederungLoschenWithSEndungAndProtokollWithEingliederungGesuchId.json";
 import C50474_ds3 from "../../fixtures/tests/dataSet3/C50474_EingliederungLoschenWithSEndungAndProtokollWithEingliederungGesuchId.json";
 
+import C58228_ds1 from "../../fixtures/tests/dataSet1/C58228_DossierErhaltCreationWhenEntscheidGExists.json";
+import C58228_ds2 from "../../fixtures/tests/dataSet2/C58228_DossierErhaltCreationWhenEntscheidGExists.json";
+import C58228_ds3 from "../../fixtures/tests/dataSet3/C58228_DossierErhaltCreationWhenEntscheidGExists.json";
+
 import C51272_ds1 from "../../fixtures/tests/dataSet1/C51272_DossierChronikEintrageVerwaltenDelete.json";
 import C51272_ds2 from "../../fixtures/tests/dataSet2/C51272_DossierChronikEintrageVerwaltenDelete.json";
 import C51272_ds3 from "../../fixtures/tests/dataSet3/C51272_DossierChronikEintrageVerwaltenDelete.json";
@@ -95,6 +99,7 @@ const dataFiles = {
   c55733 : C55733_ds1,
   c50473 : C50473_ds1,
   c50474 : C50474_ds1,
+  c58228 : C58228_ds1,
   c51272 : C51272_ds1,
   c001 : C001,
   c44746 : C44746,
@@ -133,6 +138,7 @@ if (dataSet === "dataSet1") {
   dataFiles.c55733 = C55733_ds1;
   dataFiles.c50473 = C50473_ds1;
   dataFiles.c50474 = C50474_ds1;
+  dataFiles.c58228 = C58228_ds1;
   dataFiles.c51272 = C51272_ds1;
 }
 if (dataSet === "dataSet2") {
@@ -151,6 +157,7 @@ if (dataSet === "dataSet2") {
   dataFiles.c55733 = C55733_ds2;
   dataFiles.c50473 = C50473_ds2;
   dataFiles.c50474 = C50474_ds2;
+  dataFiles.c58228 = C58228_ds2;
   dataFiles.c51272 = C51272_ds2;
 }
 if (dataSet === "dataSet3") {
@@ -169,6 +176,7 @@ if (dataSet === "dataSet3") {
   dataFiles.c55733 = C55733_ds3;
   dataFiles.c50473 = C50473_ds3;
   dataFiles.c50474 = C50474_ds3;
+  dataFiles.c58228 = C58228_ds3;
   dataFiles.c51272 = C51272_ds3;
 }
 
