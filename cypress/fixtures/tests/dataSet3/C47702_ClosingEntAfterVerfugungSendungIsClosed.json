@@ -1,12 +1,12 @@
 {
   "data1": {
     "entId": "23367",
-    "formular": "VIG",
+    "status": "Eingegangen",
     "arbeitsliste": "Revision"
   },
   "data2": {
     "entId": "23370",
-    "formular": "VIG",
+    "status": "Eingegangen",
     "arbeitsliste": "Abgeschlossen"
   }
 }

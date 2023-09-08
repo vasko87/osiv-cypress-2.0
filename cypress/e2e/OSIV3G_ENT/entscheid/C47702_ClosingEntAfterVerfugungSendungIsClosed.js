@@ -20,7 +20,7 @@ describe(`C47702: (ENT ${testData.data1.entId}) Closing ENT after Verfugung send
       flows.entscheid.step_navigateEnt_searchEnt_openEnt(data.entId);
       pages.entscheid.detail.tabBar.navigateToSendungenTab();
       pages.entscheid.detail.sendungenTabBar.grid.waitGridViewLoaded()
-           .dblClickRowValue(data.formular);
+           .dblClickRowValue(data.status);
       pages.entscheid.detail.sendungenTabBar.detail.waitForLoaded();
       pages.entscheid.detail.sendungenTabBar.detail.ribbonMenu.clickAbschliessenBtn();
       pages.entscheid.detail.sendungenTabBar.detail

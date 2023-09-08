@@ -62,7 +62,7 @@ describe(`C55733: "Abschluss Eingliederung" _has open Sendung and Termin
 
   it(`Step 4: Fill in mandatory data , select Rentenfrage = Nein; add text to Auftragstext field`, () => {
     pages.eingliederung.abschlussEingliederungPopup.waitForLoaded()
-         .selectResultatDropdownByIndex(1)
+         .selectResultatDropdown("Folge-Auftrag Arbeitsvermittlung")
          .selectFolgeAuftragAnDropdownByIndex(1)
          .setAuftragsText("TEXT")
          .selectRentenfrageDropdown("Nein");
