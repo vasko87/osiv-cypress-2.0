@@ -54,6 +54,7 @@ const MSG = {
   OSCSTAMM_208: "Es ist bereits ein offenes Gesuch vorhanden. Soll der Dossier-Erhalt trotzdem registriert werden? (OSCSTAMM:208)",
   OSCSTAMM_209: "Es ist bereits ein offener Entscheid vorhanden! Soll der Dossier-Erhalt trotzdem registriert werden? (OSCSTAMM:209)",
   OSCSTAMM_210: "Beim Erhalt eines Dossiers sollten üblicherweise die erhaltenen Gesuche und Entscheide nacherfasst werden, falls solche vorhanden sind. Vergessen Sie nicht diese Daten nachträglich noch zu erfassen. (OSCSTAMM:210)",
+  OSCSTAMM_211: "Das Ereignis in der Dossier-Chronik dennoch löschen.  (OSCSTAMM:211)"
 };
 
 module.exports = {CSS_ACTIVE_FORM, CSS_OPACITY1, CSS_OPACITY1_ACTIVE, MIN_TIMEOUT, SHORT_TIMEOUT, LONG_TIMEOUT, DEFAULT_TIMEOUT, COLOR, MSG};

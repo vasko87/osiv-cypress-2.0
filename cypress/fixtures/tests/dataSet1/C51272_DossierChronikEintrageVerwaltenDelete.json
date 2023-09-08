@@ -1,0 +1,19 @@
+{
+  "vp": "1491.9745.82",
+  "step1": {
+    "ereignis": "Wiedererhalten von"
+  },
+  "step2": {
+    "ereignis": "Abgegeben an",
+    "ereignisNew": "Erhalten von"
+  },
+  "step3": {
+    "ereignis": "Erhalten von"
+  },
+  "step4": {
+    "ereignis1": "Delegation Abschluss",
+    "ereignis2": "Delegation von",
+    "ereignis3": "Externe Abklärung von",
+    "ereignis4": "RAD Abklärung von"
+  }
+}
