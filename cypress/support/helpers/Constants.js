@@ -15,6 +15,7 @@ const COLOR = {
 };
 
 const MSG = {
+  OSCIENT_21 : "Hierzu gelten auch ersetzte, korrigierte und annullierte Entscheid-Sendungen. (OSCIENT:21)",
   OSCIENT_35 : "Die Sendung für die Delegation muss noch versendet werden. (OSCEIN:35)",
   OSCIENT_76_PART1 : "Zur Prüfung der Rentenfrage wird ein neuer Renten-Entscheid angelegt.",
   OSCIENT_76_PART2 : "Wollen Sie fortfahren? (OSCEIN:76)",
