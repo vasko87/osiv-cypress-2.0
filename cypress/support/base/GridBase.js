@@ -168,6 +168,13 @@ class GridBase {
     return this;
   }
 
+  checkTwoTextsExistInRow(text1, text2, rowNumber) {
+    this.elements.rowElementsList().eq(rowNumber - 1)
+        .xpath(`//td[contains(text(),'${text1}')]/../td[contains(text(),'${text2}')]`)
+        .should("be.visible");
+    return this;
+  }
+
   clickRowWithTextToSelectIt(text) {
     this.elements.gridWrapper().find("tbody").contains("td", text).click();
     return this;
@@ -178,7 +185,7 @@ class GridBase {
   }
 
   dblClickRowWithText(text) {
-    this.elements.gridWrapper().find("tbody").contains("td", text).dblclick();
+    this.elements.gridWrapper().find("tbody").contains("td", text).dblclick("left");
     return this;
   }
 
