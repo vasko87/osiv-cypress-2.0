@@ -75,7 +75,6 @@ describe(`C51272: Dossier-Chronik: Einträge verwalten (delete);
          .clickRowWithTextToSelectIt(testData.step4.ereignis3);
     pages.versicherte.detail.ribbonMenu.clickLoschenBtn();
     pages.warningPopup.clickOkBtn();
-    pages.warningPopup.clickOkBtnIfVisible();
     pageBase.waitForLoadingDisappears();
     pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.waitGridViewLoaded()
          .clickRowWithTextToSelectIt(testData.step4.ereignis4);
