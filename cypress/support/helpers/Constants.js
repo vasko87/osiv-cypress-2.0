@@ -43,6 +43,7 @@ const MSG = {
   TERMIN_26  : "Die zugehörige Eingliederung bleibt aufgrund eines Termins im Warten. (Termin:26)",
   TERMIN_27  : "Die zugehörige Eingliederung wird aus dem Warten befreit. (Termin:27)",
 
+  OSCSTAMM_152  : "Falls der Erhalt des Dossiers jedoch fälschlicherweise nicht registriert wurde, so müssen Sie diesen zuerst registrieren. (OSCSTAMM:152)",
   OSCSTAMM_277  : "Der Regress auf dem Ereignis vom 07.08.2022 ist in Erledigung. (OSCSTAMM:277)",
   OSCSTAMM_275  : "Der Regress auf dem Ereignis vom 05.05.2022 ist in Durchführung. (OSCSTAMM:275)",
   OSCSTAMM_273: "Der Regress auf dem Ereignis vom 01.02.2021 ist in Prüfung. (OSCSTAMM:273)",
