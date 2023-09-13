@@ -6,7 +6,7 @@ import helpers from "../../../support/helpers/HelperObject";
 
 // @Bugs: OSIV-24342(step 2)
 describe(`C55741: Validation of 'Ablehnung Massnahme' field based on LC; 
-  TestRail: https://osiv.testrail.net/index.php?/cases/view/55741`, {failFast: {enabled: true}}, () => {
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/55741; DEFECT(step 2): OSIV-24342`, {failFast: {enabled: true}}, () => {
 
   before(`Login as ${Cypress.env("username")};`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
