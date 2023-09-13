@@ -6,11 +6,18 @@ import {c50984 as testData} from "../../../../support/helpers/DataManager";
 import dateHelper from "../../../../support/helpers/DateHelper";
 import pageBase from "../../../../support/base/PageBase";
 
-// @Bugs: OSIV-22145(step 9)
+// @Bugs: OSIV-22145(step 9), OSIV-24342(step 3)
 describe(`C50984: E2E (HE Entscheid);
-  TestRail: https://osiv.testrail.net/index.php?/cases/view/50984;`, {failFast: {enabled: true}}, () => {
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/50984; DEFECT(step 3): OSIV-24342`, {failFast: {enabled: true}}, () => {
   before("Login", () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
+    helpers.jira.isJiraDone("OSIV-24342").then((isDone) => {
+      console.log(isDone);
+      if (isDone === false) {
+        Cypress.env("isJira", true);
+        console.log(Cypress.env("isJira"));
+      }
+    });
   });
 
   it("Step 1: Open VP; Open Entscheide tab, Click Neu button -> Form for new ENT creation opens", () => {
@@ -45,6 +52,7 @@ describe(`C50984: E2E (HE Entscheid);
   it(`Step 3: Fill in the data on Basisdaten tab -> data is filled in as on screenshot;
   orange flag is removed from tab Basisdaten and orange info panel message is not presented anymore;
   side tab Entscheid sendungen appears on the left menu`, () => {
+    cy.skipOn(Cypress.env("isJira") === true);
     pages.entscheid.detail.basisdatenTabBar.fillInFieldsBulk(testData.step3.fillInEntDetail);
     pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
     pages.warningPopup.clickOkBtn();
@@ -225,5 +233,13 @@ describe(`C50984: E2E (HE Entscheid);
     pages.groupedTaskbar.clickEntscheidHEHETab();
     pages.entscheid.detail.sideMenu.navigateToBasisdatenTab()
          .checkArbeitslisteTxt(testData.step17.arbeitslisteTxt);
+  });
+
+  afterEach(function() {
+    console.log(this.currentTest.state);
+    if (this.currentTest.state === "pending") {
+      Cypress.log(this.currentTest.err);
+      Cypress.runner.stop();
+    }
   });
 });

@@ -2,12 +2,21 @@ import pages from "../../../support/base/OsivPageObject";
 import flows from "../../../support/base/OsivFlowsObject";
 import {c55741 as testData} from "../../../support/helpers/DataManager";
 import pageBase from "../../../support/base/PageBase";
+import helpers from "../../../support/helpers/HelperObject";
 
+// @Bugs: OSIV-24342(step 2)
 describe(`C55741: Validation of 'Ablehnung Massnahme' field based on LC; 
-  TestRail: https://osiv.testrail.net/index.php?/cases/view/55741`, {failFast: {enabled: true}}, () => {
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/55741; DEFECT(step 2): OSIV-24342`, {failFast: {enabled: true}}, () => {
 
   before(`Login as ${Cypress.env("username")};`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
+    helpers.jira.isJiraDone("OSIV-24342").then((isDone) => {
+      console.log(isDone);
+      if (isDone === false) {
+        Cypress.env("isJira", true);
+        console.log(Cypress.env("isJira"));
+      }
+    });
     pages.loginPage.openUrl();
   });
 
@@ -34,6 +43,7 @@ describe(`C55741: Validation of 'Ablehnung Massnahme' field based on LC;
   it(`Step 2: Delete LG / LC
       Select LC=010
       Observe "Ablehnung Massnahme" field -> "Ablehnung Massnahme" set as M06`, () => {
+    cy.skipOn(Cypress.env("isJira") === true);
     pages.entscheid.detail.basisdatenTabBar.clearLeistungsgruppeDropdown()
          .clearLeistungscodeDropdown()
          .selectLeistungscodeDropdownByTyping(testData.step2.lc)
@@ -79,5 +89,13 @@ describe(`C55741: Validation of 'Ablehnung Massnahme' field based on LC;
     pages.warningPopup.clickOkBtn()
          .clickOkBtn();
     pages.notification.checkSuccessMessageVisible();
+  });
+
+  afterEach(function() {
+    console.log(this.currentTest.state);
+    if (this.currentTest.state === "pending") {
+      Cypress.log(this.currentTest.err);
+      Cypress.runner.stop();
+    }
   });
 });
