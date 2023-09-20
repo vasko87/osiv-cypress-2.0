@@ -6,14 +6,15 @@ class DesktopMenu {
     this.elements = {
       versicherteMainTab: () => cy.get("[class*='level-1'][menuname='Versicherte']"),
       versicherteTab    : () => cy.get("[class*='level-2'][menuname='Versicherte']"),
-      sendungenMainTab: () => cy.get("[class*='level-1'][menuname='Sendungen']"),
-      sendungenTab    : () => cy.get("[class*='level-2'][menuname='Sendungen']"),
+      sendungenMainTab  : () => cy.get("[class*='level-1'][menuname='Sendungen']"),
+      sendungenTab      : () => cy.get("[class*='level-2'][menuname='Sendungen']"),
       adressenTab       : () => cy.get("[menuname='Adressen']"),
       posteingangMainTab: () => cy.get("[class*='level-1'][menuname='Posteingang']"),
       posteingangTab    : () => cy.get("[class*='level-2'][menuname='Posteingang']"),
-      entscheidMainTab  : () => cy.get("[class*='level-1'][menuname='Entscheid']"),
-      entscheidTab      : () => cy.get("[class*='level-2'][menuname='Entscheid']"),
-      eingliederungTab  : () => cy.get("[menuname='Eingliederung']"),
+      entscheidMainTab  : () => cy.get("[class*='level-1'][menuname*='Entscheid']"),
+      entscheidTab      : () => cy.xpath("//*[contains(@class,'level-2') " +
+        "and contains(@menuname,'Entscheid') and not(contains(@menuname,'Auflage'))]"),
+      eingliederungTab  : () => cy.get("[menuname*='Eingliederung']"),
       gesucheMainTab    : () => cy.get("[class*='level-1'][menuname='Gesuche']"),
       gesucheTab        : () => cy.get("[class*='level-2'][menuname='Gesuche']")
     };
