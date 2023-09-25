@@ -59,7 +59,7 @@ describe(`C51272: Dossier-Chronik: Einträge verwalten (delete);
   });
 
   //TODO clarify with Natalia, warning messages on 72 line does not exist for 1st dataset
-  it.skip(`Step 4: Delete all records in the list; -> All records are deleted
+  it(`Step 4: Delete all records in the list; -> All records are deleted
   'Speichern' and 'Loschen' ribbon buttons are visible but disabled"`, () => {
     pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.clickRowWithTextToSelectIt(testData.step4.ereignis1);
     pages.versicherte.detail.ribbonMenu.clickLoschenBtn();
@@ -70,13 +70,11 @@ describe(`C51272: Dossier-Chronik: Einträge verwalten (delete);
          .clickRowWithTextToSelectIt(testData.step4.ereignis2);
     pages.versicherte.detail.ribbonMenu.clickLoschenBtn();
     pages.warningPopup.clickOkBtn();
-    pages.warningPopup.clickOkBtnIfVisible();
     pageBase.waitForLoadingDisappears();
     pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.waitGridViewLoaded()
          .clickRowWithTextToSelectIt(testData.step4.ereignis3);
     pages.versicherte.detail.ribbonMenu.clickLoschenBtn();
     pages.warningPopup.clickOkBtn();
-    pages.warningPopup.clickOkBtnIfVisible();
     pageBase.waitForLoadingDisappears();
     pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.waitGridViewLoaded()
          .clickRowWithTextToSelectIt(testData.step4.ereignis4);

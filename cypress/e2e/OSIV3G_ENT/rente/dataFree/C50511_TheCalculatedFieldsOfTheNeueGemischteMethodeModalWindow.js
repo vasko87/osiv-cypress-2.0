@@ -40,7 +40,7 @@ describe(`C50511: The calculated fields of the "Neue gemischte Methode" modal wi
     pages.entscheid.detail.renteTab.gemischtePopup
          .invalideneinkommenBlock
          .selectLohnartDropdown(testData.step5.lohnartDropdown)
-         .setFrInvalideneinkommenTxt(testData.step5.frInvalideneinkommenTxt)
+         .setInFrTxt(testData.step5.frInvalideneinkommenTxt)
          .setInFrProJahrTxt(testData.step5.jahreslohnInFr)
          .setSLGKInFrProJahrTxt(testData.step5.sLGKInFrProJahrTxt)
          .setAbzugInFrProJahrTxt(testData.step5.abzugInFrProJahrTxt);

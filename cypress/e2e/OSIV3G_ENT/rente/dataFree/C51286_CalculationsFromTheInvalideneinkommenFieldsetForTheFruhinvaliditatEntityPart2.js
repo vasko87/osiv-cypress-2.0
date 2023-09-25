@@ -29,7 +29,7 @@ describe(`C51286: Calculations from the Invalideneinkommen fieldset for the Frü
   Step 4: Set Fr.=5 -> Fields “Monatslohn in Fr.” recalculated and it's value=868`, () => {
     pages.entscheid.detail.renteTab.fruhinvaliditatPopup.invalideneinkommenBlock
          .selectLohnartDropdown(testData.lohnartS)
-         .setFrInvalideneinkommenTxt(testData.fr)
+         .setInFrTxt(testData.fr)
          .checkMonatslohnInFrTxt(testData.monatslohnInFr);
   });
 });
