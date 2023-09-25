@@ -17,30 +17,31 @@ class EntscheidRibbon extends RibbonBase {
       freitextGenerierenBtn          : () => this.elements.ribbonBlock().find("[title='Freitext generieren']"),
       freitextSpeichernBtn           : () => this.elements.ribbonBlock().find("[title='Freitext speichern']"),
       entscheidSendungenGenerierenBtn: () => this.elements.ribbonBlock().find("[title='Entscheid-Sendungen generieren']"),
-      entscheidSendungVerschickenBtn : () => this.elements.ribbonBlock().find("[title='Entscheid-Sendung verschicken']"),
+      entscheidSendungVersendenBtn   : () => this.elements.ribbonBlock().find("[title='Entscheid-Sendung versenden']"),
       visumSpeichernBtn              : () => this.elements.ribbonBlock().find("[title='Visum speichern']"),
       kopierenBtn                    : () => this.elements.ribbonBlock().find("[title='Kopieren']"),
 
       //Entscheid Hilflosigkeit spezifische Funktionen block
       grenzgradAb30TBtn      : () => this.elements.ribbonBlock().find("[title='Grenzgrad ab 30T']"),
-      wartefristBearbeitenBtn: () => this.elements.ribbonBlock().find("[title='Wartefrist Bearbeiten']"),
-      hEGradBearbeitenBtn: () => this.elements.ribbonBlock().find("[title='HE-Grad bearbeiten']"),
+      wartefristBearbeitenBtn: () =>
+        this.elements.ribbonBlock().find("[title='Wartefrist Bearbeiten'],[title='Wartefrist bearbeiten']"),
+      hEGradBearbeitenBtn    : () => this.elements.ribbonBlock().find("[title='HE-Grad bearbeiten']"),
 
       //Allgemeine Funktionen block
-      vPOffnenBtn: () => this.elements.ribbonBlock().find("[title='vP öffnen']"),
-      bearbeiterMeldungBtn: () => this.elements.ribbonBlock().find("[title='Bearbeiter & Meldung']"),
-      dossierExternOffnenBtn: () => this.elements.ribbonBlock().find("[title='Dossier extern öffnen']"),
+      vPOffnenBtn              : () => this.elements.ribbonBlock().find("[title='vP öffnen']"),
+      bearbeiterMeldungBtn     : () => this.elements.ribbonBlock().find("[title='Bearbeiter & Meldung']"),
+      dossierExternOffnenBtn   : () => this.elements.ribbonBlock().find("[title='Dossier extern öffnen']"),
       dossierDokExternOffnenBtn: () => this.elements.ribbonBlock().find("[title='Dossier & Dok. extern öffnen']"),
 
       diskussionStartenBtn: () => this.elements.ribbonBlock().find("[title='Diskussion starten']"),
       diskussionBeendenBtn: () => this.elements.ribbonBlock().find("[title='Diskussion beenden']"),
 
       //Rente -> IV-Grad Berechnung
-      iVGradBerechnungBlock: () => this.elements.ribbonBlock().contains("IV-Grad Berechnung"),
+      iVGradBerechnungBlock      : () => this.elements.ribbonBlock().contains("IV-Grad Berechnung"),
       neuerEinkommensvergleichBtn: () => this.elements.ribbonBlock().find("[title='Neuer Einkommensvergleich']"),
-      neueGemischteMethodeBtn: () => this.elements.ribbonBlock().find("[title='Neue gemischte Methode']"),
-      neueFruhinvaliditatBtn: () => this.elements.ribbonBlock().find("[title='Neue Frühinvalidität ']"),
-      neueSpezifischeMethodeBtn: () => this.elements.ribbonBlock().find("[title='Neue spezifische Methode']"),
+      neueGemischteMethodeBtn    : () => this.elements.ribbonBlock().find("[title='Neue gemischte Methode']"),
+      neueFruhinvaliditatBtn     : () => this.elements.ribbonBlock().find("[title='Neue Frühinvalidität ']"),
+      neueSpezifischeMethodeBtn  : () => this.elements.ribbonBlock().find("[title='Neue spezifische Methode']")
     };
 
     this.korrekturfunktionenSubMenu = {
@@ -109,8 +110,8 @@ class EntscheidRibbon extends RibbonBase {
     return this;
   }
 
-  clickEntscheidSendungVerschickenBtn() {
-    this.elements.entscheidSendungVerschickenBtn().click();
+  clickEntscheidSendungVersendenBtn() {
+    this.elements.entscheidSendungVersendenBtn().click();
     return this;
   }
 
