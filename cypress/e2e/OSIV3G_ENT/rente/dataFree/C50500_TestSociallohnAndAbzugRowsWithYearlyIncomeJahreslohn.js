@@ -38,7 +38,7 @@ describe(`C50500: Test Sociallohn and Abzug rows - with yearly income (Jahresloh
   "Abzug in %" = 2.00;`, () => {
     pages.entscheid.detail.renteTab.fruhinvaliditatPopup.invalideneinkommenBlock
          .selectLohnartDropdown(testData.lohnart)
-         .setFrInvalideneinkommenTxt(testData.fr)
+         .setInFrTxt(testData.fr)
          .setSoziallohnGewinnkostenInPersentTxt(testData.soziallohnGewinnkostenInPersent)
          .setAbzugInPersentTxt(testData.abzugInPersent);
   });

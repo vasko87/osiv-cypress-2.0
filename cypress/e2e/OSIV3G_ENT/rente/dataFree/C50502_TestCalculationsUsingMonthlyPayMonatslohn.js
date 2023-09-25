@@ -33,7 +33,7 @@ describe(`C50502: Test calculations - using monthly pay (Monatslohn)
   Expected: calc field “in Fr. pro Jahr” = 52’000 (Yearly salary)`, () => {
     pages.entscheid.detail.renteTab.fruhinvaliditatPopup.invalideneinkommenBlock
          .selectLohnartDropdown(testData.lohnart)
-         .setFrInvalideneinkommenTxt(testData.fr)
+         .setInFrTxt(testData.fr)
          .setAnzahlMonathLohneTxt(testData.anzahlMonathLohne)
          .checkInFrProJahrTxt(testData.inFrProJahr);
   });

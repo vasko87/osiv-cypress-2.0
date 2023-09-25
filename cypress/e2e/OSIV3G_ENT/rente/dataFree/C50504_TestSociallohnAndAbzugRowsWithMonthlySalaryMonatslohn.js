@@ -39,7 +39,7 @@ describe(`C50504: Test Sociallohn and Abzug rows - with monthly salary (Monatslo
   "Abzug in %" = 2.00;`, () => {
     pages.entscheid.detail.renteTab.fruhinvaliditatPopup.invalideneinkommenBlock
          .selectLohnartDropdown(testData.lohnart)
-         .setFrInvalideneinkommenTxt(testData.fr)
+         .setInFrTxt(testData.fr)
          .setSoziallohnGewinnkostenInPersentTxt(testData.soziallohnGewinnkostenInPersent)
          .setAbzugInPersentTxt(testData.abzugInPersent);
   });

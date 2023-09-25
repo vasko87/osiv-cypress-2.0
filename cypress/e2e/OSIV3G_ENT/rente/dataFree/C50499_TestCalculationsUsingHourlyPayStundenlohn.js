@@ -34,7 +34,7 @@ describe(`C50499: Test calculations - using hourly pay (Stundenlohn)"
   “in Fr” = 40 (salary per hour)`, () => {
     pages.entscheid.detail.renteTab.fruhinvaliditatPopup.invalideneinkommenBlock
          .selectLohnartDropdown(testData.lohnart)
-         .setFrInvalideneinkommenTxt(testData.fr);
+         .setInFrTxt(testData.fr);
   });
 
   it(`Step 3: 

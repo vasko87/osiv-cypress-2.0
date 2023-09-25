@@ -15,14 +15,14 @@ const COLOR = {
 };
 
 const MSG = {
-  OSCIENT_21 : "Hierzu gelten auch ersetzte, korrigierte und annullierte Entscheid-Sendungen. (OSCIENT:21)",
-  OSCIENT_35 : "Die Sendung für die Delegation muss noch versendet werden. (OSCEIN:35)",
-  OSCIENT_76_PART1 : "Zur Prüfung der Rentenfrage wird ein neuer Renten-Entscheid angelegt.",
-  OSCIENT_76_PART2 : "Wollen Sie fortfahren? (OSCEIN:76)",
-  OSCIENT_77_PART1 : "Das angegebene Resultat und die Anstellungen werden gespeichert.",
-  OSCIENT_77_PART2 : "Wollen Sie fortfahren? (OSCEIN:77)",
-  OSCIENT_362 : "Diese Aktion kann nicht rückgängig gemacht werden! (OSCSTAMM:362)",
-  OSCIENT_363 : "Diese Aktion kann nicht rückgängig gemacht werden! (OSCSTAMM:363)",
+  OSCIENT_21: "Hierzu gelten auch ersetzte, korrigierte und annullierte Entscheid-Sendungen. (OSCIENT:21)",
+  OSCIENT_35: "Die Sendung für die Delegation muss noch versendet werden. (OSCEIN:35)",
+  OSCIENT_76_PART1: "Zur Prüfung der Rentenfrage wird ein neuer Renten-Entscheid angelegt.",
+  OSCIENT_76_PART2: "Wollen Sie fortfahren? (OSCEIN:76)",
+  OSCIENT_77_PART1: "Das angegebene Resultat und die Anstellungen werden gespeichert.",
+  OSCIENT_77_PART2: "Wollen Sie fortfahren? (OSCEIN:77)",
+  OSCIENT_362: "Diese Aktion kann nicht rückgängig gemacht werden! (OSCSTAMM:362)",
+  OSCIENT_363: "Diese Aktion kann nicht rückgängig gemacht werden! (OSCSTAMM:363)",
   OSCIENT_522: "Bitte die Bearbeitung einleiten. (OSCIENT:522)",
   OSCIENT_713: "Wollen sie fortfahren? (OSCIENT:713)",
 
@@ -39,14 +39,14 @@ const MSG = {
   OSCEIN_68_PART2: "Alle Protokolleinträge werden dem Gesuch zugeordnet.",
   OSCEIN_68_PART3: "Wollen Sie die Eingliederung wirklich löschen? (OSCEIN:68)",
 
-  TERMIN_44  : "Sie beenden einen fremden Termin. (Termin:44)",
-  TERMIN_26  : "Die zugehörige Eingliederung bleibt aufgrund eines Termins im Warten. (Termin:26)",
-  TERMIN_27  : "Die zugehörige Eingliederung wird aus dem Warten befreit. (Termin:27)",
+  TERMIN_44: "Sie beenden einen fremden Termin. (Termin:44)",
+  TERMIN_26: "Die zugehörige Eingliederung bleibt aufgrund eines Termins im Warten. (Termin:26)",
+  TERMIN_27: "Die zugehörige Eingliederung wird aus dem Warten befreit. (Termin:27)",
 
   OSCSTAMM_152  : "Falls der Erhalt des Dossiers jedoch fälschlicherweise nicht registriert wurde, so müssen Sie diesen zuerst registrieren. (OSCSTAMM:152)",
-  OSCSTAMM_277  : "Der Regress auf dem Ereignis vom 07.08.2022 ist in Erledigung. (OSCSTAMM:277)",
-  OSCSTAMM_275  : "Der Regress auf dem Ereignis vom 05.05.2022 ist in Durchführung. (OSCSTAMM:275)",
-  OSCSTAMM_273: "Der Regress auf dem Ereignis vom 01.02.2021 ist in Prüfung. (OSCSTAMM:273)",
+  OSCSTAMM_277: "ist in Erledigung. (OSCSTAMM:277)",
+  OSCSTAMM_275: "ist in Durchführung. (OSCSTAMM:275)",
+  OSCSTAMM_273: "ist in Prüfung. (OSCSTAMM:273)",
   OSCSTAMM_201: "Die aktuelle Abgabe des Dossiers darf hier niemals manuell erfasst werden. Sie müssen dazu unbedingt die obige Funktion 'Abgabe registrieren' verwenden. (OSCSTAMM:201)",
   OSCSTAMM_202: "Der aktuelle Erhalt des Dossiers darf hier niemals manuell erfasst werden. Sie müssen dazu unbedingt die obige Funktion 'Erhalt registrieren' verwenden. (OSCSTAMM:202)",
   OSCSTAMM_203: "Die Abgabe oder der Erhalt eines Dossiers darf hier niemals manuell erzeugt werden. Sie müssen dazu unbedingt die obigen Funktion 'Erhalt / Abgabe registrieren' verwenden. (OSCSTAMM:203)",
@@ -59,5 +59,15 @@ const MSG = {
   OSCSTAMM_211: "Das Ereignis in der Dossier-Chronik dennoch löschen.  (OSCSTAMM:211)"
 };
 
-module.exports = {CSS_ACTIVE_FORM, CSS_OPACITY1, CSS_OPACITY1_ACTIVE, MIN_TIMEOUT, SHORT_TIMEOUT, LONG_TIMEOUT, DEFAULT_TIMEOUT, COLOR, MSG};
+module.exports = {
+  CSS_ACTIVE_FORM,
+  CSS_OPACITY1,
+  CSS_OPACITY1_ACTIVE,
+  MIN_TIMEOUT,
+  SHORT_TIMEOUT,
+  LONG_TIMEOUT,
+  DEFAULT_TIMEOUT,
+  COLOR,
+  MSG
+};
 

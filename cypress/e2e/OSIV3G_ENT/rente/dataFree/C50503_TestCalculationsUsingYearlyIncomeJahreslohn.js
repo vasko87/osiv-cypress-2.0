@@ -33,7 +33,7 @@ describe(`C50503: Test calculations - using Yearly income (Jahreslohn)
   Expected: calc field “Monatslohn in Fr. ” = 3’846`, () => {
     pages.entscheid.detail.renteTab.fruhinvaliditatPopup.invalideneinkommenBlock
          .selectLohnartDropdown(testData.lohnart)
-         .setFrInvalideneinkommenTxt(testData.fr)
+         .setInFrTxt(testData.fr)
          .setAnzahlMonathLohneTxt(testData.anzahlMonathLohne)
          .checkMonatslohnInFrTxt(testData.monatslohnInFr);
   });
