@@ -197,7 +197,7 @@ describe(`C50984: E2E (HE Entscheid);
   it(`Step 14: Click Entscheid-Sendungen verschicken button -> Sendungen details page opens`, () => {
     pages.entscheid.detail.sideMenu.navigateToEntscheidSendungenTab();
     pages.waitForLoadingDisappears();
-    pages.entscheid.detail.ribbonMenu.clickEntscheidSendungVerschickenBtn();
+    pages.entscheid.detail.ribbonMenu.clickEntscheidSendungVersendenBtn();
     pages.sendungen.detail.waitForLoaded();
     pageBase.waitForLoadingDisappears();
   });
