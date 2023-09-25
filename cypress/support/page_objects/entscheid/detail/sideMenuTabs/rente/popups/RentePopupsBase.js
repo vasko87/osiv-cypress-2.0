@@ -27,18 +27,18 @@ class RentePopupsBase extends ModalWindowBase {
     };
 
     this.invalideneinkommenBlock = {
-      lohnartDropdown                   : () => cy.get(ModalWindowBase.css).find("[akid$='-lohnarttext']"),
-      frInvalideneinkommenTxt           : () => cy.get(ModalWindowBase.css).find("[akid$='-ie_lohn'] input"),
-      sLGKInFrProJahrTxt                : () => cy.get(ModalWindowBase.css).find("[akid$='-iesoziallohnjfr'] input"),
-      sLGKInFrProMonatTxt               : () => cy.get(ModalWindowBase.css).find("[akid$='-iesoziallohnmfr'] input"),
-      abzugInFrProJahrTxt               : () => cy.get(ModalWindowBase.css).find("[akid$='-ieabzugjfr'] input"),
-      abzugInFrProMonatTxt              : () => cy.get(ModalWindowBase.css).find("[akid$='-ieabzugmfr'] input"),
-      inFrProJahrTxt                    : () => cy.get(ModalWindowBase.css).find("[akid$='-ie_einkommen'] input"),
-      jahrDesIEkTxt                     : () => cy.get(ModalWindowBase.css).find("[akid$='-ie_jahr'] input"),
-      stundenProTagTxt                  : () => cy.get(ModalWindowBase.css).find("[akid$='-ie_std_pro_tag'] input"),
-      tageDieWocheTxt                   : () => cy.get(ModalWindowBase.css).find("[akid$='-ie_tag_pro_woche'] input"),
-      monatslohnInFrTxt                 : () => cy.get(ModalWindowBase.css).find("[akid$='-iemonatslohn'] input"),
-      anzahlMonathLohneTxt              : () => cy.get(ModalWindowBase.css).find("[akid$='-ie_anzahl_ml'] input"),
+      lohnartDropdown     : () => cy.get(ModalWindowBase.css).find("[akid$='-lohnarttext']"),
+      inFrTxt             : () => cy.get(ModalWindowBase.css).find("[akid$='-ie_lohn'] input"),
+      sLGKInFrProJahrTxt  : () => cy.get(ModalWindowBase.css).find("[akid$='-iesoziallohnjfr'] input"),
+      sLGKInFrProMonatTxt : () => cy.get(ModalWindowBase.css).find("[akid$='-iesoziallohnmfr'] input"),
+      abzugInFrProJahrTxt : () => cy.get(ModalWindowBase.css).find("[akid$='-ieabzugjfr'] input"),
+      abzugInFrProMonatTxt: () => cy.get(ModalWindowBase.css).find("[akid$='-ieabzugmfr'] input"),
+      inFrProJahrTxt      : () => cy.get(ModalWindowBase.css).find("[akid$='-ie_einkommen'] input"),
+      jahrDesIEkTxt       : () => cy.get(ModalWindowBase.css).find("[akid$='-ie_jahr'] input"),
+      stundenProTagTxt    : () => cy.get(ModalWindowBase.css).find("[akid$='-ie_std_pro_tag'] input"),
+      tageDieWocheTxt     : () => cy.get(ModalWindowBase.css).find("[akid$='-ie_tag_pro_woche'] input"),
+      monatslohnInFrTxt   : () => cy.get(ModalWindowBase.css).find("[akid$='-iemonatslohn'] input"),
+      anzahlMonathLohneTxt: () => cy.get(ModalWindowBase.css).find("[akid$='-ie_anzahl_ml'] input"),
       soziallohnGewinnkostenInPersentTxt: () => cy.get(ModalWindowBase.css).find("[akid$='-ie_soziallohn'] input"),
       abzugInPersentTxt                 : () => cy.get(ModalWindowBase.css).find("[akid$='-ie_abzug'] input"),
       totalInFrTxt                 : () => cy.get(ModalWindowBase.css).find("[akid$='-ie_total_ek'] input"),
@@ -48,9 +48,14 @@ class RentePopupsBase extends ModalWindowBase {
         return this;
       },
 
-      setFrInvalideneinkommenTxt(value) {
-        this.frInvalideneinkommenTxt().clear().type(value);
+      setInFrTxt(value) {
+        this.inFrTxt().clear().type(value);
         modalWindow.focusToolbar();
+        return this;
+      },
+
+      checkInFrTxt(value) {
+        this.inFrTxt().should("have.value", value);
         return this;
       },
 

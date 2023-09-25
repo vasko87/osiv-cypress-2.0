@@ -41,7 +41,7 @@ describe(`C50505: Test Sociallohn and Abzug rows - with hourly wage (Stundenlohn
    "Abzug in %" = 2.00;`, () => {
     pages.entscheid.detail.renteTab.fruhinvaliditatPopup.invalideneinkommenBlock
          .selectLohnartDropdown(testData.lohnart)
-         .setFrInvalideneinkommenTxt(testData.fr)
+         .setInFrTxt(testData.fr)
          .setStundenProTagTxt(testData.stundenProTag)
          .setTageDieWocheTxt(testData.tageDieWoche)
          .setSoziallohnGewinnkostenInPersentTxt(testData.soziallohnGewinnkostenInPersent)
