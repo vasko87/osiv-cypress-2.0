@@ -2,10 +2,10 @@ import pages from "../../../../support/base/OsivPageObject";
 import flows from "../../../../support/base/OsivFlowsObject";
 
 const testData = {
-  entId  : "23160",
-  lohnart: "Stundenlohn",
-  inFr_step4     : "32",
-  inFrProJahr: "150'000",
+  entId         : "23160",
+  lohnart       : "Stundenlohn",
+  inFr_step4    : "32",
+  inFrProJahr   : "150'000",
   monatslohnInFr: "12’500",
   inFR_expeccted: "72"
 };
