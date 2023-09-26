@@ -24,6 +24,7 @@ const MSG = {
   OSCIENT_362: "Diese Aktion kann nicht rückgängig gemacht werden! (OSCSTAMM:362)",
   OSCIENT_363: "Diese Aktion kann nicht rückgängig gemacht werden! (OSCSTAMM:363)",
   OSCIENT_522: "Bitte die Bearbeitung einleiten. (OSCIENT:522)",
+  OSCIENT_523: "OSCIENT:523",
   OSCIENT_713: "Wollen sie fortfahren? (OSCIENT:713)",
 
   OSCEIN_65_PART1: "Es existieren noch Sendungen oder Abklärungen zur Eingliederung.",

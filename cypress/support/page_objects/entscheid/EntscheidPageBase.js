@@ -99,6 +99,11 @@ class EntscheidPageBase {
     return pageBase.getDropdownSelectedValue(this.elements.ereignisDropdown());
   }
 
+  selectBereichDropdown(value) {
+    pageBase.selectInDropdownContains(this.elements.bereichDropdown(), value);
+    return this;
+  }
+
   checkBereichDropdown(value) {
     pageBase.checkDropdownSelectedValue(this.elements.bereichDropdown(), value);
     return this;
@@ -188,6 +193,16 @@ class EntscheidPageBase {
     return this;
   }
 
+  selectSupertextDropdownByIndex(index) {
+    pageBase.selectDropdownValueByIndex(this.elements.supertextDropdown(), index);
+    return this;
+  }
+
+  clearSupertextDropdown() {
+    pageBase.clearDropdown(this.elements.supertextDropdown());
+    return this;
+  }
+
   lookupSupertextDropdown(value) {
     this.elements.supertextDropdown().find("[class='select2-selection__lookup']").click();
     this.supertextWahlenPopup.waitForLoaded()
@@ -229,6 +244,11 @@ class EntscheidPageBase {
 
   selectGebrechenDropdown(value) {
     pageBase.selectInDropdownContains(this.elements.gebrechenDropdown(), value);
+    return this;
+  }
+
+  selectGebrechenDropdownByTyping(value) {
+    pageBase.selectInDropdownByTyping(this.elements.gebrechenDropdown(), value);
     return this;
   }
 
