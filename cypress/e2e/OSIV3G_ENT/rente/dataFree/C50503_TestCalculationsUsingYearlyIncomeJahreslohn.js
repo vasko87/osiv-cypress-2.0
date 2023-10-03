@@ -3,7 +3,7 @@ import flows from "../../../../support/base/OsivFlowsObject";
 
 const testData = {
   entId            : "23153",
-  methode          : "Fruehinvaliditaet",
+  methode          : "Frühinvalidität",
   lohnart          : "Jahreslohn",
   fr               : "50'000",
   anzahlMonathLohne: "13",
