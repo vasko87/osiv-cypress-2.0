@@ -6,20 +6,13 @@ import Utility from "../../support/Utility";
 import {c50464 as testData} from "../../support/helpers/DataManager";
 import helpers from "../../support/helpers/HelperObject";
 
+//@Bugs: OSIV-22841 (step 4)
 describe(`C50464: "Abschluss Eingliederung" _no linked objects (Prufen = Ja); 
-  TestRail: https://osiv.testrail.net/index.php?/cases/view/50464; 
-  DEFECT(step 4): https://jiraosiv3g.atlassian.net/browse/OSIV-22841`, {failFast: {enabled: true}}, () => {
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/50464;`, {failFast: {enabled: true}}, () => {
 
   before(`Login as ${Cypress.env("username")};`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
     pages.loginPage.openUrl();
-    helpers.jira.isJiraDone("OSIV-22841").then((isDone) => {
-      console.log(isDone);
-      if (isDone === false) {
-        Cypress.env("isJira", true);
-        console.log(Cypress.env("isJira"));
-      }
-    });
   });
 
   it(`Step 1: Open Eingliederung ${testData.einID}`, () => {
@@ -44,8 +37,6 @@ describe(`C50464: "Abschluss Eingliederung" _no linked objects (Prufen = Ja);
 
   it(`Step 4: --> verify warning message: Zur Prüfung der Rentenfrage wird ein neuer Renten-Entscheid angelegt.
     confirm it`, () => {
-    // TODO Defect
-    cy.skipOn(Cypress.env("isJira") === true);
     pages.warningPopup
          .checkWarningContainsText(constants.MSG.OSCIENT_76_PART1)
          .checkWarningContainsText(constants.MSG.OSCIENT_76_PART2)
@@ -70,13 +61,8 @@ describe(`C50464: "Abschluss Eingliederung" _no linked objects (Prufen = Ja);
            .checkLeistungscodeDropdown(testData.ent.lc)
            .checkGesuchDropdown(elements.gesuch.text())
            .checkEreignisDropdown(elements.ereignis.text())
-           .checkBereichDropdown(elements.bereich.text());
+           .checkBereichDropdown(elements.bereich.text())
+           .checkMassnahmeTxt(testData.ent.massnahme);
     });
-  });
-
-  afterEach(function() {
-    if (this.currentTest.state === "pending" || this.currentTest.state === "failed") {
-      Cypress.runner.stop();
-    }
   });
 });

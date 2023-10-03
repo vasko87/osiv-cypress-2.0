@@ -12,7 +12,7 @@ const testData = {
 };
 
 // TODO [Skipped] -> waiting for 2 more data sets for the test
-describe.skip(`C58184: Displaying panel message OSCIENT:523 about needed ICD based of LC and Gebrechenscode 
+describe.skip(`[SKIPPED: WAITING FOR 2 MORE DATASETS FOR TEST (from ANTON)] C58184: Displaying panel message OSCIENT:523 about needed ICD based of LC and Gebrechenscode 
   TestRail: https://osiv.testrail.net/index.php?/cases/view/58184`, () => {
 
   before(`Login`, () => {

@@ -21,6 +21,7 @@ describe(`C51272: Dossier-Chronik: Einträge verwalten (delete);
       3) Canceling deletion record is not deleted and visible in the grid`, () => {
     pages.loginPage.openUrl();
     flows.versicherte.step_navigateVP_searchByVPNr_openVP_navigateToDossierChronikTab(testData.vp);
+    pages.waitForLoadingDisappears();
     pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.clickRowWithTextToSelectIt(testData.step1.ereignis);
     pages.versicherte.detail.ribbonMenu.clickLoschenBtn();
     pages.warningPopup.clickOkBtn();
