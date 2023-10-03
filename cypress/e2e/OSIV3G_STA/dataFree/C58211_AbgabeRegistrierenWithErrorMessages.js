@@ -54,6 +54,7 @@ describe(`C58211: Abgabe registrieren _ with error messages;
 
   it(`Step 6: Go back to dossier-abgabe`, () => {
     pages.groupedTaskbar.clickContainsVersichertendatenTab();
+    pages.waitForLoadingDisappears();
   });
 
   it(`Step7: Click Abgabe registrieren button

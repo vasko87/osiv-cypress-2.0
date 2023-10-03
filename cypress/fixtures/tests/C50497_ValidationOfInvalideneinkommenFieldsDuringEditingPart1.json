@@ -1,6 +1,6 @@
 {
   "entId": "23153",
-  "methode": "Fruehinvaliditaet",
+  "methode": "Frühinvalidität",
   "stundenProTag": ["0", "24", "50"],
   "stundenProTagExpected": "8",
   "tageDieWoche": ["0", "8", "50"],
