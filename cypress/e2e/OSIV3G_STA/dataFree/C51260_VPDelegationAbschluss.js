@@ -83,7 +83,7 @@ describe(`C51260: vP Delegation-Abschluss;
     pages.warningPopup.clickOkBtn();
   });
 
-  it.only(`Step 6: open vP=8260.4754.62
+  it(`Step 6: open vP=8260.4754.62
       go to the Dossier-Chronik
       press on ‘Delegation Abschluss’
       select any IV Stellen
