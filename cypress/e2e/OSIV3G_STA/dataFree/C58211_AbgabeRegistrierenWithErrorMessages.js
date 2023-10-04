@@ -9,7 +9,7 @@ const testData = {
 };
 
 //TODO skipped, waiting for Jane add 2 more data sets
-describe.skip(`C58211: Abgabe registrieren _ with error messages; 
+describe.skip(`[SKIPPED - waiting for 2 more datasets from JANE] C58211: Abgabe registrieren _ with error messages; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/58211`, {failFast: {enabled: true}}, () => {
 
   before(`Login as ${Cypress.env("username")};`, () => {

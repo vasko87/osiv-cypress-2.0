@@ -28,7 +28,7 @@ class AbschlussEingliederungPopup extends ModalWindowBase {
   }
 
   selectResultatDropdown(value) {
-    pageBase.selectInDropdownContains(this.elements.resultatDropdown(), value);
+    pageBase.selectInDropdownExect(this.elements.resultatDropdown(), value);
     return this;
   }
 
@@ -43,7 +43,7 @@ class AbschlussEingliederungPopup extends ModalWindowBase {
   }
 
   selectArtDropdown(value) {
-    pageBase.selectInDropdownContains(this.elements.artDropdown(), value);
+    pageBase.selectInDropdownExect(this.elements.artDropdown(), value);
     return this;
   }
 
@@ -58,12 +58,12 @@ class AbschlussEingliederungPopup extends ModalWindowBase {
   }
 
   selectArtMassnahmeDropdown(value) {
-    pageBase.selectInDropdownContains(this.elements.artMassnahmeDropdown(), value);
+    pageBase.selectInDropdownExect(this.elements.artMassnahmeDropdown(), value);
     return this;
   }
 
   checkArtMassnahmeDropdown(value) {
-    pageBase.checkDropdownSelectedValue(this.elements.artMassnahmeDropdown(), value);
+    pageBase.checkDropdownSelectedValueContains(this.elements.artMassnahmeDropdown(), value);
     return this;
   }
 

@@ -1,17 +1,8 @@
-import pages from "../../../../support/base/OsivPageObject";
-import flows from "../../../../support/base/OsivFlowsObject";
-import constants from "../../../../support/helpers/Constants";
+import pages from "../../../support/base/OsivPageObject";
+import flows from "../../../support/base/OsivFlowsObject";
+import constants from "../../../support/helpers/Constants";
+import {c58184 as testData} from "../../../support/helpers/DataManager";
 
-const testData = {
-  entId          : "23593",
-  gebrechen_test1: "646",
-  gebrechen_test2: "111",
-  leistungscode  : "757",
-  bereich        : "AHV",
-  gebrechen_test4: "646"
-};
-
-// TODO [Skipped] -> waiting for 2 more data sets for the test
 describe.skip(`C58184: Displaying panel message OSCIENT:523 about needed ICD based of LC and Gebrechenscode 
   TestRail: https://osiv.testrail.net/index.php?/cases/view/58184`, () => {
 

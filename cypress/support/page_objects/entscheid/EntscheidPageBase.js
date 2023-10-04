@@ -22,6 +22,7 @@ class EntscheidPageBase {
       gebrechenDropdown         : () => cy.get(baseCSS).find("[akid$='-gebrechen']"),
       funktausfallDropdown      : () => cy.get(baseCSS).find("[akid$='-funktausfall']"),
       beginnDate                : () => cy.get(baseCSS).find("[akid$='-beginn_dat'] input"),
+      massnahmeTxt              : () => cy.get(baseCSS).find("[akid$='-massnahme'] input"),
 
       notizenTextarea: () => cy.get(baseCSS).find("[akid$='-bem'] textarea")
     };
@@ -145,6 +146,11 @@ class EntscheidPageBase {
 
   checkArbeitslisteTxt(value) {
     this.elements.arbeitslisteTxt().should("have.value", value);
+    return this;
+  }
+
+  checkMassnahmeTxt(value) {
+    this.elements.massnahmeTxt().should("have.value", value);
     return this;
   }
 

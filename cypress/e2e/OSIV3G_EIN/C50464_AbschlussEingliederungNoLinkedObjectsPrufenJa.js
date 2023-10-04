@@ -6,14 +6,17 @@ import Utility from "../../support/Utility";
 import {c50464 as testData} from "../../support/helpers/DataManager";
 import helpers from "../../support/helpers/HelperObject";
 
+//@Bugs: OSIV-22841 (step 4)
+//       PROD-2435 (step 5)
 describe(`C50464: "Abschluss Eingliederung" _no linked objects (Prufen = Ja); 
   TestRail: https://osiv.testrail.net/index.php?/cases/view/50464; 
-  DEFECT(step 4): https://jiraosiv3g.atlassian.net/browse/OSIV-22841`, {failFast: {enabled: true}}, () => {
+  DEFECT(step 5): https://jiraosiv3g.atlassian.net/browse/PROD-2435`, {failFast: {enabled: true}}, () => {
 
   before(`Login as ${Cypress.env("username")};`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
     pages.loginPage.openUrl();
-    helpers.jira.isJiraDone("OSIV-22841").then((isDone) => {
+
+    helpers.jira.isJiraDone("PROD-2435").then((isDone) => {
       console.log(isDone);
       if (isDone === false) {
         Cypress.env("isJira", true);
@@ -44,8 +47,6 @@ describe(`C50464: "Abschluss Eingliederung" _no linked objects (Prufen = Ja);
 
   it(`Step 4: --> verify warning message: Zur Prüfung der Rentenfrage wird ein neuer Renten-Entscheid angelegt.
     confirm it`, () => {
-    // TODO Defect
-    cy.skipOn(Cypress.env("isJira") === true);
     pages.warningPopup
          .checkWarningContainsText(constants.MSG.OSCIENT_76_PART1)
          .checkWarningContainsText(constants.MSG.OSCIENT_76_PART2)
@@ -55,6 +56,8 @@ describe(`C50464: "Abschluss Eingliederung" _no linked objects (Prufen = Ja);
 
   it(`Step 5: --> Expected: Eing is abgeschlossene
     Linked RE ENT is created with AL = Bearbeiten and data (gesuch, Ereignis, Bereich same as for folge ENT)`, () => {
+    // TODO jira
+    cy.skipOn(Cypress.env("isJira") === true);
     pages.eingliederung.detail.detailTabBar.checkArbeitslisteTxt(testData.al);
     pages.eingliederung.detail.ribbonMenu.clickFolgeentscheidOffnenBtn().waitForLoaded();
     Utility.gatherElements({
@@ -70,12 +73,15 @@ describe(`C50464: "Abschluss Eingliederung" _no linked objects (Prufen = Ja);
            .checkLeistungscodeDropdown(testData.ent.lc)
            .checkGesuchDropdown(elements.gesuch.text())
            .checkEreignisDropdown(elements.ereignis.text())
-           .checkBereichDropdown(elements.bereich.text());
+           .checkBereichDropdown(elements.bereich.text())
+           .checkMassnahmeTxt(testData.ent.massnahme);
     });
   });
 
   afterEach(function() {
-    if (this.currentTest.state === "pending" || this.currentTest.state === "failed") {
+    console.log(this.currentTest.state);
+    if (this.currentTest.state === "pending") {
+      Cypress.log(this.currentTest.err);
       Cypress.runner.stop();
     }
   });

@@ -3,9 +3,9 @@ import flows from "../../../support/base/OsivFlowsObject";
 import {c50488 as testData} from "../../../support/helpers/DataManager";
 import pageBase from "../../../support/base/PageBase";
 
+// @Bugs: OSIV-22744(step 9)
 describe(`C50488: Entscheid arbeitliste when last Abklärung is completed; 
-  TestRail:https://osiv.testrail.net/index.php?/cases/view/50488; 
-  DEFECT(Scenario3, Scenario5):https://jiraosiv3g.atlassian.net/browse/OSIV-22744`, () => {
+  TestRail:https://osiv.testrail.net/index.php?/cases/view/50488;`, () => {
 
   before(`Login as ${Cypress.env("username")};`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
@@ -111,7 +111,7 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
     pages.entscheid.detail.basisdatenTabBar.checkArbeitslisteTxt(testData.scenario3.arbeitslisteEntChanged);
   });
 
-  it.only(`Scenario 4: Open VP Xalando Xaver
+  it(`Scenario 4: Open VP Xalando Xaver
   Open Sendungen list
   Open Both sendungs and do Abklarung Einchecken for both sendungs (Basisdtaen>Korrekturfunctionen dynselect)
   Go to Sendung Desktop

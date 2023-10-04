@@ -2,7 +2,8 @@ import pages from "../../support/base/OsivPageObject";
 import flows from "../../support/base/OsivFlowsObject";
 import {c58228 as testData} from "../../support/helpers/DataManager";
 
-describe(`C58228: DossierErhalt creation when Entscheid=G exists; 
+//TODO SKIPPED - waiting same datasets from Natalia
+describe.skip(`[SKIPPED - waiting for the same datasets from Natalia] C58228: DossierErhalt creation when Entscheid=G exists; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/58228`, {failFast: {enabled: true}}, () => {
 
   before(`Login as ${Cypress.env("username")};`, () => {
@@ -22,8 +23,6 @@ describe(`C58228: DossierErhalt creation when Entscheid=G exists;
     pages.loginPage.openUrl();
     flows.versicherte.step_navigateVP_searchByVPNr_openVP_navigateToDossierChronikTab(testData.vp);
     pages.versicherte.detail.ribbonMenu.clickErhaltRegistrierenBtn();
-    pages.warningPopup.clickOkBtn()
-         .clickOkBtn();
     pages.versicherte.dossierErhaltRegistrierenPopup.waitForLoaded()
          .clickMinMaxBtn()
          .selectDossierEreignisDropdown(testData.dossierEreignis)
