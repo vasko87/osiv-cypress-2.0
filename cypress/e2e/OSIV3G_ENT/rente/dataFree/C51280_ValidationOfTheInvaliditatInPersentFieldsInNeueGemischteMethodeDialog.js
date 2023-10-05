@@ -4,7 +4,7 @@ import helpers from "../../../../support/helpers/HelperObject";
 
 const testData = {
   entId              : "23178",
-  methode            : "GemischteMethode",
+  methode            : "Gemischte Methode",
   invaliditat1       : "120",
   invaliditat2       : "105",
   errMsg             : "Ein Inv.-Grad darf auch in der Mischrechnung 100% nicht überschreiten. (OSCINVGRAD:78)"

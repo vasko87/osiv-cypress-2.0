@@ -1,13 +1,22 @@
 import pages from "../../support/base/OsivPageObject";
 import flows from "../../support/base/OsivFlowsObject";
 import {c58228 as testData} from "../../support/helpers/DataManager";
+import helpers from "../../support/helpers/HelperObject";
 
-//TODO SKIPPED - waiting same datasets from Natalia
-describe.skip(`[SKIPPED - waiting for the same datasets from Natalia] C58228: DossierErhalt creation when Entscheid=G exists; 
-  TestRail:https://osiv.testrail.net/index.php?/cases/view/58228`, {failFast: {enabled: true}}, () => {
+describe(`C58228: DossierErhalt creation when Entscheid=G exists; 
+  TestRail:https://osiv.testrail.net/index.php?/cases/view/58228;
+  DEFECT (step 2): https://jiraosiv3g.atlassian.net/browse/PROD-2443`, {failFast: {enabled: true}}, () => {
 
   before(`Login as ${Cypress.env("username")};`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
+
+    helpers.jira.isJiraDone("PROD-2443").then((isDone) => {
+      console.log(isDone);
+      if (isDone === false) {
+        Cypress.env("isJira", true);
+        console.log(Cypress.env("isJira"));
+      }
+    });
   });
 
   it(`Step 1: open vP
@@ -31,13 +40,25 @@ describe.skip(`[SKIPPED - waiting for the same datasets from Natalia] C58228: Do
 
   it(`Step 2: press OK
       press Ok on warning 210 -> Erhalten von record is created`, () => {
+    //TODO jira
+    cy.skipOn(Cypress.env("isJira") === true);
     pages.versicherte.dossierErhaltRegistrierenPopup.clickOkBtn();
     pages.warningPopup.clickOkBtn();
     pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.checkGridRowsCount(1)
-      .checkValueInGridExists(testData.dossierEreignis, true);
+         .checkValueInGridExists(testData.dossierEreignis, true);
   });
 
   it(`Step 3: open Entscheid tab and check that ENT=22470 has been deleted`, () => {
+    //TODO jira
+    cy.skipOn(Cypress.env("isJira") === true);
     pages.versicherte.detail.tabBar.navigateToEntscheideTab().grid.checkValueInGridExists(testData.ent, false);
+  });
+
+  afterEach(function() {
+    console.log(this.currentTest.state);
+    if (this.currentTest.state === "pending") {
+      Cypress.log(this.currentTest.err);
+      Cypress.runner.stop();
+    }
   });
 });
