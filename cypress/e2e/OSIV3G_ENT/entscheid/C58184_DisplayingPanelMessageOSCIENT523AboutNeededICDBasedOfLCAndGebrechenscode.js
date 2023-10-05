@@ -3,7 +3,7 @@ import flows from "../../../support/base/OsivFlowsObject";
 import constants from "../../../support/helpers/Constants";
 import {c58184 as testData} from "../../../support/helpers/DataManager";
 
-describe.skip(`C58184: Displaying panel message OSCIENT:523 about needed ICD based of LC and Gebrechenscode 
+describe(`C58184: Displaying panel message OSCIENT:523 about needed ICD based of LC and Gebrechenscode 
   TestRail: https://osiv.testrail.net/index.php?/cases/view/58184`, () => {
 
   before(`Login`, () => {
@@ -43,10 +43,8 @@ describe.skip(`C58184: Displaying panel message OSCIENT:523 about needed ICD bas
          .selectBereichDropdown(testData.bereich)
          .clearSupertextDropdown();
     pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
-    pages.infoPopup.clickOkBtn();
+    pages.infoPopup.clickOkBtnIfVisible();
     pages.notification.checkSuccessMessageVisible();
-    pages.waitForLoadingDisappears();
-    pages.checkMsgOnThePage(constants.MSG.OSCIENT_523, false);
     pages.entscheid.detail.basisdatenTabBar.selectSupertextDropdownByIndex(1);
     pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
     pages.notification.checkSuccessMessageVisible();

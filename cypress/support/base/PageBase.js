@@ -172,19 +172,14 @@ class PageBase {
     return this;
   }
 
+  /**
+   *
+   * @param element {String} - css of element
+   * @returns {boolean}
+   */
   isElementVisible(element) {
-    return element.then(el => {
-      if (el.is(":visible")) {
-        return true;
-      } else {
-        return false;
-      }
-    });
-  }
-
-  isElementExists(element) {
-    return element.then(el => {
-      if (el.is(":exist")) {
+    cy.get("body").then((body) => {
+      if (body.find(element).length > 0) {
         return true;
       } else {
         return false;

@@ -3,9 +3,10 @@ import pageBase from "../../base/PageBase";
 
 class WarningPopup {
   constructor() {
+    this.okBtnCss = "[class*='swal-button swal-button'][class*='ok'],[class='swal-button swal-button--confirm']";
     this.elements = {
       warningPopup : () => cy.get("div [class='swal-modal warningModal']", {timeout:constants.DEFAULT_TIMEOUT}),
-      okBtn        : () => cy.get("[class*='swal-button swal-button'][class*='ok'],[class='swal-button swal-button--confirm']"),
+      okBtn        : () => cy.get(this.okBtnCss),
       abbrechenBtn        : () => cy.get("[class='swal-button swal-button--cancelreply'],[class='swal-button swal-button--replycancel']")
     };
   }
@@ -37,7 +38,8 @@ class WarningPopup {
   }
 
   clickOkBtnIfVisible() {
-    if (pageBase.isElementVisible(this.elements.okBtn())) {
+    cy.wait(2000);
+    if (pageBase.isElementVisible(this.okBtnCss)) {
       this.elements.okBtn().click();
     }
     return this;
