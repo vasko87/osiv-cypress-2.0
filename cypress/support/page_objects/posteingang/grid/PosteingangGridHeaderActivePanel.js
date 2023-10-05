@@ -10,6 +10,13 @@ class PosteingangGridHeaderActivePanel {
     };
   }
 
+  selectAllDropdown(){
+    this.elements.posteingangQueryGridDropdown().should("be.visible");
+    pageBase.selectInDropdownContains(this.elements.posteingangQueryGridDropdown(), "All");
+    pageBase.waitForLoadingDisappears();
+    return this;
+  }
+
   clickRefreshBtn() {
     this.elements.refreshBtn().should("be.visible").click();
   }

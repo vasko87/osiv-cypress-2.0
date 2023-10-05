@@ -4,6 +4,7 @@ class PosteingangFlows {
   step_navigatePOE_searchByVPNr(vpNr) {
     pages.nav.leftMenu.navigateToPosteingangTab();
     pages.virtualViewer.waitVirtualViewerLoaded();
+    pages.posteingang.grid.headerActivePanel.selectAllDropdown();
     pages.posteingang.grid.filter.searchVersichertenNrTxt(vpNr);
     pages.waitForLoadingDisappears();
   }

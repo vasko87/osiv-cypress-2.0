@@ -4,7 +4,7 @@ import helpers from "../../../../support/helpers/HelperObject";
 
 const testData = {
   entId              : "23178",
-  methode            : "GemischteMethode",
+  methode            : "Gemischte Methode",
   anteilInPersent    : "90",
   anteilInPersent1   : "5",
   anteilInPersent2   : "15",
