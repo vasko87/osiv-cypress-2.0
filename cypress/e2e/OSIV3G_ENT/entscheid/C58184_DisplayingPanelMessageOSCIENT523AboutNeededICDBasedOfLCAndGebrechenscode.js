@@ -17,20 +17,20 @@ describe(`C58184: Displaying panel message OSCIENT:523 about needed ICD based of
 
   it(`Step 2: [Test 1] Set Gebrechenscode = 646 and save" 
                         -> System should show the panel message OSCIENT:523`, () => {
-    // pages.entscheid.detail.basisdatenTabBar.selectGebrechenDropdownByTyping(testData.gebrechen_test1);
-    // pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
-    // pages.notification.checkSuccessMessageVisible();
-    // pages.waitForLoadingDisappears();
-    // pages.checkMsgOnThePage(constants.MSG.OSCIENT_523, true);
+    pages.entscheid.detail.basisdatenTabBar.selectGebrechenDropdownByTyping(testData.gebrechen_test1);
+    pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
+    pages.notification.checkSuccessMessageVisible();
+    pages.waitForLoadingDisappears();
+    pages.checkMsgOnThePage(constants.MSG.OSCIENT_523, true);
   });
 
   it(`Step 3: [Test 2] Set Gebrechenscode = 111 and save 
                          -> System should NOT show the panel message OSCIENT:523`, () => {
-    // pages.entscheid.detail.basisdatenTabBar.selectGebrechenDropdownByTyping(testData.gebrechen_test2);
-    // pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
-    // pages.notification.checkSuccessMessageVisible();
-    // pages.waitForLoadingDisappears();
-    // pages.checkMsgOnThePage(constants.MSG.OSCIENT_523, false);
+    pages.entscheid.detail.basisdatenTabBar.selectGebrechenDropdownByTyping(testData.gebrechen_test2);
+    pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
+    pages.notification.checkSuccessMessageVisible();
+    pages.waitForLoadingDisappears();
+    pages.checkMsgOnThePage(constants.MSG.OSCIENT_523, false);
   });
 
   it(`Step 4: [Test 3] Set Leistungscode = 757, change Bereich to "AHV", remove Supertext and save.
