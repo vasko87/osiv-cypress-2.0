@@ -239,17 +239,18 @@ class PageBase {
   }
 
   setCheckboxChecked(element, shouldCheck) {
+    element.should("be.visible");
     if (shouldCheck === true) {
       element.then((el) => {
-        if (!(el.find("input").value === "true")) {
-          element.click();
+        if (!(el.find("input").val() === "true")) {
+          cy.wrap(el).click();
         }
       });
     }
     if (shouldCheck === false) {
       element.then((el) => {
-        if (el.find("input").value === "true") {
-          element.click();
+        if (el.find("input").val() === "true") {
+          cy.wrap(el).click();
         }
       });
     }
@@ -276,6 +277,14 @@ class PageBase {
       element.should("have.attr", "readonly");
     } else {
       element.should("not.have.attr", "readonly");
+    }
+  }
+
+  checkBtnReadonly(element, isReadonly) {
+    if (isReadonly === true) {
+      element.should("have.class", "dhx_toolbar_btn dhxtoolbar_btn_dis");
+    } else {
+      element.should("not.have.class", "dhx_toolbar_btn dhxtoolbar_btn_dis");
     }
   }
 

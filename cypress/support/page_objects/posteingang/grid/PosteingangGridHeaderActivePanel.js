@@ -26,7 +26,7 @@ class PosteingangGridHeaderActivePanel {
   }
 
   selectPosteingangQueryGridDropdownAll() {
-    this.selectPosteingangQueryGridDropdown("Alle");
+    this.selectPosteingangQueryGridDropdown("All");
   }
 
   selectPosteingangQueryGridDropdownMine() {

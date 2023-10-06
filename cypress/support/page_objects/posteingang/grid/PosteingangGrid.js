@@ -1,8 +1,9 @@
 import GridBase from "../../../base/GridBase";
 import PosteingangGridFilter from "./PosteingangGridFilter";
 import PosteingangGridHeaderActivePanel from "./PosteingangGridHeaderActivePanel";
+import pages from "../../../base/OsivPageObject";
 
-class PosteingangGrid extends GridBase{
+class PosteingangGrid extends GridBase {
   constructor(css) {
     super(css);
     this.filter = new PosteingangGridFilter();
