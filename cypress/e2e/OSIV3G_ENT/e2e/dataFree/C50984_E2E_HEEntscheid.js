@@ -6,7 +6,8 @@ import {c50984 as testData} from "../../../../support/helpers/DataManager";
 import dateHelper from "../../../../support/helpers/DateHelper";
 import pageBase from "../../../../support/base/PageBase";
 
-// @Bugs: OSIV-22145(step 9), OSIV-24342(step 3)
+// @Bugs: OSIV-22145(step 9),
+//        OSIV-24342(step 3)
 describe(`C50984: E2E (HE Entscheid);
   TestRail: https://osiv.testrail.net/index.php?/cases/view/50984; DEFECT(step 3): OSIV-24342`, {failFast: {enabled: true}}, () => {
   before("Login", () => {
