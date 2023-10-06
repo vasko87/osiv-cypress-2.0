@@ -282,10 +282,8 @@ class PageBase {
 
   checkBtnReadonly(element, isReadonly) {
     if (isReadonly === true) {
-      // element.invoke("attr", "class").should("match", "/btn_dis/");
       element.should("have.class", "dhx_toolbar_btn dhxtoolbar_btn_dis");
     } else {
-      // element.invoke("attr", "class").should("not.match", "/btn_dis/");
       element.should("not.have.class", "dhx_toolbar_btn dhxtoolbar_btn_dis");
     }
   }
