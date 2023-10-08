@@ -1,4 +1,5 @@
 import constants from "../../helpers/Constants";
+import pageBase from "../../base/PageBase";
 
 class ModalWindowBase {
   static css = "[class='dhxwin_active'][modalwindow='true']";
@@ -26,6 +27,12 @@ class ModalWindowBase {
     return this;
   }
 
+  checkOkBtnVisible(isVisible) {
+    this.waitForLoaded();
+    pageBase.checkElementVisible(this.elements.okBtn(), isVisible);
+    return this;
+  }
+
   clickBestatigenBtn() {
     this.waitForLoaded();
     this.elements.bestatigenBtn().should("be.visible").click();
@@ -35,6 +42,12 @@ class ModalWindowBase {
   clickAbbrechenBtn() {
     this.waitForLoaded();
     this.elements.abbrechenBtn().should("be.visible").click();
+    return this;
+  }
+
+  checkAbbrechenBtnVisible(isVisible) {
+    this.waitForLoaded();
+    pageBase.checkElementVisible(this.elements.abbrechenBtn(), isVisible);
     return this;
   }
 

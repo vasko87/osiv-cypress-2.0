@@ -6,11 +6,13 @@ import constants from "../../helpers/Constants";
 import EntscheidInDenPapierkorbVerschiebenPopup from "./detail/popups/EntscheidInDenPapierkorbVerschiebenPopup";
 import ZustandigkeitenWechselnPopup from "./detail/popups/ZustandigkeitenWechselnPopup";
 import SupertextFreidefinierbareVariablenPopup from "./detail/popups/SupertextFreidefinierbareVariablenPopup";
+import BeschwerdePageObject from "./beschwerde/BeschwerdePageObject";
 
 class EntscheidPageObject {
   constructor() {
     this.grid = new EntscheidGrid(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidQueryGrid'],[akid='EntscheidGesuchQueryGrid']`);
     this.detail = new EntscheidDetail();
+    this.beschwerde = new BeschwerdePageObject();
     this.neuPopup = new EntscheidNeuPopup();
     this.inDenPapierkorbPopup = new EntscheidInDenPapierkorbVerschiebenPopup();
     this.bearbeitungEinleitenPopup = new BearbeitungEinleitenPopup();

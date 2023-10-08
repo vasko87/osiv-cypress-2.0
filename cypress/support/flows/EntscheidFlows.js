@@ -30,6 +30,13 @@ class EntscheidFlows {
     pages.notification.checkSuccessMessageVisible();
     pages.waitForLoadingDisappears();
   }
+
+  step_navigateENT_BEStab_searchBES_open(besId) {
+    pages.desktopMenu.navigateToEntscheidBeschwerdeTab();
+    pages.entscheid.beschwerde.grid.waitGridViewLoaded();
+    pages.entscheid.beschwerde.grid.searchAndOpenBeschwerdeID(besId);
+    pages.entscheid.beschwerde.detail.waitForLoaded();
+  }
 }
 
 export default EntscheidFlows;

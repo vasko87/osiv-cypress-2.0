@@ -21,6 +21,7 @@ import TerminePageObject from "../page_objects/termine/TerminePageObject";
 import TxtEditor from "../standalone/TxtEditor";
 import Dashboard from "../standalone/Dashboard";
 import PopupUniversal from "../standalone/popup/PopupUniversal";
+import BeschwerdePageObject from "../page_objects/entscheid/beschwerde/BeschwerdePageObject";
 
 class OsivPageObject {
   constructor() {
