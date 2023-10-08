@@ -5,6 +5,11 @@ export default {
     return date.toLocaleDateString("de-CH", {year: "numeric", month: "2-digit", day: "2-digit"});
   },
 
+  getTimestamp() {
+    const date = new Date();
+    return date.getTime();
+  },
+
   daysInCurrentYear() {
     return this.getCountOfdaysInYear(new Date().getFullYear());
   },

@@ -14,6 +14,8 @@ class DesktopMenu {
       entscheidMainTab  : () => cy.get("[class*='level-1'][menuname*='Entscheid']"),
       entscheidTab      : () => cy.xpath("//*[contains(@class,'level-2') " +
         "and contains(@menuname,'Entscheid') and not(contains(@menuname,'Auflage'))]"),
+      beschwerdeTab     : () =>
+        cy.xpath("//*[contains(@class,'level-2') and contains(@menuname,'Beschwerde')]"),
       eingliederungTab  : () => cy.get("[menuname*='Eingliederung']"),
       gesucheMainTab    : () => cy.get("[class*='level-1'][menuname='Gesuche']"),
       gesucheTab        : () => cy.get("[class*='level-2'][menuname='Gesuche']")
@@ -44,6 +46,14 @@ class DesktopMenu {
   navigateToEntscheidTab() {
     this.elements.entscheidMainTab().should("be.visible").click();
     this.elements.entscheidTab().click();
+    pageBase.waitForLoadingDisappears();
+    this.elements.entscheidMainTab().click();
+    return this;
+  }
+
+  navigateToEntscheidBeschwerdeTab() {
+    this.elements.entscheidMainTab().should("be.visible").click();
+    this.elements.beschwerdeTab().click();
     pageBase.waitForLoadingDisappears();
     this.elements.entscheidMainTab().click();
     return this;
