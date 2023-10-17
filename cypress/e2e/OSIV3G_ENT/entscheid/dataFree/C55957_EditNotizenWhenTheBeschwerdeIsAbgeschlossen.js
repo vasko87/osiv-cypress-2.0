@@ -11,7 +11,7 @@ const testData = {
 };
 
 describe(`C55957: Edit Notizen when the Beschwerde is 'Abgeschlossen' 
-  TestRail: https://osiv.testrail.net/index.php?/cases/view/55957`, () => {
+  TestRail: https://osiv.testrail.net/index.php?/cases/view/55957`, {failFast: {enabled: true}}, () => {
 
   before(`Login`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));

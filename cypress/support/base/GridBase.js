@@ -6,7 +6,7 @@ class GridBase {
     this.elements = {
       gridWrapper    : () => cy.get(baseCSS),
       rowSelected    : () => this.elements.gridWrapper().find("tr[class*='_material rowselected']"),
-      table    : () => this.elements.gridWrapper().find("table"),
+      table          : () => this.elements.gridWrapper().find("table"),
       rowElementsList: () => this.elements.gridWrapper().find("[class='objbox'] tr[class*=material]")
     };
   }
@@ -82,15 +82,18 @@ class GridBase {
   }
 
   setAllRowsCheckboxesSelected(isChecked) {
-    cy.xpath(`${this.gridWrapperXpath}//td[@excell='ch']`).each(($td) => {
+    cy.pause();
+    cy.xpath(`${this.gridWrapperXpath}//td[@excell='ch']`).each((td) => {
+      cy.log("!!!");
+      cy.log(td.prop("chstate"));
       if (isChecked === true) {
-        if ($td.prop("chstate") === "0") {
-          $td.find("div").click();
+        if (td.prop("chstate") === "0") {
+          cy.wrap(td).find("div").click();
         }
       }
       if (isChecked === false) {
-        if ($td.prop("chstate") === "1") {
-          $td.find("div").click();
+        if (td.prop("chstate") === "1") {
+          cy.wrap(td).find("div").click();
         }
       }
     });

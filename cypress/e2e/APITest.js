@@ -1,5 +1,3 @@
-import restConstants from "../support/helpers/restMgrs/RestConstants";
-import EingliederungQuery from "../support/helpers/restMgrs/EingliederungQuery";
 import helperObject from "../support/helpers/HelperObject";
 
 let responseData = {
