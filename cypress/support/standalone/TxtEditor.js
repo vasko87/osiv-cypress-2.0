@@ -103,7 +103,6 @@ class TxtEditor {
   checkTextHighlightedBulk(textList, isHighlighted) {
     textList.forEach(text => {
       cy.log(`Checking text [${text}] is highlighted [${isHighlighted}]`);
-      cy.pause();
       this.checkTextHighlighted(text, isHighlighted);
     });
     return this;

@@ -66,7 +66,6 @@ describe(`[SKIPPED: Waiting for 3 datasets from Jane]
 
       cy.log(`Expected 2: fremde adress of adr2 is presented for adr1`);
       pages.adressen.grid.searchAndOpenAdresseID(data.adr1);
-      cy.pause();
       pages.adressen.detail.sideMenu.navigateToAuszahlungTab()
            .waitForLoaded()
            .checkAdresseDropdownContains(data.adressLine);
