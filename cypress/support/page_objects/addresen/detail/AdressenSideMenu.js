@@ -1,4 +1,6 @@
 import constants from "../../../helpers/Constants";
+import AnsprechpartnerTab from "./sideMenuTabs/AnsprechpartnerTab";
+import AuszahlungTab from "./sideMenuTabs/AuszahlungTab";
 
 class AdressenSideMenu {
   constructor() {
@@ -17,12 +19,12 @@ class AdressenSideMenu {
 
   navigateToAnsprechpartnerTab() {
     this.elements.ansprechpartnerTab().should("be.visible").click();
-    return this;
+    return new AnsprechpartnerTab();
   }
 
   navigateToAuszahlungTab() {
     this.elements.auszahlungTab().should("be.visible").click();
-    return this;
+    return new AuszahlungTab();
   }
 
   navigateToMahnenTab() {

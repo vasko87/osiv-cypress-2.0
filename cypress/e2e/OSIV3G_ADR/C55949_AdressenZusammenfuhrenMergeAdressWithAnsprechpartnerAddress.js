@@ -2,11 +2,12 @@ import pages from "../../support/base/OsivPageObject";
 
 const testData = {
   adr1: "750604",
-  adr2: "560619"
+  adr2: "560619",
+  text: "Test adressen"
 };
 
 //TODO waiting for 3 datasets from JANE
-describe.skip(`[SKIPPED: Waiting for 3 datasets from Jane] 
+describe(`[SKIPPED: Waiting for 3 datasets from Jane] 
           C55949: Adressen zusammenführen_merge adress with Ansprechpartner address;
           TestRail: https://osiv.testrail.net/index.php?/cases/view/55949`, {failFast: {enabled: true}}, () => {
   before(`Login as ${Cypress.env("username")};`, () => {
@@ -21,7 +22,7 @@ describe.skip(`[SKIPPED: Waiting for 3 datasets from Jane]
   });
 
   it(`Step 2: click "Adressen zusammenführen" button`, () => {
-    pages.adressen.detail.ribbonMenu.clickAdressenZusammenführenBtn()
+    pages.adressen.detail.ribbonMenu.clickAdressenZusammenfuhrenBtn()
          .waitForLoaded();
   });
 
@@ -49,18 +50,26 @@ describe.skip(`[SKIPPED: Waiting for 3 datasets from Jane]
   it(`Expected 1: adress is not presented in the list of adresses in Adressen zusammenführen`, () => {
     pages.adressen.detail.adressenZusammenfuehrenpPopup.grid.checkGridRowsCount(0);
     pages.adressen.detail.adressenZusammenfuehrenpPopup.clickAbbrechenBtn();
+    pages.infoPopup.clickOkBtnIfVisible();
     pages.waitForLoadingDisappears();
+  });
+
+  it(`Expected 2: Ansprechpartner address is merged to the main address;
+      additionally check that buttons new and speichern are disabled, Loschen is enabled`, () => {
+    pages.adressen.detail.sideMenu.navigateToAnsprechpartnerTab()
+         .waitForLoaded()
+         .adresseZuhandenGrid
+         .checkGridRowsCount(1)
+         .checkValueInGridExists(testData.text);
+    pages.adressen.detail.ribbonMenu.checkNeuBtnDisabled(true)
+         .checkSpeichernBtnDisabled(true)
+         .checkLoschenBtnDisabled(false);
     pages.nav.clickHomeBtn();
   });
 
-  it(`Expected 2: adress is not found on adress list`, () => {
+  it(`Expected 3: adress is not found on adress list`, () => {
     pages.adressen.grid.waitGridViewLoaded();
     pages.adressen.grid.filter.searchAdresseID(testData.adr2);
     pages.adressen.grid.checkGridRowsCount(0);
   });
-
-  it(`Expected 3: Ansprechpartner address is merged to the main address`, () => {
-
-  });
-
 });

@@ -2,20 +2,21 @@ import pages from "../../support/base/OsivPageObject";
 import flows from "../../support/base/OsivFlowsObject";
 
 const testData = {
-  adr1: "1022000",
-  adr2: "1022001",
-  adressLine1: "Frau Test Kopie, Mollstreet, 1000 Lausanne 12",
-  adressLine2: "Frau Test Kopie1, Mollstreet, 1000 Lausanne 12",
-  sen1: "123459345",
-  sen2: "123459346",
-  sen3: "123459351",
-  sen4_5: ["123459347", "123459348"]
+  adr1: "1021467",
+  adr2: "1021997",
+  vpName: "Eing Adresse",
+  adressLine: "Frau Dr. med. Susan Basak, Badenerstrasse 678, 8048 Zürich"
 };
 
 //TODO waiting for 3 datasets from JANE
 describe(`[SKIPPED: Waiting for 3 datasets from Jane] 
-          C55950: Adressen zusammenführen_merge adresse with with sendung and sendungkopie;
-          TestRail: https://osiv.testrail.net/index.php?/cases/view/55950`, {failFast: {enabled: true}}, () => {
+          C55953: Adressen zusammenführen_merge adress connected with different objects;
+          TestRail: https://osiv.testrail.net/index.php?/cases/view/55953`, {failFast: {enabled: true}}, () => {
+  before(`Login as ${Cypress.env("username")};`, () => {
+    cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
+    pages.loginPage.openUrl();
+  });
+
   before(`Login as ${Cypress.env("username")};`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
     pages.loginPage.openUrl();
@@ -66,44 +67,9 @@ describe(`[SKIPPED: Waiting for 3 datasets from Jane]
     pages.adressen.grid.checkGridRowsCount(0);
   });
 
-  it(`Expected: for sendung ${testData.sen1} only copy with adr1 left`, {failFast: {enabled: false}}, () => {
-    flows.sendungen.step_navigateSEN_searchBySENNr_openSEN(testData.sen1);
-    pages.sendungen.detail.sideMenu.navigateToSendungskopieTab()
-         .waitForLoaded()
-         .sendungskopieGrid.checkGridRowsCount(1)
-         .checkValueInGridExists(testData.adressLine1, true);
-    pages.nav.clickHomeBtn();
-  });
-
-  it(`Expected: for sendung ${testData.sen2} adress of sendung copy is changed to adr1`, {failFast: {enabled: false}},() => {
-    pages.sendungen.grid.waitGridViewLoaded();
-    pages.sendungen.grid.searchAndOpenSendundenNr(testData.sen2);
-    pages.sendungen.detail.waitForLoaded();
-    pages.sendungen.detail.sideMenu.navigateToSendungskopieTab()
-         .waitForLoaded()
-         .sendungskopieGrid.checkGridRowsCount(1)
-         .checkValueInGridExists(testData.adressLine1, true);
-    pages.nav.clickHomeBtn();
-  });
-
-  it(`Expected: for sendung ${testData.sen3} copy is deleted`, {failFast: {enabled: false}}, () => {
-    pages.sendungen.grid.waitGridViewLoaded();
-    pages.sendungen.grid.searchAndOpenSendundenNr(testData.sen3);
-    pages.sendungen.detail.waitForLoaded();
-    pages.sendungen.detail.sideMenu.navigateToSendungskopieTab()
-         .waitForLoaded()
-         .sendungskopieGrid.checkGridRowsCount(0)
-         .checkValueInGridExists(testData.adressLine1, false);
-    pages.nav.clickHomeBtn();
-  });
-
-  testData.sen4_5.forEach((senId) => {
-    it(`Expected: for sendung ${senId} adress is not changed`, {failFast: {enabled: false}}, () => {
-      pages.sendungen.grid.waitGridViewLoaded();
-      pages.sendungen.grid.searchAndOpenSendundenNr(senId);
-      pages.sendungen.detail.waitForLoaded()
-           .checkEmpfaengerDropdown(testData.adressLine2);
-      pages.nav.clickHomeBtn();
-    });
+  it(`Expected: adress is changed for adressverbindengen, sendung, sendungcopy, dfstellen, fallfuhrung, 
+  Versicherungen, Haftpflichtige of VP Eing Adresse`, {failFast: {enabled: false}}, () => {
+    flows.versicherte.step_navigateVP_searchByVPName_openVP(testData.vpName);
+    pages.versicherte.detail.sideMenu.navigateToAdressverbindungenTab();
   });
 });

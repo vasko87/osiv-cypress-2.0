@@ -82,7 +82,6 @@ class GridBase {
   }
 
   setAllRowsCheckboxesSelected(isChecked) {
-    cy.pause();
     cy.xpath(`${this.gridWrapperXpath}//td[@excell='ch']`).each((td) => {
       cy.log("!!!");
       cy.log(td.prop("chstate"));

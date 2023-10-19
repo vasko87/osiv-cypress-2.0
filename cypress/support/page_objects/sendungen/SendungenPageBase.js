@@ -7,6 +7,7 @@ class SendungenPageBase {
       ursprungTxt : () => cy.get(baseCSS).find("[akid$='-ursprung_text'] input"),
       arbeitslisteTxt : () => cy.get(baseCSS).find("[akid$='-arbeitsliste_bez'] input"),
       formularDropdown : () => cy.get(baseCSS).find("[akid$='-formular_name_bez']"),
+      empfaengerDropdown : () => cy.get(baseCSS).find("c"),
       vmdatumDate : () => cy.get(baseCSS).find("[akid$='-entscheid_vmdatum'] input")
     };
   }
@@ -28,6 +29,11 @@ class SendungenPageBase {
 
   checkFormularDropdown(value) {
     pageBase.checkDropdownSelectedValue(this.elements.formularDropdown(), value);
+    return this;
+  }
+
+  checkEmpfaengerDropdown(value) {
+    pageBase.checkDropdownSelectedValueContains(this.elements.empfaengerDropdown(), value, true);
     return this;
   }
 

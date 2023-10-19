@@ -25,8 +25,18 @@ class RibbonBase {
     return this;
   }
 
+  checkNeuBtnDisabled(isDisabled) {
+    this.checkMenuItemDisable(this.elements.neuBtn(), isDisabled);
+    return this;
+  }
+
   clickLoschenBtn() {
     this.elements.loschenBtn().should("be.visible").click();
+    return this;
+  }
+
+  checkLoschenBtnDisabled(isDisabled) {
+    this.checkMenuItemDisable(this.elements.loschenBtn(), isDisabled);
     return this;
   }
 

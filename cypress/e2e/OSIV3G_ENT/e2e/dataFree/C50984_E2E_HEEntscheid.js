@@ -140,6 +140,7 @@ describe(`C50984: E2E (HE Entscheid);
     pages.warningPopup.checkWarningContainsText(testData.step9.warningMsg)
          .clickOkBtn();
     pageBase.waitForLoadingDisappears();
+    cy.pause();
     pages.entscheid.detail.freitexteTab.verfugungBeiblattAKTab
          .txtEditor.waitForValueVisible()
          .checkTextHighlightedBulk(testData.step9.generatedValues, true);
