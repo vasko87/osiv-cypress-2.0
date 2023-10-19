@@ -90,7 +90,7 @@ class TxtEditor {
 
   checkTextHighlighted(text, isHighlighted) {
     pageBase.executeJS(`document.querySelector("${this.baseCSS}").__vueParentComponent.ctx.getValue()`).then((val) => {
-      const highlightedTextExists = val.indexOf(`chcbpat2 ${text}`) !== -1;
+      const highlightedTextExists = val.indexOf(`chcbpat3 ${text}`) !== -1;
       if (isHighlighted) {
         expect(highlightedTextExists).to.be.eql(true);
       } else {
@@ -101,7 +101,10 @@ class TxtEditor {
   }
 
   checkTextHighlightedBulk(textList, isHighlighted) {
-    textList.forEach(text => this.checkTextHighlighted(text, isHighlighted));
+    textList.forEach(text => {
+      cy.log(`Checking text [${text}] is highlighted [${isHighlighted}]`);
+      this.checkTextHighlighted(text, isHighlighted);
+    });
     return this;
   }
 }

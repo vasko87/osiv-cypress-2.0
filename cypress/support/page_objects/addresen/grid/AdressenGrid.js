@@ -1,13 +1,27 @@
 import AdressenAddDialog from "../detail/popups/AdressenAddDialog";
 import GridBase from "../../../base/GridBase";
-import constants from "../../../helpers/Constants";
+import AdressenGridFilter from "./AdressenGridFilter";
+import pageBase from "../../../base/PageBase";
+import AdressenGridHeaderActivePanel from "./AdressenGridHeaderActivePanel";
 class AdressenGrid extends GridBase {
-  constructor() {
-    super(`${constants.CSS_ACTIVE_FORM} [akid='AdresseQueryGrid']`);
+  constructor(css) {
+
+    super(css);
+    this.filter = new AdressenGridFilter(css);
+    this.headerActivePanel = new AdressenGridHeaderActivePanel(css);
     super.elements = {
       ...this.elements,
       adresseNewBtn: () => cy.get("[akid='AdresseQueryGrid-AdresseNew']")
     };
+  }
+
+  searchAndOpenAdresseID(value) {
+    super.waitGridWrapperLoaded();
+    this.filter.searchAdresseID(value);
+    super.waitGridViewLoaded()
+         .dblClickRowValue(value);
+    pageBase.waitForLoadingDisappears();
+    return this;
   }
 
   waitGridViewLoaded() {

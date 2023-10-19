@@ -1,7 +1,7 @@
 import RibbonBase from "../../../../base/RibbonBase";
 import NotizenPopup from "./popups/NotizenPopup";
 
-class EntscheidRibbon extends RibbonBase {
+class BeschwerdeRibbon extends RibbonBase {
   constructor() {
     super();
     super.elements = {
@@ -9,7 +9,7 @@ class EntscheidRibbon extends RibbonBase {
       korrekturfunktionenBtn         : () => this.elements.ribbonBlock().contains("Korrekturfunktionen"),
     };
 
-    const ribbonBase = this
+    const ribbonBase = this;
 
     this.korrekturfunktionenSubMenu = {
       aufNeukorrigieren              : () => this.elements.subMenu().find("[id*='BeschwerdeUndoBearbeiten']"),
@@ -34,4 +34,4 @@ class EntscheidRibbon extends RibbonBase {
   }
 }
 
-export default EntscheidRibbon;
+export default BeschwerdeRibbon;

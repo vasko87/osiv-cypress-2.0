@@ -18,7 +18,7 @@ class PageBase {
 
   selectInDropdownExect(element, value) {
     element.find("[class='select2-selection__arrow']").click();
-    element.xpath(`//*[@class='select2-results__options']//*[contains(text(),'${value}')]`,
+    element.xpath(`//*[@class='select2-results__options']//*[normalize-space(text())='${value}']`,
       {timeout: constants.DEFAULT_TIMEOUT}).click();
     return this;
   }

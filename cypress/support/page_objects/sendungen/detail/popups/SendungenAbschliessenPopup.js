@@ -1,5 +1,6 @@
 import SendungenCommonElements from "../../SendungenPageBase";
 import ModalWindowBase from "../../../../standalone/popup/ModalWindowBase";
+import pageBase from "../../../../base/PageBase";
 
 class SendungenAbschliessenPopup extends SendungenCommonElements {
   constructor() {
@@ -9,6 +10,7 @@ class SendungenAbschliessenPopup extends SendungenCommonElements {
 
   waitForLoaded() {
     this.modalWindow.waitForLoaded();
+    pageBase.waitForLoadingDisappears();
     return this;
   }
 }

@@ -11,6 +11,7 @@ import DetailTab_Sen from "./tabBarTabs/DetailTab_Sen";
 import ProtocollTab_Sen from "./tabBarTabs/ProtocollTab_Sen";
 import EingliederungTabBar from "../../eingliederungen/details/EingliederungTabBar";
 import SendungenTabBar from "./SendungenTabBar";
+import SendungskopieTab from "./sideMenuTabs/SendungskopieTab";
 
 class SendungenDetail extends SendungenPageBase {
   constructor() {
@@ -24,6 +25,7 @@ class SendungenDetail extends SendungenPageBase {
     this.sideMenu = new SendungenSideMenu();
     this.formularVariablenTab = new FormularVariablenTab();
     this.dossierBeilagenTab = new DossierBeilagenTab();
+    this.sendungskopieTab = new SendungskopieTab();
     this.sendungenAbschliessenPopup = new SendungenAbschliessenPopup();
     this.elements = {
       ...this.elements,

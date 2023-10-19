@@ -29,7 +29,7 @@ class EntscheidGridHeaderActivePanel {
 
   selectMeineEntscheideDropdown() {
     this.elements.entscheidQueryGridDropdown().should("be.visible");
-    pageBase.selectInDropdownContains("Meine Entscheide");
+    pageBase.selectInDropdownContains(this.elements.entscheidQueryGridDropdown(),"Meine Entscheide");
     pageBase.waitForLoadingDisappears();
     return this;
   }

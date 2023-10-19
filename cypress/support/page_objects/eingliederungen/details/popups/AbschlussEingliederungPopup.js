@@ -58,12 +58,12 @@ class AbschlussEingliederungPopup extends ModalWindowBase {
   }
 
   selectArtMassnahmeDropdown(value) {
-    pageBase.selectInDropdownExect(this.elements.artMassnahmeDropdown(), value);
+    pageBase.selectInDropdownContains(this.elements.artMassnahmeDropdown(), value);
     return this;
   }
 
   checkArtMassnahmeDropdown(value) {
-    pageBase.checkDropdownSelectedValueContains(this.elements.artMassnahmeDropdown(), value);
+    pageBase.checkDropdownSelectedValue(this.elements.artMassnahmeDropdown(), value);
     return this;
   }
 

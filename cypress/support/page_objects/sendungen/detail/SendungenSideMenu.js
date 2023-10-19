@@ -1,6 +1,7 @@
 import constants from "../../../helpers/Constants";
 import FormularVariablenTab from "./sideMenuTabs/FormularVariablenTab";
 import DossierBeilagenTab from "./sideMenuTabs/dossierBeilagenTab/DossierBeilagenTab";
+import SendungskopieTab from "./sideMenuTabs/SendungskopieTab";
 class SendungenSideMenu {
   constructor() {
     this.elements = {
@@ -34,7 +35,7 @@ class SendungenSideMenu {
 
   navigateToSendungskopieTab() {
     this.elements.sendungskopieTab().should("be.visible").click();
-    return this;
+    return new SendungskopieTab();
   }
 }
 export default SendungenSideMenu;

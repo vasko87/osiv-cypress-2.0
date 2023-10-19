@@ -32,7 +32,7 @@ describe(`#: New address`, {failFast: {enabled: true}}, () => {
   it("Step: Navigate to Adressen and click 'Adressen new' btn", () => {
     pages.loginPage.openUrl();
     pages.desktopMenu.navigateToAdressenTab();
-    pages.adressen.grid.clickAdressenNewBtn();
+    pages.adressen.detail.ribbonMenu.clickNeuBtn();
     pages.adressen.addDialog.waitForLoaded();
   });
 
