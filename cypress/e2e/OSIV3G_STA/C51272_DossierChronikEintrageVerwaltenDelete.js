@@ -36,6 +36,7 @@ describe(`C51272: Dossier-Chronik: Einträge verwalten (delete);
     pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.clickRowWithTextToSelectIt(testData.step2.ereignis);
     pages.versicherte.detail.ribbonMenu.clickLoschenBtn();
     pages.warningPopup.clickOkBtn();
+    pages.notification.waitForNotificationMessageDisappears();
     pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.checkValueInGridExists(testData.step2.ereignis, false);
     pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.checkValueInGridExists(testData.step1.ereignis, false);
     pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.checkValueInGridExists(testData.step2.ereignisNew, true);
@@ -51,6 +52,7 @@ describe(`C51272: Dossier-Chronik: Einträge verwalten (delete);
         Pressing OK on the warning - record is deleted
         The first record from the list is selected."`, () => {
     pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.clickRowWithTextToSelectIt(testData.step3.ereignis);
+    pages.waitForLoadingDisappears();
     pages.versicherte.detail.ribbonMenu.clickLoschenBtn();
     pages.warningPopup.clickOkBtn();
     pages.warningPopup.checkWarningContainsText(constants.MSG.OSCSTAMM_211)
@@ -59,13 +61,12 @@ describe(`C51272: Dossier-Chronik: Einträge verwalten (delete);
          .checkValueInGridExists(testData.step3.ereignis, false);
   });
 
-  //TODO clarify with Natalia, warning messages on 72 line does not exist for 1st dataset
   it(`Step 4: Delete all records in the list; -> All records are deleted
   'Speichern' and 'Loschen' ribbon buttons are visible but disabled"`, () => {
     pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.clickRowWithTextToSelectIt(testData.step4.ereignis1);
     pages.versicherte.detail.ribbonMenu.clickLoschenBtn();
     pages.warningPopup.clickOkBtn();
-    pages.warningPopup.clickOkBtnIfVisible();
+    pages.warningPopup.clickOkBtn();
     pageBase.waitForLoadingDisappears();
     pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.waitGridViewLoaded()
          .clickRowWithTextToSelectIt(testData.step4.ereignis2);
