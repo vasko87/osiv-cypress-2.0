@@ -178,12 +178,8 @@ class PageBase {
    * @returns {boolean}
    */
   isElementVisible(element) {
-    cy.get("body").then((body) => {
-      if (body.find(element).length > 0) {
-        return true;
-      } else {
-        return false;
-      }
+    cy.xpath("//body[@id='main']").then((body) => {
+      return body.find(element).length > 0;
     });
   }
 
