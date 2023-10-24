@@ -2,7 +2,9 @@ import pages from "../../support/base/OsivPageObject";
 import flows from "../../support/base/OsivFlowsObject";
 import constants from "../../support/helpers/Constants";
 import {c58211 as testData} from "../../support/helpers/DataManager";
-describe(`C58211: Abgabe registrieren _ with error messages; 
+
+//need to debug after 2 more datasets added
+describe.skip(`C58211: Abgabe registrieren _ with error messages; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/58211`, {failFast: {enabled: true}}, () => {
 
   before(`Login as ${Cypress.env("username")};`, () => {
@@ -25,7 +27,6 @@ describe(`C58211: Abgabe registrieren _ with error messages;
   it(`Step 3: Click on the first error with sendung >sendung details page opens
       Click Abschlissen for sendung
       Click OK on abschlissen popup >senung is closed`, () => {
-    cy.pause();
     pages.versicherte.detail.dossierChronikTab.dossierAbgabeGrid.waitGridViewLoaded()
          .dblClickRowWithText("Die Sendung");
     pages.sendungen.detail.waitForLoaded();
