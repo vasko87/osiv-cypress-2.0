@@ -1,15 +1,10 @@
-import pages from "../../../support/base/OsivPageObject";
-import flows from "../../../support/base/OsivFlowsObject";
-import constants from "../../../support/helpers/Constants";
+import pages from "../../support/base/OsivPageObject";
+import flows from "../../support/base/OsivFlowsObject";
+import constants from "../../support/helpers/Constants";
+import {c58211 as testData} from "../../support/helpers/DataManager";
 
-const testData = {
-  vpName  : "Dossier ENT-abgabe",
-  ent     : "22781",
-  vpStatus: "Abgegeben"
-};
-
-//TODO skipped, waiting for Jane add 2 more data sets
-describe.skip(`[SKIPPED - waiting for 2 more datasets from JANE] C58211: Abgabe registrieren _ with error messages; 
+//need to debug after 2 more datasets added
+describe.skip(`C58211: Abgabe registrieren _ with error messages; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/58211`, {failFast: {enabled: true}}, () => {
 
   before(`Login as ${Cypress.env("username")};`, () => {
@@ -36,6 +31,8 @@ describe.skip(`[SKIPPED - waiting for 2 more datasets from JANE] C58211: Abgabe 
          .dblClickRowWithText("Die Sendung");
     pages.sendungen.detail.waitForLoaded();
     pages.sendungen.detail.ribbonMenu.clickAbschliessenBtn();
+    pages.sendungen.detail.sendungenAbschliessenPopup.modalWindow.waitForLoaded();
+    cy.wait(2000);
     pages.sendungen.detail.sendungenAbschliessenPopup.modalWindow.clickOkBtn();
     pages.notification.waitForSuccessMessageDisappears();
   });
@@ -62,6 +59,7 @@ describe.skip(`[SKIPPED - waiting for 2 more datasets from JANE] C58211: Abgabe 
       Select Dossier Abgabe an
       Click OK
       confirm warning`, () => {
+    pages.versicherte.detail.waitForLoaded();
     pages.versicherte.detail.ribbonMenu.clickAbgabeRegistrierenBtn()
          .selectDosseirAbgabeAnDropdown("301")
          .clickOkBtn();
