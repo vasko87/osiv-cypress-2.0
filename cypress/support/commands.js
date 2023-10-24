@@ -23,6 +23,9 @@ before( function() {
 });
 
 after( function() {
+  cy.clearAllCookies();
+  cy.clearAllLocalStorage();
+  cy.clearAllSessionStorage();
 });
 
 Cypress.Commands.add("logWithSteps", (originalFn, message) => {
