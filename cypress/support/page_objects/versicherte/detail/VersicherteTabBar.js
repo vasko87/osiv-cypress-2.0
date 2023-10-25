@@ -11,7 +11,7 @@ class VersicherteTabBar {
   constructor() {
     this.elements = {
       detailsTab           : () => cy.get(`${constants.CSS_ACTIVE_FORM} [class$='tab'][akid='SimpleSwatTabbar-Details der Versicherten Person'],[class$='tab_actv'][akid='SimpleSwatTabbar-Details der Versicherten Person']`),
-      gesucheFMMeldungenTab: () => cy.get(`${constants.CSS_ACTIVE_FORM} [class$='tab'][akid='SimpleSwatTabbar-Entscheide'],[class$='tab_actv'][akid='SimpleSwatTabbar-Gesuche / FE-Meldungen']`),
+      gesucheFMMeldungenTab: () => cy.get(`${constants.CSS_ACTIVE_FORM} [class$='tab'][akid='SimpleSwatTabbar-Gesuche / FE-Meldungen'],[class$='tab_actv'][akid='SimpleSwatTabbar-Gesuche / FE-Meldungen']`),
       entscheideTab        : () => cy.get(`${constants.CSS_ACTIVE_FORM} [class$='tab'][akid='SimpleSwatTabbar-Entscheide'],[class$='tab_actv'][akid='SimpleSwatTabbar-Entscheide']`),
       eingliederungenTab   : () => cy.get(`${constants.CSS_ACTIVE_FORM} [class$='tab'][akid='SimpleSwatTabbar-Eingliederungen'],[class$='tab_actv'][akid='SimpleSwatTabbar-Eingliederungen']`),
       sendungenTab         : () => cy.get(`${constants.CSS_ACTIVE_FORM} [class$='tab'][akid='SimpleSwatTabbar-Sendungen'],[class$='tab_actv'][akid='SimpleSwatTabbar-Sendungen']`),

@@ -2,9 +2,9 @@ import pages from "../../support/base/OsivPageObject";
 import flows from "../../support/base/OsivFlowsObject";
 import constants from "../../support/helpers/Constants";
 import {c58211 as testData} from "../../support/helpers/DataManager";
+import helperObject from "../../support/helpers/HelperObject";
 
-//need to debug after 2 more datasets added
-describe.skip(`C58211: Abgabe registrieren _ with error messages; 
+describe(`C58211: Abgabe registrieren _ with error messages; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/58211`, {failFast: {enabled: true}}, () => {
 
   before(`Login as ${Cypress.env("username")};`, () => {
@@ -34,6 +34,7 @@ describe.skip(`C58211: Abgabe registrieren _ with error messages;
     pages.sendungen.detail.sendungenAbschliessenPopup.modalWindow.waitForLoaded();
     cy.wait(2000);
     pages.sendungen.detail.sendungenAbschliessenPopup.modalWindow.clickOkBtn();
+    cy.wait(2000);
     pages.notification.waitForSuccessMessageDisappears();
   });
 
@@ -47,7 +48,9 @@ describe.skip(`C58211: Abgabe registrieren _ with error messages;
          .dblClickRowWithText("Der Entscheid");
     pages.entscheid.detail.waitForLoaded();
     pages.entscheid.detail.ribbonMenu.clickBearbeitungEinleitenBtn();
-    pages.notification.waitForSuccessMessageDisappears();
+    pages.waitForLoadingDisappears();
+    pages.modalWindow.clickOkBtn();
+    pages.notification.checkSuccessMessageVisibleAndWaitForDisappeared();
   });
 
   it(`Step 6: Go back to dossier-abgabe`, () => {
@@ -59,7 +62,6 @@ describe.skip(`C58211: Abgabe registrieren _ with error messages;
       Select Dossier Abgabe an
       Click OK
       confirm warning`, () => {
-    pages.versicherte.detail.waitForLoaded();
     pages.versicherte.detail.ribbonMenu.clickAbgabeRegistrierenBtn()
          .selectDosseirAbgabeAnDropdown("301")
          .clickOkBtn();
@@ -73,7 +75,7 @@ describe.skip(`C58211: Abgabe registrieren _ with error messages;
     pages.checkMsgWarningContainsText(constants.MSG.OSCSTAMM_152);
     pages.versicherte.detail.ribbonMenu.checkAbgabeDurchfuhrenBtnDisabled(false);
     pages.versicherte.detail.dossierChronikTab.dossierAbgabeGrid.checkGridRowsCount(0);
-    pages.versicherte.detail.tabBar.navigateToDetailsTab().checkStatusTxt(testData.vpStatus);
+    pages.versicherte.detail.sideMenu.navigateToBasisdatenTab().checkStatusTxt(testData.vpStatus);
   });
 
   it(`Expected: additional check: ENTs are closed and abgegeben`, () => {
@@ -86,6 +88,7 @@ describe.skip(`C58211: Abgabe registrieren _ with error messages;
   it(`Expected: gesuch is closed`, () => {
     pages.versicherte.detail.tabBar.navigateToGesucheFMMeldungenTan()
          .grid.waitGridViewLoaded()
-         .checkTwoTextsExistInRow("Abgeschlossen", "Die Gesuch wurde aufgrund Dossier Abgabe am 08.09.2023 willkürlich abgeschlossen.", 1);
+         .checkTwoTextsExistInRow("Abgeschlossen", `Die Gesuch wurde aufgrund Dossier Abgabe 
+                                    am ${helperObject.date.getCurrentDate()} willkürlich abgeschlossen.`, 1);
   });
 });
