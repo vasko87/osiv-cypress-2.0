@@ -81,8 +81,10 @@ describe(`C58186: Displaying the panel message and availability of the Zuordnen 
         Buttons "Zuordnen" and "Zuordnen und Abschlissen" are enabled. No any panel messages.`);
         pages.posteingang.zuordnung.clickSpeichernBtn();
         pages.warningPopup.clickOkBtn();
+        cy.wait(2000);
         pageBase.waitForLoadingDisappears();
         cy.get(`tr[akid='${elementID}'] td:first-of-type`).click();
+        cy.wait(500);
         pageBase.waitForLoadingDisappears();
         pages.posteingang.zuordnung.checkZuordnenUndAbschliessenBtnDisabled(false)
              .checkZuordnenBtnDisabled(false);
