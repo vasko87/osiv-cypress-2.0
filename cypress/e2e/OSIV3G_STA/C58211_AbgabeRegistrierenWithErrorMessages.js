@@ -49,7 +49,6 @@ describe(`C58211: Abgabe registrieren _ with error messages;
     pages.entscheid.detail.waitForLoaded();
     pages.entscheid.detail.ribbonMenu.clickBearbeitungEinleitenBtn();
     pages.waitForLoadingDisappears();
-    cy.pause();
     pages.modalWindow.clickOkBtn();
     pages.notification.checkSuccessMessageVisibleAndWaitForDisappeared();
   });
@@ -87,9 +86,9 @@ describe(`C58211: Abgabe registrieren _ with error messages;
   });
 
   it(`Expected: gesuch is closed`, () => {
-    const currentDate = helperObject.date.getCurrentDate();
     pages.versicherte.detail.tabBar.navigateToGesucheFMMeldungenTan()
          .grid.waitGridViewLoaded()
-         .checkTwoTextsExistInRow("Abgeschlossen", `Die Gesuch wurde aufgrund Dossier Abgabe am ${currentDate} willkürlich abgeschlossen.`, 1);
+         .checkTwoTextsExistInRow("Abgeschlossen", `Die Gesuch wurde aufgrund Dossier Abgabe 
+                                    am ${helperObject.date.getCurrentDate()} willkürlich abgeschlossen.`, 1);
   });
 });
