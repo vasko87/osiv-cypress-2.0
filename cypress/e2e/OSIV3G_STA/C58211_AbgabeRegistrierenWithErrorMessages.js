@@ -27,19 +27,19 @@ describe(`C58211: Abgabe registrieren _ with error messages;
   it(`Step 3: Click on the first error with sendung >sendung details page opens
       Click Abschlissen for sendung
       Click OK on abschlissen popup >senung is closed`, () => {
-    // pages.versicherte.detail.dossierChronikTab.dossierAbgabeGrid.waitGridViewLoaded()
-    //      .dblClickRowWithText("Die Sendung");
-    // pages.sendungen.detail.waitForLoaded();
-    // pages.sendungen.detail.ribbonMenu.clickAbschliessenBtn();
-    // pages.sendungen.detail.sendungenAbschliessenPopup.modalWindow.waitForLoaded();
-    // cy.wait(2000);
-    // pages.sendungen.detail.sendungenAbschliessenPopup.modalWindow.clickOkBtn();
-    // cy.wait(2000);
-    // pages.notification.waitForSuccessMessageDisappears();
+    pages.versicherte.detail.dossierChronikTab.dossierAbgabeGrid.waitGridViewLoaded()
+         .dblClickRowWithText("Die Sendung");
+    pages.sendungen.detail.waitForLoaded();
+    pages.sendungen.detail.ribbonMenu.clickAbschliessenBtn();
+    pages.sendungen.detail.sendungenAbschliessenPopup.modalWindow.waitForLoaded();
+    cy.wait(2000);
+    pages.sendungen.detail.sendungenAbschliessenPopup.modalWindow.clickOkBtn();
+    cy.wait(2000);
+    pages.notification.waitForSuccessMessageDisappears();
   });
 
   it(`Step 4: Go back to dossier-abgabe`, () => {
-    // pages.groupedTaskbar.clickContainsVersichertendatenTab();
+    pages.groupedTaskbar.clickContainsVersichertendatenTab();
   });
 
   it(`Step 5: Click on error related to ENT>ent details opens
@@ -47,11 +47,11 @@ describe(`C58211: Abgabe registrieren _ with error messages;
     pages.versicherte.detail.dossierChronikTab.dossierAbgabeGrid.waitGridViewLoaded()
          .dblClickRowWithText("Der Entscheid");
     pages.entscheid.detail.waitForLoaded();
-    // pages.entscheid.detail.ribbonMenu.clickBearbeitungEinleitenBtn();
-    // pages.waitForLoadingDisappears();
-    // cy.pause();
-    // pages.modalWindow.clickOkBtn();
-    // pages.notification.checkSuccessMessageVisibleAndWaitForDisappeared();
+    pages.entscheid.detail.ribbonMenu.clickBearbeitungEinleitenBtn();
+    pages.waitForLoadingDisappears();
+    cy.pause();
+    pages.modalWindow.clickOkBtn();
+    pages.notification.checkSuccessMessageVisibleAndWaitForDisappeared();
   });
 
   it(`Step 6: Go back to dossier-abgabe`, () => {
