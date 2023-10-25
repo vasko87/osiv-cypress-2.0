@@ -1,14 +1,7 @@
 import pages from "../../support/base/OsivPageObject";
+import {c55949 as testData} from "../../support/helpers/DataManager";
 
-const testData = {
-  adr1: "750604",
-  adr2: "560619",
-  text: "Test adressen"
-};
-
-//TODO waiting for 3 datasets from JANE
-describe(`[SKIPPED: Waiting for 3 datasets from Jane] 
-          C55949: Adressen zusammenführen_merge adress with Ansprechpartner address;
+describe(`C55949: Adressen zusammenführen_merge adress with Ansprechpartner address;
           TestRail: https://osiv.testrail.net/index.php?/cases/view/55949`, {failFast: {enabled: true}}, () => {
   before(`Login as ${Cypress.env("username")};`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
@@ -44,7 +37,8 @@ describe(`[SKIPPED: Waiting for 3 datasets from Jane]
     pages.warningPopup.checkWarningContainsText("(OSCIADR:110)");
     pages.warningPopup.clickOkBtn();
     pages.infoPopup.ckeckInformationContainsText("(OSCIADR:109)");
-
+    pages.infoPopup.clickOkBtn();
+    pages.infoPopup.clickOkBtn();
   });
 
   it(`Expected 1: adress is not presented in the list of adresses in Adressen zusammenführen`, () => {
@@ -60,7 +54,7 @@ describe(`[SKIPPED: Waiting for 3 datasets from Jane]
          .waitForLoaded()
          .adresseZuhandenGrid
          .checkGridRowsCount(1)
-         .checkValueInGridExists(testData.text);
+         .checkValueInGridExists(testData.text, true);
     pages.adressen.detail.ribbonMenu.checkNeuBtnDisabled(true)
          .checkSpeichernBtnDisabled(true)
          .checkLoschenBtnDisabled(false);
