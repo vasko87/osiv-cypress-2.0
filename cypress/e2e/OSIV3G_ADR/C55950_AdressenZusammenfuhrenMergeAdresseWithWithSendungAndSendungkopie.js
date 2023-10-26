@@ -1,5 +1,6 @@
 import pages from "../../support/base/OsivPageObject";
 import flows from "../../support/base/OsivFlowsObject";
+import helperObject from "../../support/helpers/HelperObject";
 
 const testData = {
   adr1: "1022000",
@@ -13,12 +14,21 @@ const testData = {
 };
 
 //TODO waiting for 3 datasets from JANE
-describe(`[SKIPPED: Waiting for 3 datasets from Jane] 
+describe(`[DEFECT: OSIV-24840 (steps: expected results SEN)]
+          [IMPORTANT: Doestn't work for DataSet2 and DataSet3 - waiting for data from Jane]; 
           C55950: Adressen zusammenführen_merge adresse with with sendung and sendungkopie;
           TestRail: https://osiv.testrail.net/index.php?/cases/view/55950`, {failFast: {enabled: true}}, () => {
   before(`Login as ${Cypress.env("username")};`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
     pages.loginPage.openUrl();
+
+    helperObject.jira.isJiraDone("OSIV-24840").then((isDone) => {
+      console.log(isDone);
+      if (isDone === false) {
+        Cypress.env("isJira", true);
+        console.log(Cypress.env("isJira"));
+      }
+    });
   });
 
   it(`Step 1: Open adr1 (${testData.adr1} )`, () => {
@@ -50,6 +60,7 @@ describe(`[SKIPPED: Waiting for 3 datasets from Jane]
     pages.warningPopup.clickOkBtn();
     pages.infoPopup.ckeckInformationContainsText("(OSCIADR:109)");
     pages.infoPopup.clickOkBtn();
+    pages.infoPopup.clickOkBtn();
   });
 
   it(`Expected: adress is not presented in the list of adresses in Adressen zusammenführen`, {failFast: {enabled: false}}, () => {
@@ -67,6 +78,8 @@ describe(`[SKIPPED: Waiting for 3 datasets from Jane]
   });
 
   it(`Expected: for sendung ${testData.sen1} only copy with adr1 left`, {failFast: {enabled: false}}, () => {
+    // TODO Jira
+    cy.skipOn(Cypress.env("isJira") === true);
     flows.sendungen.step_navigateSEN_searchBySENNr_openSEN(testData.sen1);
     pages.sendungen.detail.sideMenu.navigateToSendungskopieTab()
          .waitForLoaded()
@@ -76,6 +89,8 @@ describe(`[SKIPPED: Waiting for 3 datasets from Jane]
   });
 
   it(`Expected: for sendung ${testData.sen2} adress of sendung copy is changed to adr1`, {failFast: {enabled: false}},() => {
+    // TODO Jira
+    cy.skipOn(Cypress.env("isJira") === true);
     pages.sendungen.grid.waitGridViewLoaded();
     pages.sendungen.grid.searchAndOpenSendundenNr(testData.sen2);
     pages.sendungen.detail.waitForLoaded();
@@ -87,6 +102,8 @@ describe(`[SKIPPED: Waiting for 3 datasets from Jane]
   });
 
   it(`Expected: for sendung ${testData.sen3} copy is deleted`, {failFast: {enabled: false}}, () => {
+    // TODO Jira
+    cy.skipOn(Cypress.env("isJira") === true);
     pages.sendungen.grid.waitGridViewLoaded();
     pages.sendungen.grid.searchAndOpenSendundenNr(testData.sen3);
     pages.sendungen.detail.waitForLoaded();
@@ -99,11 +116,21 @@ describe(`[SKIPPED: Waiting for 3 datasets from Jane]
 
   testData.sen4_5.forEach((senId) => {
     it(`Expected: for sendung ${senId} adress is not changed`, {failFast: {enabled: false}}, () => {
+      // TODO Jira
+      cy.skipOn(Cypress.env("isJira") === true);
       pages.sendungen.grid.waitGridViewLoaded();
       pages.sendungen.grid.searchAndOpenSendundenNr(senId);
       pages.sendungen.detail.waitForLoaded()
            .checkEmpfaengerDropdown(testData.adressLine2);
       pages.nav.clickHomeBtn();
     });
+  });
+
+  afterEach(function() {
+    console.log(this.currentTest.state);
+    if (this.currentTest.state === "pending") {
+      Cypress.log(this.currentTest.err);
+      Cypress.runner.stop();
+    }
   });
 });

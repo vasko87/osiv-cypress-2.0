@@ -7,7 +7,7 @@ class SendungenPageBase {
       ursprungTxt : () => cy.get(baseCSS).find("[akid$='-ursprung_text'] input"),
       arbeitslisteTxt : () => cy.get(baseCSS).find("[akid$='-arbeitsliste_bez'] input"),
       formularDropdown : () => cy.get(baseCSS).find("[akid$='-formular_name_bez']"),
-      empfaengerDropdown : () => cy.get(baseCSS).find("c"),
+      empfaengerDropdown : () => cy.get(baseCSS).find("[akid$='-empfaenger']"),
       vmdatumDate : () => cy.get(baseCSS).find("[akid$='-entscheid_vmdatum'] input")
     };
   }

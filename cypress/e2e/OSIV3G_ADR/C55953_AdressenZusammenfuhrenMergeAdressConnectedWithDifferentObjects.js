@@ -1,15 +1,18 @@
 import pages from "../../support/base/OsivPageObject";
 import flows from "../../support/base/OsivFlowsObject";
+import pageBase from "../../support/base/PageBase";
 
 const testData = {
   adr1: "1021467",
   adr2: "1021997",
   vpName: "Eing Adresse",
-  adressLine: "Frau Dr. med. Susan Basak, Badenerstrasse 678, 8048 Zürich"
+  adressLine1: "Frau Dr. med. Susan Basak, Badenerstrasse 678, 8048 Zürich",
+  adressLine2: "Herr Neu Eing, 1000 Lausanne 18",
+  types: ["Wohnsitz", "DF-Stelle", "Versicherung", "Haftpflichtige"]
 };
 
 //TODO waiting for 3 datasets from JANE
-describe(`[SKIPPED: Waiting for 3 datasets from Jane] 
+describe(`[IMPORTANT: Doestn't work for DataSet2 and DataSet3 - waiting for data from Jane];
           C55953: Adressen zusammenführen_merge adress connected with different objects;
           TestRail: https://osiv.testrail.net/index.php?/cases/view/55953`, {failFast: {enabled: true}}, () => {
   before(`Login as ${Cypress.env("username")};`, () => {
@@ -51,13 +54,14 @@ describe(`[SKIPPED: Waiting for 3 datasets from Jane]
     pages.warningPopup.clickOkBtn();
     pages.infoPopup.ckeckInformationContainsText("(OSCIADR:109)");
     pages.infoPopup.clickOkBtn();
+    pages.infoPopup.clickOkBtn();
   });
 
   it(`Expected: adress is not presented in the list of adresses in Adressen zusammenführen`, {failFast: {enabled: false}}, () => {
     pages.adressen.detail.adressenZusammenfuehrenpPopup.grid.checkGridRowsCount(0);
     pages.adressen.detail.adressenZusammenfuehrenpPopup.clickAbbrechenBtn();
-    pages.waitForLoadingDisappears();
     pages.infoPopup.clickOkBtnIfVisible();
+    pages.waitForLoadingDisappears();
     pages.nav.clickHomeBtn();
   });
 
@@ -65,11 +69,51 @@ describe(`[SKIPPED: Waiting for 3 datasets from Jane]
     pages.adressen.grid.waitGridViewLoaded();
     pages.adressen.grid.filter.searchAdresseID(testData.adr2);
     pages.adressen.grid.checkGridRowsCount(0);
+    flows.versicherte.step_navigateVP_searchByVPName_openVP(testData.vpName);
   });
 
-  it(`Expected: adress is changed for adressverbindengen, sendung, sendungcopy, dfstellen, fallfuhrung, 
-  Versicherungen, Haftpflichtige of VP Eing Adresse`, {failFast: {enabled: false}}, () => {
-    flows.versicherte.step_navigateVP_searchByVPName_openVP(testData.vpName);
-    pages.versicherte.detail.sideMenu.navigateToAdressverbindungenTab();
+  it(`Expected: adress is changed for adressverbindengen of VP Eing Adresse`, {failFast: {enabled: false}}, () => {
+    pages.versicherte.detail.sideMenu.navigateToAdressverbindungenTab()
+         .waitForLoaded();
+    testData.types.forEach(type => {
+      pages.versicherte.detail.adressverbindungenTab.grid.checkTwoTextsExistInOneRow(type, testData.adressLine2);
+    });
+  });
+
+  it(`Expected: adress is changed for Versicherungen of VP Eing Adresse`, {failFast: {enabled: false}}, () => {
+    pages.versicherte.detail.sideMenu.navigateToVersicherungenTab()
+         .waitForLoaded();
+    pages.versicherte.detail.versicherungenTab.grid.checkGridRowsCount(1)
+         .checkValueInGridExists(testData.adressLine2, true)
+         .checkValueInGridExists(testData.adressLine1, false);
+  });
+
+  it(`Expected: adress is changed for dfstellen of VP Eing Adresse`, {failFast: {enabled: false}}, () => {
+    pages.versicherte.detail.sideMenu.navigateToDurchfuhrungsstellenTab()
+         .waitForLoaded();
+    pages.versicherte.detail.durchfuhrungsstellenTab.grid.checkGridRowsCount(1)
+         .checkValueInGridExists(testData.adressLine2, true)
+         .checkValueInGridExists(testData.adressLine1, false);
+  });
+
+  it(`Expected: adress is changed for fallfuhrung of VP Eing Adresse`, {failFast: {enabled: false}}, () => {
+    pages.versicherte.detail.sideMenu.navigateToFallfuhrungTab()
+         .waitForLoaded();
+    pages.versicherte.detail.fallfuhrungTab.checkEmpfangerDropdown(testData.adressLine2);
+  });
+
+  it(`Expected: adress is changed for sendung, sendungcopy of VP Eing Adresse`, {failFast: {enabled: false}}, () => {
+    pages.versicherte.detail.tabBar.navigateToSendungenTab()
+         .waitForLoaded();
+    pages.versicherte.detail.sendungenTabBar.grid.checkGridRowsCount(2)
+         .checkValueInGridExists(testData.adressLine2, true)
+         .checkValueInGridExists(testData.adressLine1, false)
+         .dblClickRowNumber(1);
+    pageBase.waitForLoadingDisappears();
+    pages.sendungen.detail.sideMenu.navigateToSendungskopieTab()
+         .waitForLoaded()
+         .sendungskopieGrid.checkGridRowsCount(1)
+         .checkValueInGridExists(testData.adressLine2, true)
+         .checkValueInGridExists(testData.adressLine1, false);
   });
 });

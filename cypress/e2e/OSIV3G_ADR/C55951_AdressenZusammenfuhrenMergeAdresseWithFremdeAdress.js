@@ -2,19 +2,21 @@ import pages from "../../support/base/OsivPageObject";
 
 const testData = {
   test1: {
+    tcNumber: 1,
     adr1: "619915",
     adr2: "619911",
     adressLine: "Frau Dr. med. Susan Basak, Badenerstrasse 678, 8048 Zürich"
   },
   test2: {
+    tcNumber: 2,
     adr1: "619912",
     adr2: "39248",
     adressLine: "Ambimed Basel AG, Augenchirurgische Tagesklinik, Klingentalstrasse 9, 4057 Basel"
   }
 };
 
-//TODO waiting for 3 datasets from JANE
-describe(`[SKIPPED: Waiting for 3 datasets from Jane] 
+// TODO waiting for 3 datasets from JANE
+describe(`[IMPORTANT: Doestn't work for DataSet2 and DataSet3 - waiting for data from Jane];
           C55951: Adressen zusammenführen_merge adresse with fremde adress;
           TestRail: https://osiv.testrail.net/index.php?/cases/view/55951`, {failFast: {enabled: true}}, () => {
   before(`Login as ${Cypress.env("username")};`, () => {
@@ -23,7 +25,7 @@ describe(`[SKIPPED: Waiting for 3 datasets from Jane]
   });
 
   [testData.test1, testData.test2].forEach((data) => {
-    it(`Test case`, () => {
+    it(`Test case ${data.tcNumber}`, () => {
       cy.log(`Step 1: Open adr1 (${data.adr1} )`);
       pages.loginPage.openUrl();
       pages.desktopMenu.navigateToAdressenTab();

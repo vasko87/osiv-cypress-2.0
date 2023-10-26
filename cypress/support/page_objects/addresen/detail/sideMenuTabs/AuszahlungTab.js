@@ -3,15 +3,15 @@ import constants from "../../../../helpers/Constants";
 
 class AuszahlungTab {
   constructor() {
-    this.adresseAuszahlungForm = cy.get(`[akid='sAdresseAuszahlungForm']`);
     this.elements = {
+      adresseAuszahlungForm :() => cy.get(`[akid='sAdresseAuszahlungForm']`),
       adresseDropdown          : () => cy.get(`[akid$='-fremdadressekurzadresse']`)
     };
   }
 
   waitForLoaded() {
     pageBase.waitForLoadingDisappears();
-    this.adresseAuszahlungForm.should("be.visible");
+    this.elements.adresseAuszahlungForm().should("be.visible");
     return this;
   }
 

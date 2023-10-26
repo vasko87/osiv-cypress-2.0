@@ -3,8 +3,8 @@ import HilflosigkeitTab from "./sideMenuTabs/HilflosigkeitTab";
 import constants from "../../../helpers/Constants";
 import pageBase from "../../../base/PageBase";
 import VisierenTab from "./sideMenuTabs/VisierenTab";
-import DurchfuhrungsstellenTab from "./sideMenuTabs/DurchfuhrungsstellenTab";
-import VersicherungenTab from "./sideMenuTabs/VersicherungenTab";
+import DurchfuhrungsstellenTab_ENT from "./sideMenuTabs/DurchfuhrungsstellenTab_ENT";
+import VersicherungenTab_ENT from "./sideMenuTabs/VersicherungenTab_ENT";
 import BasisdatenTab_Ent from "./tabBarTabs/BasisdatenTab_Ent";
 import DiskutierenTab from "./sideMenuTabs/DiskutierenTab";
 import RenteTab from "./sideMenuTabs/rente/RenteTab";
@@ -31,12 +31,12 @@ class EntscheidSideMenu {
 
   navigateToDurchfuhrungsstellenTab() {
     this.elements.durchfuhrungsstellenTab().should("be.visible").click();
-    return new DurchfuhrungsstellenTab();
+    return new DurchfuhrungsstellenTab_ENT();
   }
 
   navigateToVersicherungTab() {
     this.elements.versicherungTab().should("be.visible").click();
-    return new VersicherungenTab();
+    return new VersicherungenTab_ENT();
   }
 
   navigateToFreitexteTab() {

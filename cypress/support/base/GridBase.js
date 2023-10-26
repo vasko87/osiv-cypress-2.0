@@ -6,8 +6,8 @@ class GridBase {
     this.elements = {
       gridWrapper    : () => cy.get(baseCSS),
       rowSelected    : () => this.elements.gridWrapper().find("tr[class*='_material rowselected']"),
-      table          : () => this.elements.gridWrapper().find("table"),
-      rowElementsList: () => this.elements.gridWrapper().find("[class='objbox'] tr[class*=material]")
+      table          : () => this.elements.gridWrapper().find("table[class*='row']"),
+      rowElementsList: () => this.elements.gridWrapper().find("[class='objbox'] tr[class*='material']")
     };
   }
 
@@ -172,7 +172,14 @@ class GridBase {
 
   checkTwoTextsExistInRow(text1, text2, rowNumber) {
     this.elements.rowElementsList().eq(rowNumber - 1)
-        .xpath(`//td[contains(text(),'${text1}')]/../td[contains(text(),'${text2}')]`)
+        .xpath(`//td[contains(text(),'${text1}')]/..//*[contains(text(),'${text2}')]`)
+        .should("be.visible");
+    return this;
+  }
+
+  checkTwoTextsExistInOneRow(text1, text2) {
+    this.elements.table()
+        .xpath(`.//td[contains(text(),'${text1}')]/..//*[contains(text(),'${text2}')]`)
         .should("be.visible");
     return this;
   }
