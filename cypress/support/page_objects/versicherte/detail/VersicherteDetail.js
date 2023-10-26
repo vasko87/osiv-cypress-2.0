@@ -11,6 +11,10 @@ import DossierChronikTab from "./sideMenuTabs/DossierChronikTab";
 import ProtocollPageObject from "../../protocoll/ProtocollPageObject";
 import constants from "../../../helpers/Constants";
 import EingliederungenTab_Versicherte from "./tabBarTabs/EingliederungenTab_Versicherte";
+import AdressverbindungenTab from "./sideMenuTabs/AdressverbindungenTab";
+import VersicherungenTab_VR from "./sideMenuTabs/VersicherungenTab_VR";
+import DurchfuhrungsstellenTab_VR from "./sideMenuTabs/DurchfuhrungsstellenTab_VR";
+import FallfuhrungTab from "./sideMenuTabs/FallfuhrungTab";
 
 class VersicherteDetail extends VersichertePageBase {
   constructor() {
@@ -21,6 +25,10 @@ class VersicherteDetail extends VersichertePageBase {
     this.tabBar = new VersicherteTabBar();
     this.ribbonMenu = new VersicherteRibbon();
     this.basisdatenTab = new BasisdatenTab_VR();
+    this.adressverbindungenTab = new AdressverbindungenTab();
+    this.versicherungenTab = new VersicherungenTab_VR();
+    this.durchfuhrungsstellenTab = new DurchfuhrungsstellenTab_VR();
+    this.fallfuhrungTab = new FallfuhrungTab();
     this.dossierChronikTab = new DossierChronikTab();
     this.entscheidTabBar = new EntscheidTab_Versicherte();
     this.eingliederungenTabBar = new EingliederungenTab_Versicherte();

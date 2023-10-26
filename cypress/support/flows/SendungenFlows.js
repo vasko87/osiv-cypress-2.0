@@ -8,6 +8,7 @@ class SendungenFlows {
     pages.sendungen.detail.waitForLoaded();
     pages.sendungen.grid.searchAndOpenSendundenNr(sendungenNr);
     pages.sendungen.detail.waitForLoaded();
+    pageBase.waitForLoadingDisappears();
   }
 }
 
