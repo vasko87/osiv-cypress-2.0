@@ -34,7 +34,7 @@ describe(`C47750: Termin Erledigen (appointment type=Abklärung an Ort);
          .tabBar.navigateToTermineTab()
          .grid.waitGridViewLoaded()
          .clickRowWithTextToSelectIt(testData.data1.terminart);
-    pages.termine.detail.ribbonMenu.clickTerminErledigenBtn();
+    pages.termine.detail.ribbonMenu.clickErledigenBtn();
     pages.warningPopup.checkWarningContainsText(constants.MSG.TERMIN_44)
          .clickOkBtn();
 
@@ -73,7 +73,7 @@ describe(`C47750: Termin Erledigen (appointment type=Abklärung an Ort);
 
     pages.eingliederung.detail.tabBar.navigateToTermineTab()
          .waitForLoaded();
-    pages.termine.detail.ribbonMenu.clickTerminErledigenBtn();
+    pages.termine.detail.ribbonMenu.clickErledigenBtn();
     pages.warningPopup.checkWarningContainsText(constants.MSG.TERMIN_44)
          .clickOkBtn();
 

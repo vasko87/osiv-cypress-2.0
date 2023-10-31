@@ -45,9 +45,9 @@ const MSG = {
   TERMIN_27: "Die zugehörige Eingliederung wird aus dem Warten befreit. (Termin:27)",
 
   OSCSTAMM_152: "Falls der Erhalt des Dossiers jedoch fälschlicherweise nicht registriert wurde, so müssen Sie diesen zuerst registrieren. (OSCSTAMM:152)",
-  OSCSTAMM_277: "ist in Erledigung. (OSCSTAMM:277)",
-  OSCSTAMM_275: "ist in Durchführung. (OSCSTAMM:275)",
-  OSCSTAMM_273: "ist in Prüfung. (OSCSTAMM:273)",
+  OSCSTAMM_277: "ist in Erledigung.",
+  OSCSTAMM_275: "ist in Durchführung.",
+  OSCSTAMM_273: "ist in Prüfung.",
   OSCSTAMM_201: "Die aktuelle Abgabe des Dossiers darf hier niemals manuell erfasst werden. Sie müssen dazu unbedingt die obige Funktion 'Abgabe registrieren' verwenden. (OSCSTAMM:201)",
   OSCSTAMM_202: "Der aktuelle Erhalt des Dossiers darf hier niemals manuell erfasst werden. Sie müssen dazu unbedingt die obige Funktion 'Erhalt registrieren' verwenden. (OSCSTAMM:202)",
   OSCSTAMM_203: "Die Abgabe oder der Erhalt eines Dossiers darf hier niemals manuell erzeugt werden. Sie müssen dazu unbedingt die obigen Funktion 'Erhalt / Abgabe registrieren' verwenden. (OSCSTAMM:203)",

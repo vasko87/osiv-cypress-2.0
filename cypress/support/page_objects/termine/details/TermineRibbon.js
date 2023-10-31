@@ -5,12 +5,12 @@ class TermineRibbon extends RibbonBase {
     super();
     super.elements = {
       ...this.elements,
-      terminErledigenBtn : () => this.elements.ribbonBlock().find("[title='Termin erledigen']")
+      erledigenBtn : () => this.elements.ribbonBlock().find("[title='Termin erledigen'],[title='Erledigen']")
     };
   }
 
-  clickTerminErledigenBtn() {
-    this.elements.terminErledigenBtn().should("be.visible").click();
+  clickErledigenBtn() {
+    this.elements.erledigenBtn().should("be.visible").click();
     return this;
   }
 
