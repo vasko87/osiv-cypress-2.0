@@ -87,8 +87,7 @@ describe(`C58211: Abgabe registrieren _ with error messages;
 
   it(`Expected: gesuch is closed`, () => {
     pages.versicherte.detail.tabBar.navigateToGesucheFMMeldungenTan()
-         .grid.waitGridViewLoaded()
-         .checkTwoTextsExistInRow("Abgeschlossen", `Die Gesuch wurde aufgrund Dossier Abgabe 
+         .grid.checkTwoTextsExistInRow("Abgeschlossen", `Die Gesuch wurde aufgrund Dossier Abgabe 
                                     am ${helperObject.date.getCurrentDate()} willkürlich abgeschlossen.`, 1);
   });
 });
