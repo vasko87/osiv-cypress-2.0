@@ -34,7 +34,7 @@ describe(`C58228: DossierErhalt creation when Entscheid=G exists;
     pages.versicherte.dossierErhaltRegistrierenPopup.clickOkBtn();
     pages.warningPopup.clickOkBtn();
     pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.checkGridRowsCount(1)
-         .checkValueInGridExists(testData.dossierEreignis, true);
+         .checkValueInGridExists(testData.dossierEreignisToCheck, true);
   });
 
   it(`Step 3: open Entscheid tab and check that ENT=22470 has been deleted`, () => {
