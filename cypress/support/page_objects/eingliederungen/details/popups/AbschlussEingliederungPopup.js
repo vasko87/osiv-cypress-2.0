@@ -128,7 +128,7 @@ class AbschlussEingliederungPopup extends ModalWindowBase {
   }
 
   setMeldungFolgeEntscheidTextarea(value) {
-    this.elements.meldungFolgeEntscheidTextarea().should("be.visible").type(value);
+    this.elements.meldungFolgeEntscheidTextarea().should("be.visible").scrollIntoView().type(value);
     return this;
   }
 
