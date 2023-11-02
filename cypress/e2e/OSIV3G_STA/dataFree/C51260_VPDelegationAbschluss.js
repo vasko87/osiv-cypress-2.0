@@ -93,6 +93,7 @@ describe(`C51260: vP Delegation-Abschluss;
     pages.loginPage.openUrl();
     flows.versicherte.step_navigateVP_searchByVPNr_openVP_navigateToDossierChronikTab(testData.step6.vp);
     pages.waitForLoadingDisappears();
+    pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.waitGridViewLoaded();
     pages.versicherte.detail.ribbonMenu.clickDelegationAbschlussBtn()
          .waitForLoaded()
          .selectIvStelleDropdownByIndex(1)

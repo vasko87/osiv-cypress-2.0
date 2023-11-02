@@ -1,5 +1,6 @@
 import pages from "../../support/base/OsivPageObject";
 import pageBase from "../../support/base/PageBase";
+import constants from "../../support/helpers/Constants";
 
 const testData = {
   message: "Der Posteingang ist als Warten markiert und darum nicht zugeordnet werden."
@@ -81,10 +82,11 @@ describe(`C58186: Displaying the panel message and availability of the Zuordnen 
         Buttons "Zuordnen" and "Zuordnen und Abschlissen" are enabled. No any panel messages.`);
         pages.posteingang.zuordnung.clickSpeichernBtn();
         pages.warningPopup.clickOkBtn();
-        cy.wait(2000);
+        cy.wait(constants.MIN_TIMEOUT);
         pageBase.waitForLoadingDisappears();
+        cy.wait(constants.MIN_TIMEOUT);
         cy.get(`tr[akid='${elementID}'] td:first-of-type`).click();
-        cy.wait(500);
+        cy.wait(constants.MIN_TIMEOUT/2);
         pageBase.waitForLoadingDisappears();
         pages.posteingang.zuordnung.checkZuordnenUndAbschliessenBtnDisabled(false)
              .checkZuordnenBtnDisabled(false);
