@@ -35,6 +35,7 @@ describe(`C50462: "Abschluss Eingliederung" _no linked objects (Prufen = Nein);
          .checkWarningContainsText(constants.MSG.OSCIENT_77_PART2)
          .clickOkBtn();
     pages.notification.checkSuccessMessageVisible();
+    pages.notification.waitForSuccessMessageDisappears();
   });
 
   it(`Step 4: Verify: Data is saved (except Prufen) and popup is not closed
@@ -47,6 +48,7 @@ describe(`C50462: "Abschluss Eingliederung" _no linked objects (Prufen = Nein);
          .checkBearbeiterFolgeEntscheidDropdown(testData.benutzer);
 
     pages.modalWindow.clickAbbrechenBtn();
+    pages.eingliederung.detail.waitForLoaded();
     pages.eingliederung.detail.ribbonMenu.clickAbschlussEingliederungBtn()
          .waitForLoaded()
          .checkResultatDropdown(testData.resultat)

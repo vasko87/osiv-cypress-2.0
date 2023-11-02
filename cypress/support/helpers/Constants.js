@@ -1,7 +1,7 @@
 const CSS_ACTIVE_FORM = "[class='dhxwin_active']";
 const CSS_OPACITY1 = "[style*='opacity: 1']";
 const CSS_OPACITY1_ACTIVE = CSS_OPACITY1 + " " + CSS_ACTIVE_FORM;
-const MIN_TIMEOUT = 1000;
+const MIN_TIMEOUT = 2000;
 const SHORT_TIMEOUT = 5000;
 const DEFAULT_TIMEOUT = 20000;
 const LONG_TIMEOUT = 50000;
