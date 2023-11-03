@@ -1,7 +1,6 @@
 import pageBase from "../../base/PageBase";
-import ModalWindowBase from "../../standalone/popup/ModalWindowBase";
 import SupertextWahlenPopup from "./detail/popups/SupertextWahlenPopup";
-import supertextWahlenPopup from "./detail/popups/SupertextWahlenPopup";
+import constants from "../../helpers/Constants";
 
 class EntscheidPageBase {
   constructor(baseCSS) {
@@ -39,7 +38,7 @@ class EntscheidPageBase {
   }
   clearLeistungsgruppeDropdown() {
     pageBase.clearDropdown(this.elements.leistungsgruppeDropdown());
-    pageBase.waitForLoadingDisappears();
+    cy.wait(constants.MIN_TIMEOUT/5);
     return this;
   }
 
@@ -69,7 +68,7 @@ class EntscheidPageBase {
 
   clearLeistungscodeDropdown() {
     pageBase.clearDropdown(this.elements.leistungscodeDropdown());
-    pageBase.waitForLoadingDisappears();
+    cy.wait(constants.MIN_TIMEOUT/5);
     return this;
   }
 

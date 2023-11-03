@@ -34,7 +34,7 @@ class EntscheidDetail {
   waitForLoaded() {
     pageBase.waitForLoadingDisappears();
     cy.get(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailBasisDatenForm']`).should("be.visible", 10000);
-    cy.wait(2000);
+    cy.wait(constants.MIN_TIMEOUT);
     pageBase.waitForLoadingDisappears();
     return this;
   }

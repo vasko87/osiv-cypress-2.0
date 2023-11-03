@@ -23,6 +23,7 @@ describe(`C58228: DossierErhalt creation when Entscheid=G exists;
     pages.loginPage.openUrl();
     flows.versicherte.step_navigateVP_searchByVPNr_openVP_navigateToDossierChronikTab(testData.vp);
     pages.versicherte.detail.ribbonMenu.clickErhaltRegistrierenBtn();
+    pages.warningPopup.clickOkBtn();
     pages.versicherte.dossierErhaltRegistrierenPopup.waitForLoaded()
          .clickMinMaxBtn()
          .selectDossierEreignisDropdown(testData.dossierEreignis)
