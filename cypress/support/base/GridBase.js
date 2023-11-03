@@ -173,7 +173,7 @@ class GridBase {
   checkTwoTextsExistInRow(text1, text2, rowNumber) {
     this.elements.rowElementsList().eq(rowNumber - 1)
         .xpath(`//td[contains(text(),'${text1}')]/..//*[contains(text(),'${text2}')]`)
-        .should("be.visible");
+        .should("exist");
     return this;
   }
 

@@ -43,6 +43,7 @@ describe(`C51260: vP Delegation-Abschluss;
             press Ok -> Delegation abschluss entry is created and added to the list`, () => {
     pages.loginPage.openUrl();
     flows.versicherte.step_navigateVP_searchByVPNr_openVP_navigateToDossierChronikTab(testData.step2.vp);
+    pages.versicherte.detail.dossierChronikTab.dossierHistoryGrid.waitGridViewLoaded();
     pages.versicherte.detail.ribbonMenu.clickDelegationAbschlussBtn()
          .waitForLoaded()
          .checkDossierEreignisTxtReadonly(true)

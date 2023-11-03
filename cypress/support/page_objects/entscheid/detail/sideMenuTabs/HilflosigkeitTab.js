@@ -409,7 +409,7 @@ class HilflosigkeitTab {
   waitForLoaded() {
     pageBase.waitForLoadingDisappears();
     cy.get(`[akid='EntscheidHilflosigkeitForm']`).should("be.visible", 10000);
-    pageBase.waitForLoadingDisappears();
+    cy.wait(constants.MIN_TIMEOUT);
     return this;
   }
 }

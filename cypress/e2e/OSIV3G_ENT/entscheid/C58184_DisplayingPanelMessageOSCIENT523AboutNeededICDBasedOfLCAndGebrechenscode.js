@@ -19,8 +19,7 @@ describe(`C58184: Displaying panel message OSCIENT:523 about needed ICD based of
                         -> System should show the panel message OSCIENT:523`, () => {
     pages.entscheid.detail.basisdatenTabBar.selectGebrechenDropdownByTyping(testData.gebrechen_test1);
     pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
-    pages.notification.checkSuccessMessageVisible();
-    pages.waitForLoadingDisappears();
+    pages.notification.checkSuccessMessageVisibleAndWaitForDisappeared();
     pages.checkMsgOnThePage(constants.MSG.OSCIENT_523, true);
   });
 
@@ -28,8 +27,7 @@ describe(`C58184: Displaying panel message OSCIENT:523 about needed ICD based of
                          -> System should NOT show the panel message OSCIENT:523`, () => {
     pages.entscheid.detail.basisdatenTabBar.selectGebrechenDropdownByTyping(testData.gebrechen_test2);
     pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
-    pages.notification.checkSuccessMessageVisible();
-    pages.waitForLoadingDisappears();
+    pages.notification.checkSuccessMessageVisibleAndWaitForDisappeared();
     pages.checkMsgOnThePage(constants.MSG.OSCIENT_523, false);
   });
 
@@ -44,11 +42,10 @@ describe(`C58184: Displaying panel message OSCIENT:523 about needed ICD based of
          .clearSupertextDropdown();
     pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
     pages.infoPopup.clickOkBtnIfVisible();
-    pages.notification.checkSuccessMessageVisible();
+    pages.notification.checkSuccessMessageVisibleAndWaitForDisappeared();
     pages.entscheid.detail.basisdatenTabBar.selectSupertextDropdownByIndex(1);
     pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
-    pages.notification.checkSuccessMessageVisible();
-    pages.waitForLoadingDisappears();
+    pages.notification.checkSuccessMessageVisibleAndWaitForDisappeared();
     pages.checkMsgOnThePage(constants.MSG.OSCIENT_523, false);
   });
 
@@ -56,8 +53,7 @@ describe(`C58184: Displaying panel message OSCIENT:523 about needed ICD based of
                           -> System should NOT show the panel message OSCIENT:523`, () => {
     pages.entscheid.detail.basisdatenTabBar.selectGebrechenDropdownByTyping(testData.gebrechen_test4);
     pages.entscheid.detail.ribbonMenu.clickSpeichernBtn();
-    pages.notification.checkSuccessMessageVisible();
-    pages.waitForLoadingDisappears();
+    pages.notification.checkSuccessMessageVisibleAndWaitForDisappeared();
     pages.checkMsgOnThePage(constants.MSG.OSCIENT_523, false);
   });
 });

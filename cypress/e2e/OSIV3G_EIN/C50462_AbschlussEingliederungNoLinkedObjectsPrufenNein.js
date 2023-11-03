@@ -18,7 +18,8 @@ describe(`C50462: "Abschluss Eingliederung" _no linked objects (Prufen = Nein);
   it(`Step 2: Click Abschluss Eingliederung button`, () => {
     pages.eingliederung.detail.waitForLoaded()
          .ribbonMenu.clickAbschlussEingliederungBtn()
-         .waitForLoaded();
+         .waitForLoaded()
+         .clickMinMaxBtn();
   });
 
   it(`Step 3: On Abschluss window fill in mandatory data;

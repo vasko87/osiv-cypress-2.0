@@ -1,11 +1,10 @@
 import GridBase from "../../../base/GridBase";
-import constants from "../../../helpers/Constants"
 import GesucheGridFilter from "./GesucheGridFilter";
 import pageBase from "../../../base/PageBase";
 
 class GesucheGrid extends GridBase {
-  constructor() {
-    super(`${constants.CSS_ACTIVE_FORM} [akid='GesuchQueryGrid']`);
+  constructor(css) {
+    super(css);
     this.filter = new GesucheGridFilter();
     super.elements = {
       ...this.elements
