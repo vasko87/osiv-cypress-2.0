@@ -38,7 +38,7 @@ class EntscheidPageBase {
   }
   clearLeistungsgruppeDropdown() {
     pageBase.clearDropdown(this.elements.leistungsgruppeDropdown());
-    cy.wait(constants.MIN_TIMEOUT/5);
+    cy.wait(constants.MIN_TIMEOUT/2);
     return this;
   }
 
@@ -68,7 +68,7 @@ class EntscheidPageBase {
 
   clearLeistungscodeDropdown() {
     pageBase.clearDropdown(this.elements.leistungscodeDropdown());
-    cy.wait(constants.MIN_TIMEOUT/5);
+    cy.wait(constants.MIN_TIMEOUT/2);
     return this;
   }
 

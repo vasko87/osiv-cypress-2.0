@@ -18,7 +18,7 @@ describe(`C58211: Abgabe registrieren _ with error messages;
 
   it(`Step 2: Open Dossier Chronik>Dossier Abgabe tabP; Click Abgabe kontrollieren button =>
       there are 2 failures are presented;`, () => {
-    pages.versicherte.detail.sideMenu.navigateToDossierChronikTab();
+    pages.versicherte.detail.sideMenu.navigateToDossierChronikTab()
          .clickDossierAbgabeTab();
     pages.versicherte.detail.ribbonMenu.clickAgabeKontrollierenBtn();
     pages.waitForLoadingDisappears();
