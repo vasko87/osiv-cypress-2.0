@@ -70,6 +70,11 @@ class GroupedTaskbar {
     this.elements.eingliederungTab().click();
     return this;
   }
+
+  clickContainsTextTab(text) {
+    this.elements.groupedTaskbar().contains(text).click();
+    return this;
+  }
 }
 
 export default GroupedTaskbar;

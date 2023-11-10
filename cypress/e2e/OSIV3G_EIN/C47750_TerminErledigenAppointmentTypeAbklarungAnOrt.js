@@ -3,6 +3,7 @@ import flows from "../../support/base/OsivFlowsObject";
 import constants from "../../support/helpers/Constants";
 import helperObject from "../../support/helpers/HelperObject";
 import {c47750 as testData} from "../../support/helpers/DataManager";
+import pageBase from "../../support/base/PageBase";
 
 // @Bugs: OSIV-23034
 describe(`C47750: Termin Erledigen (appointment type=Abklärung an Ort); 
@@ -34,6 +35,7 @@ describe(`C47750: Termin Erledigen (appointment type=Abklärung an Ort);
          .tabBar.navigateToTermineTab()
          .grid.waitGridViewLoaded()
          .clickRowWithTextToSelectIt(testData.data1.terminart);
+    pageBase.waitForLoadingDisappears();
     pages.termine.detail.ribbonMenu.clickErledigenBtn();
     pages.warningPopup.checkWarningContainsText(constants.MSG.TERMIN_44)
          .clickOkBtn();

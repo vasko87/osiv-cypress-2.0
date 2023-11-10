@@ -12,7 +12,8 @@ class ModalWindowBase {
       abbrechenBtn: () => this.elements.modalWindow().find('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Abbrechen"]'),
       speichernBtn: () => this.elements.modalWindow().find('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Speichern"]'),
       toolbar: () => cy.get(ModalWindowBase.css).find("[class='dhx_cell_toolbar_def']"),
-      minMaxBtn: () => cy.get(ModalWindowBase.css).find("[class='dhxwin_button dhxwin_button_minmax']")
+      minMaxBtn: () => cy.get(ModalWindowBase.css).find("[class='dhxwin_button dhxwin_button_minmax']"),
+      headerElement: () => this.elements.modalWindow().find("[class='dhxwin_hdr']")
     };
   }
 
@@ -23,7 +24,7 @@ class ModalWindowBase {
 
   clickOkBtn() {
     this.waitForLoaded();
-    this.elements.okBtn().should("be.visible").click();
+    this.elements.okBtn().click();
     return this;
   }
 
@@ -65,6 +66,11 @@ class ModalWindowBase {
   clickMinMaxBtn() {
     this.waitForLoaded();
     this.elements.minMaxBtn().should("be.visible").click();
+    return this;
+  }
+
+  checkHeaderColor(color, shouldHave) {
+    pageBase.checkBackgroundColor(this.elements.headerElement(), color,  shouldHave);
     return this;
   }
 }

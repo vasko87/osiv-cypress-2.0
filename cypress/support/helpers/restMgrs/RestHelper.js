@@ -1,10 +1,10 @@
 import EingliederungQuery from "./EingliederungQuery";
-import SendungenQuery from "./SendungenQuery";
-import restConstants from "./RestConstants";
+import VersicherteQuery from "./VersicherteQuery";
 
 class RestHelper {
   constructor() {
     this.EIN = EingliederungQuery;
+    this.VP = VersicherteQuery;
   }
 }
 

@@ -10,8 +10,16 @@ class PageBase {
    */
   selectInDropdownContains(element, value) {
     element.find("[class='select2-selection__arrow']").click();
-    element.get("[class='select2-results__options']", {timeout: constants.DEFAULT_TIMEOUT})
+    element.get("[class='select2-results']", {timeout: constants.DEFAULT_TIMEOUT})
            .contains(value)
+           .click();
+    return this;
+  }
+
+  selectInDropdownContainsBothValues(element, value1, value2) {
+    element.find("[class='select2-selection__arrow']").click();
+    element.xpath(`//*[@class='select2-results__options']//*[normalize-space(text())='${value1}']
+            /../..//*[normalize-space(text())='${value2}']`, {timeout: constants.DEFAULT_TIMEOUT})
            .click();
     return this;
   }
@@ -178,8 +186,8 @@ class PageBase {
    * @returns {boolean}
    */
   isElementVisible(element) {
-    cy.xpath("//body[@id='main']").then((body) => {
-      return body.find(element).length > 0;
+    cy.get(element).then((el) => {
+      return el.length > 0;
     });
   }
 
@@ -316,7 +324,7 @@ class PageBase {
   waitForElementVisible(element) {
     cy.waitUntil(() => element.should("be.visible")), {
       errorMsg: "Element is not visible",
-      timeout : 100000
+      timeout: 100000
     };
     return this;
   }
@@ -348,6 +356,15 @@ class PageBase {
              .then(new_element => {
                expect(new_element).not.to.have.css("color", color);
              });
+    }
+    return this;
+  }
+
+  checkBackgroundColor(element, color, shouldHave) {
+    if (shouldHave) {
+      element.should("have.css", "background-color", color);
+    } else {
+      element.should("not.have.css", "background-color", color);
     }
     return this;
   }

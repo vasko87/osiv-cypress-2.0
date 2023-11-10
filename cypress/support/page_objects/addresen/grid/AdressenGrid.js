@@ -1,4 +1,4 @@
-import AdressenAddDialog from "../detail/popups/AdressenAddDialog";
+import NeueAdressePopup from "../detail/popups/NeueAdressePopup";
 import GridBase from "../../../base/GridBase";
 import AdressenGridFilter from "./AdressenGridFilter";
 import pageBase from "../../../base/PageBase";
@@ -31,7 +31,7 @@ class AdressenGrid extends GridBase {
 
   clickAdressenNewBtn() {
     this.elements.adresseNewBtn().click();
-    return new AdressenAddDialog();
+    return new NeueAdressePopup();
   }
 }
 

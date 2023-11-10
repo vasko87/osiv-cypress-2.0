@@ -55,5 +55,25 @@ export default {
     const end = new Date(date.getTime());
     end.setDate(date.getDate() + days);
     return end.toLocaleDateString("de-CH", {year: "numeric", month: "2-digit", day: "2-digit"});
+  },
+
+  getYearsAndMonthsFromDate(date) {
+    const currentDate = new Date();
+    const parts = date.split(".");
+    const convertedDate = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`);
+
+    let yearDiff = currentDate.getFullYear() - convertedDate.getFullYear();
+    let monthDiff = currentDate.getMonth() - convertedDate.getMonth();
+    const daysDiff = currentDate.getDay() - convertedDate.getDay();
+
+    if (monthDiff < 0) {
+      yearDiff--;
+      monthDiff += 12;
+    }
+
+    if (daysDiff < 0) {
+      monthDiff--;
+    }
+    return `${yearDiff}.${monthDiff}`;
   }
 };

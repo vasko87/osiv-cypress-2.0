@@ -38,7 +38,7 @@ class WarningPopup {
   }
 
   clickOkBtnIfVisible() {
-    cy.wait(2000);
+    cy.wait(constants.MIN_TIMEOUT);
     if (pageBase.isElementVisible(this.okBtnCss)) {
       this.elements.okBtn().click();
     }
@@ -48,6 +48,14 @@ class WarningPopup {
   checkWarningContainsText(value) {
     this.waitForLoaded();
     this.elements.warningPopup().find("[class='swal-content']").should("contain.text", value);
+    return this;
+  }
+
+  checkWarningContainsTextsArray(valueArr) {
+    this.waitForLoaded();
+    valueArr.forEach((val) => {
+      this.elements.warningPopup().find("[class='swal-content']").should("contain.text", val);
+    });
     return this;
   }
 }

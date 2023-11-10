@@ -8,7 +8,7 @@ const LONG_TIMEOUT = 50000;
 
 const COLOR = {
   orange: "rgb(255, 165, 0)",
-  green : "rgb(255, 255, 255)",
+  green : "rgb(0, 153, 102)",
   red   : "rgb(255, 0, 0)",
   white : "rgb(255, 255, 255)",
   yellow: "rgb(255, 255, 0)"
@@ -44,6 +44,7 @@ const MSG = {
   TERMIN_26: "Die zugehörige Eingliederung bleibt aufgrund eines Termins im Warten. (Termin:26)",
   TERMIN_27: "Die zugehörige Eingliederung wird aus dem Warten befreit. (Termin:27)",
 
+  OSCSTAMM_128: ["Beginn- und Ende-Datum sind erfasst.", "Möchten Sie die Fallführung definitiv abschliessen? (OSCSTAMM:129)"],
   OSCSTAMM_152: "Falls der Erhalt des Dossiers jedoch fälschlicherweise nicht registriert wurde, so müssen Sie diesen zuerst registrieren. (OSCSTAMM:152)",
   OSCSTAMM_277: "ist in Erledigung.",
   OSCSTAMM_275: "ist in Durchführung.",

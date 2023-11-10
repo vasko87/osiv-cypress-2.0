@@ -13,6 +13,7 @@ $ git clone https://github.com/vasko87/osiv-cypress-2.0
 ### Local run tests:
 
 - browser based run: ```npx cypress open```
+- browser based run (with disabled 'auto-rerun' feature): ```npx cypress open --config watchForFileChanges=false```
 - headless run default suite: ```npx cypress run```
 - headless run single test: ```npx cypress run --spec cypress/e2e/[testName.js]```
 - headed run of single test (generates html result): ```npx cypress run --spec ./cypress/e2e/C001_newAdressTest.js --headed```
