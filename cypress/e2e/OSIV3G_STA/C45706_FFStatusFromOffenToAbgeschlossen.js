@@ -24,7 +24,7 @@ const testData = {
 };
 
 // TODO waiting for 2 more datasets
-describe(`C45706: FF status from Offen to Abgeschlossen; 
+describe.skip(`[SKIPPED, waiting for 2 more datasets] C45706: FF status from Offen to Abgeschlossen; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/45706`, {failFast: {enabled: true}}, () => {
 
   before(`Login as ${Cypress.env("username")};`, () => {
