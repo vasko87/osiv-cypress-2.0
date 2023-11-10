@@ -5,6 +5,7 @@ import AdressenZusammenfuehrenpPopup from "./popups/AdressenZusammenfuehrenpPopu
 import AdressenTabBar from "./AdressenTabBar";
 import AdressenSideMenu from "./AdressenSideMenu";
 import AnsprechpartnerTab from "./sideMenuTabs/AnsprechpartnerTab";
+import pageBase from "../../../base/PageBase";
 
 class AdressenDetail extends AdressenPageBase {
   constructor() {
@@ -19,8 +20,14 @@ class AdressenDetail extends AdressenPageBase {
     this.adressenZusammenfuehrenpPopup = new AdressenZusammenfuehrenpPopup();
     super.elements = {
       ...this.elements,
-      adresseNewBtn: () => cy.get("[akid='AdresseQueryGrid-AdresseNew']")
+      adresseNewBtn: () => cy.get("[akid='AdresseQueryGrid-AdresseNew']"),
+      detailForm : () => cy.get(detailOrPreviewFormCSS)
     };
+  }
+
+  waitForLoaded(){
+    this.elements.detailForm().should("be.visible", 10000);
+    pageBase.waitForLoadingDisappears();
   }
 
 }

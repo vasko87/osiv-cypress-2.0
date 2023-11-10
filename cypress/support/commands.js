@@ -93,5 +93,15 @@ if (Cypress.config("hideXHR")) {
     cy.request("GET", `${Cypress.env("baseUrl") + link}`);
   });
 
+  Cypress.Commands.add("PUTrequest", (link, body) => {
+    cy.log(link);
+    cy.request("PUT", `${Cypress.env("baseUrl") + link}`, body);
+  });
+
+  Cypress.Commands.add("DELETE", (link, body) => {
+    cy.log(link);
+    cy.request("DELETE", `${Cypress.env("baseUrl") + link}`, body);
+  });
+
 }
 

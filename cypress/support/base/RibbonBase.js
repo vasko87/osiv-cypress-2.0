@@ -1,4 +1,5 @@
 import constants from "../helpers/Constants";
+import NeueAdressverbindungPopup from "../page_objects/versicherte/detail/popups/NeueAdressverbindungPopup";
 class RibbonBase {
   constructor() {
     this.elements = {
@@ -22,7 +23,7 @@ class RibbonBase {
 
   clickNeuBtn() {
     this.elements.neuBtn().should("be.visible").click();
-    return this;
+    return new NeueAdressverbindungPopup();
   }
 
   checkNeuBtnDisabled(isDisabled) {

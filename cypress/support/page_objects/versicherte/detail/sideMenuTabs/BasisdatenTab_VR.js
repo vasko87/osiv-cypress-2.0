@@ -12,6 +12,12 @@ class BasisdatenTab_VR extends VersichertePageBase {
     };
   }
 
+  scrollToTop() {
+    this.elements.detailForm().scrollTo("top");
+    cy.wait(constants.MIN_TIMEOUT/5);
+    return this;
+  }
+
   waitForLoaded() {
     pageBase.waitForLoadingDisappears();
     this.elements.detailForm().should("be.visible");

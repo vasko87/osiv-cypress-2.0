@@ -1,4 +1,5 @@
 import helperObject from "../support/helpers/HelperObject";
+import restConstants from "../support/helpers/restMgrs/RestConstants";
 
 let responseData = {
   entFolge      : ""
@@ -7,6 +8,10 @@ let responseData = {
 describe(`API test`, {failFast: {enabled: true}}, () => {
   before(`Login as ${Cypress.env("username")};`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
+  });
+
+  it("delete VP", () => {
+      helperObject.rest.VP.deleteVP("9745.7458.65");
   });
 
   it("check URL", () => {
@@ -44,6 +49,5 @@ describe(`API test`, {failFast: {enabled: true}}, () => {
       expect(JSON.stringify(res.body.dsSendungQuery.eSendung.length)).to.be.eq("2");
     });
   });
-
 
 });
