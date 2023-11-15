@@ -37,7 +37,7 @@ export default {
    * @returns {Cypress.Chainable<string>} - the ENT Folge ID
    */
   getEntFolgeID(einID) {
-    cy.GETrequest(restConstants.EIN.GET_EIN_BY_EINID.replace("$EIN_ID$", einID)).as("details");
+    cy.GETrequest(restConstants.EIN.GET_EIN_BY_EINID.replace("$EINID$", einID)).as("details");
     cy.get("@details").its("status").should("eq", 200);
     return cy.get("@details").then((res) => {
       return JSON.stringify(res.body.dsEingliederung.eEingliederung[0].Entscheid_ID);
