@@ -19,37 +19,83 @@ pipeline {
         stage('Setup'){
             steps{
                echo "Setup the application"
-               bat "npm install cypress"
                composeArgs();
                setJobName();
             }
         }
 
-        stage('Testing') {
- stages {
-                    stage('RENTE') {
-                        steps {
-                            catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                                bat "npx cypress run --parallel " + TEST_ENV_RENTE
-                            }
-                            script {
-                                publishHTML([
-                                allowMissing: false,
-                                alwaysLinkToLastBuild: false,
-                                keepAll: true,
-                                reportDir: 'cypress/reports',
-                                reportFiles: 'index.html',
-                                reportName: 'HTML Report RENTE',
-                                reportTitles: 'Mocha Report'])
-                            }
+        stage('Cypress') {
+            parallel {
+                stage('ENT') {
+                    agent {
+                        node {
+                            label 'ENT'
                         }
                     }
-}
-        }
-        stage('Finishing') {
-            steps{
-                echo "Finishing testing"
-            }
+                    steps {
+                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                            bat "npm install cypress"
+                            bat "npx cypress run " + TEST_ENV_ENT
+                       }
+                       script {
+                           publishHTML([
+                           allowMissing: false,
+                           alwaysLinkToLastBuild: false,
+                           keepAll: true,
+                           reportDir: 'cypress/reports',
+                           reportFiles: 'index.html',
+                           reportName: 'HTML Report ENT',
+                           reportTitles: 'Mocha Report'])
+                       }
+                    }
+                } 
+                stage('HE') {
+                    agent {
+                        node {
+                            label 'HE'
+                        }
+                    }
+                    steps {
+                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                            bat "npm install cypress"
+                            bat "npx cypress run " + TEST_ENV_HE
+                        }
+                        script {
+                            publishHTML([
+                            allowMissing: false,
+                            alwaysLinkToLastBuild: false,
+                            keepAll: true,
+                            reportDir: 'cypress/reports',
+                            reportFiles: 'index.html',
+                            reportName: 'HTML Report HE',
+                            reportTitles: 'Mocha Report'])
+                        }
+                    }
+                }
+                stage('RENTE') {
+                    agent {
+                        node {
+                            label 'RENTE'
+                        }
+                    }
+                    steps {
+                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                            bat "npm install cypress"
+                            bat "npx cypress run " + TEST_ENV_RENTE
+                        }
+                        script {
+                            publishHTML([
+                            allowMissing: false,
+                            alwaysLinkToLastBuild: false,
+                            keepAll: true,
+                            reportDir: 'cypress/reports',
+                            reportFiles: 'index.html',
+                            reportName: 'HTML Report RENTE',
+                            reportTitles: 'Mocha Report'])
+                        }
+                    }
+                }
+            }  
         }
     }
 }
