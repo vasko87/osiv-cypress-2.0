@@ -26,6 +26,7 @@ pipeline {
         }
 
         stage('Testing') {
+ stages {
                     stage('RENTE') {
                         steps {
                             catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -43,6 +44,7 @@ pipeline {
                             }
                         }
                     }
+}
         }
         stage('Finishing') {
             steps{
