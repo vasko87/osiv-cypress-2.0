@@ -17,6 +17,7 @@ describe(`C51299: Abgabe registrrieren _ no error/warning messages;
 
   it(`Step 2: Open Dossier Chronik>Dossier Abgabe tabP --> Abgabe registrieren button is enabled`, () => {
     pages.versicherte.detail.sideMenu.navigateToDossierChronikTab()
+         .waitForLoaded()
          .clickDossierAbgabeTab();
     pages.versicherte.detail.ribbonMenu.clickAgabeKontrollierenBtn()
          .checkAbgabeRegistrierenBtnDisabled(false);

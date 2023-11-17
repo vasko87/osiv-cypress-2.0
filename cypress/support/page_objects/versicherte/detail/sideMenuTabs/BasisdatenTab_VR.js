@@ -14,7 +14,7 @@ class BasisdatenTab_VR extends VersichertePageBase {
 
   scrollToTop() {
     this.elements.detailForm().scrollTo("top");
-    cy.wait(constants.MIN_TIMEOUT/5);
+    cy.wait(constants.MIN_TIMEOUT/2);
     return this;
   }
 

@@ -36,7 +36,6 @@ describe(`C58184: Displaying panel message OSCIENT:523 about needed ICD based of
                        Set any acceptable Supertext and save."; 
                           -> System should NOT show the panel message OSCIENT:523`, () => {
     pages.entscheid.detail.basisdatenTabBar.clearLeistungsgruppeDropdown()
-         .clearLeistungscodeDropdown()
          .selectLeistungscodeDropdown(testData.leistungscode)
          .selectBereichDropdown(testData.bereich)
          .clearSupertextDropdown();
