@@ -26,7 +26,6 @@ pipeline {
         }
 
         stage('Testing') {
-            stages {
                 parallel {
                     stage('ENT') {
                         steps{
@@ -80,7 +79,6 @@ pipeline {
                         }
                     }
                 }
-            }
         }
         stage('Finishing') {
             steps{
