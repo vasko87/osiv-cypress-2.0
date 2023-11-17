@@ -64,7 +64,7 @@ describe(`C58186: Displaying the panel message and availability of the Zuordnen 
         pages.warningPopup.clickOkBtn();
         pageBase.waitForLoadingDisappears();
         cy.get(`tr[akid='${elementID}'] td:first-of-type`).click();
-        pageBase.waitForLoadingDisappears();
+        cy.wait(constants.MIN_TIMEOUT);
         pages.posteingang.zuordnung.checkZuordnenUndAbschliessenBtnDisabled(true)
              .checkZuordnenBtnDisabled(true);
         pages.checkMsgOnThePage(testData.message, true);
@@ -72,7 +72,7 @@ describe(`C58186: Displaying the panel message and availability of the Zuordnen 
         cy.log(`STEP 7: Click on check-box "Warten" to unmark it -> 
         Buttons "Zuordnen" and "Zuordnen und Abschlissen" are disabled. The info panel message is shown."`);
         pages.posteingang.zuordnung.setWartenCheckboxSelected(false);
-        cy.wait(2000);
+        cy.wait(constants.MIN_TIMEOUT);
         pages.posteingang.zuordnung.checkZuordnenUndAbschliessenBtnDisabled(true)
              .checkZuordnenBtnDisabled(true);
         pages.checkMsgOnThePage(testData.message, true);

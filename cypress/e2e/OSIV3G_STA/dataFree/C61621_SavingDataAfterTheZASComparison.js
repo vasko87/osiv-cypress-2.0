@@ -167,6 +167,7 @@ describe(`C61621: Saving data after the ZAS comparison;
     pages.adressen.neueAdressePopup.modalWindow.clickOkBtn();
     pages.warningPopup.checkWarningContainsText("(OSCISTD:49)")
          .clickOkBtn();
+    pages.notification.checkSuccessMessageVisibleAndWaitForDisappeared();
     pages.versicherte.neueAdressverbindungPopup.checkHeaderColor(constants.COLOR.green, true);
   });
 

@@ -90,7 +90,7 @@ class PageBase {
 
   clearDropdown(element) {
     try {
-      element.find("[class='select2-selection__clear']").click();
+      element.find("[class='select2-selection__clear'] span").scrollIntoView().click();
     } catch (e) {
     }
     return this;
@@ -186,8 +186,8 @@ class PageBase {
    * @returns {boolean}
    */
   isElementVisible(element) {
-    cy.get(element).then((el) => {
-      return el.length > 0;
+    cy.xpath("//body[@id='main']").then((body) => {
+      return body.find(element).length > 0;
     });
   }
 

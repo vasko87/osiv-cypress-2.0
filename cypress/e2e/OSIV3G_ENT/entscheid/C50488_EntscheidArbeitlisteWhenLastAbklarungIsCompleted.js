@@ -34,7 +34,8 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
            .grid.waitGridViewLoaded()
            .dblClickRowNumber(1);
       pages.sendungen.detail.waitForLoaded();
-      pages.sendungen.detail.ribbonMenu.clickAbschliessenBtn();
+      pages.sendungen.detail.ribbonMenu.clickAbschliessenBtn()
+           .waitForLoaded();
       flows.modalPopup.clickOkBtn_CheckSuccessMsg();
       pages.sendungen.detail.waitForLoaded()
            .checkArbeitslisteTxt(data.arbeitslisteSendungenCompleted);
@@ -54,7 +55,8 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
            .grid.waitGridViewLoaded()
            .dblClickRowWithText(data.arbeitslisteSendungenReceived);
       pages.sendungen.detail.waitForLoaded();
-      pages.sendungen.detail.ribbonMenu.clickAbschliessenBtn();
+      pages.sendungen.detail.ribbonMenu.clickAbschliessenBtn()
+           .waitForLoaded();
       flows.modalPopup.clickOkBtn_CheckSuccessMsg();
       pages.sendungen.detail.waitForLoaded()
            .checkArbeitslisteTxt(data.arbeitslisteSendungenCompleted);
@@ -154,7 +156,8 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
     pages.versicherte.detail.sendungenTabBar.grid.waitGridViewLoaded()
          .dblClickRowNumber(1);
     pages.sendungen.detail.waitForLoaded();
-    pages.sendungen.detail.ribbonMenu.clickAbschliessenBtn();
+    pages.sendungen.detail.ribbonMenu.clickAbschliessenBtn()
+         .waitForLoaded();
     flows.modalPopup.clickOkBtn_CheckSuccessMsg();
     pages.sendungen.detail.waitForLoaded()
          .checkArbeitslisteTxt(testData.scenario4.arbeitslisteSendungenCompleted);
@@ -164,7 +167,8 @@ describe(`C50488: Entscheid arbeitliste when last Abklärung is completed;
     pages.versicherte.detail.sendungenTabBar.grid.waitGridViewLoaded()
          .dblClickRowWithText(testData.scenario4.arbeitslisteSendungenReceived);
     pages.sendungen.detail.waitForLoaded();
-    pages.sendungen.detail.ribbonMenu.clickAbschliessenBtn();
+    pages.sendungen.detail.ribbonMenu.clickAbschliessenBtn()
+         .waitForLoaded();
     flows.modalPopup.clickOkBtn_CheckSuccessMsg();
     pages.sendungen.detail.waitForLoaded()
          .checkArbeitslisteTxt(testData.scenario4.arbeitslisteSendungenCompleted);
