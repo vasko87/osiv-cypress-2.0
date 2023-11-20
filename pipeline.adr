@@ -61,9 +61,6 @@ def composeArgs() {
     if (ENV == "NRTEST") {
         ENV_URL = "https://osiv-nrtest.ivnet.ch"
     }
-    if (ENV == "CRTEST") {
-        ENV_URL = "https://osiv-crtest.ivnet.ch"
-    }
     if (ENV == "FWTEST") {
         ENV_URL = "https://fw-test.ivnet.ch"
     }
