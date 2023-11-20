@@ -1,0 +1,112 @@
+RECORD_KEY = "489ee484-b2a2-4452-b403-0677eb092c33"
+USERNAME_ENV = ""
+PASSWORD_ENV = ""
+build_ok = true
+pipeline {
+    agent any
+
+     parameters{
+        choice(name: 'ENV', choices: ['FRTEST','NRTEST','CRTEST', 'FWTEST', 'FWTEST2'], description: "Select the test environment\n FRTEST = 'https://osiv-frtest.ivnet.ch'\n NRTESR = 'https://osiv-nrtest.ivnet.ch' \n CRTESR = 'https://osiv-crtest.ivnet.ch' \n FWTEST = 'https://fw-test.ivnet.ch' \n FWTEST2 = 'https://fw-test2.ivnet.ch'")
+        string(name: 'CUSTOM_ENV', defaultValue: "", description: "Enter the custom url")
+        choice(name: 'DATA_SET', choices: ['dataSet1','dataSet2','dataSet3'], description: "Data set")
+        string(name: 'USERNAME', defaultValue: "default", description: "Set username if not default")
+        string(name: 'PASSWORD', defaultValue: "default", description: "Set password if not default")
+        string(name: 'BRANCH', defaultValue: "develop", description: "git branch:\nmain - V5.1.x;\ndevelop - V5.2.x;")
+        choice(name: 'UNCAUGHT_EXCEPTION_FAIL', choices: ['NO', "YES"], description: "Fail tests due to 'uncaught:exception' or not")
+     }
+
+    stages {
+        stage('Setup'){
+            steps{
+               echo "Setup the application"
+               bat "npm install cypress"
+               composeArgs();
+               setJobName();
+            }
+        }
+
+        stage('Testing') {
+            stages {
+                stage('HE') {
+                    steps{
+                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                            bat "npx cypress run " + TEST_ENV_HE
+                        }
+                        script {
+                            publishHTML([
+                            allowMissing: false,
+                            alwaysLinkToLastBuild: false,
+                            keepAll: true,
+                            reportDir: 'cypress/reports',
+                            reportFiles: 'index.html',
+                            reportName: 'HTML Report HE',
+                            reportTitles: 'Mocha Report'])
+                        }
+                    }
+                }
+                stage('E2E') {
+                    steps {
+                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                            bat "npx cypress run " + TEST_ENV_E2E
+                        }
+                        script {
+                            publishHTML([
+                            allowMissing: false,
+                            alwaysLinkToLastBuild: false,
+                            keepAll: true,
+                            reportDir: 'cypress/reports',
+                            reportFiles: 'index.html',
+                            reportName: 'HTML Report E2E',
+                            reportTitles: 'Mocha Report'])
+                        }
+                    }
+                }
+            }
+        }
+        stage('Finishing') {
+            steps{
+                echo "Finishing testing"
+            }
+        }
+    }
+}
+
+def composeArgs() {
+    if (ENV == "FRTEST") {
+        ENV_URL = "https://osiv-frtest.ivnet.ch"
+    }
+    if (ENV == "NRTEST") {
+        ENV_URL = "https://osiv-nrtest.ivnet.ch"
+    }
+    if (ENV == "CRTEST") {
+        ENV_URL = "https://osiv-crtest.ivnet.ch"
+    }
+    if (ENV == "FWTEST") {
+        ENV_URL = "https://fw-test.ivnet.ch"
+    }
+    if (ENV == "FWTEST2") {
+        ENV_URL = "https://fw-test2.ivnet.ch"
+    }
+    if (CUSTOM_ENV != "") {
+        ENV_URL = CUSTOM_ENV
+        ENV = "CUSTOM"
+    }
+    if (USERNAME != "default") {
+        USERNAME_ENV = ",username=" + USERNAME
+    }
+    if (PASSWORD != "default") {
+        PASSWORD_ENV = ",password=" + PASSWORD
+    }
+    if (UNCAUGHT_EXCEPTION_FAIL == "NO") {
+        UNCAUGHT_EXCEPTION_FAIL = ",uncaughtExceptionFailure=false"
+    } else {
+        UNCAUGHT_EXCEPTION_FAIL = ",uncaughtExceptionFailure=true"
+    }
+    TEST_ENV_E2E = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/e2e/**/**" + " --browser chrome"
+    TEST_ENV_HE = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/he/**/**" + " --browser chrome"
+}
+
+def setJobName(){
+    echo "ENV = [" + ENV_URL + "], dataSet = [" + DATA_SET + "]"
+    currentBuild.displayName = ENV + "_" + DATA_SET
+}
