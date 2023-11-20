@@ -41,6 +41,7 @@ pipeline {
                            reportFiles: 'index.html',
                            reportName: 'HTML Report ENT',
                            reportTitles: 'Mocha Report'])
+                        archiveArtifacts artifacts: 'cypress/reports/index.html', onlyIfSuccessful: true
                        }
                     }
                 }
