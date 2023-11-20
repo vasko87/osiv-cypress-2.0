@@ -11,7 +11,7 @@ pipeline {
         choice(name: 'DATA_SET', choices: ['dataSet1','dataSet2','dataSet3'], description: "Data set")
         string(name: 'USERNAME', defaultValue: "default", description: "Set username if not default")
         string(name: 'PASSWORD', defaultValue: "default", description: "Set password if not default")
-        choice(name: 'BRANCH', choices: ['develop', 'V60x', 'V52x','V51x'], description: "git branches:\ndevelop - for develop version;\nV60x - for V6.0.x;\nV51x - for V5.1.x;\nV52x - for V5.2.x;")
+        string(name: 'BRANCH', defaultValue: "develop", description: "git branch:\nmain - V5.1.x;\ndevelop - V5.2.x;")
         choice(name: 'UNCAUGHT_EXCEPTION_FAIL', choices: ['NO', "YES"], description: "Fail tests due to 'uncaught:exception' or not")
      }
 
@@ -27,10 +27,10 @@ pipeline {
 
         stage('Testing') {
             stages {
-                stage('EIN') {
+                stage('ENT') {
                     steps{
                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                          bat "npx cypress run " + TEST_ENV_EIN
+                          bat "npx cypress run " + TEST_ENV_ENT
                        }
                        script {
                            publishHTML([
@@ -39,50 +39,14 @@ pipeline {
                            keepAll: true,
                            reportDir: 'cypress/reports',
                            reportFiles: 'index.html',
-                           reportName: 'HTML Report EIN',
+                           reportName: 'HTML Report ENT',
                            reportTitles: 'Mocha Report'])
                        }
                     }
                 }
-                stage('STA') {
-                     steps{
-                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                            bat "npx cypress run " + TEST_ENV_STA
-                        }
-                        script {
-                            publishHTML([
-                            allowMissing: false,
-                            alwaysLinkToLastBuild: false,
-                            keepAll: true,
-                            reportDir: 'cypress/reports',
-                            reportFiles: 'index.html',
-                            reportName: 'HTML Report STA',
-                            reportTitles: 'Mocha Report'])
-                        }
-                     }
-                }
-                stage('POE') {
-                     steps{
-                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                            bat "npx cypress run " + TEST_ENV_POE
-                        }
-                        script {
-                            publishHTML([
-                            allowMissing: false,
-                            alwaysLinkToLastBuild: false,
-                            keepAll: true,
-                            reportDir: 'cypress/reports',
-                            reportFiles: 'index.html',
-                            reportName: 'HTML Report POE',
-                            reportTitles: 'Mocha Report'])
-                        }
-                     }
-                }
-
             }
         }
-
-        stage('Finishing testing'){
+        stage('Finishing') {
             steps{
                 echo "Finishing testing"
             }
@@ -121,9 +85,7 @@ def composeArgs() {
     } else {
         UNCAUGHT_EXCEPTION_FAIL = ",uncaughtExceptionFailure=true"
     }
-    TEST_ENV_EIN = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_EIN/**/**" + " --browser chrome"
-    TEST_ENV_STA = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_STA/**/**" + " --browser chrome"
-    TEST_ENV_POE = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_POE/**/**" + " --browser chrome"
+    TEST_ENV_ENT = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/entscheid/**/**" + " --browser chrome"
 }
 
 def setJobName(){
