@@ -90,7 +90,11 @@ class PageBase {
 
   clearDropdown(element) {
     try {
-      element.find("[class='select2-selection__clear'] span").scrollIntoView().click();
+      cy.wait(constants.MIN_TIMEOUT/2);
+      const clearEl = element.find("[class='select2-selection__clear'] span");
+      clearEl.scrollIntoView();
+      cy.wait(constants.MIN_TIMEOUT/5);
+      clearEl.click();
     } catch (e) {
     }
     return this;
