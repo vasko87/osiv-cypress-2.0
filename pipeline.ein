@@ -44,7 +44,7 @@ pipeline {
 
                            def einReportLink = "${BUILD_URL}HTML_20Report_20EIN"
                            currentBuild.description = "<a href='${einReportLink}'>HTML Report EIN</a>"
-                           echo "EIN_REPORT_LINK=${einReportLink}" > env.properties
+                           writeFile file: 'env.properties', text: "EIN_REPORT_LINK=${BUILD_URL}HTML_20Report_20EIN"
                            archiveArtifacts artifacts: 'env.properties'
                        }
                     }
