@@ -41,6 +41,8 @@ pipeline {
                            reportFiles: 'index.html',
                            reportName: 'HTML Report EIN',
                            reportTitles: 'Mocha Report'])
+                           archiveArtifacts artifacts: 'cypress/reports/index.html'
+
                            def einReportLink = "${BUILD_URL}artifact/cypress/reports/index.html"
                            currentBuild.description = "<a href='${einReportLink}'>HTML Report EIN</a>"
                            echo "EIN_REPORT_LINK=${einReportLink}" > env.properties
@@ -91,9 +93,7 @@ def composeArgs() {
     } else {
         UNCAUGHT_EXCEPTION_FAIL = ",uncaughtExceptionFailure=true"
     }
-    TEST_ENV_EIN = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_EIN/**/**" + " --browser chrome"
-    TEST_ENV_STA = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_STA/**/**" + " --browser chrome"
-    TEST_ENV_POE = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_POE/**/**" + " --browser chrome"
+    TEST_ENV_EIN = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_POE/**/**" + " --browser chrome"
 }
 
 def setJobName(){
