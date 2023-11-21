@@ -41,6 +41,8 @@ pipeline {
                            reportFiles: 'index.html',
                            reportName: 'HTML Report EIN',
                            reportTitles: 'Mocha Report'])
+                           archiveArtifacts artifacts: 'cypress/reports/index.html'
+
                            def einReportLink = "${BUILD_URL}artifact/cypress/reports/index.html"
                            currentBuild.description = "<a href='${einReportLink}'>HTML Report EIN</a>"
                            echo "EIN_REPORT_LINK=${einReportLink}" > env.properties
