@@ -42,7 +42,7 @@ pipeline {
                            reportName: 'HTML Report EIN',
                            reportTitles: 'Mocha Report'])
 
-                           def einReportLink = "${BUILD_URL}htmlreports/HTML_20Report_20EIN"
+                           def einReportLink = "${BUILD_URL}HTML_20Report_20EIN"
                            currentBuild.description = "<a href='${einReportLink}'>HTML Report EIN</a>"
                            echo "EIN_REPORT_LINK=${einReportLink}" > env.properties
                            archiveArtifacts artifacts: 'env.properties'
