@@ -42,6 +42,7 @@ pipeline {
                             reportName: 'HTML Report POE',
                             reportTitles: 'Mocha Report'])
                             archiveArtifacts artifacts: 'index.html', onlyIfSuccessful: true
+                            stash includes: 'cypress/reports/*', name: 'htmlReportStash'
                         }
                      }
                 }
