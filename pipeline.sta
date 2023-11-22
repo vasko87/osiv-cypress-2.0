@@ -27,10 +27,10 @@ pipeline {
 
         stage('Testing') {
             stages {
-                stage('HE') {
-                    steps{
+                stage('STA') {
+                     steps{
                         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                            bat "npx cypress run " + TEST_ENV_HE
+                            bat "npx cypress run " + TEST_ENV_STA
                         }
                         script {
                             publishHTML([
@@ -39,32 +39,15 @@ pipeline {
                             keepAll: true,
                             reportDir: 'cypress/reports',
                             reportFiles: 'index.html',
-                            reportName: 'HTML Report HE',
+                            reportName: 'HTML Report STA',
                             reportTitles: 'Mocha Report'])
                         }
-                    }
-                }
-                stage('E2E') {
-                    steps {
-                        catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                            bat "npx cypress run " + TEST_ENV_E2E
-                        }
-                        script {
-                            publishHTML([
-                            allowMissing: false,
-                            alwaysLinkToLastBuild: false,
-                            keepAll: true,
-                            reportDir: 'cypress/reports',
-                            reportFiles: 'index.html',
-                            reportName: 'HTML Report E2E',
-                            reportTitles: 'Mocha Report'])
-                            archiveArtifacts artifacts: 'cypress/reports/index.html', onlyIfSuccessful: true
-                        }
-                    }
+                     }
                 }
             }
         }
-        stage('Finishing') {
+
+        stage('Finishing testing'){
             steps{
                 echo "Finishing testing"
             }
@@ -103,8 +86,7 @@ def composeArgs() {
     } else {
         UNCAUGHT_EXCEPTION_FAIL = ",uncaughtExceptionFailure=true"
     }
-    TEST_ENV_E2E = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/e2e/**/**" + " --browser chrome"
-    TEST_ENV_HE = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_ENT/he/**/**" + " --browser chrome"
+    TEST_ENV_STA = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_STA/**/**" + " --browser chrome"
 }
 
 def setJobName(){

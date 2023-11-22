@@ -42,10 +42,6 @@ pipeline {
                            reportName: 'HTML Report EIN',
                            reportTitles: 'Mocha Report'])
 
-                           def einReportLink = "${BUILD_URL}HTML_20Report_20EIN"
-                           currentBuild.description = "<a href='${einReportLink}'>HTML Report EIN</a>"
-                           writeFile file: 'env.properties', text: "EIN_REPORT_LINK=${BUILD_URL}HTML_20Report_20EIN"
-                           archiveArtifacts artifacts: 'env.properties'
                        }
                     }
                 }
@@ -92,7 +88,7 @@ def composeArgs() {
     } else {
         UNCAUGHT_EXCEPTION_FAIL = ",uncaughtExceptionFailure=true"
     }
-    TEST_ENV_EIN = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_POE/**/**" + " --browser chrome"
+    TEST_ENV_EIN = "--env baseUrl=" + ENV_URL + ",dataSet=" + DATA_SET + USERNAME_ENV + PASSWORD_ENV + UNCAUGHT_EXCEPTION_FAIL + " --spec cypress/e2e/OSIV3G_EIN/**/**" + " --browser chrome"
 }
 
 def setJobName(){
