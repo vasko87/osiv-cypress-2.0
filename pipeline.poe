@@ -33,6 +33,7 @@ pipeline {
                             bat "npx cypress run " + TEST_ENV_POE
                         }
                         script {
+archiveArtifacts artifacts: 'cypress/reports/index.html', onlyIfSuccessful: true
                             publishHTML([
                             allowMissing: false,
                             alwaysLinkToLastBuild: false,
