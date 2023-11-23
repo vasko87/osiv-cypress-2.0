@@ -41,8 +41,12 @@ pipeline {
                             reportFiles: 'index.html',
                             reportName: 'HTML Report POE',
                             reportTitles: 'Mocha Report'])
-                            archiveArtifacts artifacts: 'index.html', onlyIfSuccessful: true
-                            stash includes: 'cypress/reports/*', name: 'htmlReportStash'
+                            
+                            def einReportLink = "${BUILD_URL}artifact/cypress/reports/index.html"
+                            currentBuild.description = "<a href='${einReportLink}'>HTML Report EIN</a>"
+                            // Set the einReportLink as an environment variable for passing to the next pipeline
+                            echo "EIN_REPORT_LINK=${einReportLink}" > env.properties
+                            archiveArtifacts artifacts: 'index.html', onlyIfSuccessful: false
                         }
                      }
                 }
