@@ -42,7 +42,7 @@ pipeline {
                             reportName: 'HTML Report POE',
                             reportTitles: 'Mocha Report'])
                             
-                            archiveArtifacts artifacts: 'index.html', onlyIfSuccessful: false
+                            archiveArtifacts artifacts: 'index.html', onlyIfSuccessful: true
                         }
                      }
                 }
