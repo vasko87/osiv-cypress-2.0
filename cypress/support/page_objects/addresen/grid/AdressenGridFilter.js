@@ -13,7 +13,7 @@ class AdressenGridFilter {
    * @returns {AdressenGridFilter}
    */
   searchAdresseID(value) {
-    this.elements.adresseIDTxt().click().clear().type(`${value}{enter}`);
+    this.elements.adresseIDTxt().click().clear().type(`${value}{enter}`, {delay: 10});
     pageBase.waitForLoadingDisappears();
     return this;
   }
