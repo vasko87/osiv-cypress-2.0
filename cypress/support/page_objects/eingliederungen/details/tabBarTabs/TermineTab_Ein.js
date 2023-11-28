@@ -5,7 +5,7 @@ import pageBase from "../../../../base/PageBase";
 
 class TermineTab_Ein {
   constructor() {
-    this.grid = new TermineGrid(`${constants.CSS_ACTIVE_FORM} [akid='EingliederungDetailWindow'],[akid='TerminQueryUrsprungGrid']`);
+    this.grid = new TermineGrid(`${constants.CSS_ACTIVE_FORM} [akid='EingliederungDetailWindow']`);
     this.detail = new TermineDetail();
   }
 
