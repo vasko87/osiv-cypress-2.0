@@ -1,21 +1,9 @@
 import pages from "../../support/base/OsivPageObject";
 import flows from "../../support/base/OsivFlowsObject";
 import helperObject from "../../support/helpers/HelperObject";
+import {c55950 as testData} from "../../support/helpers/DataManager";
 
-const testData = {
-  adr1: "1022000",
-  adr2: "1022001",
-  adressLine1: "Frau Test Kopie, Mollstreet, 1000 Lausanne 12",
-  adressLine2: "Frau Test Kopie1, Mollstreet, 1000 Lausanne 12",
-  sen1: "123459345",
-  sen2: "123459346",
-  sen3: "123459351",
-  sen4_5: ["123459347", "123459348"]
-};
-
-//TODO waiting for 3 datasets from JANE
 describe(`[DEFECT: OSIV-24840 (steps: expected results SEN)]
-          [IMPORTANT: Doestn't work for DataSet2 and DataSet3 - waiting for data from Jane]; 
           C55950: Adressen zusammenführen_merge adresse with with sendung and sendungkopie;
           TestRail: https://osiv.testrail.net/index.php?/cases/view/55950`, {failFast: {enabled: true}}, () => {
   before(`Login as ${Cypress.env("username")};`, () => {

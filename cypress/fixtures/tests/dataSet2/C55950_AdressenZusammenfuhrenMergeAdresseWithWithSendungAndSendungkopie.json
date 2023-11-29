@@ -1,0 +1,10 @@
+{
+  "adr1": "1022116",
+  "adr2": "1022117",
+  "adressLine1": "Frau Test Kopie, Mollstreet, 1000 Lausanne 12",
+  "adressLine2": "Frau Test Kopie1, Mollstreet, 1000 Lausanne 12",
+  "sen1": "123459624",
+  "sen2": "123459625",
+  "sen3": "123459626",
+  "sen4_5": ["123459627", "123459628"]
+}

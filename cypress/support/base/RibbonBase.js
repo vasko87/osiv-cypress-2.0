@@ -23,7 +23,7 @@ class RibbonBase {
 
   clickNeuBtn() {
     this.elements.neuBtn().should("be.visible").click();
-    return new NeueAdressverbindungPopup();
+    return this;
   }
 
   checkNeuBtnDisabled(isDisabled) {
