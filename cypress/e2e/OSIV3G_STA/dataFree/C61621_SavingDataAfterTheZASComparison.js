@@ -141,7 +141,8 @@ describe(`C61621: Saving data after the ZAS comparison;
   Pop-up 'Neue Adresse erstellen' is opened`, () => {
     pages.versicherte.detail.sideMenu.navigateToAdressverbindungenTab()
          .waitForLoaded();
-    pages.versicherte.detail.ribbonMenu.clickNeuBtn()
+    pages.versicherte.detail.ribbonMenu.clickNeuBtn();
+    pages.versicherte.neueAdressverbindungPopup
          .waitForLoaded()
          .selectVerbindrungsTypeDropdown(testData.step10.verbindrungsType)
          .selectAdresseDropdown(testData.step10.adresse);
