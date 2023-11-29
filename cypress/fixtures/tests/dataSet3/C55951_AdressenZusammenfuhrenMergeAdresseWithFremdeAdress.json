@@ -1,0 +1,14 @@
+{
+  "test1": {
+    "tcNumber": 1,
+    "adr1": "1022170",
+    "adr2": "1022171",
+    "adressLine": "Frau Dr. med. Susan Basak, Badenerstrasse 678, 8048 Zürich"
+  },
+  "test2": {
+    "tcNumber": 2,
+    "adr1": "1022172",
+    "adr2": "1022173",
+    "adressLine": "Ambimed Basel AG, Augenchirurgische Tagesklinik, Klingentalstrasse 9, 4057 Basel"
+  }
+}

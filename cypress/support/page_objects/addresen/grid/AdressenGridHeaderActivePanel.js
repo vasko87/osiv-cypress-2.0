@@ -21,13 +21,6 @@ class AdressenGridHeaderActivePanel {
   clickRefreshBtn() {
     this.elements.refreshBtn().should("be.visible").click();
   }
-
-  selectAllDropdown(){
-    this.elements.allDropdown().should("be.visible");
-    pageBase.selectInDropdownContains(this.elements.allDropdown(), "All");
-    pageBase.waitForLoadingDisappears();
-    return this;
-  }
 }
 
 export default AdressenGridHeaderActivePanel;

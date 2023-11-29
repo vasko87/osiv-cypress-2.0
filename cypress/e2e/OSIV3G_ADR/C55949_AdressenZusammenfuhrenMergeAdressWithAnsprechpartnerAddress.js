@@ -20,7 +20,6 @@ describe(`C55949: Adressen zusammenführen_merge adress with Ansprechpartner add
   });
 
   it(`Step 3: Search for adr2 (${testData.adr2})`, () => {
-    pages.adressen.detail.adressenZusammenfuehrenpPopup.grid.headerActivePanel.selectAllDropdown();
     pages.adressen.detail.adressenZusammenfuehrenpPopup.grid.filter.searchAdresseID(testData.adr2);
   });
 

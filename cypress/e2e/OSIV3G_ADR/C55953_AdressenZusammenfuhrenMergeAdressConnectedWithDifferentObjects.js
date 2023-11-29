@@ -1,19 +1,9 @@
 import pages from "../../support/base/OsivPageObject";
 import flows from "../../support/base/OsivFlowsObject";
 import pageBase from "../../support/base/PageBase";
+import {c55953 as testData} from "../../support/helpers/DataManager";
 
-const testData = {
-  adr1: "1021467",
-  adr2: "1021997",
-  vpName: "Eing Adresse",
-  adressLine1: "Frau Dr. med. Susan Basak, Badenerstrasse 678, 8048 Zürich",
-  adressLine2: "Herr Neu Eing, 1000 Lausanne 18",
-  types: ["Wohnsitz", "DF-Stelle", "Versicherung", "Haftpflichtige"]
-};
-
-//TODO waiting for 3 datasets from JANE
-describe(`[IMPORTANT: Doestn't work for DataSet2 and DataSet3 - waiting for data from Jane];
-          C55953: Adressen zusammenführen_merge adress connected with different objects;
+describe(`C55953: Adressen zusammenführen_merge adress connected with different objects;
           TestRail: https://osiv.testrail.net/index.php?/cases/view/55953`, {failFast: {enabled: true}}, () => {
   before(`Login as ${Cypress.env("username")};`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
@@ -36,7 +26,6 @@ describe(`[IMPORTANT: Doestn't work for DataSet2 and DataSet3 - waiting for data
   });
 
   it(`Step 3: Search for adr2 (${testData.adr2})`, () => {
-    pages.adressen.detail.adressenZusammenfuehrenpPopup.grid.headerActivePanel.selectAllDropdown();
     pages.adressen.detail.adressenZusammenfuehrenpPopup.grid.filter.searchAdresseID(testData.adr2);
   });
 
