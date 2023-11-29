@@ -11,7 +11,7 @@ class RenteTab {
     this.gemischtePopup = new GemischtePopup();
     this.fruhinvaliditatPopup = new FruhinvaliditatPopup();
     this.einkommensvergleichPopup = new EinkommensvergleichPopup();
-    this.grid = new InvGradBerechnungenGrid(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailBasisFrame'] [akid='EntscheidInvGradBerechnungenGrid']`);
+    this.grid = new InvGradBerechnungenGrid(`${constants.CSS_ACTIVE_FORM} [akid='Rente'] [akid='EntscheidInvGradBerechnungenGrid']`);
     this.elements = {
       renteForm: () => cy.get(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidRenteDetailForm']`),
       lohnInFrTxt: () => this.elements.renteForm().find("[akid$='ve_lohn']")

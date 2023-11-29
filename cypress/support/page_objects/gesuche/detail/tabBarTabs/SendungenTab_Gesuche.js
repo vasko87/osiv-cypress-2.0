@@ -3,7 +3,7 @@ import constants from "../../../../helpers/Constants";
 
 class SendungenTab_Gesuche {
   constructor() {
-    this.grid = new SendungenGrid(`${constants.CSS_ACTIVE_FORM} [akid='GesuchDetailWindow'] [akid='eSendungQueryVPContextB']`);
+    this.grid = new SendungenGrid(`${constants.CSS_ACTIVE_FORM} [akid='Sendungen'] [akid='eSendungQueryVPContextB']`);
   }
 }
 

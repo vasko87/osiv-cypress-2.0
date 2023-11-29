@@ -5,7 +5,7 @@ import pageBase from "../../../../base/PageBase";
 
 class SendungenTab_Versicherte {
   constructor() {
-    this.grid = new SendungenGrid(`${constants.CSS_ACTIVE_FORM} [akid='sStammDetailWindow'] [akid='eSendungQueryVPContextB']`);
+    this.grid = new SendungenGrid(`${constants.CSS_ACTIVE_FORM} [akid='Sendungen'] [akid='eSendungQueryVPContextB']`);
     this.detail = new SendungenDetail();
   }
 

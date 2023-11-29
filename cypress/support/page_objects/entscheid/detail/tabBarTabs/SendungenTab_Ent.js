@@ -4,7 +4,7 @@ import SendungenDetail from "../../../sendungen/detail/SendungenDetail";
 
 class SendungenTab_Ent {
   constructor() {
-    this.grid = new SendungenGrid(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidDetailWindow'],[akid='EntscheidDetailBasisFrame'] [akid='eSendungQueryVPContextB']`);
+    this.grid = new SendungenGrid(`${constants.CSS_ACTIVE_FORM} [akid='Sendungen'] [akid='eSendungQueryVPContextB']`);
     this.detail = new SendungenDetail();
   }
 }

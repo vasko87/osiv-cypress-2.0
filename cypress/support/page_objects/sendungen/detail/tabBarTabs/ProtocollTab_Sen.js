@@ -5,7 +5,7 @@ import ProtocollDetail from "../../../protocoll/detail/ProtocollDetail";
 
 class ProtocollTab_Sen {
   constructor() {
-    this.grid = new ProtocollGrid(`${constants.CSS_ACTIVE_FORM} [akid='SendungDetailWindow']`);
+    this.grid = new ProtocollGrid(`${constants.CSS_ACTIVE_FORM} [akid='SendungDetailWindow'],[akid='ProtokollQueryGrid']`);
     this.detail = new ProtocollDetail();
   };
 
