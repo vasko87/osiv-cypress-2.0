@@ -1,0 +1,8 @@
+{
+  "adr1": "1021467",
+  "adr2": "1021997",
+  "vpName": "Eing Adresse",
+  "adressLine1": "Frau Dr. med. Susan Basak, Badenerstrasse 678, 8048 Zürich",
+  "adressLine2": "Herr Neu Eing, 1000 Lausanne 18",
+  "types": ["Wohnsitz", "DF-Stelle", "Versicherung", "Haftpflichtige"]
+}

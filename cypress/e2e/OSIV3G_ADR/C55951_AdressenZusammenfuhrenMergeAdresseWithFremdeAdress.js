@@ -1,24 +1,7 @@
 import pages from "../../support/base/OsivPageObject";
-
-const testData = {
-  test1: {
-    tcNumber: 1,
-    adr1: "619915",
-    adr2: "619911",
-    adressLine: "Frau Dr. med. Susan Basak, Badenerstrasse 678, 8048 Zürich"
-  },
-  test2: {
-    tcNumber: 2,
-    adr1: "619912",
-    adr2: "39248",
-    adressLine: "Ambimed Basel AG, Augenchirurgische Tagesklinik, Klingentalstrasse 9, 4057 Basel"
-  }
-};
-
-// TODO waiting for 3 datasets from JANE
-describe(`[IMPORTANT: Doestn't work for DataSet2 and DataSet3 - waiting for data from Jane];
-          C55951: Adressen zusammenführen_merge adresse with fremde adress;
-          TestRail: https://osiv.testrail.net/index.php?/cases/view/55951`, {failFast: {enabled: true}}, () => {
+import {c55951 as testData} from "../../support/helpers/DataManager";
+describe(`C55951: Adressen zusammenführen_merge adresse with fremde adress;
+          TestRail: https://osiv.testrail.net/index.php?/cases/view/55951`, {failFast: {enabled: false}}, () => {
   before(`Login as ${Cypress.env("username")};`, () => {
     cy.loginWithSession(Cypress.env("username"), Cypress.env("password"));
     pages.loginPage.openUrl();
@@ -36,7 +19,6 @@ describe(`[IMPORTANT: Doestn't work for DataSet2 and DataSet3 - waiting for data
            .waitForLoaded();
 
       cy.log(`Step 3: Search for adr2 (${data.adr2}`);
-      pages.adressen.detail.adressenZusammenfuehrenpPopup.grid.headerActivePanel.selectAllDropdown();
       pages.adressen.detail.adressenZusammenfuehrenpPopup.grid.filter.searchAdresseID(data.adr2);
 
       cy.log(`Step 4: Select adress and click  Zusammenführen button`);

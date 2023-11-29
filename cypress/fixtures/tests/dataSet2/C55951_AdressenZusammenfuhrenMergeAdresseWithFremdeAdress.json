@@ -1,0 +1,14 @@
+{
+  "test1": {
+    "tcNumber": 1,
+    "adr1": "1022137",
+    "adr2": "1022138",
+    "adressLine": "Herr Dr. H.J. Auf der Maur, Thunstrasse 19, 3005 Bern"
+  },
+  "test2": {
+    "tcNumber": 2,
+    "adr1": "1022139",
+    "adr2": "1022140",
+    "adressLine": "Ambimed Basel AG, Augenchirurgische Tagesklinik, Klingentalstrasse 9, 4057 Basel"
+  }
+}

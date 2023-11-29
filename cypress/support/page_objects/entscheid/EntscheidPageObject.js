@@ -7,6 +7,7 @@ import EntscheidInDenPapierkorbVerschiebenPopup from "./detail/popups/EntscheidI
 import ZustandigkeitenWechselnPopup from "./detail/popups/ZustandigkeitenWechselnPopup";
 import SupertextFreidefinierbareVariablenPopup from "./detail/popups/SupertextFreidefinierbareVariablenPopup";
 import BeschwerdePageObject from "./beschwerde/BeschwerdePageObject";
+import WartefristBearbeitenPopup from "./detail/popups/WartefristBearbeitenPopup";
 
 class EntscheidPageObject {
   constructor() {
@@ -18,6 +19,7 @@ class EntscheidPageObject {
     this.bearbeitungEinleitenPopup = new BearbeitungEinleitenPopup();
     this.zustandigkeitenWechselnPopup = new ZustandigkeitenWechselnPopup();
     this.supertextFreidefinierbareVariablenPopup = new SupertextFreidefinierbareVariablenPopup();
+    this.wartefristBearbeitenPopup = new WartefristBearbeitenPopup();
   }
 }
 
