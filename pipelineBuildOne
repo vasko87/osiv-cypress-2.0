@@ -10,7 +10,7 @@ pipeline {
         string(name: 'CUSTOM_ENV', defaultValue: "", description: "Enter the custom url")
         string(name: 'USERNAME', defaultValue: "default", description: "Set username if not default")
         string(name: 'PASSWORD', defaultValue: "default", description: "Set password if not default")
-        choice(name: 'BRANCH', choices: ['develop', 'V60x', 'V52x','V51x'], description: "git branches:\ndevelop - for develop version;\nV60x - for V6.0.x;\nV51x - for V5.1.x;\nV52x - for V5.2.x;")
+        choice(name: 'BRANCH', choices: ['develop', 'B1', 'V52x','V51x'], description: "git branches:\ndevelop - for develop version;\nV60x - for V6.0.x;\nV51x - for V5.1.x;\nV52x - for V5.2.x;")
      }
 
     stages {
