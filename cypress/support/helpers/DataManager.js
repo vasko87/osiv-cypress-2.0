@@ -78,6 +78,22 @@ import C55949_ds1 from "../../fixtures/tests/dataSet1/C55949_AdressenZusammenfuh
 import C55949_ds2 from "../../fixtures/tests/dataSet2/C55949_AdressenZusammenfuhrenMergeAdressWithAnsprechpartnerAddress.json";
 import C55949_ds3 from "../../fixtures/tests/dataSet3/C55949_AdressenZusammenfuhrenMergeAdressWithAnsprechpartnerAddress.json";
 
+import C55950_ds1 from "../../fixtures/tests/dataSet1/C55950_AdressenZusammenfuhrenMergeAdresseWithWithSendungAndSendungkopie.json";
+import C55950_ds2 from "../../fixtures/tests/dataSet2/C55950_AdressenZusammenfuhrenMergeAdresseWithWithSendungAndSendungkopie.json";
+import C55950_ds3 from "../../fixtures/tests/dataSet3/C55950_AdressenZusammenfuhrenMergeAdresseWithWithSendungAndSendungkopie.json";
+
+import C55951_ds1 from "../../fixtures/tests/dataSet1/C55951_AdressenZusammenfuhrenMergeAdresseWithFremdeAdress.json";
+import C55951_ds2 from "../../fixtures/tests/dataSet2/C55951_AdressenZusammenfuhrenMergeAdresseWithFremdeAdress.json";
+import C55951_ds3 from "../../fixtures/tests/dataSet3/C55951_AdressenZusammenfuhrenMergeAdresseWithFremdeAdress.json";
+
+import C55953_ds1 from "../../fixtures/tests/dataSet1/C55953_AdressenZusammenfuhrenMergeAdressConnectedWithDifferentObjects.json";
+import C55953_ds2 from "../../fixtures/tests/dataSet2/C55953_AdressenZusammenfuhrenMergeAdressConnectedWithDifferentObjects.json";
+import C55953_ds3 from "../../fixtures/tests/dataSet3/C55953_AdressenZusammenfuhrenMergeAdressConnectedWithDifferentObjects.json";
+
+import C45706_ds1 from "../../fixtures/tests/dataSet1/C45706_FFStatusFromOffenToAbgeschlossen.json";
+import C45706_ds2 from "../../fixtures/tests/dataSet2/C45706_FFStatusFromOffenToAbgeschlossen.json";
+import C45706_ds3 from "../../fixtures/tests/dataSet3/C45706_FFStatusFromOffenToAbgeschlossen.json";
+
 import C001 from "../../fixtures/tests/C001_newAdressTest.json";
 import C44746 from "../../fixtures/tests/C44746_HEGradCalculationRules.json";
 import C47707 from "../../fixtures/tests/C47707_ShowNoShowDynamicBaustein.json";
@@ -116,6 +132,10 @@ const dataFiles = {
   c58184 : C58184_ds1,
   c58211 : C58211_ds1,
   c55949 : C55949_ds1,
+  c55950 : C55950_ds1,
+  c55951 : C55951_ds1,
+  c55953 : C55953_ds1,
+  c45706 : C45706_ds1,
   c001 : C001,
   c44746 : C44746,
   c47707 : C47707,
@@ -158,6 +178,10 @@ if (dataSet === "dataSet1") {
   dataFiles.c58184 = C58184_ds1;
   dataFiles.c58211 = C58211_ds1;
   dataFiles.c55949 = C55949_ds1;
+  dataFiles.c55950 = C55950_ds1;
+  dataFiles.c55951 = C55951_ds1;
+  dataFiles.c55953 = C55953_ds1;
+  dataFiles.c45706 = C45706_ds1;
 }
 if (dataSet === "dataSet2") {
   dataFiles.c44194 = C44194_ds2;
@@ -180,6 +204,10 @@ if (dataSet === "dataSet2") {
   dataFiles.c58184 = C58184_ds2;
   dataFiles.c58211 = C58211_ds2;
   dataFiles.c55949 = C55949_ds2;
+  dataFiles.c55950 = C55950_ds2;
+  dataFiles.c55951 = C55951_ds2;
+  dataFiles.c55953 = C55953_ds2;
+  dataFiles.c45706 = C45706_ds2;
 }
 if (dataSet === "dataSet3") {
   dataFiles.c44194 = C44194_ds3;
@@ -202,6 +230,10 @@ if (dataSet === "dataSet3") {
   dataFiles.c58184 = C58184_ds3;
   dataFiles.c58211 = C58211_ds3;
   dataFiles.c55949 = C55949_ds3;
+  dataFiles.c55950 = C55950_ds3;
+  dataFiles.c55951 = C55951_ds3;
+  dataFiles.c55953 = C55953_ds3;
+  dataFiles.c45706 = C45706_ds3;
 }
 
 module.exports = dataFiles;
