@@ -1,7 +1,9 @@
+import constants from "../helpers/Constants";
+
 class DetailWindowHeader {
   constructor() {
     this.elements = {
-      windowHeader: () => cy.get("[class='dhxwin_active'] [class='dhxwin_hdr']"),
+      windowHeader: () => cy.get(`${constants.CSS_ACTIVE_FORM} [class='dhxwin_hdr']`),
       configureBtn: () => this.elements.windowHeader().find("[title='Configure']"),
       settingsBtn : () => this.elements.windowHeader().find("[title='Settings']"),
       stickBtn    : () => this.elements.windowHeader().find("[title='Stick']"),

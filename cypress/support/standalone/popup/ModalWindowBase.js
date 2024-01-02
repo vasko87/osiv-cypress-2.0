@@ -2,7 +2,7 @@ import constants from "../../helpers/Constants";
 import pageBase from "../../base/PageBase";
 
 class ModalWindowBase {
-  static css = "[class='dhxwin_active'][modalwindow='true']";
+  static css = `${constants.CSS_ACTIVE_FORM}[modalwindow='true']`;
 
   constructor() {
     this.elements = {
