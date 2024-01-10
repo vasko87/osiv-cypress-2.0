@@ -11,7 +11,7 @@ class ModalWindowBase {
       bestatigenBtn: () => this.elements.modalWindow().find('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Bestätigen"]'),
       abbrechenBtn: () => this.elements.modalWindow().find('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Abbrechen"]'),
       speichernBtn: () => this.elements.modalWindow().find('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Speichern"]'),
-      toolbar: () => cy.get(ModalWindowBase.css).find("[class='dhx_cell_toolbar_def']"),
+      toolbar: () => cy.get(ModalWindowBase.css).find("[class='dhxcelltop_toolbar']"),
       minMaxBtn: () => cy.get(ModalWindowBase.css).find("[class='dhxwin_button dhxwin_button_minmax']"),
       headerElement: () => this.elements.modalWindow().find("[class='dhxwin_hdr']")
     };

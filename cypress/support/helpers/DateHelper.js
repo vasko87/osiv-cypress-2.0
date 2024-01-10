@@ -57,7 +57,7 @@ export default {
     return end.toLocaleDateString("de-CH", {year: "numeric", month: "2-digit", day: "2-digit"});
   },
 
-  getYearsAndMonthsFromDate(date) {
+  getYearsAndMonthsDiffFromDate(date) {
     const currentDate = new Date();
     const parts = date.split(".");
     const convertedDate = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`);
@@ -75,5 +75,20 @@ export default {
       monthDiff--;
     }
     return `${yearDiff}.${monthDiff}`;
+  },
+
+  getYearsDiffFromDate(date) {
+    const currentDate = new Date();
+    const parts = date.split(".");
+    const convertedDate = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`);
+
+    let yearDiff = currentDate.getFullYear() - convertedDate.getFullYear();
+    let monthDiff = currentDate.getMonth() - convertedDate.getMonth();
+
+    if (monthDiff < 0) {
+      yearDiff--;
+      monthDiff += 12;
+    }
+    return `${yearDiff}`;
   }
 };

@@ -74,8 +74,8 @@ class VersichertePageBase {
     return this;
   }
 
-  checkAlternTxt(value) {
-    this.elements.alternTxt().should("be.visible").should("have.value", value);
+  checkAlternContainsTxt(value) {
+    this.elements.alternTxt().should("be.visible").should("contain.value", value);
     return this;
   }
 

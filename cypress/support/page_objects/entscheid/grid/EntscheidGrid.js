@@ -8,7 +8,8 @@ class EntscheidGrid extends GridBase {
     this.filter = new EntscheidGridFilter();
     this.headerActivePanel = new EntscheidGridHeaderActivePanel();
     super.elements = {
-      ...this.elements
+      ...this.elements,
+      threeDotMenu    : () => cy.get("[akid='EntscheidQueryStammGrid-EntscheidSendungGridContextMenu']")
 
     };
   }
@@ -30,6 +31,11 @@ class EntscheidGrid extends GridBase {
     super.waitGridViewLoaded()
          .dblClickRowValue(value);
     pageBase.waitForLoadingDisappears();
+    return this;
+  }
+
+  checkThreeDotMenuVisible(isVisible) {
+    pageBase.checkElementVisible(this.elements.threeDotMenu(), isVisible);
     return this;
   }
 }

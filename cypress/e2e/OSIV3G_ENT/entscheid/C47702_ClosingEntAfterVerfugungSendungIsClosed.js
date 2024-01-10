@@ -2,6 +2,7 @@ import pages from "../../../support/base/OsivPageObject";
 import flows from "../../../support/base/OsivFlowsObject";
 import {c47702 as testData} from "../../../support/helpers/DataManager";
 import helpers from "../../../support/helpers/HelperObject";
+import constants from "../../../support/helpers/Constants";
 
 describe(`C47702: (ENT ${testData.data1.entId}) Closing ENT after Verfugung sendung is closed; 
   TestRail:https://osiv.testrail.net/index.php?/cases/view/47702`, () => {
@@ -22,6 +23,7 @@ describe(`C47702: (ENT ${testData.data1.entId}) Closing ENT after Verfugung send
       pages.entscheid.detail.sendungenTabBar.grid.waitGridViewLoaded()
            .dblClickRowValue(data.status);
       pages.entscheid.detail.sendungenTabBar.detail.waitForLoaded();
+      cy.wait(constants.SHORT_TIMEOUT);
       pages.entscheid.detail.sendungenTabBar.detail.ribbonMenu.clickAbschliessenBtn();
       pages.entscheid.detail.sendungenTabBar.detail
            .sendungenAbschliessenPopup.waitForLoaded()

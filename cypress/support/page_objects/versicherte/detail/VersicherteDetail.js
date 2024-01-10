@@ -15,6 +15,7 @@ import AdressverbindungenTab from "./sideMenuTabs/AdressverbindungenTab";
 import VersicherungenTab_VR from "./sideMenuTabs/VersicherungenTab_VR";
 import DurchfuhrungsstellenTab_VR from "./sideMenuTabs/DurchfuhrungsstellenTab_VR";
 import FallfuhrungTab from "./sideMenuTabs/FallfuhrungTab";
+import EntscheidGrid from "../../entscheid/grid/EntscheidGrid";
 
 class VersicherteDetail extends VersichertePageBase {
   constructor() {
@@ -34,6 +35,7 @@ class VersicherteDetail extends VersichertePageBase {
     this.eingliederungenTabBar = new EingliederungenTab_Versicherte();
     this.sendungenTabBar = new SendungenTab_Versicherte();
     this.protocollTabBar = new ProtocollPageObject();
+    this.entscheidGrid = new EntscheidGrid(`${constants.CSS_ACTIVE_FORM} [akid='EntscheidQueryStammGrid']`);
     super.elements = {
       ...this.elements,
       detailForm : () => cy.get(detailFormCSS)

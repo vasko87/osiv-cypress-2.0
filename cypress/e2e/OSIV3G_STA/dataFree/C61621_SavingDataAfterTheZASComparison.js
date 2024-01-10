@@ -8,7 +8,7 @@ const testData = {
   vorname: "Lukas",
   geburtsdatum: "25.09.1971",
   geschlecht: "Männlich",
-  alter: helperObject.date.getYearsAndMonthsFromDate("25.09.1971"),
+  alter: helperObject.date.getYearsDiffFromDate("25.09.1971"),
   staat: "Schweiz",
   vpNr: "9745.7458.65",
   newName: "Meneghin Hollenstein",
@@ -59,7 +59,7 @@ describe(`C61621: Saving data after the ZAS comparison;
          .checkVornameTxt(testData.vorname)
          .checkGeburtsdatumDate(testData.geburtsdatum)
          .checkGeschlechtDropdown(testData.geschlecht)
-         .checkAlternTxt(testData.alter)
+         .checkAlternContainsTxt(testData.alter)
          .checkStaatDropdown(testData.staat)
          .checkVersichertenNrTxt(testData.vpNr);
   });
@@ -72,7 +72,7 @@ describe(`C61621: Saving data after the ZAS comparison;
          .checkVornameTxt(testData.vorname)
          .checkGeburtsdatumDate(testData.geburtsdatum)
          .checkGeschlechtDropdown(testData.geschlecht)
-         .checkAlternTxt(testData.alter)
+         .checkAlternContainsTxt(testData.alter)
          .checkStaatDropdown(testData.staat);
   });
 

@@ -7,6 +7,8 @@ import DelegationAbschlussRegistrierenPopup
   from "./detail/popups/dossierChronikPopup/DelegationAbschlussRegistrierenPopup";
 import ZASDatenAbfragenPopup from "./detail/popups/zasDatenAbfragenPopup/ZASDatenAbfragenPopup";
 import NeueAdressverbindungPopup from "./detail/popups/NeueAdressverbindungPopup";
+import EntscheidGrid from "../entscheid/grid/EntscheidGrid";
+import constants from "../../helpers/Constants";
 
 class VersichertePageObject {
   constructor() {
