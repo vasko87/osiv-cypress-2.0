@@ -31,7 +31,7 @@ class TxtEditor {
   }
 
   setValue(value) {
-    pageBase.executeJS(`document.querySelector("${this.baseCSS}").__vueParentComponent.setValue(\`{\\\\rtf1\\\\ansi\\\\ansicpg1252\\\\uc1\\\\deff0\\\\adeff0\\\\deflang0\\\\deflangfe0\\\\adeflang0{\\\\fonttbl
+    pageBase.executeJS(`document.querySelector("${this.baseCSS}").vueComponentInstance.setValue(\`{\\\\rtf1\\\\ansi\\\\ansicpg1252\\\\uc1\\\\deff0\\\\adeff0\\\\deflang0\\\\deflangfe0\\\\adeflang0{\\\\fonttbl
 {\\\\f0\\\\fswiss\\\\fcharset0\\\\fprq2{\\\\*\\\\panose 020B0604020202020204}Arial;}
 {\\\\f1\\\\froman\\\\fcharset2\\\\fprq2{\\\\*\\\\panose 05050102010706020507}Symbol;}}
 {\\\\colortbl;\\\\red0\\\\green0\\\\blue0;}
@@ -49,7 +49,7 @@ class TxtEditor {
     // const getValue = () => {
     //   let checkedVal = null;
     //
-    //   pageBase.executeJS(`document.querySelector("${this.baseCSS}").__vueParentComponent.ctx.getValue()`).then((val) => {
+    //   pageBase.executeJS(`document.querySelector("${this.baseCSS}").vueComponentInstance.ctx.getValue()`).then((val) => {
     //     checkedVal = val;
     //   });
     //
@@ -60,7 +60,7 @@ class TxtEditor {
     // cy.waitUntil(() => getValue() !== null);
     // console.log("END WAITING", getValue());
     //
-    // pageBase.executeJS(`document.querySelector("${this.baseCSS}").__vueParentComponent.ctx.getValue()`)
+    // pageBase.executeJS(`document.querySelector("${this.baseCSS}").vueComponentInstance.ctx.getValue()`)
     // return this;
     cy.wait(constants.DEFAULT_TIMEOUT);
     return this;
@@ -78,7 +78,7 @@ class TxtEditor {
    * @returns {Cypress.Chainable<>}
    */
   getSingleValue() {
-    return pageBase.executeJS(`document.querySelector("${this.baseCSS}").__vueParentComponent.getValue()`).then((val) => {
+    return pageBase.executeJS(`document.querySelector("${this.baseCSS}").vueComponentInstance.getValue()`).then((val) => {
       if (val) {
         val = val.split("langfenp2055\\par ")[1].replaceAll("}", "");
       } else {
@@ -89,7 +89,7 @@ class TxtEditor {
   }
 
   checkTextHighlighted(text, isHighlighted) {
-    pageBase.executeJS(`document.querySelector("${this.baseCSS}").__vueParentComponent.getValue()`).then((val) => {
+    pageBase.executeJS(`document.querySelector("${this.baseCSS}").vueComponentInstance.getValue()`).then((val) => {
       const highlightedTextExists = val.indexOf(`chcbpat2 ${text}`) !== -1;
       if (isHighlighted) {
         expect(highlightedTextExists).to.be.eql(true);
