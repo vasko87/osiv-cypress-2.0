@@ -4,7 +4,7 @@ class DetailWindowHeader {
   constructor() {
     this.elements = {
       windowHeader: () => cy.get(`${constants.CSS_ACTIVE_FORM} [class='dhxwin_hdr']`),
-      configureBtn: () => this.elements.windowHeader().find("[title='Configure']"),
+      configureBtn: () => this.elements.windowHeader().find("[title='Configure'],[title='Title Menu']"),
       settingsBtn : () => this.elements.windowHeader().find("[title='Settings']"),
       stickBtn    : () => this.elements.windowHeader().find("[title='Stick']"),
       parkBtn     : () => this.elements.windowHeader().find("[title='Park']"),

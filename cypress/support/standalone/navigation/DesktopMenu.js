@@ -23,7 +23,7 @@ class DesktopMenu {
   }
 
   navigateToVersicherteTab() {
-    this.elements.versicherteMainTab().should("be.visible").click();
+    this.elements.versicherteMainTab().scrollIntoView().should("be.visible").click();
     this.elements.versicherteTab().click();
     pageBase.waitForLoadingDisappears();
     this.elements.versicherteMainTab().click();
@@ -31,7 +31,7 @@ class DesktopMenu {
   }
 
   navigateToSendungenTab() {
-    this.elements.sendungenMainTab().should("be.visible").click();
+    this.elements.sendungenMainTab().scrollIntoView().should("be.visible").click();
     this.elements.sendungenTab().click();
     pageBase.waitForLoadingDisappears();
     this.elements.sendungenMainTab().click();
@@ -39,12 +39,12 @@ class DesktopMenu {
   }
 
   navigateToAdressenTab() {
-    this.elements.adressenTab().should("be.visible").click();
+    this.elements.adressenTab().scrollIntoView().should("be.visible").click();
     return this;
   }
 
   navigateToEntscheidTab() {
-    this.elements.entscheidMainTab().should("be.visible").click();
+    this.elements.entscheidMainTab().scrollIntoView().should("be.visible").click();
     this.elements.entscheidTab().click();
     pageBase.waitForLoadingDisappears();
     this.elements.entscheidMainTab().click();
@@ -52,7 +52,7 @@ class DesktopMenu {
   }
 
   navigateToEntscheidBeschwerdeTab() {
-    this.elements.entscheidMainTab().should("be.visible").click();
+    this.elements.entscheidMainTab().scrollIntoView().should("be.visible").click();
     this.elements.beschwerdeTab().click();
     pageBase.waitForLoadingDisappears();
     this.elements.entscheidMainTab().click();
@@ -60,12 +60,12 @@ class DesktopMenu {
   }
 
   navigateToEingliederungTab() {
-    this.elements.eingliederungTab().should("be.visible").click();
+    this.elements.eingliederungTab().scrollIntoView().should("be.visible").click();
     return this;
   }
 
   navigateToGesucheTab() {
-    this.elements.gesucheMainTab().should("be.visible").click();
+    this.elements.gesucheMainTab().scrollIntoView().should("be.visible").click();
     this.elements.gesucheTab().click();
     pageBase.waitForLoadingDisappears();
     this.elements.gesucheMainTab().click();
@@ -73,7 +73,7 @@ class DesktopMenu {
   }
 
   navigateToPosteingangTab() {
-    this.elements.posteingangMainTab().should("be.visible").click();
+    this.elements.posteingangMainTab().scrollIntoView().should("be.visible").click();
     this.elements.posteingangTab().click();
     pageBase.waitForLoadingDisappears();
     this.elements.posteingangMainTab().click();
