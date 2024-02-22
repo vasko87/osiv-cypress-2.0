@@ -5,8 +5,10 @@ const TestRailReporter = require("cypress-testrail");
 module.exports = defineConfig(
   {
     projectId      : "nnmsrw",
-    viewportWidth  : 1920,
-    viewportHeight : 1080,
+    // viewportWidth  : 1920,
+    // viewportHeight : 1080,
+    viewportWidth  : 3840,
+    viewportHeight : 2160,
     reporter        : "cypress-mochawesome-reporter",
     reporterOptions: {
       reportDir          : "cypress/reports",
@@ -59,6 +61,8 @@ module.exports = defineConfig(
             launchOptions.args.push("--enable-precise-memory-info");
             launchOptions.args.push("--enable-blink-features='ForceEagerMeasureMemory'");
             launchOptions.args.push("--js-flags='--expose-gc'");
+            // launchOptions.args.push(`--window-size=3840,2160`);
+            // launchOptions.args.push("--force-device-scale-factor=1");
           }
           return launchOptions;
         });
