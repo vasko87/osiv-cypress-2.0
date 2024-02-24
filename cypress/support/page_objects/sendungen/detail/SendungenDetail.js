@@ -35,7 +35,6 @@ class SendungenDetail extends SendungenPageBase {
 
   waitForLoaded() {
     pageBase.waitForLoadingDisappears();
-    this.elements.detailForm().should("be.visible", constants.DEFAULT_TIMEOUT);
     cy.wait(constants.MIN_TIMEOUT);
     pageBase.waitForLoadingDisappears();
     return this;

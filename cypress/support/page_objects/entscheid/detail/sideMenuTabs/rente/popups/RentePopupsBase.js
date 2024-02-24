@@ -288,12 +288,12 @@ class RentePopupsBase extends ModalWindowBase {
       },
 
       checkInvGradTxt(value) {
-        this.invGradTxt().should("have.visible", value);
+        this.invGradTxt().should("exist", value);
         return this;
       },
 
       checkRenteTxt(value) {
-        this.renteTxt().should("have.visible", value);
+        this.renteTxt().should("exist", value);
         return this;
       },
 

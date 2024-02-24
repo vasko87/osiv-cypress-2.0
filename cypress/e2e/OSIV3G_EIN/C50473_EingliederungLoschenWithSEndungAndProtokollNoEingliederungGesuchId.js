@@ -11,7 +11,7 @@ describe(`C50473: Eingliederung löschen_with SEndung and Protokoll (no Einglied
     pages.loginPage.openUrl();
   });
 
-  it(`Step 1: Open Eing`, () => {
+  it(`Step 1: Open Eing ${testData.einID}`, () => {
     flows.eingliederung.step_navigateEin_searchEin_openEin(testData.einID);
   });
 
